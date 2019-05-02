@@ -1,0 +1,3081 @@
+<div class="wrap_analysis">
+	<div class="inner_cont">
+		<div class="wrap_tit">
+			<h3 class="tit_g">분석</h3>
+			<span class="info_g">분석은 사용자들이 봇을 어떻게 사용하는지 확인하고 측정할 수 있는 기능입니다.</span>
+		</div>
+		<ul class="list_tab"><!-- 2018-07-06 수정 : list_analysis > list_tab -->
+			<li #if($params.get('user'))#elseif($params.get('bot'))#else class="on"#end><!-- 활성화시 on 클래스추가 -->
+				<a href="#none" class="link_tab">대시보드</a>
+			</li>
+			<li #if($params.get('user'))class="on"#elseif($params.get('bot'))#else #end>
+				<a href="#none" class="link_tab">사용자</a>
+			</li>
+			<li #if($params.get('user'))#elseif($params.get('bot'))class="on"#else #end>
+				<a href="#none" class="link_tab">챗봇</a>
+			</li>
+		</ul>
+		#if($params.get('user'))
+		<h4 class="screen_out">사용자</h4>
+		#elseif($params.get('bot'))
+		<h4 class="screen_out">챗봇</h4>
+		#else
+		<h4 class="screen_out">대시보드</h4><!-- on 되어진 해당 link_tab 의 메뉴명으로 변경해주세요 -->
+		#end
+		<div class="box_row #if($params.get('detail'))box_detail#end"><!-- 2018-12-21 : box_detail 클래스 추가 -->
+			#if($params.get('user'))
+			<ul class="list_tab"><!-- 2018-07-06 수정 : list_analysis 삭제 -->
+				<li class="#if($params.get('session')) #elseif($params.get('return')) #else on #end"><!-- 활성화시 on 클래스추가 -->
+					<a href="#none" class="link_tab">활성 사용자</a>
+				</li>
+				<li class="#if($params.get('session'))on#else #end">
+					<a href="#none" class="link_tab">사용자 세션</a>
+				</li>
+				<li class="#if($params.get('return'))on#else #end">
+					<a href="#none" class="link_tab">재방문율</a>
+				</li>
+			</ul>
+			#end
+			<div class="inner_row">
+
+				<!-- 사용자 탭 내의 탭 메뉴 -->
+				#if($params.get('user'))
+					#if($params.get('session'))
+					<h5 class="screen_out">사용자 세션</h5>
+					#elseif($params.get('return'))
+					<h5 class="screen_out">재방문율</h5>
+					#else
+					<h5 class="screen_out">활성 사용자</h5><!-- on 되어진 해당 link_tab 의 메뉴명으로 변경해주세요 -->
+					#end
+				#end
+				<!-- //사용자 탭 내의 탭 메뉴 -->
+
+				#if($params.get('detail'))
+				#else
+				<!-- 필터 박스 영역 -->
+				#if($params.get('type3'))
+				<div class="group_day">
+					<strong class="tit_group">기간</strong>
+					<button type="button" class="btn_day on">지난 7일</button><!-- 활서화 시 on 클래스 추가 -->
+					<button type="button" class="btn_day">지난 14일</button>
+					<button type="button" class="btn_day">지난 30일</button>
+					<span class="info_day">2017.11.01 ~ 2017.11.07</span>
+				</div>
+				<div class="group_day">
+					<strong class="tit_group">기간</strong>
+					<button type="button" class="btn_day on">전체 세션 수</button><!-- 활서화 시 on 클래스 추가 -->
+					<button type="button" class="btn_day">사용자당 평균 세션 수</button>
+					<button type="button" class="btn_day">사용자당 평균 세션 길이</button>
+					<button type="button" class="btn_day">세션당 평균 메세지 수</button>
+				</div>
+				#elseif($params.get('type4'))
+				<div class="group_day">
+					<strong class="tit_group">기간</strong>
+					<button type="button" class="btn_day on">1주일 전</button><!-- 활서화 시 on 클래스 추가 -->
+					<button type="button" class="btn_day">2주일 전</button>
+					<button type="button" class="btn_day">3주일 전</button>
+					<button type="button" class="btn_day">4주일 전</button>
+					<button type="button" class="btn_day">5주일 전</button>
+					<button type="button" class="btn_day">날짜 직접 선택</button>
+					<span class="info_day">2017.11.01 ~ 2017.11.07</span>
+				</div>
+				#elseif($params.get('type5'))
+				<div class="group_day">
+					<strong class="tit_group">기간</strong>
+					<button type="button" class="btn_day on">지난 7일</button><!-- 활서화 시 on 클래스 추가 -->
+					<button type="button" class="btn_day">지난 14일</button>
+					<button type="button" class="btn_day">지난 30일</button>
+					<span class="info_day">2017.11.01 ~ 2017.11.07</span>
+				</div>
+				#else
+				<div class="group_day">
+					<strong class="tit_group">기간</strong>
+					<button type="button" class="btn_day on">지난 7일</button><!-- 활서화 시 on 클래스 추가 -->
+					<button type="button" class="btn_day">지난 14일</button>
+					<button type="button" class="btn_day">지난 30일</button>
+					<span class="info_day">2017.11.01 ~ 2017.11.07</span>
+				</div>
+				#end
+				<!-- //필터 박스 영역 -->
+				#end
+
+				#if($params.get('type2'))
+				<div class="graph_range">
+					<div class="wrap_subject">
+						<strong class="tit_subject">사용자 현황</strong>
+						<div class="bundle_detail">
+							<div class="tit_detail">비교 기준일</div>
+							<button type="button" class="btn_filter">2017.10.31 <span class="ico_bot ico_arr"></span></button><!-- 활성화 시 on 클래스 추가,  -->
+							<!-- 달력 레이어 -->
+							<div class="layer_term layer_calendar">
+								<div class="layer_body">
+									<div class="group_calendar">
+										<div class="search_calendar">
+											<button type="button" class="btn_util btn_prev">
+												<span class="ico_bot ico_prev"></span>
+												<span class="tooltip_btn">이전</span>
+											</button>
+											<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 -->
+												<div class="screen_out">카테고리 선택상자</div>
+												<span class="screen_out">선택내용: </span>
+												<a href="#none" class="link_opt">2017년 12월 <span class="ico_bot ico_arr"></span></a>
+												<div class="wrap_opt">
+													<span class="screen_out">선택옵션: </span>
+													<ul class="list_opt">
+														<li>
+															<a href="#none" class="link_opt">2017년 12월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 11월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 10월</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<button type="button" class="btn_util btn_next">
+												<span class="ico_bot ico_next"></span>
+												<span class="tooltip_btn">다음</span>
+											</button>
+										</div>
+										<!-- 캘린더 전 비활성화 시 table.disabled 에 disabled 클래스 추가 / 일단위 비활성화 시 td에 disabled 클래스 추가 -->
+										<!-- 선택 날짜 pick_day 클래스 추가, 선택 날짜 기준 해당 기간 selected_day 클래스 추가 -->
+										<table class="tbl_calendar">
+											<caption class="caption_g">비교 기준일 캘린더</caption>
+											<colgroup>
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">일</th>
+													<th scope="col">월</th>
+													<th scope="col">화</th>
+													<th scope="col">수</th>
+													<th scope="col">목</th>
+													<th scope="col">금</th>
+													<th scope="col">토</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														<span class="num_day">1</span>
+													</td>
+													<td>
+														<span class="num_day">2</span>
+													</td>
+													<td>
+														<span class="num_day">3</span>
+													</td>
+													<td>
+														<span class="num_day">4</span>
+													</td>
+													<td>
+														<span class="num_day">5</span>
+													</td>
+													<td>
+														<span class="num_day">6</span>
+													</td>
+													<td>
+														<span class="num_day">7</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="num_day">8</span>
+													</td>
+													<td>
+														<span class="num_day">9</span>
+													</td>
+													<td class="disabled">
+														<span class="num_day">10</span>
+													</td>
+													<td>
+														<span class="num_day">11</span>
+													</td>
+													<td>
+														<span class="num_day">12</span>
+													</td>
+													<td>
+														<span class="num_day">13</span>
+													</td>
+													<td>
+														<span class="num_day">14</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="num_day">15</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">16</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">17</span>
+													</td>
+													<td class="pick_day">
+														<span class="num_day">18</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">19</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">20</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">21</span>
+													</td>
+												</tr>
+												<tr>
+													<td class="selected_day">
+														<span class="num_day">22</span>
+													</td>
+													<td>
+														<span class="num_day">23</span>
+													</td>
+													<td>
+														<span class="num_day">24</span>
+													</td>
+													<td>
+														<span class="num_day">25</span>
+													</td>
+													<td>
+														<span class="num_day">26</span></td>
+													<td>
+														<span class="num_day">27</span>
+													</td>
+													<td>
+														<span class="num_day">28</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="num_day">29</span>
+													</td>
+													<td>
+														<span class="num_day">30</span>
+													</td>
+													<td>
+														<span class="num_day">31</span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="group_calendar">
+										<div class="search_calendar">
+											<button type="button" class="btn_util btn_prev">
+												<span class="ico_bot ico_prev"></span>
+												<span class="tooltip_btn">이전</span>
+											</button>
+											<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 -->
+												<div class="screen_out">카테고리 선택상자</div>
+												<span class="screen_out">선택내용: </span>
+												<a href="#none" class="link_opt">2017년 11월 <span class="ico_bot ico_arr"></span></a>
+												<div class="wrap_opt">
+													<span class="screen_out">선택옵션: </span>
+													<ul class="list_opt">
+														<li>
+															<a href="#none" class="link_opt">2017년 12월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 11월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 10월</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<button type="button" class="btn_util btn_next">
+												<span class="ico_bot ico_next"></span>
+												<span class="tooltip_btn">다음</span>
+											</button>
+										</div>
+										<!-- 캘린더 전 비활성화 시 table.disabled 에 disabled 클래스 추가 / 일단위 비활성화 시 td에 disabled 클래스 추가 -->
+										<!-- 선택 날짜 pick_day 클래스 추가, 선택 날짜 기준 해당 기간 selected_day 클래스 추가 -->
+										<table class="tbl_calendar ">
+											<caption class="caption_g">비교 기준일 캘린더</caption>
+											<colgroup>
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">일</th>
+													<th scope="col">월</th>
+													<th scope="col">화</th>
+													<th scope="col">수</th>
+													<th scope="col">목</th>
+													<th scope="col">금</th>
+													<th scope="col">토</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														<span class="num_day"></span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">1</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">2</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">3</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">4</span>
+													</td>
+												</tr>
+												<tr>
+													<td class="selected_day">
+														<span class="num_day">5</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">6</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">7</span>
+													</td>
+													<td>
+														<span class="num_day">8</span>
+													</td>
+													<td>
+														<span class="num_day">9</span>
+													</td>
+													<td>
+														<span class="num_day">10</span>
+													</td>
+													<td>
+														<span class="num_day">11</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="num_day">12</span>
+													</td>
+													<td>
+														<span class="num_day">13</span>
+													</td>
+													<td>
+														<span class="num_day">14</span>
+													</td>
+													<td>
+														<span class="num_day">15</span>
+													</td>
+													<td>
+														<span class="num_day">16</span>
+													</td>
+													<td>
+														<span class="num_day">17</span>
+													</td>
+													<td>
+														<span class="num_day">18</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="num_day">19</span>
+													</td>
+													<td>
+														<span class="num_day">20</span>
+													</td>
+													<td>
+														<span class="num_day">21</span>
+													</td>
+													<td>
+														<span class="num_day">22</span>
+													</td>
+													<td>
+														<span class="num_day">23</span>
+													</td>
+													<td>
+														<span class="num_day">24</span>
+													</td>
+													<td>
+														<span class="num_day">25</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="num_day">26</span>
+													</td>
+													<td>
+														<span class="num_day">27</span>
+													</td>
+													<td>
+														<span class="num_day">28</span>
+													</td>
+													<td>
+														<span class="num_day">29</span>
+													</td>
+													<td>
+														<span class="num_day">30</span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="layer_foot">
+									<div class="wrap_btn">
+										<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+										<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+									</div>
+								</div>
+							</div>
+							<!-- //달력 레이어 -->
+							<div class="tit_detail">비교하기</div>
+							<button type="button" class="btn_switch ico_bot on"><span class="screen_out">현재상태</span>켜짐</button><!-- 활성화 시 on 클래스 추가, '꺼짐' > '켜짐'으로 변경 -->
+						</div>
+					</div>
+					<div class="box_range" style="height:377px"><!-- 임시 height 값 -->
+						그래프 영역
+					</div>
+				</div>
+				<div class="row_range">
+					<div class="graph_range">
+						<div class="wrap_subject">
+							<strong class="tit_subject">사용자 비율</strong>
+						</div>
+						<div class="box_range" style="height:132px"><!-- 임시 height 값 -->
+							그래프 영역
+						</div>
+					</div>
+					<div class="graph_range">
+						<div class="wrap_subject">
+							<strong class="tit_subject">사용자 수</strong>
+						</div>
+						<dl class="dl_user">
+							<dt>활성 사용자 수</dt>
+							<dd>5,120</dd><!-- 2018-07-06 수정 : 천단위 ,(쉼표)표시 -->
+						</dl>
+						<dl class="dl_user">
+							<dt>재방문 사용자 수</dt>
+							<dd>4,186</dd>
+						</dl>
+						<dl class="dl_user">
+							<dt>신규 사용자 수</dt>
+							<dd>3,102</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="graph_range">
+					<div class="wrap_subject">
+						<strong class="tit_subject">사용자 정보</strong>
+						<a href="#none" class="link_detail">엑셀로 다운받기</a>
+					</div>
+					<table class="tbl_user">
+						<caption class="caption_g">일시, 누적 사용자, 활성 사용자, 재방문 사용자, 신규 사용자 등에 대항 정보입니다.</caption>
+						<colgroup>
+							<col width="112px">
+							<col width="16%">
+							<col width="16%">
+							<col width="16%">
+							<col width="16%">
+							<col width="16%">
+							<col width="16%">
+						</colgroup>
+						<thead>
+						<tr>
+							<th scope="col" rowspan="2">일시</th>
+							<th scope="col" rowspan="2">
+								누적 사용자
+								<span class="wrap_tip">
+									<span class="ico_bot ico_help">누적 사용자란?</span>
+									<span class="layer_tip">
+										<span class="txt_tip">누적 사용자란? 누적 사용자란?</span>
+									</span>
+								</span>
+							</th>
+							<th scope="col" rowspan="2">
+								활성 사용자
+								<span class="wrap_tip">
+									<span class="ico_bot ico_help">활성 사용자란?</span>
+									<span class="layer_tip">
+										<span class="txt_tip">활성 사용자란? 활성 사용자란?</span>
+									</span>
+								</span>
+							</th>
+							<th scope="col" colspan="2">
+								재방문 사용자
+								<span class="wrap_tip">
+									<span class="ico_bot ico_help">재방문 사용자란?</span>
+									<span class="layer_tip">
+										<span class="txt_tip">재방문 사용자란? 재방문 사용자란?</span>
+									</span>
+								</span>
+							</th>
+							<th scope="col" colspan="2">
+								신규 사용자
+								<span class="wrap_tip">
+									<span class="ico_bot ico_help">신규 사용자란?</span>
+									<span class="layer_tip">
+										<span class="txt_tip">신규 사용자란? 신규 사용자란?</span>
+									</span>
+								</span>
+							</th>
+						</tr>
+						<tr>
+							<th scope="col">사용자</th>
+							<th scope="col">비율</th>
+							<th scope="col">사용자</th>
+							<th scope="col">비율</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>11/10</td>
+							<td>17,126</td><!-- 2018-07-06 수정 : 천단위 ,(쉼표)표시 -->
+							<td>5,120</td>
+							<td>3,223</td>
+							<td>63%</td>
+							<td>1,897</td>
+							<td>37%</td>
+						</tr>
+						<tr>
+							<td>11/10</td>
+							<td>17,126</td>
+							<td>5,120</td>
+							<td>3,223</td>
+							<td>63%</td>
+							<td>1,897</td>
+							<td>37%</td>
+						</tr>
+						<tr>
+							<td>11/10</td>
+							<td>17,126</td>
+							<td>5,120</td>
+							<td>3,223</td>
+							<td>63%</td>
+							<td>1,897</td>
+							<td>37%</td>
+						</tr>
+						<tr>
+							<td>11/10</td>
+							<td>17,126</td>
+							<td>5,120</td>
+							<td>3,223</td>
+							<td>63%</td>
+							<td>1,897</td>
+							<td>37%</td>
+						</tr>
+						<tr>
+							<td>11/10</td>
+							<td>17,126</td>
+							<td>5,120</td>
+							<td>3,223</td>
+							<td>63%</td>
+							<td>1,897</td>
+							<td>37%</td>
+						</tr>
+						<tr>
+							<td>11/10</td>
+							<td>17,126</td>
+							<td>5,120</td>
+							<td>3,223</td>
+							<td>63%</td>
+							<td>1,897</td>
+							<td>37%</td>
+						</tr>
+						<tr>
+							<td>11/10</td>
+							<td>17,126</td>
+							<td>5,120</td>
+							<td>3,223</td>
+							<td>63%</td>
+							<td>1,897</td>
+							<td>37%</td>
+						</tr>
+						<tr>
+							<td>11/10</td>
+							<td>17,126</td>
+							<td>5,120</td>
+							<td>3,223</td>
+							<td>63%</td>
+							<td>1,897</td>
+							<td>37%</td>
+						</tr>
+						<tr>
+							<td>11/10</td>
+							<td>17,126</td>
+							<td>5,120</td>
+							<td>3,223</td>
+							<td>63%</td>
+							<td>1,897</td>
+							<td>37%</td>
+						</tr>
+						<tr>
+							<td>11/10</td>
+							<td>17,126</td>
+							<td>5,120</td>
+							<td>3,223</td>
+							<td>63%</td>
+							<td>1,897</td>
+							<td>37%</td>
+						</tr>
+						</tbody>
+
+					</table>
+				</div>
+
+				#elseif($params.get('type3'))
+				<div class="graph_range">
+					<div class="wrap_subject">
+						<strong class="tit_subject">세션 현황</strong>
+						<div class="bundle_detail">
+							<div class="tit_detail">비교 기준일</div>
+							<button type="button" class="btn_filter">2017.10.25 - 2017.10.31 <span class="ico_bot ico_arr"></span></button><!-- 활성화 시 on 클래스 추가,  -->
+							<!-- 달력 레이어 -->
+							<div class="layer_term layer_calendar">
+								<div class="layer_body">
+									<div class="group_calendar">
+										<div class="search_calendar">
+											<button type="button" class="btn_util btn_prev">
+												<span class="ico_bot ico_prev"></span>
+												<span class="tooltip_btn">이전</span>
+											</button>
+											<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 -->
+												<div class="screen_out">카테고리 선택상자</div>
+												<span class="screen_out">선택내용: </span>
+												<a href="#none" class="link_opt">2017년 12월 <span class="ico_bot ico_arr"></span></a>
+												<div class="wrap_opt">
+													<span class="screen_out">선택옵션: </span>
+													<ul class="list_opt">
+														<li>
+															<a href="#none" class="link_opt">2017년 12월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 11월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 10월</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<button type="button" class="btn_util btn_next">
+												<span class="ico_bot ico_next"></span>
+												<span class="tooltip_btn">다음</span>
+											</button>
+										</div>
+										<!-- 캘린더 전 비활성화 시 table.disabled 에 disabled 클래스 추가 / 일단위 비활성화 시 td에 disabled 클래스 추가 -->
+										<!-- 선택 날짜 pick_day 클래스 추가, 선택 날짜 기준 해당 기간 selected_day 클래스 추가 -->
+										<table class="tbl_calendar">
+											<caption class="caption_g">비교 기준일 캘린더</caption>
+											<colgroup>
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+											</colgroup>
+											<thead>
+											<tr>
+												<th scope="col">일</th>
+												<th scope="col">월</th>
+												<th scope="col">화</th>
+												<th scope="col">수</th>
+												<th scope="col">목</th>
+												<th scope="col">금</th>
+												<th scope="col">토</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td>
+													<span class="num_day">1</span>
+												</td>
+												<td>
+													<span class="num_day">2</span>
+												</td>
+												<td>
+													<span class="num_day">3</span>
+												</td>
+												<td>
+													<span class="num_day">4</span>
+												</td>
+												<td>
+													<span class="num_day">5</span>
+												</td>
+												<td>
+													<span class="num_day">6</span>
+												</td>
+												<td>
+													<span class="num_day">7</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="num_day">8</span>
+												</td>
+												<td>
+													<span class="num_day">9</span>
+												</td>
+												<td>
+													<span class="num_day">10</span>
+												</td>
+												<td>
+													<span class="num_day">11</span>
+												</td>
+												<td>
+													<span class="num_day">12</span>
+												</td>
+												<td>
+													<span class="num_day">13</span>
+												</td>
+												<td>
+													<span class="num_day">14</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="num_day">15</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">16</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">17</span>
+												</td>
+												<td class="pick_day">
+													<span class="num_day">18</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">19</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">20</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">21</span>
+												</td>
+											</tr>
+											<tr>
+												<td class="selected_day">
+													<span class="num_day">22</span>
+												</td>
+												<td>
+													<span class="num_day">23</span>
+												</td>
+												<td>
+													<span class="num_day">24</span>
+												</td>
+												<td>
+													<span class="num_day">25</span>
+												</td>
+												<td>
+													<span class="num_day">26</span></td>
+												<td>
+													<span class="num_day">27</span>
+												</td>
+												<td>
+													<span class="num_day">28</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="num_day">29</span>
+												</td>
+												<td>
+													<span class="num_day">30</span>
+												</td>
+												<td>
+													<span class="num_day">31</span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="group_calendar">
+										<div class="search_calendar">
+											<button type="button" class="btn_util btn_prev">
+												<span class="ico_bot ico_prev"></span>
+												<span class="tooltip_btn">이전</span>
+											</button>
+											<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 -->
+												<div class="screen_out">카테고리 선택상자</div>
+												<span class="screen_out">선택내용: </span>
+												<a href="#none" class="link_opt">2017년 11월 <span class="ico_bot ico_arr"></span></a>
+												<div class="wrap_opt">
+													<span class="screen_out">선택옵션: </span>
+													<ul class="list_opt">
+														<li>
+															<a href="#none" class="link_opt">2017년 12월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 11월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 10월</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<button type="button" class="btn_util btn_next">
+												<span class="ico_bot ico_next"></span>
+												<span class="tooltip_btn">다음</span>
+											</button>
+										</div>
+										<!-- 캘린더 전 비활성화 시 table.disabled 에 disabled 클래스 추가 / 일단위 비활성화 시 td에 disabled 클래스 추가 -->
+										<!-- 선택 날짜 pick_day 클래스 추가, 선택 날짜 기준 해당 기간 selected_day 클래스 추가 -->
+										<table class="tbl_calendar">
+											<caption class="caption_g">비교 기준일 캘린더</caption>
+											<colgroup>
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+											</colgroup>
+											<thead>
+											<tr>
+												<th scope="col">일</th>
+												<th scope="col">월</th>
+												<th scope="col">화</th>
+												<th scope="col">수</th>
+												<th scope="col">목</th>
+												<th scope="col">금</th>
+												<th scope="col">토</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td>
+													<span class="num_day"></span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">1</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">2</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">3</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">4</span>
+												</td>
+											</tr>
+											<tr>
+												<td class="selected_day">
+													<span class="num_day">5</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">6</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">7</span>
+												</td>
+												<td>
+													<span class="num_day">8</span>
+												</td>
+												<td>
+													<span class="num_day">9</span>
+												</td>
+												<td>
+													<span class="num_day">10</span>
+												</td>
+												<td>
+													<span class="num_day">11</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="num_day">12</span>
+												</td>
+												<td>
+													<span class="num_day">13</span>
+												</td>
+												<td>
+													<span class="num_day">14</span>
+												</td>
+												<td>
+													<span class="num_day">15</span>
+												</td>
+												<td>
+													<span class="num_day">16</span>
+												</td>
+												<td>
+													<span class="num_day">17</span>
+												</td>
+												<td>
+													<span class="num_day">18</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="num_day">19</span>
+												</td>
+												<td>
+													<span class="num_day">20</span>
+												</td>
+												<td>
+													<span class="num_day">21</span>
+												</td>
+												<td>
+													<span class="num_day">22</span>
+												</td>
+												<td>
+													<span class="num_day">23</span>
+												</td>
+												<td>
+													<span class="num_day">24</span>
+												</td>
+												<td>
+													<span class="num_day">25</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="num_day">26</span>
+												</td>
+												<td>
+													<span class="num_day">27</span>
+												</td>
+												<td>
+													<span class="num_day">28</span>
+												</td>
+												<td>
+													<span class="num_day">29</span>
+												</td>
+												<td>
+													<span class="num_day">30</span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="layer_foot">
+									<div class="wrap_btn">
+										<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+										<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+									</div>
+								</div>
+							</div>
+							<!-- //달력 레이어 -->
+							<div class="tit_detail">비교하기</div>
+							<button type="button" class="btn_switch ico_bot on"><span class="screen_out">현재상태</span>켜짐</button><!-- 활성화 시 on 클래스 추가, '꺼짐' > '켜짐'으로 변경 -->
+						</div>
+					</div>
+					<div class="box_range" style="height:399px"><!-- 임시 height 값 -->
+						그래프 영역
+					</div>
+				</div>
+				<div class="graph_range">
+					<div class="wrap_subject">
+						<strong class="tit_subject">세션 정보</strong>
+					</div>
+					<table class="tbl_session">
+						<caption class="caption_g">세션 수, 평균 세션 수, 평균 세션 길이, 평균 메세지 수 등 사용자 세션에 대한 정보입니다.</caption>
+						<colgroup>
+							<col width="92px">
+							<col width="25%">
+							<col width="25%">
+							<col width="25%">
+							<col width="25%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col" rowspan="2">일시</th>
+								<th scope="col" colspan="4">
+									신규사용자수
+									<span class="wrap_tip">
+									<span class="ico_bot ico_help">재방문 사용자란?</span>
+									<span class="layer_tip">
+										<span class="txt_tip">재방문 사용자란? 재방문 사용자란?</span>
+									</span>
+								</span>
+								</th>
+							</tr>
+							<tr>
+								<th scope="col">세션 수</th>
+								<th scope="col">평균 세션 수</th>
+								<th scope="col">평균 세션 길이</th>
+								<th scope="col">평균 메세지 수</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>11/10</td>
+								<td>3,223</td><!-- 2018-07-06 수정 : 천단위 ,(쉼표)표시 -->
+								<td>2.1</td>
+								<td>00:03:12</td>
+								<td>2.3</td>
+							</tr>
+							<tr>
+								<td>11/9</td>
+								<td>3,223</td>
+								<td>2.1</td>
+								<td>00:03:12</td>
+								<td>2.3</td>
+							</tr>
+							<tr>
+								<td>11/8</td>
+								<td>3,223</td>
+								<td>2.1</td>
+								<td>00:03:12</td>
+								<td>2.3</td>
+							</tr>
+							<tr>
+								<td>11/7</td>
+								<td>3,223</td>
+								<td>2.1</td>
+								<td>00:03:12</td>
+								<td>2.3</td>
+							</tr>
+							<tr>
+								<td>11/6</td>
+								<td>3,223</td>
+								<td>2.1</td>
+								<td>00:03:12</td>
+								<td>2.3</td>
+							</tr>
+							<tr>
+								<td>11/5</td>
+								<td>3,223</td>
+								<td>2.1</td>
+								<td>00:03:12</td>
+								<td>2.3</td>
+							</tr>
+							<tr>
+								<td>11/4</td>
+								<td>3,223</td>
+								<td>2.1</td>
+								<td>00:03:12</td>
+								<td>2.3</td>
+							</tr>
+							<tr>
+								<td>11/3</td>
+								<td>3,223</td>
+								<td>2.1</td>
+								<td>00:03:12</td>
+								<td>2.3</td>
+							</tr>
+							<tr>
+								<td>11/2</td>
+								<td>3,223</td>
+								<td>2.1</td>
+								<td>00:03:12</td>
+								<td>2.3</td>
+							</tr>
+							<tr>
+								<td>11/1</td>
+								<td>3,223</td>
+								<td>2.1</td>
+								<td>00:03:12</td>
+								<td>2.3</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				#elseif($params.get('type4'))
+				<div class="graph_range">
+					<div class="wrap_subject">
+						<strong class="tit_subject">재방문율 현황</strong>
+						<div class="bundle_detail">
+							<div class="tit_detail">비교 기준일</div>
+							<button type="button" class="btn_filter">2017.10.25 - 2017.10.31 <span class="ico_bot ico_arr"></span></button><!-- 활성화 시 on 클래스 추가,  -->
+							<!-- 달력 레이어 -->
+							<div class="layer_term layer_calendar">
+								<div class="layer_body">
+									<div class="group_calendar">
+										<div class="search_calendar">
+											<button type="button" class="btn_util btn_prev">
+												<span class="ico_bot ico_prev"></span>
+												<span class="tooltip_btn">이전</span>
+											</button>
+											<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 -->
+												<div class="screen_out">카테고리 선택상자</div>
+												<span class="screen_out">선택내용: </span>
+												<a href="#none" class="link_opt">2017년 12월 <span class="ico_bot ico_arr"></span></a>
+												<div class="wrap_opt">
+													<span class="screen_out">선택옵션: </span>
+													<ul class="list_opt">
+														<li>
+															<a href="#none" class="link_opt">2017년 12월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 11월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 10월</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<button type="button" class="btn_util btn_next">
+												<span class="ico_bot ico_next"></span>
+												<span class="tooltip_btn">다음</span>
+											</button>
+										</div>
+										<!-- 캘린더 전 비활성화 시 table.disabled 에 disabled 클래스 추가 / 일단위 비활성화 시 td에 disabled 클래스 추가 -->
+										<!-- 선택 날짜 pick_day 클래스 추가, 선택 날짜 기준 해당 기간 selected_day 클래스 추가 -->
+										<table class="tbl_calendar">
+											<caption class="caption_g">비교 기준일 캘린더</caption>
+											<colgroup>
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+											</colgroup>
+											<thead>
+											<tr>
+												<th scope="col">일</th>
+												<th scope="col">월</th>
+												<th scope="col">화</th>
+												<th scope="col">수</th>
+												<th scope="col">목</th>
+												<th scope="col">금</th>
+												<th scope="col">토</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td>
+													<span class="num_day">1</span>
+												</td>
+												<td>
+													<span class="num_day">2</span>
+												</td>
+												<td>
+													<span class="num_day">3</span>
+												</td>
+												<td>
+													<span class="num_day">4</span>
+												</td>
+												<td>
+													<span class="num_day">5</span>
+												</td>
+												<td>
+													<span class="num_day">6</span>
+												</td>
+												<td>
+													<span class="num_day">7</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="num_day">8</span>
+												</td>
+												<td>
+													<span class="num_day">9</span>
+												</td>
+												<td>
+													<span class="num_day">10</span>
+												</td>
+												<td>
+													<span class="num_day">11</span>
+												</td>
+												<td>
+													<span class="num_day">12</span>
+												</td>
+												<td>
+													<span class="num_day">13</span>
+												</td>
+												<td>
+													<span class="num_day">14</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="num_day">15</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">16</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">17</span>
+												</td>
+												<td class="pick_day">
+													<span class="num_day">18</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">19</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">20</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">21</span>
+												</td>
+											</tr>
+											<tr>
+												<td class="selected_day">
+													<span class="num_day">22</span>
+												</td>
+												<td>
+													<span class="num_day">23</span>
+												</td>
+												<td>
+													<span class="num_day">24</span>
+												</td>
+												<td>
+													<span class="num_day">25</span>
+												</td>
+												<td>
+													<span class="num_day">26</span></td>
+												<td>
+													<span class="num_day">27</span>
+												</td>
+												<td>
+													<span class="num_day">28</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="num_day">29</span>
+												</td>
+												<td>
+													<span class="num_day">30</span>
+												</td>
+												<td>
+													<span class="num_day">31</span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="group_calendar">
+										<div class="search_calendar">
+											<button type="button" class="btn_util btn_prev">
+												<span class="ico_bot ico_prev"></span>
+												<span class="tooltip_btn">이전</span>
+											</button>
+											<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 -->
+												<div class="screen_out">카테고리 선택상자</div>
+												<span class="screen_out">선택내용: </span>
+												<a href="#none" class="link_opt">2017년 11월 <span class="ico_bot ico_arr"></span></a>
+												<div class="wrap_opt">
+													<span class="screen_out">선택옵션: </span>
+													<ul class="list_opt">
+														<li>
+															<a href="#none" class="link_opt">2017년 12월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 11월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 10월</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<button type="button" class="btn_util btn_next">
+												<span class="ico_bot ico_next"></span>
+												<span class="tooltip_btn">다음</span>
+											</button>
+										</div>
+										<!-- 캘린더 전 비활성화 시 table.disabled 에 disabled 클래스 추가 / 일단위 비활성화 시 td에 disabled 클래스 추가 -->
+										<!-- 선택 날짜 pick_day 클래스 추가, 선택 날짜 기준 해당 기간 selected_day 클래스 추가 -->
+										<table class="tbl_calendar disabled">
+											<caption class="caption_g">비교 기준일 캘린더</caption>
+											<colgroup>
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+											</colgroup>
+											<thead>
+											<tr>
+												<th scope="col">일</th>
+												<th scope="col">월</th>
+												<th scope="col">화</th>
+												<th scope="col">수</th>
+												<th scope="col">목</th>
+												<th scope="col">금</th>
+												<th scope="col">토</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td>
+													<span class="num_day"></span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">1</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">2</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">3</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">4</span>
+												</td>
+											</tr>
+											<tr>
+												<td class="selected_day">
+													<span class="num_day">5</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">6</span>
+												</td>
+												<td class="selected_day">
+													<span class="num_day">7</span>
+												</td>
+												<td>
+													<span class="num_day">8</span>
+												</td>
+												<td>
+													<span class="num_day">9</span>
+												</td>
+												<td>
+													<span class="num_day">10</span>
+												</td>
+												<td>
+													<span class="num_day">11</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="num_day">12</span>
+												</td>
+												<td>
+													<span class="num_day">13</span>
+												</td>
+												<td>
+													<span class="num_day">14</span>
+												</td>
+												<td>
+													<span class="num_day">15</span>
+												</td>
+												<td>
+													<span class="num_day">16</span>
+												</td>
+												<td>
+													<span class="num_day">17</span>
+												</td>
+												<td>
+													<span class="num_day">18</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="num_day">19</span>
+												</td>
+												<td>
+													<span class="num_day">20</span>
+												</td>
+												<td>
+													<span class="num_day">21</span>
+												</td>
+												<td>
+													<span class="num_day">22</span>
+												</td>
+												<td>
+													<span class="num_day">23</span>
+												</td>
+												<td>
+													<span class="num_day">24</span>
+												</td>
+												<td>
+													<span class="num_day">25</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="num_day">26</span>
+												</td>
+												<td>
+													<span class="num_day">27</span>
+												</td>
+												<td>
+													<span class="num_day">28</span>
+												</td>
+												<td>
+													<span class="num_day">29</span>
+												</td>
+												<td>
+													<span class="num_day">30</span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+												<td>
+													<span class="num_day"></span>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="layer_foot">
+									<div class="wrap_btn">
+										<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+										<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+									</div>
+								</div>
+							</div>
+							<!-- //달력 레이어 -->
+							<div class="tit_detail">비교하기</div>
+							<button type="button" class="btn_switch ico_bot on"><span class="screen_out">현재상태</span>켜짐</button><!-- 활성화 시 on 클래스 추가, '꺼짐' > '켜짐'으로 변경 -->
+						</div>
+					</div>
+					<div class="box_range" style="height:377px"><!-- 임시 height 값 -->
+						그래프 영역
+					</div>
+				</div>
+				<div class="graph_range">
+					<div class="wrap_subject">
+						<strong class="tit_subject">재방문율 정보</strong>
+					</div>
+					<table class="tbl_visitor">
+						<caption class="caption_g">기간 별 신규 사용자 수에 대항 정보입니다.</caption>
+						<colgroup>
+							<col style="width:88px">
+							<col style="width:12%">
+							<col style="width:12%">
+							<col style="width:12%">
+							<col style="width:12%">
+							<col style="width:12%">
+							<col style="width:12%">
+							<col style="width:12%">
+							<col style="width:12%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col"></th>
+								<th scope="col">신규사용자수</th>
+								<th scope="col">Day 0</th>
+								<th scope="col">Day 1</th>
+								<th scope="col">Day 2</th>
+								<th scope="col">Day 3</th>
+								<th scope="col">Day 4</th>
+								<th scope="col">Day 5</th>
+								<th scope="col">Day 6</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>합계</td>
+								<td>22,785</td>
+								<td>100%</td>
+								<td>
+									87%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td>
+									68%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td>
+									57%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td>
+									32%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td>
+									31%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td>
+									23%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>11/10</td>
+								<td>3,225</td>
+								<td>100%</td>
+								<td class="pick_info3">
+									50%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info3">
+									40%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info2">
+									30%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info">
+									12%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info">
+									10%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info">
+									2%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>11/9</td>
+								<td>3,225</td>
+								<td>100%</td>
+								<td class="pick_info4">
+									50%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info4">
+									40%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info4">
+									30%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info3">
+									12%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info2">
+									10%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>11/8</td>
+								<td>3,225</td>
+								<td>100%</td>
+								<td class="pick_info4">
+									50%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info4">
+									40%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info2">
+									30%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info2">
+									12%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>11/7</td>
+								<td>3,225</td>
+								<td>100%</td>
+								<td class="pick_info2">
+									50%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info2">
+									40%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info2">
+									30%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>11/6</td>
+								<td>3,225</td>
+								<td>100%</td>
+								<td class="pick_info5">
+									50%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td class="pick_info2">
+									40%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>11/5</td>
+								<td>3,225</td>
+								<td>100%</td>
+								<td class="pick_info5">
+									50%
+									<span class="tooltip_pick">
+										<span class="info_tip">Day4 기준</span>
+										<span class="desc_tip">재방문율 : <span class="num_pick">25%</span>(781)</span>
+									</span>
+								</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>11/4</td>
+								<td>3,225</td>
+								<td>100%</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				#elseif($params.get('type5'))
+				<div class="graph_range">
+					<div class="wrap_subject">
+						<strong class="tit_subject">사용자 현황</strong>
+						<div class="bundle_detail">
+							<div class="tit_detail">비교 기준일</div>
+							<button type="button" class="btn_filter">2017.10.25 - 2017.10.31 <span class="ico_bot ico_arr"></span></button><!-- 활성화 시 on 클래스 추가,  -->
+							<!-- 달력 레이어 -->
+							<div class="layer_term layer_calendar" style="display:none">
+								<div class="layer_body">
+									<div class="group_calendar">
+										<div class="search_calendar">
+											<button type="button" class="btn_util btn_prev">
+												<span class="ico_bot ico_prev"></span>
+												<span class="tooltip_btn">이전</span>
+											</button>
+											<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 -->
+												<div class="screen_out">카테고리 선택상자</div>
+												<span class="screen_out">선택내용: </span>
+												<a href="#none" class="link_opt">2017년 12월 <span class="ico_bot ico_arr"></span></a>
+												<div class="wrap_opt">
+													<span class="screen_out">선택옵션: </span>
+													<ul class="list_opt">
+														<li>
+															<a href="#none" class="link_opt">2017년 12월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 11월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 10월</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<button type="button" class="btn_util btn_next">
+												<span class="ico_bot ico_next"></span>
+												<span class="tooltip_btn">다음</span>
+											</button>
+										</div>
+										<!-- 캘린더 전 비활성화 시 table.disabled 에 disabled 클래스 추가 / 일단위 비활성화 시 td에 disabled 클래스 추가 -->
+										<!-- 선택 날짜 pick_day 클래스 추가, 선택 날짜 기준 해당 기간 selected_day 클래스 추가 -->
+										<table class="tbl_calendar">
+											<caption class="caption_g">비교 기준일 캘린더</caption>
+											<colgroup>
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">일</th>
+													<th scope="col">월</th>
+													<th scope="col">화</th>
+													<th scope="col">수</th>
+													<th scope="col">목</th>
+													<th scope="col">금</th>
+													<th scope="col">토</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														<span class="num_day">1</span>
+													</td>
+													<td>
+														<span class="num_day">2</span>
+													</td>
+													<td>
+														<span class="num_day">3</span>
+													</td>
+													<td>
+														<span class="num_day">4</span>
+													</td>
+													<td>
+														<span class="num_day">5</span>
+													</td>
+													<td>
+														<span class="num_day">6</span>
+													</td>
+													<td>
+														<span class="num_day">7</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="num_day">8</span>
+													</td>
+													<td>
+														<span class="num_day">9</span>
+													</td>
+													<td>
+														<span class="num_day">10</span>
+													</td>
+													<td>
+														<span class="num_day">11</span>
+													</td>
+													<td>
+														<span class="num_day">12</span>
+													</td>
+													<td>
+														<span class="num_day">13</span>
+													</td>
+													<td>
+														<span class="num_day">14</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="num_day">15</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">16</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">17</span>
+													</td>
+													<td class="pick_day">
+														<span class="num_day">18</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">19</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">20</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">21</span>
+													</td>
+												</tr>
+												<tr>
+													<td class="selected_day">
+														<span class="num_day">22</span>
+													</td>
+													<td>
+														<span class="num_day">23</span>
+													</td>
+													<td>
+														<span class="num_day">24</span>
+													</td>
+													<td>
+														<span class="num_day">25</span>
+													</td>
+													<td>
+														<span class="num_day">26</span></td>
+													<td>
+														<span class="num_day">27</span>
+													</td>
+													<td>
+														<span class="num_day">28</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="num_day">29</span>
+													</td>
+													<td>
+														<span class="num_day">30</span>
+													</td>
+													<td>
+														<span class="num_day">31</span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="group_calendar">
+										<div class="search_calendar">
+											<button type="button" class="btn_util btn_prev">
+												<span class="ico_bot ico_prev"></span>
+												<span class="tooltip_btn">이전</span>
+											</button>
+											<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 -->
+												<div class="screen_out">카테고리 선택상자</div>
+												<span class="screen_out">선택내용: </span>
+												<a href="#none" class="link_opt">2017년 11월 <span class="ico_bot ico_arr"></span></a>
+												<div class="wrap_opt">
+													<span class="screen_out">선택옵션: </span>
+													<ul class="list_opt">
+														<li>
+															<a href="#none" class="link_opt">2017년 12월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 11월</a>
+														</li>
+														<li>
+															<a href="#none" class="link_opt">2017년 10월</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<button type="button" class="btn_util btn_next">
+												<span class="ico_bot ico_next"></span>
+												<span class="tooltip_btn">다음</span>
+											</button>
+										</div>
+										<!-- 캘린더 전 비활성화 시 table.disabled 에 disabled 클래스 추가 / 일단위 비활성화 시 td에 disabled 클래스 추가 -->
+										<!-- 선택 날짜 pick_day 클래스 추가, 선택 날짜 기준 해당 기간 selected_day 클래스 추가 -->
+										<table class="tbl_calendar disabled">
+											<caption class="caption_g">비교 기준일 캘린더</caption>
+											<colgroup>
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+												<col style="width:40px">
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">일</th>
+													<th scope="col">월</th>
+													<th scope="col">화</th>
+													<th scope="col">수</th>
+													<th scope="col">목</th>
+													<th scope="col">금</th>
+													<th scope="col">토</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														<span class="num_day"></span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">1</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">2</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">3</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">4</span>
+													</td>
+												</tr>
+												<tr>
+													<td class="selected_day">
+														<span class="num_day">5</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">6</span>
+													</td>
+													<td class="selected_day">
+														<span class="num_day">7</span>
+													</td>
+													<td>
+														<span class="num_day">8</span>
+													</td>
+													<td>
+														<span class="num_day">9</span>
+													</td>
+													<td>
+														<span class="num_day">10</span>
+													</td>
+													<td>
+														<span class="num_day">11</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="num_day">12</span>
+													</td>
+													<td>
+														<span class="num_day">13</span>
+													</td>
+													<td>
+														<span class="num_day">14</span>
+													</td>
+													<td>
+														<span class="num_day">15</span>
+													</td>
+													<td>
+														<span class="num_day">16</span>
+													</td>
+													<td>
+														<span class="num_day">17</span>
+													</td>
+													<td>
+														<span class="num_day">18</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="num_day">19</span>
+													</td>
+													<td>
+														<span class="num_day">20</span>
+													</td>
+													<td>
+														<span class="num_day">21</span>
+													</td>
+													<td>
+														<span class="num_day">22</span>
+													</td>
+													<td>
+														<span class="num_day">23</span>
+													</td>
+													<td>
+														<span class="num_day">24</span>
+													</td>
+													<td>
+														<span class="num_day">25</span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="num_day">26</span>
+													</td>
+													<td>
+														<span class="num_day">27</span>
+													</td>
+													<td>
+														<span class="num_day">28</span>
+													</td>
+													<td>
+														<span class="num_day">29</span>
+													</td>
+													<td>
+														<span class="num_day">30</span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+													<td>
+														<span class="num_day"></span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="layer_foot">
+									<div class="wrap_btn">
+										<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+										<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+									</div>
+								</div>
+							</div>
+							<!-- //달력 레이어 -->
+							<div class="tit_detail">비교하기</div>
+							<button type="button" class="btn_switch ico_bot on"><span class="screen_out">현재상태</span>켜짐</button><!-- 활성화 시 on 클래스 추가, '꺼짐' > '켜짐'으로 변경 -->
+						</div>
+					</div>
+
+					<!-- 2018-10-02 추가 -->
+					<div class="box_selector">
+						<strong class="tit_selector">기준블록</strong>
+						<div class="item_search"><!-- 클릭 시 search_on 클래스 추가 -->
+							<div class="opt_g"><!-- 2018-10-05 : div.opt_g 추가 -->
+								<a href="#none" class="link_name">
+									<span class="ico_select ico_type"></span>
+									<span class="txt_name">Fallback Intent</span>
+									<span class="ico_bot ico_arr"></span>
+								</a>
+								<div class="search_name">
+									<form action="#">
+										<fieldset>
+											<legend class="screen_out">블록이름 검색 폼</legend>
+											<div class="box_tf">
+												<span class="ico_bot ico_search">검색</span>
+												<label class="screen_out" for="nameSearch">검색</label>
+												<input type="text" id="nameSearch" name="nameSearch" class="inp_g" placeholder="블록이름 입력">
+											</div>
+										</fieldset>
+									</form>
+								</div>
+								<!-- 2018-10-05 추가 -->
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										#foreach ($i  in [1..6])
+										<li>
+											<a href="#none" class="link_opt">FALLBACK INTENT</a>
+										</li>
+										#end
+									</ul>
+								</div>
+								<!-- //2018-10-05 추가 -->
+							</div>
+						</div>
+						<div class="item_search search_on"><!-- 클릭 시 search_on 클래스 추가 -->
+							<div class="opt_g"><!-- 2018-10-05 : div.opt_g 추가 -->
+								<a href="#none" class="link_name">
+									<span class="ico_select ico_type2"></span>
+									<span class="txt_name">휴지통휴지통휴지통휴지통휴지통휴지통휴지통휴지통</span>
+									<span class="ico_bot ico_arr"></span>
+								</a>
+								<div class="search_name">
+									<form action="#">
+										<fieldset>
+											<legend class="screen_out">블록이름 검색 폼</legend>
+											<div class="box_tf">
+												<span class="ico_bot ico_search">검색</span>
+												<label class="screen_out" for="nameSearch">검색</label>
+												<input type="text" id="nameSearch" name="nameSearch" class="inp_g" placeholder="블록이름 입력">
+											</div>
+										</fieldset>
+									</form>
+								</div>
+								<!-- 2018-10-05 추가 -->
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										#foreach ($i  in [1..10])
+										<li>
+											<a href="#none" class="link_opt">휴지통#if($i == 2)휴지통휴지통휴지통휴지통휴지통휴지통휴지통#end</a>
+										</li>
+										#end
+									</ul>
+								</div>
+								<!-- //2018-10-05 추가 -->
+							</div>
+						</div>
+						<div class="item_search"><!-- 클릭 시 search_on 클래스 추가 -->
+							<div class="opt_g"><!-- 2018-10-05 : div.opt_g 추가 -->
+								<a href="#none" class="link_name">
+									<span class="ico_select ico_type3"></span>
+									<span class="txt_name">AI_부탁</span>
+									<span class="ico_bot ico_arr"></span>
+								</a>
+								<div class="search_name">
+									<form action="#">
+										<fieldset>
+											<legend class="screen_out">블록이름 검색 폼</legend>
+											<div class="box_tf">
+												<span class="ico_bot ico_search">검색</span>
+												<label class="screen_out" for="nameSearch">검색</label>
+												<input type="text" id="nameSearch" name="nameSearch" class="inp_g" placeholder="블록이름 입력">
+											</div>
+										</fieldset>
+									</form>
+								</div>
+								<!-- 2018-10-05 추가 -->
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										#foreach ($i  in [1..3])
+										<li>
+											<a href="#none" class="link_opt">AI_부탁</a>
+										</li>
+										#end
+									</ul>
+								</div>
+								<!-- //2018-10-05 추가 -->
+							</div>
+						</div>
+						<div class="item_search search_on"><!-- 클릭 시 search_on 클래스 추가 -->
+							<div class="opt_g"><!-- 2018-10-05 : div.opt_g 추가 -->
+								<a href="#none" class="link_name">
+									<span class="ico_select ico_type4"></span>
+									<span class="txt_name">일상_인사_굿모</span>
+									<span class="ico_bot ico_arr"></span>
+								</a>
+								<div class="search_name">
+									<form action="#">
+										<fieldset>
+											<legend class="screen_out">블록이름 검색 폼</legend>
+											<div class="box_tf">
+												<span class="ico_bot ico_search">검색</span>
+												<label class="screen_out" for="nameSearch">검색</label>
+												<input type="text" id="nameSearch" name="nameSearch" class="inp_g" placeholder="블록이름 입력">
+											</div>
+										</fieldset>
+									</form>
+								</div>
+								<!-- 2018-10-05 추가 -->
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										#foreach ($i  in [1..4])
+										<li>
+											<a href="#none" class="link_opt">일상_인사_굿모</a>
+										</li>
+										#end
+									</ul>
+								</div>
+								<!-- //2018-10-05 추가 -->
+							</div>
+						</div>
+						<div class="item_search"><!-- 클릭 시 search_on 클래스 추가 -->
+							<div class="opt_g"><!-- 2018-10-05 : div.opt_g 추가 -->
+								<a href="#none" class="link_name">
+									<span class="ico_select ico_type5"></span>
+									<span class="txt_name">informRain</span>
+									<span class="ico_bot ico_arr"></span>
+								</a>
+								<div class="search_name">
+									<form action="#">
+										<fieldset>
+											<legend class="screen_out">블록이름 검색 폼</legend>
+											<div class="box_tf">
+												<span class="ico_bot ico_search">검색</span>
+												<label class="screen_out" for="nameSearch">검색</label>
+												<input type="text" id="nameSearch" name="nameSearch" class="inp_g" placeholder="블록이름 입력">
+											</div>
+										</fieldset>
+									</form>
+								</div>
+								<!-- 2018-10-05 추가 -->
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										#foreach ($i  in [1..6])
+										<li>
+											<a href="#none" class="link_opt">informRain#if($i == 2)informRaininformRaininformRain#end</a>
+										</li>
+										#end
+									</ul>
+								</div>
+								<!-- //2018-10-05 추가 -->
+							</div>
+						</div>
+					</div>
+					<!-- //2018-10-02 추가 -->
+					<div class="box_range" style="height:442px"><!-- 임시 height 값 -->
+						그래프 영역
+					</div>
+				</div>
+				<div class="graph_range">
+					<div class="wrap_subject">
+						<h4 class="tit_subject">블록 사용량</h4>
+					</div>
+					<div class="wrap_used">
+						<div class="used_head">
+							<div class="tit_block">블럭이름</div>
+							<div class="tit_esp">대표발화</div>
+							<div class="tit_number">호출 수</div>
+							<div class="tit_ratio">사용비율</div>
+						</div>
+						<div class="used_body">
+							<div class="item_used">
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">handleEvent</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">Null</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">3,223</div><!-- 2018-07-06 수정 : 천단위 ,(쉼표) 표시 -->
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">35%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item  클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">펼치기</span>
+								</button>
+							</div>
+							<div class="item_used">
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">handleEvent</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">Null</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">3,223</div>
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">35%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item 클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">펼치기</span>
+								</button>
+							</div>
+							<div class="item_used open_item"><!-- 펼칠 경우 open_item 클래스 추가 -->
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">playSong</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">아이유 노래 틀어줘</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">1,151</div>
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">8%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item 클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">접기</span>
+								</button>
+							</div>
+							<div class="group_used">
+								<div class="item_used">
+									<div class="info_esp">
+										<div class="screen_out">대표발화</div>
+										<div class="txt_info">이문세 노래 틀어줘</div>
+									</div>
+									<div class="info_number">
+										<div class="screen_out">호출 수</div>
+										<div class="txt_info">453</div>
+									</div>
+									<div class="info_ratio">
+										<div class="txt_info">47%</div>
+									</div>
+								</div>
+								<div class="item_used">
+									<div class="info_esp">
+										<div class="screen_out">대표발화</div>
+										<div class="txt_info">이문세 노래 틀어줘</div>
+									</div>
+									<div class="info_number">
+										<div class="screen_out">호출 수</div>
+										<div class="txt_info">453</div>
+									</div>
+									<div class="info_ratio">
+										<div class="txt_info">47%</div>
+									</div>
+								</div>
+								<div class="item_used">
+									<div class="info_esp">
+										<div class="screen_out">대표발화</div>
+										<div class="txt_info">이문세 노래 틀어줘</div>
+									</div>
+									<div class="info_number">
+										<div class="screen_out">호출 수</div>
+										<div class="txt_info">453</div>
+									</div>
+									<div class="info_ratio">
+										<div class="txt_info">47%</div>
+									</div>
+								</div>
+								<div class="item_used">
+									<div class="info_esp">
+										<div class="screen_out">대표발화</div>
+										<div class="txt_info">이문세 노래 틀어줘</div>
+									</div>
+									<div class="info_number">
+										<div class="screen_out">호출 수</div>
+										<div class="txt_info">453</div>
+									</div>
+									<div class="info_ratio">
+										<div class="txt_info">47%</div>
+									</div>
+								</div>
+								<div class="item_used">
+									<div class="info_esp">
+										<div class="screen_out">대표발화</div>
+										<div class="txt_info">이문세 노래 틀어줘</div>
+									</div>
+									<div class="info_number">
+										<div class="screen_out">호출 수</div>
+										<div class="txt_info">453</div>
+									</div>
+									<div class="info_ratio">
+										<div class="txt_info">47%</div>
+									</div>
+								</div>
+								<a href="#none" class="link_detail">전체 목록 보기</a><!-- 2018-12-20 : '>' 삭제 -->
+							</div>
+							<div class="item_used">
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">handleEvent</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">Null</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">3,223</div>
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">35%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item 클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">펼치기</span>
+								</button>
+							</div>
+							<div class="item_used">
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">handleEvent</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">Null</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">3,223</div>
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">35%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item 클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">펼치기</span>
+								</button>
+							</div>
+							<div class="item_used">
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">handleEvent</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">Null</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">3,223</div>
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">35%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item 클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">펼치기</span>
+								</button>
+							</div>
+							<div class="item_used">
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">handleEvent</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">Null</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">3,223</div>
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">35%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item 클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">펼치기</span>
+								</button>
+							</div>
+							<div class="item_used">
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">handleEvent</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">Null</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">3,223</div>
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">35%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item 클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">펼치기</span>
+								</button>
+							</div>
+							<div class="item_used">
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">handleEvent</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">Null</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">3,223</div>
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">35%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item 클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">펼치기</span>
+								</button>
+							</div>
+							<div class="item_used">
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">handleEvent</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">Null</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">3,223</div>
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">35%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item 클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">펼치기</span>
+								</button>
+							</div>
+							<div class="item_used">
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">handleEvent</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">Null</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">3,223</div>
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">35%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item 클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">펼치기</span>
+								</button>
+							</div>
+							<div class="item_used">
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">handleEvent</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">Null</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">3,223</div>
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">35%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item 클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">펼치기</span>
+								</button>
+							</div>
+							<div class="item_used">
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">handleEvent</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">Null</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">3,223</div>
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">35%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item 클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">펼치기</span>
+								</button>
+							</div>
+							<div class="item_used">
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">handleEvent</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">Null</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">3,223</div>
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">35%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item 클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">펼치기</span>
+								</button>
+							</div>
+							<div class="item_used">
+								<div class="info_block">
+									<div class="screen_out">블럭이름</div>
+									<div class="txt_info">handleEvent</div>
+								</div>
+								<div class="info_esp">
+									<div class="screen_out">대표발화</div>
+									<div class="txt_info">Null</div>
+								</div>
+								<div class="info_number">
+									<div class="screen_out">호출 수</div>
+									<div class="txt_info">3,223</div>
+								</div>
+								<div class="info_ratio">
+									<div class="txt_info">35%</div>
+								</div>
+								<button type="button" class="btn_util btn_extend"><!-- 펼칠 경우 open_item_up 클래스 추가, '펼치기' > '접기'로 변경 -->
+									<span class="ico_bot ico_extend3"></span>
+									<span class="tooltip_btn">펼치기</span>
+								</button>
+							</div>
+							<div class="paging_item">
+								<!-- 2018-11-13 수정 : a, span 태그 > button 으로 변경 -->
+								<div class="inner_paging">
+									<!-- 현재 페이지 span > em 으로 변경 -->
+									<!-- 맨 앞/이전 페이지, 맨 뒤/다음 페이지 없는 경우 a 태그 > span 태그  -->
+									<button type="button" class="ico_bot btn_fst">맨 앞</button>
+									<button type="button" class="ico_bot btn_prev">이전</button>
+									<span class="screen_out">현재페이지</span><em class="link_page">1</em>
+									<button type="button" class="link_page">2</button>
+									<button type="button" class="link_page">3</button>
+									<button type="button" class="link_page">4</button>
+									<button type="button" class="link_page">5</button>
+									<button type="button" class="link_page">6</button>
+									<button type="button" class="link_page">7</button>
+									<button type="button" class="link_page">8</button>
+									<button type="button" class="link_page">9</button>
+									<button type="button" class="link_page">10</button>
+									<button type="button" class="ico_bot btn_next">다음</button>
+									<button type="button" class="ico_bot btn_lst">맨 뒤</button>
+								</div>
+								<!-- //2018-11-13 수정 -->
+							</div>
+						</div>
+					</div>
+				</div>
+				#elseif($params.get('detail'))
+				<div class="wrap_sub">
+					<button class="btn_util btn_prev"><!-- 2018-07-10 : btn_return > btn_prev 로 수정 -->
+						<span class="ico_bot ico_prev"></span><!-- 2018-07-10 : ico_return > ico_prev 로 수정 -->
+						<span class="tooltip_btn">뒤로 가기</span>
+					</button>
+					<strong class="tit_detail">PlaySong</strong>
+				</div>
+				<div class="info_detail">
+					<dl class="dl_col">
+						<dt>호출 수</dt>
+						<dd>43,229</dd>
+					</dl>
+					<dl class="dl_col">
+						<dt>사용비율</dt>
+						<dd>34.09%</dd>
+					</dl>
+				</div>
+				<div class="graph_range">
+					<table class="tbl_detail">
+					<caption class="caption_g">출력에 대한 정보입니다.</caption>
+					<colgroup>
+						<col width="">
+						<col width="240px"><!-- 2018-11-23 수정 -->
+						<col width="208px"><!-- 2018-11-23 수정 -->
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">출력</th>
+							<th scope="col">호출 수</th>
+							<th scope="col">사용비율</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Null</td>
+							<td>729</td>
+							<td>76%</td>
+						</tr>
+						<tr>
+							<td>1분 미리듣기만 가능해요. 멜론 계정 로그인 후 이용해주세요.</td>
+							<td>211</td>
+							<td>22%</td>
+						</tr>
+						<tr>
+							<td>1분 미리듣기만 가능해요. 스피커용 멜론 이용권을 구매해야 전곡을 들을 수 있어요.</td>
+							<td>21</td>
+							<td>22%</td>
+						</tr>
+						<tr>
+							<td>곡을 찾지 못했어요.</td>
+							<td>2</td>
+							<td>2%</td>
+						</tr>
+						<tr>
+							<td>1분 미리듣기만 가능해요. 멜론 계정 로그인 후 이용해주세요.</td>
+							<td>1</td>
+							<td>0%</td>
+						</tr>
+						<tr>
+							<td>1분 미리듣기만 가능해요. 스피커용 멜론 이용권을 구매해야 전곡을 들을 수 있어요.</td>
+							<td>1</td>
+							<td>0%</td>
+						</tr>
+						<tr>
+							<td>곡을 찾지 못했어요.</td>
+							<td>1</td>
+							<td>0%</td>
+						</tr>
+						<tr>
+							<td>1분 미리듣기만 가능해요. 멜론 계정 로그인 후 이용해주세요.</td>
+							<td>1</td>
+							<td>0%</td>
+						</tr>
+						<tr>
+							<td>1분 미리듣기만 가능해요. 스피커용 멜론 이용권을 구매해야 전곡을 들을 수 있어요.</td>
+							<td>1</td>
+							<td>0%</td>
+						</tr>
+						<tr>
+							<td>곡을 찾지 못했어요.</td>
+							<td>1</td>
+							<td>0%</td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+				<div class="graph_range">
+					<a href="#none" class="link_detail">엑셀로 다운받기</a>
+					 <table class="tbl_detail">
+					<caption class="caption_g">발화에 대한 정보입니다.</caption>
+					<colgroup>
+						<col width="">
+						<col width="112px">
+						<col width="168px">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">발화
+								<!-- 2018-11-23 추가 -->
+								<span class="wrap_tip">
+									<a href="#none" class="ico_bot ico_help">도움말</a>
+									<span class="layer_tip">
+										<span class="txt_tip">블록에 매칭된 발화 중 최대 상위 20개 목록만 노출됩니다.<br>호출 수 1개 이하의 발화는 목록에 노출되지 않습니다.</span>
+									</span>
+								</span>
+								<!-- //2018-11-23 추가 -->
+							</th>
+							<th scope="col">호출 수</th>
+							<th scope="col">사용비율</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>아이유 노래 틀어줘</td>
+							<td>452</td>
+							<td>47%</td>
+						</tr>
+						<tr>
+							<td>아이문세 노래 틀어</td>
+							<td>244</td>
+							<td>28%</td>
+						</tr>
+						<tr>
+							<td>비와이 분홍신 들려줘</td>
+							<td>128</td>
+							<td>13%</td>
+						</tr>
+						<tr>
+							<td>박재범 몸매 틀어줘</td>
+							<td>90</td>
+							<td>9%</td>
+						</tr>
+						<tr>
+							<td>아이유 인기곡 틀어줘</td>
+							<td>73</td>
+							<td>4%</td>
+						</tr>
+						<tr>
+							<td>스무살 노래 틀어줘</td>
+							<td>58</td>
+							<td>2%</td>
+						</tr>
+						<tr>
+							<td>유희열이 작곡한 노래 틀어줘</td>
+							<td>50</td>
+							<td>2%</td>
+						</tr>
+						<tr>
+							<td>아이유 노래 틀어줘</td>
+							<td>10</td>
+							<td>1%</td>
+						</tr>
+						<tr>
+							<td>아이문세 노래 틀어</td>
+							<td>10</td>
+							<td>1%</td>
+						</tr>
+						<tr>
+							<td>비와이 분홍신 들려줘</td>
+							<td>10</td>
+							<td>1%</td>
+						</tr>
+						<tr>
+							<td>박재범 몸매 틀어줘</td>
+							<td>10</td>
+							<td>1%</td>
+						</tr>
+						<tr>
+							<td>아이유 인기곡 틀어줘</td>
+							<td>10</td>
+							<td>1%</td>
+						</tr>
+						<tr>
+							<td>스무살 노래 틀어줘</td>
+							<td>10</td>
+							<td>1%</td>
+						</tr>
+						<tr>
+							<td>유희열이 작곡한 노래 틀어줘</td>
+							<td>10</td>
+							<td>1%</td>
+						</tr>
+						<tr>
+							<td>아이유 노래 틀어줘</td>
+							<td>10</td>
+							<td>1%</td>
+						</tr>
+						<tr>
+							<td>아이문세 노래 틀어</td>
+							<td>10</td>
+							<td>1%</td>
+						</tr>
+						<tr>
+							<td>비와이 분홍신 들려줘</td>
+							<td>10</td>
+							<td>1%</td>
+						</tr>
+						<tr>
+							<td>박재범 몸매 틀어줘</td>
+							<td>10</td>
+							<td>1%</td>
+						</tr>
+						<tr>
+							<td>아이유 인기곡 틀어줘</td>
+							<td>10</td>
+							<td>1%</td>
+						</tr>
+						<tr>
+							<td>스무살 노래 틀어줘</td>
+							<td>10</td>
+							<td>1%</td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+				#else
+				<div class="graph_range">
+					<div class="wrap_subject">
+						<h4 class="tit_subject">사용자</h4>
+						<a href="#none" class="link_detail">사용자 상세보기</a><!-- 2018-12-20 : '>' 삭제 -->
+					</div>
+					<div class="box_range" style="height:377px"><!-- 임시 height 값 -->
+						그래프 영역
+					</div>
+				</div>
+				<div class="group_col">
+					<div class="col_range">
+						<div class="graph_range">
+							<div class="wrap_subject">
+								<h4 class="tit_subject">세션</h4>
+								<a href="#none" class="link_detail">세션 상세보기<span class="ico_bot ico_arr"></span></a><!-- 2018-12-20 : '>' 삭제 -->
+							</div>
+							<div class="box_range" style="height:225px"><!-- 임시 height 값 -->
+								그래프 영역
+							</div>
+						</div>
+						<div class="graph_range">
+							<div class="wrap_subject">
+								<h4 class="tit_subject">재방문율</h4>
+								<a href="#none" class="link_detail">재방문율 상세보기<span class="ico_bot ico_arr"></span></a><!-- 2018-12-20 : '>' 삭제 -->
+							</div>
+							<div class="box_range" style="height:225px"><!-- 임시 height 값 -->
+								그래프 영역
+							</div>
+						</div>
+					</div>
+					<div class="col_range2">
+						<div class="graph_range">
+							<div class="wrap_subject">
+								<h4 class="tit_subject">블록순위</h4>
+								<a href="#none" class="link_detail">블록 상세보기<span class="ico_bot ico_arr"></span></a><!-- 2018-12-20 : '>' 삭제 -->
+							</div>
+							#if($params.get('empty'))
+							<!-- 2018-12-21 추가 -->
+							<div class="wrap_none">
+								<span class="ico_bot ico_none"></span>
+								<span class="txt_none">입력된 엔티티가 없습니다.<br>엔티티를 만들어 주세요.</span>
+							</div>
+							<!-- //2018-12-21 추가 -->
+							#else
+							<ol class="list_range">
+								<li>
+									<span class="rank_num">1</span>
+									<span class="rank_name">handleEvent</span>
+									<span class="rank_count">3,223</span><!-- 2018-07-06 수정 : 천단위 ,(쉼표)표시 -->
+								</li>
+								<li>
+									<span class="rank_num">2</span>
+									<span class="rank_name">AudioEvent</span>
+									<span class="rank_count">1,234</span>
+								</li>
+								<li>
+									<span class="rank_num">3</span>
+									<span class="rank_name">Pause</span>
+									<span class="rank_count">1,141</span>
+								</li>
+								<li>
+									<span class="rank_num">4</span>
+									<span class="rank_name">playSong</span>
+									<span class="rank_count">956</span>
+								</li>
+								<li>
+									<span class="rank_num">5</span>
+									<span class="rank_name">newPlaySong</span>
+									<span class="rank_count">732</span>
+								</li>
+								<li>
+									<span class="rank_num">6</span>
+									<span class="rank_name">handleEvent</span>
+									<span class="rank_count">612</span>
+								</li>
+								<li>
+									<span class="rank_num">7</span>
+									<span class="rank_name">AudioEvent</span>
+									<span class="rank_count">512</span>
+								</li>
+								<li>
+									<span class="rank_num">8</span>
+									<span class="rank_name">Pause</span>
+									<span class="rank_count">321</span>
+								</li>
+								<li>
+									<span class="rank_num">9</span>
+									<span class="rank_name">playSong</span>
+									<span class="rank_count">237</span>
+								</li>
+								<li>
+									<span class="rank_num">10</span>
+									<span class="rank_name">newPlaySong</span>
+									<span class="rank_count">173</span>
+								</li>
+							</ol>
+							#end
+						</div>
+					</div>
+				</div>
+				#end
+			</div>
+		</div>
+	</div>
+</div>

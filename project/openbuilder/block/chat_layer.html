@@ -1,0 +1,704 @@
+<div class="layer_chat" style="display:block;top:128px;right:12px;height:calc(100vh - 140px)"><!-- 임시 스타일 -->
+	<div class="layer_head">
+		<strong class="tit_layer">봇테스트</strong>
+		<div class="wrap_util">
+			<button type="button" class="btn_util btn_reset">
+				<span class="ico_bot ico_reset"></span>
+				<span class="tooltip_btn">새로고침</span>
+			</button>
+			<button type="button" class="btn_util btn_close">
+				<span class="ico_bot ico_close2"></span>
+				<span class="tooltip_btn">닫기</span>
+			</button>
+		</div>
+	</div>
+	<div class="layer_body">
+		#if($params.get('chat'))
+		<div class="wrap_chat">
+			<!-- 2018-10-30 수정 -->
+			<div class="extent_chat"><!-- 선택할 경우 selected_chat 클래스 추가 -->
+				<div class="group_chat group_me">
+					<div class="item_chat">
+						<div class="bubble_chat">
+							<p class="txt_chat">
+								#if($params.get('2'))음악 들려줘
+								#elseif($params.get('3'))판교 날씨 알려줘
+								#elseif($params.get('4'))롱패딩 추천해줘
+								#elseif($params.get('5'))롱패딩 추천해줘
+								#elseif($params.get('6'))비행운 들려줘
+								#elseif($params.get('7'))메뉴조회
+								#else음악 들려줘
+								#end
+							</p>
+						</div>
+					</div>
+					<span class="ico_bot ico_chat"></span>
+				</div>
+
+				#if($params.get('2'))
+				<!-- 이미지 -->
+				<div class="group_card">
+					<button type="button" class="btn_util btn_prev hide"><!-- 이전 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_prev">이전</span>
+					</button>
+					<div class="inner_card" style="width:494px"><!-- card_view 너비 x 갯수 + margin 값 만큼 추가 / 마지막 카트 우측 여백 80px -->
+						<div class="card_view">
+							<div class="box_card">
+								<a href="#none" class="info_thumb">
+									<span class="frame_thumb">
+										<img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/temp/thumb_img.png" width="304" height="304" class="thumb_img" alt=""><!-- 2018-08-06 : width / height 값 추가 -->
+									</span>
+								</a>
+							</div>
+						</div>
+						<div class="card_view">
+							<div class="box_card">
+								<a href="#none" class="info_thumb">
+									<span class="frame_thumb">
+										<img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/temp/thumb_img4.png" width="86" height="86" class="thumb_img" alt="">
+									</span>
+								</a>
+							</div>
+						</div>
+						<div class="card_view">
+							<div class="box_card">
+								<a href="#none" class="info_thumb">
+									<span class="frame_thumb">
+										<img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/temp/thumb_img5.png" width="86" height="370" class="thumb_img" alt=""><!-- 2018-08-06 : width / height 값 추가 -->
+									</span>
+									<button type="button" class="btn_util btn_crop">
+										<span class="ico_bot ico_crop"></span>
+										<span class="tooltip_btn">크롭 이미지</span>
+									</button>
+								</a>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn_util btn_next"><!-- 다음 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_next">다음</span>
+					</button>
+				</div>
+
+				#elseif($params.get('3'))
+				<!-- 이미지 카드 -->
+				#foreach($li in [1..2])
+				<div class="group_card">
+					<button type="button" class="btn_util btn_prev hide"><!-- 이전 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_prev">이전</span>
+					</button>
+					<div class="inner_card" style="width:304px"><!-- card_view 너비 x 갯수 + margin 값 만큼 추가 / 마지막 카트 우측 여백 80px -->
+						<div class="card_view">
+							<div class="box_card">
+								<a href="#none" class="info_thumb">
+									<!-- 2019-01-10 : 정사각형 이미지일 경우 type_frame 클래스 추가 -->
+									<span class="thumb_pannel #if($li == 2)type_frame#end">
+										<img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/temp/thumb_img7.png" class="thumb_img" alt="">
+									</span>
+								</a>
+								<div class="info_desc">
+									<span class="desc_card"><!-- 2018-11-02 수정 : a 태그 > span 태그로 변경 -->
+										<strong class="tit_card">오늘 날씨를 알려드릴께요</strong>
+										<span class="txt_card">
+											오늘 판교의 날씨는 맑고 추워요. 기온은 최저 2도, 최고 8도 입니다.
+										</span>
+									</span>
+								</div>
+							</div>
+							<div class="box_btn #if($li == 2)type_box#end"><!-- 2019-01-10 : 정사각형 이미지일 경우 type_box 클래스 추가 -->
+								#if($li == 2)
+								<button type="button" class="btn_tf">버튼명1</button>
+								<button type="button" class="btn_tf">버튼명2</button>
+								#else
+								<button type="button" class="btn_tf">버튼명1</button>
+								<button type="button" class="btn_tf">버튼명2</button>
+								<button type="button" class="btn_tf">버튼명3</button>
+								#end
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn_util btn_next hide"><!-- 다음 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_next">다음</span>
+					</button>
+				</div>
+				#end
+
+				#elseif($params.get('4'))
+				<!-- 커머스 -->
+				<div class="group_card">
+					<button type="button" class="btn_util btn_prev"><!-- 이전 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_prev">이전</span>
+					</button>
+					<div class="inner_card" style="width:620px;transform:translate3d(-238px,0,0)"><!-- card_view 너비 x 갯수 + margin 값 만큼 추가 / 마지막 카트 우측 여백 80px -->
+						#foreach($li in [1..2])
+						<div class="card_view">
+							<div class="box_card">
+								<a href="#none" class="info_thumb">
+									<span class="thumb_frame"><img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/temp/thumb_img7.png" class="thumb_img" alt=""></span>
+								</a>
+								<div class="info_profile">
+									<span class="profile_card"><!-- 2018-11-02 : a 태그 > span 태그로 변경 -->
+										<span class="frame_thumb"><img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/temp/thumb_img4.png" width="26" height="26" class="thumb_img" alt=""></span>
+										<strong class="tit_profil">Columbia</strong><!-- 2018-11-02 : span.txt_emph 삭제 -->
+									</span>
+								</div>
+								<div class="info_desc">
+									<div class="desc_card">
+										<span class="wrap_price"><!-- 2018-11-02 수정 : a 태그 > span 태그로 변경 -->
+											<span class="item_price">
+												<span class="screen_out">가격정보</span>
+												<span class="txt_price">
+													<span class="num_price">399,000</span>원 <span class="screen_out">원가</span>
+													<span class="num_fixed">498,750</span>
+												</span>
+												<span class="txt_reduced">
+													<em class="num_reduced">99,750</em>원 할인 </span>
+											</span>
+										</span>
+										<span class="wrap_name"><!-- 2018-11-02 수정 : a 태그 > span 태그로 변경 -->
+											<span class="item_name">HAN SOLO™ ECHO BASE PARKA</span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="box_btn">
+								<button type="button" class="btn_tf">버튼명1</button>
+								<button type="button" class="btn_tf">버튼명2</button>
+								<button type="button" class="btn_tf">버튼명3</button>
+							</div>
+						</div>
+						#end
+					</div>
+				</div>
+				<div class="group_card">
+					<button type="button" class="btn_util btn_prev"><!-- 이전 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_prev">이전</span>
+					</button>
+					<div class="inner_card" style="width:620px;transform:translate3d(-238px,0,0)"><!-- card_view 너비 x 갯수 + margin 값 만큼 추가 / 마지막 카트 우측 여백 80px -->
+						#foreach($li in [1..2])
+						<div class="card_view">
+							<div class="box_card">
+								<a href="#none" class="info_thumb">
+									<!-- 2019-01-10 : 정사각형 이미지일 경우 type_frame 클래스 추가 -->
+									<span class="thumb_frame #if($li == 2)type_frame#end"><img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/temp/thumb_img7.png" class="thumb_img" alt=""></span>
+								</a>
+								<div class="info_profile">
+									<span class="profile_card"><!-- 2018-11-02 : a 태그 > span 태그로 변경 -->
+										<span class="frame_thumb"><img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/temp/thumb_img4.png" width="26" height="26" class="thumb_img" alt=""></span>
+										<strong class="tit_profil">Columbia</strong><!-- 2018-11-02 : span.txt_emph 삭제 -->
+									</span>
+								</div>
+								<div class="info_desc">
+									<div class="desc_card">
+										<span class="wrap_price"><!-- 2018-11-02 수정 : a 태그 > span 태그로 변경 -->
+											<span class="item_price">
+												<span class="screen_out">가격정보</span>
+												<span class="txt_price">
+													<span class="num_price">399,000</span>원 <span class="screen_out">원가</span>
+													<span class="num_fixed">498,750</span>
+												</span>
+												<span class="txt_reduced">
+													<em class="num_reduced">99,750</em>원 할인 </span>
+											</span>
+										</span>
+										<span class="wrap_name"><!-- 2018-11-02 수정 : a 태그 > span 태그로 변경 -->
+											<span class="item_name">HAN SOLO™ ECHO BASE PARKA</span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="box_btn type_box"><!-- 2019-01-10 : 정사각형 이미지일 경우 type_box 클래스 추가 -->
+								<button type="button" class="btn_tf">버튼명1</button>
+								<button type="button" class="btn_tf">버튼명2</button>
+							</div>
+						</div>
+						#end
+					</div>
+				</div>
+
+				#elseif($params.get('5'))
+				<!-- 리스트 -->
+				<div class="group_card">
+					<button type="button" class="btn_util btn_prev hide"><!-- 이전 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_prev">이전</span>
+					</button>
+					<div class="inner_card" style="width:304px"><!-- card_view 너비 x 갯수 + margin 값 만큼 추가 / 마지막 카트 우측 여백 80px -->
+						<div class="card_view">
+							<div class="box_card">
+								<div class="info_product">
+									<div class="thumb_frame">
+										<img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/temp/thumb_img7.png" class="thumb_img" alt="">
+									</div>
+									<span class="tit_frame">
+										<strong class="tit_product">올겨울 머박추위!! 이 제품들이면 앙기모띠!</strong>
+									</span>
+								</div>
+								<div class="info_item">
+									<strong class="screen_out">상품목록</strong>
+									<ul class="list_item">
+										#foreach($li in [1..5])
+										<li>
+											<span class="link_item"><!-- 2018-11-02 : a 태그 > span 태그로 변경 -->
+												<span class="box_cont">
+													<span class="item_name">
+														<strong class="txt_name">HAN SOLO™ ECHO BASE PARKA</strong>
+													</span>
+													<span class="item_price"><span class="txt_price">399,000</span>원 </span>
+												</span>
+												<span class="thumb">
+													<img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/temp/thumb_img8.png" width="66" height="66" class="thumb_img" alt="">
+												</span>
+											</span>
+										</li>
+										#end
+									</ul>
+								</div>
+							</div>
+							<div class="box_btn type_box"><!-- 버튼 horizontal 일 경우 type_box 클래스 추가 -->
+								<button type="button" class="btn_tf">자세히 보기</button>
+								<button type="button" class="btn_tf">홈페이지 가기</button>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn_util btn_next hide"><!-- 다음 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_next">다음</span>
+					</button>
+				</div>
+				</div>
+
+				#elseif($params.get('6'))
+				<!-- 뮤직 -->
+				<div class="group_card">
+					<button type="button" class="btn_util btn_prev hide"><!-- card_view x 갯수 너비 + margin 값 만큼 추가 / 마지막 카트 우측 여백 80px -->
+						<span class="ico_bot ico_prev">이전</span>
+					</button>
+					<div class="inner_card" style="width:304px"><!-- card_view 너비 x 갯수 + margin 값 만큼 추가 / 마지막 카트 우측 여백 80px -->
+						<div class="card_view">
+							<div class="box_card">
+								<div class="info_album">
+									<span class="thumb_frame"><!-- 2018-11-02 : a 태그 > span 태그로 변경 -->
+										<img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/temp/thumb_img9.png" width="234" height="234" class="thumb_img" alt="">
+									</span>
+								</div>
+								<div class="info_music ">
+									<div class="desc_alum">
+										<strong class="tit_album">비행운</strong>
+										<span class="txt_name">문문(MoonMoon)</span>
+									</div>
+								</div>
+							</div>
+							<div class="box_btn type_box"><!-- 버튼 horizontal 일 경우 type_box 클래스 추가 -->
+								<button type="button" class="btn_tf">멜론에서 듣기</button>
+								<button type="button" class="btn_tf">공유하기</button>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn_util btn_next hide"><!-- 다음 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_next">다음</span>
+					</button>
+				</div>
+				#elseif($params.get('7'))
+				<!-- 바로연결 -->
+				<div class="group_chat">
+					<div class="item_chat">
+						<div class="bubble_chat">
+							<p class="txt_chat">주간 인기 TOP10 메뉴 모아봤어요</p>
+						</div>
+					</div>
+				</div>
+				<div class="group_tag">
+					<button type="button" class="btn_util btn_prev hide"><!-- 이전 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_prev">이전</span>
+					</button>
+					<div class="inner_tag" style="width:681px"><!-- card_view 너비 x 갯수 + margin 값 만큼 추가 / 마지막 카트 우측 여백 80px -->
+						<div class="item_tag on">
+							<div class="box_tf">
+								<span class="txt_tag">아이스 아메리카노R</span><!-- 2018-11-02 추가 -->
+								<!-- <input type="text" id="tfSetting" class="inp_g" value="아이스 아메리카노R" readonly>
+								<label for="tfSetting" class="screen_out">바로연결 버튼</label> 2018-11-02 삭제 -->
+							</div>
+						</div>
+						<div class="item_tag on">
+							<div class="box_tf">
+								<span class="txt_tag">아이스 카페라떼R</span><!-- 2018-11-02 추가 -->
+								<!-- <input type="text" id="tfSetting2" class="inp_g" value="아이스 카페라떼R" readonly>
+								<label for="tfSetting2" class="screen_out">바로연결 버튼</label> 2018-11-02 삭제 -->
+							</div>
+						</div>
+						<div class="item_tag on">
+							<div class="box_tf">
+								<span class="txt_tag">비타500</span><!-- 2018-11-02 추가 -->
+								<!-- <input type="text" id="tfSetting3" class="inp_g" value="비타500" readonly>
+								<label for="tfSetting3" class="screen_out">바로연결 버튼</label> 2018-11-02 삭제 -->
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn_util btn_next"><!-- 다음 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_next">다음</span>
+					</button>
+				</div>
+				<div class="group_tag">
+					<button type="button" class="btn_util btn_prev"><!-- 이전 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_prev">이전</span>
+					</button>
+					<div class="inner_tag" style="width:681px"><!-- card_view 너비 x 갯수 + margin 값 만큼 추가 / 마지막 카트 우측 여백 80px -->
+						<div class="item_tag on">
+							<div class="box_tf">
+								<span class="txt_tag">아이스 아메리카노R</span><!-- 2018-11-02 추가 -->
+								<!-- <input type="text" id="tfSetting" class="inp_g" value="아이스 아메리카노R" readonly>
+								<label for="tfSetting" class="screen_out">바로연결 버튼</label> 2018-11-02 삭제 -->
+							</div>
+						</div>
+						<div class="item_tag on">
+							<div class="box_tf">
+								<span class="txt_tag">아이스 카페라떼R</span><!-- 2018-11-02 추가 -->
+								<!-- <input type="text" id="tfSetting2" class="inp_g" value="아이스 카페라떼R" readonly>
+								<label for="tfSetting2" class="screen_out">바로연결 버튼</label> 2018-11-02 삭제 -->
+							</div>
+						</div>
+						<div class="item_tag on">
+							<div class="box_tf">
+								<span class="txt_tag">비타500</span><!-- 2018-11-02 추가 -->
+								<!-- <input type="text" id="tfSetting3" class="inp_g" value="비타500" readonly>
+								<label for="tfSetting3" class="screen_out">바로연결 버튼</label> 2018-11-02 삭제 -->
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn_util btn_next"><!-- 다음 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_next">다음</span>
+					</button>
+				</div>
+				<div class="group_tag">
+					<button type="button" class="btn_util btn_prev"><!-- 이전 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_prev">이전</span>
+					</button>
+					<div class="inner_tag" style="width:681px;transform:translate3d(-90px,0,0)"><!-- item_tag 너비 x 갯수 + margin 값 만큼 추가 / 마지막 카트 우측 여백 80px -->
+						<div class="item_tag on">
+							<div class="box_tf">
+								<span class="txt_tag">아이스 아메리카노R</span><!-- 2018-11-02 추가 -->
+								<!-- <input type="text" id="tfSetting" class="inp_g" value="아이스 아메리카노R" readonly>
+								<label for="tfSetting" class="screen_out">바로연결 버튼</label> 2018-11-02 삭제 -->
+							</div>
+						</div>
+						<div class="item_tag on">
+							<div class="box_tf">
+								<span class="txt_tag">아이스 카페라떼R</span><!-- 2018-11-02 추가 -->
+								<!-- <input type="text" id="tfSetting2" class="inp_g" value="아이스 카페라떼R" readonly>
+								<label for="tfSetting2" class="screen_out">바로연결 버튼</label> 2018-11-02 삭제 -->
+							</div>
+						</div>
+						<div class="item_tag on">
+							<div class="box_tf">
+								<span class="txt_tag">비타500</span><!-- 2018-11-02 추가 -->
+								<!-- <input type="text" id="tfSetting3" class="inp_g" value="비타500" readonly>
+								<label for="tfSetting3" class="screen_out">바로연결 버튼</label> 2018-11-02 삭제 -->
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn_util btn_next hide"><!-- 다음 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_next">다음</span>
+					</button>
+				</div>
+
+				#else
+				<!-- 텍스트 + 버튼 -->
+				<div class="group_chat">
+					<div class="item_chat">
+						<div class="bubble_chat">
+							<p class="txt_chat">좋아하는 음악 들려드릴게요.</p>
+						</div>
+					</div>
+				</div>
+				<div class="group_card">
+					<button type="button" class="btn_util btn_prev hide"><!-- 이전 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_prev">이전</span>
+					</button>
+					<div class="inner_card"><!-- card_view 너비 x 갯수 + margin 값 만큼 추가 / 마지막 카트 우측 여백 80px -->
+						<div class="card_view">
+							<div class="box_card">
+								<div class="info_desc"><!--클릭 시 open_layer 클래스 추가-->
+									<span class="desc_card"><!-- 2018-11-02 수정 : a 태그 > span 태그로 변경 -->
+										<strong class="tit_card">이런 날씨에 이런 아이템 어떠세요?</strong>
+									</span>
+								</div>
+							</div>
+							<div class="box_btn"><!--버튼 클릭 시 open_layer 클래스 추가-->
+								<button type="button" class="btn_tf open_layer">설정한 버튼명01</button>
+								<button type="button" class="btn_tf open_layer">설정한 버튼명02</button>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn_util btn_next hide"><!-- 다음 카드뷰 없는 경우 hide 클래스 추가 -->
+						<span class="ico_bot ico_next">다음</span>
+					</button>
+				</div>
+				<div class="group_card">
+					<button type="button" class="btn_util btn_prev">
+						<span class="ico_bot ico_prev">이전</span>
+					</button>
+					<div class="inner_card" style="width:930px;transform:translate3d(-310px,0,0)"><!-- card_view 너비 x 갯수 + margin 값 만큼 추가 / 마지막 카트 우측 여백 80px -->
+						<div class="card_view">
+							<div class="box_card">
+								<div class="info_desc">
+									<span class="desc_card"><!-- 2018-11-02 수정 : a 태그 > span 태그로 변경 -->
+										<strong class="tit_card">이런 날씨에 이런 아이템 어떠세요?</strong>
+									</span>
+								</div>
+							</div>
+							<div class="box_btn">
+								<button type="button" class="btn_tf">설정한 버튼명01</button>
+								<button type="button" class="btn_tf">설정한 버튼명02</button>
+							</div>
+						</div>
+						<div class="card_view">
+							<div class="box_card">
+								<div class="info_desc">
+									<span class="desc_card"><!-- 2018-11-02 수정 : a 태그 > span 태그로 변경 -->
+										<strong class="tit_card">이런 날씨에 이런 아이템 어떠세요?</strong>
+									</span>
+								</div>
+							</div>
+							<div class="box_btn">
+								<button type="button" class="btn_tf">설정한 버튼명01</button>
+								<button type="button" class="btn_tf">설정한 버튼명02</button>
+							</div>
+						</div>
+						<div class="card_view">
+							<div class="box_card">
+								<div class="info_desc">
+									<span class="desc_card"><!-- 2018-11-02 수정 : a 태그 > span 태그로 변경 -->
+										<strong class="tit_card">이런 날씨에 이런 아이템 어떠세요?</strong>
+									</span>
+								</div>
+							</div>
+							<div class="box_btn">
+								<button type="button" class="btn_tf">설정한 버튼명01</button>
+								<button type="button" class="btn_tf">설정한 버튼명02</button>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn_util btn_next">
+						<span class="ico_bot ico_next">다음</span>
+					</button>
+				</div>
+				#end
+			</div>
+			<!-- //2018-10-30 수정 -->
+		</div>
+		#else
+		<div class="wrap_chat" style="position:absolute;top:47px;height:calc(100vh - 267px)"><!-- 임시 스타일 -->
+			<div class="wrap_none">
+				<span class="ico_bot ico_none"></span>
+				<span class="txt_none">테스트할 발화를 입력해주세요</span>
+			</div>
+		</div>
+		#end
+		<div class="item_write">
+			<div class="box_tf tf_plugin">
+				<label for="tfTest" class="screen_out">발화 입력</label>
+				<textarea id="tfTest" name="textarea" class="tf_description" placeholder="블록 저장 (ctrl+s) 후 테스트할 발화를 입력해주세요"></textarea>
+			</div>
+			<button type="button" class="btn_g btn_g2">테스트</button>
+		</div>
+	</div>
+</div>
+
+#if($params.get('chat'))
+	<!-- 기본 -->
+	<div class="layer_detail">
+		<div class="tooltip_info">
+			<dl class="dl_info">
+				<dt>블록명</dt>
+				<dd>
+					<a href="#none" class="link_info">MusicSELECT</a>
+				</dd>
+			</dl>
+			<dl class="dl_info">
+				<dt>패턴</dt>
+				<dd>
+					<span class="info_item">
+						<span class="hash_g hash_type2">@sys.date</span><span class="hash_g hash_type1">@sys.town</span><span class="txt_hash">노래 틀어줘 노래 틀어줘 노래 틀어줘 노래 틀어줘 노래 틀어줘</span><!-- 2018-12-05 : span.txt_hash 추가 -->
+
+					</span>
+					<span class="info_item">
+						<span class="hash_g hash_type2">@sys.date</span><span class="hash_g hash_type1">@sys.town</span><span class="txt_hash">노래 틀어줘 노래 틀어줘 노래 틀어줘 노래 틀어줘 노래 틀어줘</span>
+					</span><!-- 2018-09-18 : tag_g > hash_g, tag_g2 > hash_type1, tag_g3 > hash_type2 수정 -->
+				</dd>
+			</dl>
+			<dl class="dl_info">
+				<dt>컨텍스트</dt>
+				<dd>블록1, 블록2</dd>
+			</dl>
+			<dl class="dl_info">
+				<dt>파라미터</dt>
+				<dd>
+					<span class="info_item">
+						<span class="txt_item">parameterName</span>
+						<span class="txt_item">$value</span><!-- 2018-12-05 : span.txt_item 추가 -->
+					</span>
+					<span class="info_item">
+						<span class="txt_item">parameterName2</span>
+						<span class="txt_item">$valuevaluevaluevaluevaluevaluevalue2</span><!-- 2018-12-05 : span.txt_item 추가 -->
+					</span>
+				</dd>
+			</dl>
+			<dl class="dl_info">
+				<dt>FOOTPRINT</dt>
+				<dd>
+					<a href="#none" class="link_info">grimlock-00d6b7a1d56e49198964f2e018719bd3</a>
+				</dd>
+			</dl>
+			<dl class="dl_info"><!-- ''더보기 클릭 시 fold_on 클래스 추가 -->
+				<dt>스킬명</dt>
+				<dd>
+					<a href="#none" class="link_name">skill_music01 skill_music01 skill_music01 skill_music01</a>
+					<button type="button" class="btn_g">더보기</button><!-- '더보기' 클릭하여 펼쳤을 경우 '접기'로 변경 -->
+				</dd>
+			</dl>
+		</div>
+
+		<button type="button" class="btn_util btn_close">
+			<span class="ico_bot ico_close4">닫기</span>
+		</button>
+	</div>
+	<!-- 더보기 : none -->
+	<div class="layer_detail" style="right:988px"><!-- 임시 위치값 -->
+		<div class="tooltip_info">
+			<dl class="dl_info">
+				<dt>블록명</dt>
+				<dd>
+					<a href="#none" class="link_info">MusicSELECT</a>
+				</dd>
+			</dl>
+			<dl class="dl_info">
+				<dt>패턴</dt>
+				<dd>
+					<span class="info_item">
+						<span class="hash_g hash_type2">@sys.date</span><span class="txt_hash">노래 틀어줘</span><!-- 2018-12-05 : span.txt_hash 추가 -->
+					</span><!-- 2018-09-19 : tag_g > hash_g, tag_g3 > hash_type2 수정 -->
+				</dd>
+			</dl>
+			<dl class="dl_info">
+				<dt>컨텍스트</dt>
+				<dd>블록1, 블록2</dd>
+			</dl>
+			<dl class="dl_info">
+				<dt>파라미터</dt>
+				<dd>
+					<span class="info_item">
+						<span class="txt_item">parameterName</span>
+						<span class="txt_item">$value</span><!-- 2018-12-05 : span.txt_item 추가 -->
+					</span>
+					<span class="info_item">
+						<span class="txt_item">parameterName2</span>
+						<span class="txt_item">$value2</span><!-- 2018-12-05 : span.txt_item 추가 -->
+					</span>
+				</dd>
+			</dl>
+			<dl class="dl_info">
+				<dt>FOOTPRINT</dt>
+				<dd>
+					<a href="#none" class="link_info">grimlock-00d6b7a1d56e49198964f2e018719bd3</a>
+				</dd>
+			</dl>
+			<dl class="dl_info fold_on"><!-- '더보기' 클릭 시 fold_on 클래스 추가 -->
+				<dt>스킬명</dt>
+				<dd class="txt_none">
+					<a href="#none" class="link_name">-</a>
+					<button type="button" class="btn_g">접기</button><!-- '접기' 클릭하여 접었을 경우 '더보기'로 변경 -->
+				</dd>
+			</dl>
+			<div class="desc_info">
+				<!-- 2018-08-28 : div.tooltip_info 삭제 -->
+				<div class="wrap_none">
+					<span class="ico_bot ico_none"></span>
+					<span class="txt_none">스킬이 사용되지 않은 블록입니다.</span>
+				</div>
+			</div>
+		</div>
+		<button type="button" class="btn_util btn_close">
+			<span class="ico_bot ico_close4">닫기</span>
+		</button>
+	</div>
+	<!-- 더보기 : 상세 -->
+	<div class="layer_detail" style="right:1480px">
+	<div class="tooltip_info">
+		<dl class="dl_info">
+			<dt>블록명</dt>
+			<dd>
+				<a href="#none" class="link_info">MusicSELECT</a>
+			</dd>
+		</dl>
+		<dl class="dl_info">
+			<dt>패턴</dt>
+			<dd>
+					<span class="info_item">
+						<span class="hash_g hash_type2">@sys.date</span><span class="txt_hash">노래 틀어줘</span><!-- 2018-12-05 : span.txt_hash 추가 -->
+					</span><!-- 2018-09-19 : tag_g > hash_g, tag_g3 > hash_type2 수정 -->
+			</dd>
+		</dl>
+		<dl class="dl_info">
+			<dt>컨텍스트</dt>
+			<dd>블록1, 블록2</dd>
+		</dl>
+		<dl class="dl_info">
+			<dt>파라미터</dt>
+			<dd>
+					<span class="info_item">
+						<span class="txt_item">parameterName</span>
+						<span class="txt_item">$value</span><!-- 2018-12-05 : span.txt_item 추가 -->
+					</span>
+				<span class="info_item">
+						<span class="txt_item">parameterName2</span>
+						<span class="txt_item">$value2</span><!-- 2018-12-05 : span.txt_item 추가 -->
+					</span>
+			</dd>
+		</dl>
+		<dl class="dl_info">
+			<dt>FOOTPRINT</dt>
+			<dd>
+				<a href="#none" class="link_info">grimlock-00d6b7a1d56e49198964f2e018719bd3</a>
+			</dd>
+		</dl>
+		<dl class="dl_info fold_on"><!-- '더보기' 클릭 시 fold_on 클래스 추가 -->
+			<dt>스킬명</dt>
+			<dd>
+				<a href="#none" class="link_name">skill_music01</a>
+				<button type="button" class="btn_g">접기</button><!-- '접기' 클릭하여 접었을 경우 '더보기'로 변경 -->
+			</dd>
+		</dl>
+		<div class="desc_info">
+			<div class="inner_info">
+				<dl class="dl_info">
+					<dt>스킬응답</dt>
+					<dd>
+							<span class="box_info" style="height:100px"><!--임시 높이 값-->
+								스킬응답 영역
+							</span>
+					</dd>
+				</dl>
+				<dl class="dl_info">
+					<dt>ERROR</dt>
+					<dd>
+							<span class="box_info box_error" style="height:100px"><!--임시 높이 값-->
+								ERROR 영역
+							</span>
+					</dd>
+				</dl>
+				#foreach ($i  in [1..10])
+				<dl class="dl_info">
+					<dt>REQUEST</dt>
+					<dd>
+							<span class="box_info" style="height:100px"><!--임시 높이 값-->
+								REQUEST 영역
+							</span>
+					</dd>
+				</dl>
+				#end
+			</div>
+		</div>
+	</div>
+	<button type="button" class="btn_util btn_close">
+		<span class="ico_bot ico_close4">닫기</span>
+	</button>
+</div>
+#end

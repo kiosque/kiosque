@@ -1,0 +1,105 @@
+<div class="block_head">
+	<div class="inner_g">
+		<h4 class="screen_out">블록명</h4>
+		<form class="wrap_edit">
+			<fieldset>
+				<legend class="screen_out">블록 이름 입력폼</legend>
+				<div class="box_tf"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 다른 사람이 편집중인경우 tf_other 클래스추가 -->
+					<label for="searchTf" class="screen_out">블록 이름 입력</label>
+					<input type="text" id="searchTf" class="inp_g" value="FAQ봇 확장 블록" readonly>
+					<button type="button" class="btn_edit"><span class="ico_bot ico_edit">발화 편집</span></button>
+				</div>
+			</fieldset>
+		</form>
+		<div class="wrap_btn">
+			<span class="wrap_tip">
+				<button type="button" class="btn_g btn_g2">저장</button><!-- 비활성시 disabled -->
+			</span>
+		</div>
+	</div>
+</div>
+<div class="block_cont">
+	<div class="wrap_faq">
+		<div class="wrap_subject">
+			<strong class="tit_subject">FAQ 학습 설정</strong>
+			<p class="info_g">본 확장블럭을 통해 사용자의 FAQ 데이터세트를 직접 업로드하여 Q&A응답봇을 빠르게 구현합니다.</p>
+		</div>
+		<div class="box_faq">
+			<div class="row_faq">
+				<em class="tit_faq">지식 업로드</em>
+				<div class="group_faq">
+					<button type="button" class="btn_upload">
+						<span class="ico_bot ico_upload"></span>
+					</button>
+					<span class="txt_placeholder #if($params.get('upload'))txt_done#end">#if($params.get('upload'))FAQ_Bot_Extension_sample_v1.csv#else CSV (utf-8 인코딩) 또는 xls 형식의 파일을 업로드 해주세요.#end</span><!-- 업로드 완료 시 txt_done 클래스 추가 -->
+					<button type="button" class="btn_g">지식파일 업로드</button>
+				</div>
+			</div>
+			<div class="row_faq">
+				<em class="tit_faq">검색기여도 설정</em>
+				<div class="group_faq">
+					<div class="item_radio">
+						<input type="radio" name="inpLevel" id="inpLevel" class="inp_g">
+						<label for="inpLevel" class="lab_g">100%<span class="ico_bot ico_radio"></span></label>
+					</div>
+					<div class="item_radio">
+						<input type="radio" name="inpLevel" id="inpLevel2" class="inp_g">
+						<label for="inpLevel2" class="lab_g">100%<span class="ico_bot ico_radio"></span></label>
+					</div>
+					<div class="item_radio">
+						<input type="radio" name="inpLevel" id="inpLevel3" class="inp_g">
+						<label for="inpLevel3" class="lab_g">100%<span class="ico_bot ico_radio"></span></label>
+					</div>
+					<div class="item_radio">
+						<input type="radio" name="inpLevel" id="inpLevel4" class="inp_g">
+						<label for="inpLevel4" class="lab_g">100%<span class="ico_bot ico_radio"></span></label>
+					</div>
+					<p class="txt_desc">FAQ Expert 블럭이 사용자 발화 검색에 기여하는 비중 레벨을 셋팅합니다.</p>
+				</div>
+			</div>
+		</div>
+		<div class="wrap_subject">
+			<strong class="tit_subject">FAQ Expert 출력 설정</strong>
+			<p class="info_g">사용자에게 보여질 응답 형태를 구성합니다</p>
+		</div>
+		<div class="box_faq">
+			<div class="col_faq">
+				<em class="tit_faq">즉문즉답형</em>
+				<img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/img_example.png" width="360" height="340" class="thumb_img" alt="">
+				<div class="panel_item">
+					<div class="item_radio">
+						<input type="radio" name="inpForm" id="inpForm" class="inp_g">
+						<label for="inpForm" class="lab_g">선택<span class="ico_bot ico_radio"></span></label>
+					</div>
+				</div>
+			</div>
+			<div class="col_faq">
+				<em class="tit_faq">답안 추천형</em>
+				<img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/img_example2.png" width="360" height="340" class="thumb_img" alt="">
+				<div class="panel_item">
+					<div class="item_radio">
+						<input type="radio" name="inpForm" id="inpForm2" class="inp_g">
+						<label for="inpForm2" class="lab_g">선택<span class="ico_bot ico_radio"></span></label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+#if($params.get('toast'))
+<div class="group_toast">
+	<div class="toast_layer">
+		<span class="txt_toast">먼저 지식파일을 업로드해주세요.</span>
+	</div>
+	<div class="toast_layer">
+		<span class="txt_toast">업로드된 지식이 학습 되었습니다.</span>
+	</div>
+	<div class="toast_layer toast_error"><!-- 에러일 경우 toast_error 클래스 추가 -->
+		<span class="txt_toast">업로드에 실패하였습니다. 지식파일의 형식을 다시 한번 확인해주세요.</span>
+	</div>
+	<div class="toast_layer">
+		<span class="txt_toast">지식파일이 성공적으로 업로드 되었습니다.</span>
+	</div>
+</div>
+#end
