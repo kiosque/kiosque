@@ -1,0 +1,447 @@
+<div class="layer_bot layer_learning">
+	<div class="layer_head">
+		<strong class="tit_layer">발화 학습</strong>
+		#if($params.get('record'))
+		<dl class="dl_layer">
+			<dt>업데이트일</dt>
+			<dd>2017.11.15 14:15</dd>
+			<dt>작업자</dt>
+			<dd>ethan.k</dd>
+		</dl>
+		#end
+	</div>
+	<div class="layer_body">
+		<div class="row_tf">
+			<strong class="tit_sub">학습 대상 발화</strong><!-- 2018-10-24 텍스트 수정 -->
+			<div class="txt_sub">#if($params.get('keyword3'))#foreach ($i  in [1..20])패터슨 개봉관 어디어디야#end#else패터슨 개봉관 어디어디야#end </div>
+			#if($params.get('record'))
+			#else
+			<span class="desc_sub">(발화빈도 <span class="num_time">143</span>회)</span>
+			#end
+		</div>
+		<div class="row_tf">
+			<!-- 2018-07-10 수정 -->
+			<div class="opt_g #if($params.get('optOpen'))opt_open#end"><!-- 클릭 시 opt_open 클래스 추가 -->
+				<label for="tfOpt" class="lab_g">발화 매칭 블록</label><!-- 2018-10-24 텍스트 수정 -->
+				<div class="box_tf box_tf2">
+					<input type="text" id="tfOpt" class="inp_g" placeholder="블록을 선택하여 학습시켜주세요">
+					<span class="ico_bot ico_arr"></span>
+				</div>
+				<div class="wrap_opt">
+					<span class="screen_out">선택옵션: </span>
+					<ul class="list_opt">
+						<li>
+							<a href="#none" class="link_opt">예매하기
+								<span class="wrap_tip">
+									<span class="ico_bot ico_help">블록 대표발화란?</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">informMovie
+								<span class="wrap_tip">
+									<span class="ico_bot ico_help">블록 대표발화란?</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">informPerson
+								<span class="wrap_tip">
+									<span class="ico_bot ico_help">블록 대표발화란?</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">informTheatre
+								<span class="wrap_tip">
+									<span class="ico_bot ico_help">블록 대표발화란?</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">영화추천하기
+								<span class="wrap_tip">
+									<span class="ico_bot ico_help">블록 대표발화란?</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">small talk
+								<span class="wrap_tip">
+									<span class="ico_bot ico_help">블록 대표발화란?</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">예매하기
+								<span class="wrap_tip">
+									<span class="ico_bot ico_help">블록 대표발화란?</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">취소하기
+								<span class="wrap_tip">
+									<span class="ico_bot ico_help">블록 대표발화란?</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">informDate
+								<span class="wrap_tip">
+									<span class="ico_bot ico_help">블록 대표발화란?</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">informEvent
+								<span class="wrap_tip">
+									<span class="ico_bot ico_help">블록 대표발화란?</span>
+								</span>
+							</a>
+						</li>
+					</ul>
+					<!-- 2018-07-10 추가 : 임시 위치 -->
+					<span class="wrap_tip"><!-- 2018-07-31 : span.wrap_tip 추가 -->
+						<span class="layer_tip" style="bottom:148px;margin-left:-40px"><!-- 2018-07-31 : 임시 스타일 수정 -->
+							<span class="tit_tip">블록 대표발화</span>
+							<span class="txt_tip">이 영화 개봉관 어디야<br>이 영화 어디서 해<br>이 영화 가까운 영화관 알려줘<br>근처 이 영화하는 영화관 알려줘<br>툴팁bg가변-패딩 10 12 10 12px, 최대너비 324 px, 길면...</span>
+						</span>
+					</span>
+					<!-- //2018-07-10 추가 -->
+				</div>
+			</div>
+			<!-- //2018-07-10 수정 -->
+		</div>
+		#if($params.get('type2'))
+		<div class="group_plugin">
+			<strong class="tit_sub">발화 및 엔티티 등록
+				#if($params.get('record'))
+				#else
+					#if($params.get('error'))
+					<!-- <span class="txt_error">이미 등록된 발화 패턴입니다. 추출값을 대표엔트리 혹은 동의어로 등록해주세요</span> 2018-10-24 삭제 -->
+					#else
+					<!-- <span class="txt_noti"><span class="ico_bot ico_check"></span>새로운 발화 패턴 입니다</span> 2018-10-24 삭제 -->
+					#end
+				#end
+			</strong>
+			<div class="box_plugin">
+				<div class="tit_item #if($params.get('openLayer'))open_layer#end">
+					#if($params.get('keyword'))
+					<span class="txt_item"><span class="bg_keyword">패터슨</span> 개봉관 어디어디야</span><!-- 키워드 선택 시 span.bg_keyword 추가 -->
+					#elseif($params.get('keyword2'))
+					<span class="txt_item"><span class="hash_g hash_type1">패터</span> 개봉관 어디어디야</span><!-- 2018-10-24 택스트 수 -->
+					#elseif($params.get('keyword3'))
+					<span class="txt_item"><span class="hash_g hash_type1">@영화제목</span><span class="hash_g hash_type2">@sys.theatre</span> #foreach ($i  in [1..30])어디어디야#end</span><!-- 2018-09-19 : tag_g > hash_g, tag_g2 > hash_type1, tag_g3 > hash_type2 수정 -->
+					#else
+					<span class="txt_item">피터슨 개봉관 어디어디야</span>
+					#end
+
+					<!-- <div class="layer_info">
+						<strong class="screen_out">엔티티, 파라미터 보기</strong>
+						<div class="row_tf">
+							<strong class="tit_tf">파라미터명</strong>
+							<div class="box_tf box_tf2 tf_focus">
+								<input type="text" id="tfPram7" class="inp_g" placeholder="영화제목">
+								<label for="tfPram7" class="screen_out"></label>
+							</div>
+						</div>
+						<div class="row_tf">
+							<strong class="tit_tf">추출값</strong>
+							<div class="box_tf box_tf2 disabled">
+								<input type="text" id="tfntt27" class="inp_g" placeholder="패터슨">
+								<label for="tfntt27" class="screen_out"></label>
+							</div>
+						</div>
+						<div class="row_tf">
+							<strong class="tit_tf">엔티티</strong>
+							<div class="opt_g opt_g2 on">
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">@sys.town <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">@sys.town</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">@sys.town</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">@sys.town</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="wrap_btn">
+							<button type="button" class="btn_g btn_g3">취소</button>
+							<button type="button" class="btn_g btn_g4">엔티티 해제</button>
+							<button type="button" class="btn_g btn_g2">확인</button>
+						</div>
+					</div> 2018-10-24 석제 -->
+
+				</div>
+				#if($params.get('keyword2') || $params.get('keyword3'))
+				<div class="cont_item">
+					<div class="desc_head">
+						<div class="tit_desc">엔티티</div>
+						<div class="tit_desc">파라미터</div><!-- 2018-10-24 택스트 수정 -->
+						<div class="tit_desc">추출값</div><!-- 2018-10-24 택스트 수정 -->
+					</div>
+					<div class="desc_body">
+						<div class="bundle_desc">
+							<div class="info_desc">
+								<span class="txt_g1">@영화제목</span><!-- 2018-12-20 : txt_emph 클래스 삭제 -->
+							</div>
+							<div class="info_desc">
+								<span class="txt_desc">영화제목</span><!-- 2018-10-24 텍스트 수정 -->
+							</div>
+							<div class="info_desc">
+								<span class="txt_desc">패터슨</span><!-- 2018-10-24 span.txt_desc 추가 -->
+								<!-- 입력완료 on / 비활성화 disabled / 에러 일 경우 opt_error 클래스 추가 -->
+								<!-- <div class="opt_g #if($params.get('keyword3'))opt_open #end">
+										<input type="text" id="tfOpt2" class="inp_g" placeholder="대표엔트리를 선택해 동의어로 등록해주세요">
+										<label for="tfOpt2" class="screen_out">대표 엔트리 등록</label>
+										<span class="ico_bot ico_arr"></span>
+									</div>
+								</div> 2018-10-24 삭제 -->
+								<!-- <div class="opt_g #if($params.get('error'))on#end">
+									<div class="screen_out">카테고리 선택상자</div>
+									<span class="screen_out">선택내용: </span>
+									<a href="#none" class="link_opt">#if($params.get('error'))패터슨 #else대표엔트리를 선택해 동의어로 등록해주세요 #end<span class="ico_bot ico_arr"></span></a>
+									<div class="wrap_opt">
+										<span class="screen_out">선택옵션: </span>
+										<ul class="list_opt">
+											<li>
+												<a href="#none" class="link_opt">신과함께</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">1987</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">강철비</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">위대한 쇼맨</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">뽀로로 극장판 공룡성 대모험 길어서 영역을 얼만큼 잡아야 할까요?</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">신과함께</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">1987</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">강철비</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">위대한 쇼맨</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">뽀로로 극장판 공룡성 대모험 길어서 영역을 얼만큼 잡아야 할까요?</a>
+											</li>
+										</ul>
+										<div class="btn_opt">
+											<button type="button" class="btn_g btn_g3">추출값을 대표 엔트리로 등록</button>
+										</div>
+									</div>
+								</div> 2018-07-10 삭제 -->
+							</div>
+							<!-- 2018-10-24 수정 : btn_util 위치 변경 -->
+							<button type="button" class="btn_util btn_del">
+								<span class="ico_bot ico_del"></span>
+								<span class="tooltip_btn">삭제</span>
+							</button>
+							<!-- //2018-10-24 수 -->
+						</div>
+						#if($params.get('keyword3'))
+						<div class="bundle_desc">
+							<div class="info_desc">
+								<span class="txt_g2">@sys.theatre</span><!-- 2018-12-20 : txt_emph 클래스 삭제 -->
+							</div>
+							<div class="info_desc">
+								<span class="txt_">sys.theatre</span><!-- 2018-10-24 텍스트 수정 -->
+							</div>
+							<div class="info_desc">
+								<span class="txt_desc">개봉관</span><!-- 2018-10-24 span.txt_desc 추가 -->
+							</div>
+							<!-- 2018-10-24 추가 -->
+							<button type="button" class="btn_util btn_del">
+								<span class="ico_bot ico_del"></span>
+								<span class="tooltip_btn">삭제</span>
+							</button>
+							<!-- //2018-10-24 추가 -->
+						</div>
+						#end
+					</div>
+				</div>
+				#end
+			</div>
+		</div>
+		<div class="group_plugin">
+			<strong class="tit_sub">블록 응답</strong>
+			<div class="box_plugin">
+				<strong class="tit_plugin">첫번째 응답</strong>
+				<div class="cont_plugin">
+					<span class="ico_bot ico_image">이미지형</span>
+					<span class="txt_plugin">downloads/image01.jpg</span>
+				</div>
+				<strong class="tit_plugin">두번째 응답</strong>
+				<div class="cont_plugin">
+					<span class="ico_bot ico_card">카드형</span>
+					<span class="txt_plugin">{{sysMovie}} 개봉관은 {{sysTheatre}}입니다</span>
+				</div>
+			</div>
+		</div>
+		#else
+		<div class="group_plugin">
+			<strong class="tit_sub">블록 응답</strong>
+			<div class="box_plugin">
+				<strong class="tit_plugin">첫번째 응답</strong>
+				<div class="cont_plugin">
+					<span class="ico_bot ico_text">텍스트형</span>
+					<span class="txt_plugin">무슨말인지 모르겟어요</span>
+				</div>
+				<div class="cont_plugin">
+					<span class="ico_bot ico_text">텍스트형</span>
+					<span class="txt_plugin">무슨말인지 모르겟어요</span>
+				</div>
+				<div class="cont_plugin">
+					<span class="ico_bot ico_text">텍스트형</span>
+					<span class="txt_plugin">무슨말인지 모르겟어요</span>
+				</div>
+			</div>
+		</div>
+		#end
+	</div>
+	#if($params.get('ntt'))
+	<!-- 2018-10-24 임시 위치 값 : div.layer_body 스크롤 영역 내 위치 > div.layer_body 밖으로 위치 이동 -->
+	<div class="layer_mapping" style="display:block;top:346px;left:56px">
+		<strong class="screen_out">엔티티 매핑</strong>
+		<!-- 2018-10-24 추가 -->
+		<ul class="list_tab">
+			<li class="on"><!-- 활성화시 on 클래스추가 -->
+				<a href="#none" class="link_tab">추천 엔티티</a>
+			</li>
+			<li>
+				<a href="#none" class="link_tab">전체 엔티티</a>
+			</li>
+		</ul>
+		<div class="wrap_search search_on"><!--버튼 클릭 시 search_on 클래스추가 -->
+			<div class="search_cate">
+				<form action="#">
+					<fieldset>
+						<legend class="screen_out">엔티티 검색 폼</legend>
+						<!-- 입력완료 시 on / 포커스일 경우 tf_focus / 에러일 경우 tf_error 클래스 추가 -->
+						<div class="box_tf box_tf2 "><!-- 2018-10-24 : box_tf2 클래스 추가 -->
+							<span class="ico_bot ico_search">검색</span>
+							<label class="screen_out" for="chatNameSearch">엔티티 검색</label>
+							<input type="text" id="chatNameSearch" name="chatNameSearch" class="inp_g" placeholder="엔티티 검색" value="">
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<!-- //2018-10-24 추가 -->
+		<strong class="screen_out">추천 엔티티</strong><!-- 2018-10-24 추가 -->
+		<ul class="list_item">
+			#foreach ($i  in [1..2])
+			<li>
+				<a href="#none" class="link_item">
+					<span class="tit_info">@추억돋는 동네</span>
+					<span class="cont_info">
+					 <span class="txt_info">송도동, 이문동, 잠실동, 사당동, 서교동, 간석동, 망우동</span>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="#none" class="link_item">
+					<span class="tit_info">@sys.town</span>
+					<span class="cont_info">
+					 <span class="txt_emph">동(행정구역)</span>
+					 <span class="txt_info">송도동, 이문동, 잠실동, 사당동, 서교동, 간석동, 망우동</span>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="#none" class="link_item">
+					<span class="tit_info">@sys.province</span>
+					<span class="cont_info">
+					 <span class="txt_emph">동(주소)</span>
+					 <span class="txt_info">송도동, 이문동, 잠실동, 사당동, 서교동, 간석동, 망우동</span>
+					</span>
+				</a>
+			</li>
+			#end
+		</ul>
+	</div>
+	#end
+
+	#if($params.get('keyword3'))
+	<!-- <div class="wrap_opt" style="display:block">
+		<strong class="screen_out">엔트리 설정</strong>
+		<span class="screen_out">선택옵션: </span>
+		<ul class="list_opt">
+			<li>
+				<a href="#none" class="link_opt">신과함께</a>
+			</li>
+			<li>
+				<a href="#none" class="link_opt">1987</a>
+			</li>
+			<li>
+				<a href="#none" class="link_opt">강철비</a>
+			</li>
+			<li>
+				<a href="#none" class="link_opt">위대한 쇼맨</a>
+			</li>
+			<li>
+				<a href="#none" class="link_opt">뽀로로 극장판 공룡성 대모험 길어서 영역을 얼만큼 잡아야 할까요?</a>
+			</li>
+			<li>
+				<a href="#none" class="link_opt">신과함께</a>
+			</li>
+			<li>
+				<a href="#none" class="link_opt">1987</a>
+			</li>
+			<li>
+				<a href="#none" class="link_opt">강철비</a>
+			</li>
+			<li>
+				<a href="#none" class="link_opt">위대한 쇼맨</a>
+			</li>
+			<li>
+				<a href="#none" class="link_opt">뽀로로 극장판 공룡성 대모험 길어서 영역을 얼만큼 잡아야 할까요?</a>
+			</li>
+		</ul>
+		<div class="btn_opt">
+			<button type="button" class="btn_g btn_g3">추출값을 대표 엔트리로 등록</button>
+		</div>
+	</div> 2018-10-24 삭제 -->
+	#end
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			#if($params.get('type2'))
+			<button class="btn_g btn_g2">학습</button>
+			#else
+			<button class="btn_g btn_g2" disabled>학습</button>
+			#end
+			<!-- 2018-07-12 추가 -->
+			<span class="wrap_tip tip_type"><!-- 2018-07-31 : tip_type 추가 -->
+				<button class="btn_g btn_g3">무시</button><!-- 2018-07-31 : btn_g5 삭제 -->
+				<span class="layer_tip">
+					<span class="tit_tip">패턴 무시</span>
+					<span class="txt_tip">학습된 패턴을 무시상태로 변경하면 블록에서 패턴이 삭제되고<br>패턴에 등록된 예상발화가 전부 삭제됩니다. 발화 패턴을<br>무시하시겠습니까?</span><!-- 2018-08-06 : br 태그 추가 -->
+					<button type="button" class="btn_close">
+						<span class="ico_bot ico_close3">닫기</span>
+					</button>
+				</span>
+			</span>
+			<!-- //2018-07-12 추가 -->
+			<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+		</div>
+	</div>
+</div>

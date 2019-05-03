@@ -1,0 +1,951 @@
+<div class="wrap_learning">
+	<div class="inner_cont">
+		<div class="wrap_tit">
+			<h3 class="tit_g">학습</h3>
+			<span class="info_g">학습은 봇이 사용자가 묻는 질문에 잘 답하고 있는지 확인하고 잘 답변할 수 있도록 학습시킬 때 사용하는 기능입니다</span>
+		</div>
+		<ul class="list_tab"><!-- 2018-12-19 : list_learning > list_tab 으로 변경 -->
+			<li #if($params.get('record'))#else class="on"#end><!-- 활성화시 on 클래스추가 -->
+				<a href="#none" class="link_tab">학습대기</a>
+			</li>
+			<li #if($params.get('record'))class="on"#else #end>
+				<a href="#none" class="link_tab">학습이력</a>
+			</li>
+		</ul>
+		#if($params.get('list'))
+		<h4 class="screen_out">학습대기</h4><!-- on 되어진 해당 link_tab 의 메뉴명으로 변경해주세요 -->
+		<div class="box_row">
+			<strong class="screen_out">필터 정보</strong>
+			<div class="group_filter">
+				<!-- 입력완료 on / 비활성화 disabled / 에러 일 경우 opt_error 클래스 추가 -->
+				<button type="button" class="btn_filter on #if($params.get('term'))open_layer#end">2017.11.01 - 2017.11.15 <span class="ico_bot ico_arr"></span></button><!-- 활성화 시 open_layer 클래스 추가 -->
+				#if($params.get('term'))
+				<!-- 기간 레이어 -->
+				<div class="layer_term" style="top:44px;left:24px"><!-- 임시 위치값 -->
+					<div class="layer_head">
+						<ul class="list_tab"><!-- 2017-07-06 수정 : tab_layer > list_tab -->
+							<li class="on"><!-- 활성화시 on 클래스추가 -->
+								<a href="#none" class="link_tab">기간</a>
+							</li>
+							<li>
+								<a href="#none" class="link_tab">날짜</a>
+							</li>
+						</ul>
+					</div>
+					<div class="layer_body">
+						<strong class="screen_out">기간</strong><!-- on 되어진 해당 link_tab 의 메뉴명으로 변경해주세요 -->
+						<div class="group_radio">
+							<div class="item_radio">
+								<input type="radio" name="inpRadio" id="inpRadio01" class="inp_g" checked="checked">
+								<label for="inpRadio01" class="lab_g">어제<span class="ico_bot ico_radio"></span></label>
+							</div>
+							<div class="item_radio">
+								<input type="radio" name="inpRadio" id="inpRadio02" class="inp_g" checked="checked">
+								<label for="inpRadio02" class="lab_g">지난 일주일<span class="ico_bot ico_radio"></span></label>
+							</div>
+							<div class="item_radio">
+								<input type="radio" name="inpRadio" id="inpRadio03" class="inp_g" checked="checked">
+								<label for="inpRadio03" class="lab_g">지난 14일<span class="ico_bot ico_radio"></span></label>
+							</div>
+							<div class="item_radio">
+								<input type="radio" name="inpRadio" id="inpRadio04" class="inp_g" checked="checked">
+								<label for="inpRadio04" class="lab_g">지난 30일<span class="ico_bot ico_radio"></span></label>
+							</div>
+						</div>
+					</div>
+					<div class="layer_foot">
+						<div class="wrap_btn">
+							<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+							<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+						</div>
+					</div>
+				</div>
+				<!-- 날짜 레이어 -->
+				<div class="layer_term" style="top:44px;left:372px"><!-- 임시 위치 값 -->
+					<div class="layer_head">
+						<ul class="list_tab"><!-- 2017-07-06 수정 : tab_layer > list_tab -->
+							<li>
+								<a href="#none" class="link_tab">기간</a>
+							</li>
+							<li class="on"><!-- 활성화시 on 클래스추가 -->
+								<a href="#none" class="link_tab">날짜</a>
+							</li>
+						</ul>
+					</div>
+					<div class="layer_body">
+						<strong class="screen_out">날짜</strong><!-- on 되어진 해당 link_tab 의 메뉴명으로 변경해주세요 -->
+						<div class="group_calendar">
+							<div class="search_calendar">
+								<button type="button" class="btn_util btn_prev">
+									<span class="ico_bot ico_prev"></span>
+									<span class="tooltip_btn">이전</span><!-- 2018-07-31 : 추가 -->
+								</button>
+								<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 -->
+									<div class="screen_out">카테고리 선택상자</div>
+									<span class="screen_out">선택내용: </span>
+									<a href="#none" class="link_opt">2017년 12월 <span class="ico_bot ico_arr"></span></a>
+									<div class="wrap_opt">
+										<span class="screen_out">선택옵션: </span>
+										<ul class="list_opt">
+											<li>
+												<a href="#none" class="link_opt">2017년 12월</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">2017년 11월</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">2017년 10월</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<button type="button" class="btn_util btn_next">
+									<span class="ico_bot ico_next"></span>
+									<span class="tooltip_btn">다음</span><!-- 2018-07-31 : 추가 -->
+
+								</button>
+							</div>
+							<!-- 시작 날짜와 마지막 날짜 pick_day 클래스 추가, 선택된 날짜들 selected_day 클래스 추가 -->
+							<table class="tbl_calendar">
+								<caption class="caption_g">학습 대기 캘린더</caption>
+								<colgroup>
+									<col style="width:40px">
+									<col style="width:40px">
+									<col style="width:40px">
+									<col style="width:40px">
+									<col style="width:40px">
+									<col style="width:40px">
+									<col style="width:40px">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" class="txt_bold">일</th>
+										<th scope="col">월</th>
+										<th scope="col">화</th>
+										<th scope="col">수</th>
+										<th scope="col">목</th>
+										<th scope="col">금</th>
+										<th scope="col" class="txt_bold">토</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<span class="num_day">26</span>
+										</td>
+										<td>
+											<span class="num_day">27</span>
+										</td>
+										<td>
+											<span class="num_day">28</span>
+										</td>
+										<td>
+											<span class="num_day">29</span>
+										</td>
+										<td>
+											<span class="num_day">30</span>
+										</td>
+										<td>
+											<span class="num_day">1</span>
+										</td>
+										<td>
+											<span class="num_day">2</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="num_day">3</span>
+										</td>
+										<td>
+											<span class="num_day">4</span>
+										</td>
+										<td>
+											<span class="num_day">5</span>
+										</td>
+										<td>
+											<span class="num_day">6</span>
+										</td>
+										<td>
+											<span class="num_day">7</span>
+										</td>
+										<td>
+											<span class="num_day">8</span>
+										</td>
+										<td>
+											<span class="num_day">9</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="num_day">10</span>
+										</td>
+										<td>
+											<span class="num_day">11</span>
+										</td>
+										<td>
+											<span class="num_day">12</span>
+										</td>
+										<td>
+											<span class="num_day">13</span>
+										</td>
+										<td>
+											<span class="num_day">14</span>
+										</td>
+										<td class="pick_day">
+											<span class="num_day">15</span>
+										</td>
+										<td class="selected_day">
+											<span class="num_day">16</span>
+										</td>
+									</tr>
+									<tr>
+										<td class="selected_day">
+											<span class="num_day">17</span>
+										</td>
+										<td class="selected_day">
+											<span class="num_day">18</span>
+										</td>
+										<td class="selected_day">
+											<span class="num_day">19</span>
+										</td>
+										<td class="selected_day">
+											<span class="num_day">20</span>
+										</td>
+										<td class="selected_day">
+											<span class="num_day">21</span></td>
+										<td class="selected_day">
+											<span class="num_day">22</span>
+										</td>
+										<td class="selected_day">
+											<span class="num_day">23</span>
+										</td>
+									</tr>
+									<tr>
+										<td class="selected_day">
+											<span class="num_day">24</span>
+										</td>
+										<td class="selected_day">
+											<span class="num_day">25</span>
+										</td>
+										<td class="selected_day">
+											<span class="num_day">26</span>
+										</td>
+										<td class="selected_day">
+											<span class="num_day">27</span>
+										</td>
+										<td class="pick_day">
+											<span class="num_day">28</span>
+										</td>
+										<td>
+											<span class="num_day">29</span>
+										</td>
+										<td>
+											<span class="num_day">30</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="num_day">31</span>
+										</td>
+										<td>
+											<span class="num_day">1</span>
+										</td>
+										<td>
+											<span class="num_day">2</span>
+										</td>
+										<td>
+											<span class="num_day">3</span>
+										</td>
+										<td>
+											<span class="num_day">4</span>
+										</td>
+										<td>
+											<span class="num_day">5</span>
+										</td>
+										<td>
+											<span class="num_day">6</span>
+										</td>
+									</tr>
+							</table>
+						</div>
+					</div>
+					<div class="layer_foot">
+						<div class="wrap_btn">
+							<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+							<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+						</div>
+					</div>
+				</div>
+				#end
+
+				<button type="button" class="btn_filter disabled">폴백 블록</button>
+				<div class="wrap_filter">
+					<button type="button" class="btn_filter">발화 포함
+						<span class="value_filter">개봉</span>
+						<span class="ico_bot ico_arr"></span>
+					</button>
+					<button type="button" class="btn_del">
+						<span class="ico_bot ico_del">삭제</span>
+					</button>
+				</div>
+				<div class="wrap_filter">
+					<button type="button" class="btn_filter">발화 빈도
+						<span class="value_filter">50회 이상</span>
+						<span class="ico_bot ico_arr"></span>
+					</button>
+					<button type="button" class="btn_del">
+						<span class="ico_bot ico_del">삭제</span>
+					</button>
+				</div>
+				<div class="wrap_filter">
+					<button type="button" class="btn_filter">발화 제외
+						<span class="value_filter">오른쪽 +추가버튼에서 -40px까지만 붙고 줄 바꿈</span>
+						<span class="ico_bot ico_arr"></span>
+					</button>
+					<button type="button" class="btn_del">
+						<span class="ico_bot ico_del">삭제</span>
+					</button>
+				</div>
+				<div class="wrap_filter">
+					<button type="button" class="btn_filter">발화 제외
+						<span class="value_filter">오른쪽 +추가버튼에서 -40px까지만 붙고 줄 바꿈</span>
+						<span class="ico_bot ico_arr"></span>
+					</button>
+					<button type="button" class="btn_del">
+						<span class="ico_bot ico_del">삭제</span>
+					</button>
+				</div>
+				<div class="wrap_filter">
+					<button type="button" class="btn_filter">발화 길이
+						<span class="value_filter">30자 이하</span>
+						<span class="ico_bot ico_arr"></span>
+					</button>
+					<button type="button" class="btn_del">
+						<span class="ico_bot ico_del">삭제</span>
+					</button>
+				</div>
+				<button type="button" class="btn_util btn_add btn_add4 #if($params.get('filter'))open_layer#end"><!-- 필터 추가 시 open_layer 클래스 추가 > layer_filter 노출 -->
+					<span class="ico_bot ico_add2"></span><!-- 2018-12-10 : ico_add > ico_add2 수정 -->
+					<span class="tooltip_btn">필터 추가</span>
+				</button>
+				#if($params.get('filter'))
+				<!-- 필터 레이어 > 텍스트 -->
+				<div class="layer_filter">
+					<div class="layer_head">
+						<ul class="list_tab"><!-- 2017-07-06 수정 : tab_layer > list_tab -->
+							<li class="on"><!-- 활성화시 on 클래스추가 -->
+								<a href="#none" class="link_tab">텍스트</a>
+							</li>
+							<li>
+								<a href="#none" class="link_tab">발화 값</a>
+							</li>
+						</ul>
+					</div>
+					<div class="layer_body">
+						<strong class="screen_out">텍스트</strong><!-- on 되어진 해당 link_tab 의 메뉴명으로 변경해주세요 -->
+						<div class="tf_item">
+							<strong class="screen_out">발화 값 설정</strong>
+							<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 --><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">발화 포함 <span class="ico_bot ico_arr"></span></a><!-- 2018-12-24 : 텍스트 수정 -->
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">발화 포함</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">발화 제외</a><!-- 2018-12-24 : 텍스트 수정 -->
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="box_tf box_tf2 tf_focus"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error -->
+								<input type="text" id="tfFilter" class="inp_g inp_repeat" placeholder="필터링 할 단어를 입력해주세요"><!-- 2018-12-20 : placeholder 텍스트 수정 -->
+								<label for="tfFilter" class="screen_out">필터링 값 입력</label>
+							</div>
+						</div>
+					</div>
+					<div class="layer_foot">
+						<div class="wrap_btn">
+							<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+							<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+						</div>
+					</div>
+				</div>
+				<!-- 필터 레이어 > 텍스트 : 필터링 값 입력했을 경우 -->
+				<div class="layer_filter" style="display:block;top:300px"><!-- 임시 위치값 -->
+					<div class="layer_head">
+						<ul class="list_tab"><!-- 2017-07-06 수정 : tab_layer > list_tab -->
+							<li class="on"><!-- 활성화시 on 클래스추가 -->
+								<a href="#none" class="link_tab">텍스트</a>
+							</li>
+							<li>
+								<a href="#none" class="link_tab">발화 값</a>
+							</li>
+						</ul>
+					</div>
+					<div class="layer_body">
+						<strong class="screen_out">텍스트</strong><!-- on 되어진 해당 link_tab 의 메뉴명으로 변경해주세요 -->
+						<div class="tf_item">
+							<strong class="screen_out">발화 값 설정</strong>
+							<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">발화 제외 <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">발화 포함</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">발화 제외</a><!-- 2018-12-24 : 택스트 수정 -->
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="box_tf box_tf2 on"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error -->
+								<input type="text" id="tfFilter2" class="inp_g inp_repeat" value="개봉" placeholder="필터링 할 단어를 입력해주세요">
+								<label for="tfFilter2" class="screen_out">필터링 값 입력</label>
+							</div>
+						</div>
+					</div>
+					<div class="layer_foot">
+						<div class="wrap_btn">
+							<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+							<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+						</div>
+					</div>
+				</div>
+				<!-- 필터 레이어 > 발화 값 -->
+				<div class="layer_filter" style="display:block;top:536px"><!-- 임시 위치 값 -->
+					<div class="layer_head">
+						<ul class="list_tab"><!-- 2017-07-06 수정 : tab_layer > list_tab -->
+							<li>
+								<a href="#none" class="link_tab">텍스트</a>
+							</li>
+							<li class="on"><!-- 활성화시 on 클래스추가 -->
+								<a href="#none" class="link_tab">발화 값</a>
+							</li>
+						</ul>
+					</div>
+					<div class="layer_body">
+						<strong class="screen_out">발화 값</strong><!-- on 되어진 해당 link_tab 의 메뉴명으로 변경해주세요 -->
+						<div class="tf_item">
+							<strong class="screen_out">발화 값 설정</strong>
+							<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 --><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">발화 빈도 <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">발화 빈도</a><!-- 2018-12-24 : 텍스트 수정 -->
+										</li>
+										<li>
+											<a href="#none" class="link_opt">발화 길이</a><!-- 2018-12-24 : 텍스트 수정 -->
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="opt_g opt_g2"><!-- 클릭시 opt_open 클래스추가 -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">이상 <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">이상</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">이하</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="box_tf box_tf2"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error -->
+								<input type="text" id="tfFilter3" class="inp_g inp_repeat" placeholder="필터링 할 값을 입력해주세요">
+								<label for="tfFilter3" class="screen_out">필터링 값 입력</label>
+							</div>
+						</div>
+					</div>
+					<div class="layer_foot">
+						<div class="wrap_btn">
+							<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+							<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+						</div>
+					</div>
+				</div>
+				<!-- 필터 레이어 > 발화 값 2 -->
+				<div class="layer_filter" style="display:block;top:772px"><!-- 임시 위치 값 -->
+					<div class="layer_head">
+						<ul class="list_tab"><!-- 2017-07-06 수정 : tab_layer > list_tab -->
+							<li>
+								<a href="#none" class="link_tab">텍스트</a>
+							</li>
+							<li class="on"><!-- 활성화시 on 클래스추가 -->
+								<a href="#none" class="link_tab">발화 값</a>
+							</li>
+						</ul>
+					</div>
+					<div class="layer_body">
+						<strong class="screen_out">발화 값</strong><!-- on 되어진 해당 link_tab 의 메뉴명으로 변경해주세요 -->
+						<div class="tf_item">
+							<strong class="screen_out">발화 값 설정</strong>
+							<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 --><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">발화 빈도 <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">발화 빈도</a><!-- 2018-12-24 : 텍스트 수정 -->
+										</li>
+										<li>
+											<a href="#none" class="link_opt">발화 길이</a><!-- 2018-12-24 : 텍스트 수정 -->
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 --><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">이상 <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">이상</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">이하</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="box_tf box_tf2 tf_focus"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error -->
+								<input type="text" id="tfFilter3" class="inp_g inp_repeat" placeholder="필터링 할 값을 입력해주세요">
+								<label for="tfFilter3" class="screen_out">필터링 값 입력</label>
+							</div>
+						</div>
+					</div>
+					<div class="layer_foot">
+						<div class="wrap_btn">
+							<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+							<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+						</div>
+					</div>
+				</div>
+				<!-- 필터 레이어 > 발화 값 : 필터링 값 입력했을 경우 -->
+				<div class="layer_filter" style="display:block;top:1008px"><!-- 임시 위치 값 -->
+					<div class="layer_head">
+						<ul class="list_tab"><!-- 2017-07-06 수정 : tab_layer > list_tab -->
+							<li>
+								<a href="#none" class="link_tab">텍스트</a>
+							</li>
+							<li class="on"><!-- 활성화시 on 클래스추가 -->
+								<a href="#none" class="link_tab">발화 값</a>
+							</li>
+						</ul>
+					</div>
+					<div class="layer_body">
+						<strong class="screen_out">발화 값</strong><!-- on 되어진 해당 link_tab 의 메뉴명으로 변경해주세요 -->
+						<div class="tf_item">
+							<strong class="screen_out">발화 값 설정</strong>
+							<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">발화 길이 <span class="ico_bot ico_arr"></span></a><!-- 2018-12-24 : 텍스트 수정 -->
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">발화 빈도</a><!-- 2018-12-24 : 텍스트 수정 -->
+										</li>
+										<li>
+											<a href="#none" class="link_opt">발화 길이</a><!-- 2018-12-24 : 텍스트 수정 -->
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">이상 <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">이상</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">이하</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="box_tf box_tf2 on"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error -->
+								<input type="text" id="tfFilter4" class="inp_g inp_repeat" value="50">
+								<label for="tfFilter4" class="screen_out">필터링 값 입력</label>
+							</div>
+						</div>
+					</div>
+					<div class="layer_foot">
+						<div class="wrap_btn">
+							<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+							<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+						</div>
+					</div>
+				</div>
+				#end
+			</div>
+			<table class="tbl_learning">
+				<caption class="caption_g">학습대기 발화, 빈도에 대한 정보입니다.</caption>
+				<colgroup>
+					<col style="">
+					<col style="width:112px">
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">발화</th>
+						<th scope="col" class="num_text">빈도</th>
+					</tr>
+				</thead>
+				<tbody>
+					#if($params.get('empty'))
+					<tr>
+						<td colspan="2">
+							#if($params.get('2'))
+							<!-- 2018-11-30 추가 -->
+							<span class="ico_bot ico_search3"></span>
+							<span class="txt_none">검색 결과가 없습니다</span>
+							<!-- //2018-11-30 추가 -->
+							#else
+							<span class="ico_bot ico_none"></span>
+							<span class="txt_none">생성된 학습 데이터가 없습니다.<br>챗봇을 활성화해서 학습데이터를 만들어보세요.</span><!-- 2018-11-30 수정 -->
+							#end
+						</td>
+					</tr>
+					#else
+					<tr>
+						<td>패터슨 <span class="emph_keyword">개봉</span>관이 어디어디야</td><!-- 발화 값 있는 경우 span.emph_keyword 추가 -->
+						<td class="num_text">143</td>
+					</tr>
+					<tr>
+						<td>고령가 소년 살인사건 <span class="emph_keyword">개봉</span>관 알려줘</td>
+						<td class="num_text">129</td>
+					</tr>
+					<tr>
+						<td>야</td>
+						<td class="num_text">121</td>
+					</tr>
+					<tr>
+						<td>다운사이징 언제 <span class="emph_keyword">개봉</span>해</td>
+						<td class="num_text">118</td>
+					</tr>
+					<tr>
+						<td class="">탠저린 알려줘</td>
+						<td class="num_text">118</td>
+					</tr>
+					<tr>
+						<td>
+							패터슨 <span class="emph_keyword">개봉</span>관이 어디어디야
+							<!-- 2018-07-31 수정 -->
+							<span class="wrap_tip tip_type"><!-- 블록 타이틀 중복되거나 접합하지 않을 시 tip_on 클래스 추가 -->
+								<a href="#none" class="ico_bot ico_caution">주의사항</a>
+								<span class="layer_tip">
+									<span class="tit_tip">중복 패턴이 있습니다</span>
+									<span class="txt_tip">패턴을 수정하거나, 예상발화에 추가하세요</span>
+									<button type="button" class="btn_close">
+										<span class="ico_bot ico_close3">닫기</span>
+									</button>
+								</span>
+							</span>
+							<!-- //2018-07-31 수정 -->
+						</td>
+						<td class="num_text">100</td>
+					</tr>
+					<tr>
+						<td>고령가 소년 살인사건 <span class="emph_keyword">개봉</span>관 알려줘</td>
+						<td class="num_text">90</td>
+					</tr>
+					<tr>
+						<td>야</td>
+						<td class="num_text">80</td>
+					</tr>
+					<tr>
+						<td>다운사이징 언제 <span class="emph_keyword">개봉</span>해</td>
+						<td class="num_text">70</td>
+					</tr>
+					<tr>
+						<td>탠저린 알려줘</td>
+						<td class="num_text">60</td>
+					</tr>
+					<tr>
+						<td>
+							패터슨 <span class="emph_keyword">개봉</span>관이 어디어디야
+							<!-- 2018-07-31 수정 -->
+							<span class="wrap_tip tip_type"><!-- 블록 타이틀 중복되거나 접합하지 않을 시 tip_on 클래스 추가 -->
+								<a href="#none" class="ico_bot ico_caution">주의사항</a>
+								<span class="layer_tip">
+									<span class="tit_tip">중복 패턴이 있습니다</span>
+									<span class="txt_tip">패턴을 수정하거나, 예상발화에 추가하세요</span>
+									<button type="button" class="btn_close">
+										<span class="ico_bot ico_close3">닫기</span>
+									</button>
+								</span>
+							</span>
+							<!-- //2018-07-31 수정 -->
+						</td>
+						<td class="num_text">50</td>
+					</tr>
+					<tr>
+						<td>고령가 소년 살인사건 <span class="emph_keyword">개봉</span>관 알려줘</td>
+						<td class="num_text">10</td>
+					</tr>
+					<tr>
+						<td>야</td>
+						<td class="num_text">3</td>
+					</tr>
+					<tr>
+						<td>다운사이징 언제 <span class="emph_keyword">개봉</span>해</td>
+						<td class="num_text">2</td>
+					</tr>
+					<tr>
+						<td>탠저린 알려줘</td>
+						<td class="num_text">1</td>
+					</tr>
+					#end
+				</tbody>
+			</table>
+			#if($params.get('empty'))
+			#else
+			<div class="paging_item">
+				<!-- 2018-11-13 수정 : a, span 태그 > button 으로 변경 -->
+				<div class="inner_paging">
+					<!-- 현재 페이지 span > em 으로 변경 -->
+					<!-- 맨 앞/이전 페이지, 맨 뒤/다음 페이지 없는 경우 a 태그 > span 태그  -->
+					<button type="button" class="ico_bot btn_fst">맨 앞</button>
+					<button type="button" class="ico_bot btn_prev">이전</button>
+					<span class="screen_out">현재페이지</span><em class="link_page">1</em>
+					<button type="button" class="link_page">2</button>
+					<button type="button" class="link_page">3</button>
+					<button type="button" class="link_page">4</button>
+					<button type="button" class="link_page">5</button>
+					<button type="button" class="link_page">6</button>
+					<button type="button" class="link_page">7</button>
+					<button type="button" class="link_page">8</button>
+					<button type="button" class="link_page">9</button>
+					<button type="button" class="link_page">10</button>
+					<button type="button" class="ico_bot btn_next">다음</button>
+					<button type="button" class="ico_bot btn_lst">맨 뒤</button>
+				</div>
+				<!-- //2018-11-13 수정 -->
+			</div>
+			#end
+		</div>
+		#elseif($params.get('listRecord'))
+		<h4 class="screen_out">학습대기</h4><!-- on 되어진 해당 link_tab 의 메뉴명으로 변경해주세요 -->
+		<div class="box_row">
+			<strong class="screen_out">필터 정보</strong>
+			<div class="group_filter">
+				<!-- 입력완료 on / 비활성화 disabled / 에러 일 경우 opt_error 클래스 추가 -->
+				<button type="button" class="btn_filter on">2017.11.01 - 2017.11.15 <span class="ico_bot ico_arr"></span></button><!-- 활성화 시 open_layer 클래스 추가 -->
+			</div>
+			<table class="tbl_record">
+				<caption class="caption_g">학습이력, 매칭 블록, 업데이트, 학습상태 등에 대한 정보입니다.</caption>
+				<colgroup>
+					<col style="">
+					<col style="width:160px">
+					<col style="width:128px">
+					<col style="width:128px">
+				</colgroup>
+				<thead>
+				<tr>
+					<th scope="col">발화</th>
+					<th scope="col">매칭블록</th>
+					<th scope="col">업데이트</th>
+					<th scope="col">
+						<button type="button" class="btn_state #if($params.get('check'))open_layer#end"><!-- 활성화 시 open_layer 클래스 추가 -->
+							<span class="txt_btn">학습상태</span>
+							<span class="ico_bot ico_arr"></span>
+						</button>
+						<div class="layer_state">
+							<div class="group_check">
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="radio" name="inpState" id="inpState" class="inp_g">
+									<label for="inpState" class="lab_g">완료<span class="ico_bot ico_check"></span></label>
+								</div>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="radio" name="inpState" id="inpState2" class="inp_g">
+									<label for="inpState2" class="lab_g">무시<span class="ico_bot ico_check"></span></label>
+								</div>
+							</div>
+							<div class="group_btn">
+								<button type="button" class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+								<button type="button" class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+							</div>
+						</div>
+					</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>패터슨 개봉관이 어디어디야</td>
+					<td>informTheatre</td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="link_state">완료</a>
+					</td>
+				</tr>
+				<tr>
+					<td>고령가 소년 살인사건 개봉관 알려줘</td>
+					<td>informTheatre</td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="link_state">완료</a>
+					</td>
+				</tr>
+				<tr>
+					<td>야</td>
+					<td></td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="">무시</a>
+					</td>
+				</tr>
+				<tr>
+					<td>다운사이징 언제 개봉해</td>
+					<td>informPerson</td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="link_state">완료</a>
+					</td>
+				</tr>
+				<tr>
+					<td>탠저린 알려줘</td>
+					<td>informRelease</td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="link_state">완료</a>
+					</td>
+				</tr>
+				<tr>
+					<td>패터슨 개봉관이 어디어디야</td>
+					<td>informPerson</td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="link_state">완료</a>
+					</td>
+				</tr>
+				<tr>
+					<td>고령가 소년 살인사건 개봉관 알려줘</td>
+					<td></td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="">무시</a>
+					</td>
+				</tr>
+				<tr>
+					<td>야</td>
+					<td>informPerson</td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="link_state">완료</a>
+					</td>
+				</tr>
+				<tr>
+					<td>다운사이징 언제 개봉해</td>
+					<td>informPerson</td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="link_state">완료</a>
+					</td>
+				</tr>
+				<tr>
+					<td>탠저린 알려줘</td>
+					<td></td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="">무시</a>
+					</td>
+				</tr>
+				<tr>
+					<td>패터슨 개봉관이 어디어디야</td>
+					<td>informPerson</td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="link_state">완료</a>
+					</td>
+				</tr>
+				<tr>
+					<td>고령가 소년 살인사건 개봉관 알려줘</td>
+					<td></td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="">무시</a>
+					</td>
+				</tr>
+				<tr>
+					<td>야</td>
+					<td>informPerson</td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="link_state">완료</a>
+					</td>
+				</tr>
+				<tr>
+					<td>다운사이징 언제 개봉해</td>
+					<td>informPerson</td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="link_state">완료</a>
+					</td>
+				</tr>
+				<tr>
+					<td>탠저린 알려줘</td>
+					<td></td>
+					<td>2017.11.15</td>
+					<td>
+						<a href="#none" class="">무시</a>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<div class="paging_item">
+				<!-- 2018-11-13 수정 : a, span 태그 > button 으로 변경 -->
+				<div class="inner_paging">
+					<!-- 현재 페이지 span > em 으로 변경 -->
+					<!-- 맨 앞/이전 페이지, 맨 뒤/다음 페이지 없는 경우 a 태그 > span 태그  -->
+					<button type="button" class="ico_bot btn_fst">맨 앞</button>
+					<button type="button" class="ico_bot btn_prev">이전</button>
+					<span class="screen_out">현재페이지</span><em class="link_page">1</em>
+					<button type="button" class="link_page">2</button>
+					<button type="button" class="link_page">3</button>
+					<button type="button" class="link_page">4</button>
+					<button type="button" class="link_page">5</button>
+					<button type="button" class="link_page">6</button>
+					<button type="button" class="link_page">7</button>
+					<button type="button" class="link_page">8</button>
+					<button type="button" class="link_page">9</button>
+					<button type="button" class="link_page">10</button>
+					<button type="button" class="ico_bot btn_next">다음</button>
+					<button type="button" class="ico_bot btn_lst">맨 뒤</button>
+				</div>
+				<!-- //2018-11-13 수정 -->
+			</div>
+		</div>
+		#else
+		<h4 class="screen_out">학습대기</h4><!-- on 되어진 해당 link_tab 의 메뉴명으로 변경해주세요 -->
+		<div class="wrap_none">
+			<span class="ico_bot ico_none"></span>
+			<span class="txt_none">생성된 학습 데이터가 없습니다.<br>챗봇을 활성화해서 학습데이터를 만들어보세요.</span>
+		</div>
+		#end
+	</div>
+</div>

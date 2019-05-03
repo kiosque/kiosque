@@ -1,0 +1,428 @@
+<div class="layer_bot layer_ntt #if($params.get('spin'))layer_dimmed#end"><!-- 업로드 상태 레이어가 생성될 경우 layer_dimmed 클래스 추가 -->
+	<div class="layer_head">
+		<ul class="list_tab"><!-- 2017-07-06 수정 : tab_layer > list_tab -->
+			<li #if($params.get('type2')) #else class="on"#end><!-- 활성화시 on 클래스추가 -->
+				<a href="#none" class="link_tab">나의 엔티티</a>
+			</li>
+			<li #if($params.get('type2'))class="on"#end>
+				<a href="#none" class="link_tab">시스템 엔티티</a>
+			</li>
+		</ul>
+	</div>
+	<div class="layer_body #if($params.get('detail'))detail_body#end"><!-- 엔티티 상세 경우 detail_body 클래스 추가 -->
+		#if($params.get('detail'))
+		<strong class="screen_out">나의 엔티티 생성</strong>
+		<div class="edit_detail">
+			<button type="button" class="btn_util btn_return">
+				<span class="ico_bot ico_return"></span>
+				<span class="tooltip_btn">뒤로 가기</span>
+			</button>
+			<div class="box_tf tf_focus"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스추가 --><!-- 2019-01-08 : box_tf2 클래스 삭제 -->
+				<input type="text" id="tfNtt" class="inp_g" placeholder="엔티티 이름을 입력해주세요">
+				<label for="tfNtt" class="screen_out">엔티티 이름을 입력해주세요</label>
+			</div>
+				<!-- 2019-01-08 : div.opt_group 위치 이동 -->
+				<div class="opt_group">
+					<div class="wrap_search #if($params.get('out'))disabled#end"><!--버튼 클릭 시 search_on 클래스추가 -->
+						<a href="#none" class="btn_util btn_search">
+							<span class="ico_bot ico_search"></span>
+							<span class="tooltip_btn">검색</span>
+						</a>
+						<div class="search_cate">
+							<form action="#">
+								<fieldset>
+									<legend class="screen_out">엔트리 검색 폼</legend>
+									<div class="box_tf box_tf2">
+										<span class="ico_bot ico_search">검색</span>
+										<label class="screen_out" for="chatNameSearch">검색</label>
+										<input type="text" id="chatNameSearch" name="chatNameSearch" class="inp_g" placeholder="검색어를 입력하세요">
+										<button type="button" class="btn_close"><span class="ico_bot ico_close">닫기</span></button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					<div class="wrap_upload #if($params.get('tip'))upload_on#end"><!-- 2018-08-30 div.wrap_upload 추가 --><!-- 버튼 클릭 시 upload_on 클래스 추가 -->
+						<button type="button" class="btn_util btn_upload #if($params.get('out'))disabled#end">
+							<span class="ico_bot ico_upload"></span>
+							<span class="tooltip_btn">엔트리 업로드</span>
+						</button>
+						<!-- 2018-08-30 추가 -->
+						<div class="tooltip_upload">
+							<div class="desc_item">
+								- CSV 파일을 지원합니다.<br>
+								- 엔트리를 줄바꿈으로 구분해주세요.<br>
+								- 동의어는 콤마(,)로 구분됩니다.<br>
+								- 동의어가 있는 경우 가장 앞 단어가 대표 엔트리가 됩니다.<br>
+							</div>
+							<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+								<input type="checkbox" id="checkUpload" class="inp_g">
+								<label for="checkUpload" class="lab_g">기존 입력값 초기화 후 업로드<span class="ico_bot ico_check"></span></label>
+							</div>
+							<button type="button" class="btn_g btn_g3">파일찾기</button>
+							<button type="button" class="btn_close">
+								<span class="ico_bot ico_close">닫기</span>
+							</button>
+						</div>
+						<!-- //2018-08-30 추가 -->
+					</div>
+					<!-- <div class="tip_item">
+						외부 엔티티 등록
+						<span class="wrap_tip">
+							<a href="#none" class="ico_bot ico_help">도움말</a>
+							<span class="layer_tip">
+								<span class="txt_tip">타 그룹에 속해있지 않은 엔티티 목록만 보여집니다</span>
+							</span>
+						</span>
+					</div>
+					<button class="btn_switch ico_bot #if($params.get('out'))on#end"><span class="screen_out">현재상태</span>꺼짐</button>< 2019-01-08 삭제 -->
+					<button type="button" class="btn_g btn_g2">저장</button><!-- 2019-01-08 : div.opt_group 안으로 위치 이동 -->
+				</div>
+				<!-- //2019-01-08 : div.opt_group 위치 이동 -->
+		</div>
+		#elseif($params.get('type2'))
+		<div class="wrap_tit">
+			<strong class="tit_layer">시스템 엔티티 관리</strong>
+			<!-- 2019-01-08 추가 -->
+			<div class="wrap_util">
+				<button type="button" class="btn_util btn_more">
+					<span class="ico_bot ico_more">더보기</span><!-- 2019-01-10 : '더보기' 텍스트 추가 -->
+					<!-- <span class="tooltip_btn">더보기</span> 2019-01-10 삭제 -->
+				</button>
+				<span class="layer_edit">
+					<ul class="list_edit">
+							<li class="on"><span class="txt_edit">시스템 엔티티 전체 끄기</span></li>
+						<li><span class="txt_edit">시스템 엔티티 초기화</span></li>
+					</ul>
+				</span>
+			</div>
+			<!-- //2019-01-08 추가 -->
+			<div class="util_layer">
+				<div class="wrap_search search_on"><!--버튼클릭시 search_on 클래스추가 -->
+					<a href="#none" class="btn_util btn_search">
+						<span class="ico_bot ico_search"></span>
+						<span class="tooltip_btn">검색</span>
+					</a>
+					<div class="search_cate">
+						<form action="#">
+							<fieldset>
+								<legend class="screen_out">엔티티 검색 폼</legend>
+								<div class="box_tf box_tf2"><!-- 포커스인경우 tf_focus / 입력완료 on 클래스추가 -->
+									<span class="ico_bot ico_search">검색</span>
+									<label class="screen_out" for="chatNameSearch">검색</label>
+									<input type="text" id="chatNameSearch" name="chatNameSearch" class="inp_g" placeholder="검색어를 입력하세요">
+									<!-- <button type="button" class="btn_close"><span class="ico_bot ico_close">닫기</span></button> 2019-01-08 삭제 -->
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		#else
+		<div class="wrap_tit">
+			<strong class="tit_layer">나의 엔티티 관리</strong>
+			<button type="button" class="btn_util btn_add">
+				<span class="ico_bot ico_add"></span>
+				<span class="tooltip_btn">엔티티 생성</span>
+			</button>
+			<div class="util_layer">
+				<div class="wrap_search search_on"><!-- 2019-01-08 : search_on 클래스 추가 -->
+					<!-- <a href="#none" class="btn_util btn_search">
+						<span class="ico_bot ico_search"></span>
+						<span class="tooltip_btn">검색</span>
+					</a> 2019-01-08 삭제 -->
+					<div class="search_cate">
+						<form action="#">
+							<fieldset>
+								<legend class="screen_out">엔티티 검색 폼</legend>
+								<div class="box_tf box_tf2">
+									<span class="ico_bot ico_search">검색</span>
+									<label class="screen_out" for="chatNameSearch">검색</label>
+									<input type="text" id="chatNameSearch" name="chatNameSearch" class="inp_g" placeholder="검색어를 입력하세요">
+									<!-- <button type="button" class="btn_close"><span class="ico_bot ico_close">닫기</span></button> 2019-01-08 삭제 -->
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<!-- <button type="button" class="btn_g btn_g2">엔티티 생성</button> 2019-01-08 삭제 -->
+			</div>
+		</div>
+		#end
+		#if($params.get('ntt'))
+		<div class="wrap_ntt"><!-- 스위치 전체 활성화 시 on 클래스 추가, '꺼짐' > '켜짐'으로 변경 -->
+			<div class="group_util">
+				<button class="btn_switch ico_bot"><span class="screen_out">현재상태</span>꺼짐</button>
+			</div>
+			<div class="group_item">
+				<div class="inner_item">
+					<strong class="screen_out">엔티티 생성목록</strong>
+					#foreach ($i  in [1..3])
+					<div class="item_ntt"><!-- 스위치 전체 활성화 시 on 클래스 추가, '꺼짐' > '켜짐'으로 변경 -->
+						<strong class="tit_item">엔티티12</strong>
+						<div class="desc_item">엔트리01, 엔트리02, 엔트리03, 엔트리04</div>
+						<button type="button" class="btn_switch ico_bot"><span class="screen_out">현재상태</span>꺼짐</button>
+						<button type="button" class="btn_util btn_delete"><!-- 클릭 시 open_layer 클래스 추가 > layer_item 노출 -->
+							<span class="ico_bot ico_del"></span>
+						</button>
+					</div>
+					<div class="item_ntt on">
+						<strong class="tit_item">엔티티12</strong>
+						<div class="desc_item">엔트리01, <span class="emph_keyword">엔트리02</span>, 엔트리03, 엔트리04</div><!-- 2018-12-14 : span.emph_keyword 추가 -->
+						<button type="button" class="btn_switch ico_bot"><span class="screen_out">현재상태</span>켜짐</button>
+						<button type="button" class="btn_util btn_delete"><!-- 클릭 시 open_layer 클래스 추가 > layer_item 노출 -->
+							<span class="ico_bot ico_del"></span>
+						</button>
+					</div>
+					<div class="item_ntt on">
+						<strong class="tit_item">엔티티12</strong>
+						<div class="desc_item">엔트리01, 엔트리02, 엔트리03, 엔트리04</div>
+						<button type="button" class="btn_switch ico_bot"><span class="screen_out">현재상태</span>켜짐</button>
+						<button type="button" class="btn_util btn_delete"><!-- 클릭 시 open_layer 클래스 추가 > layer_item 노출 -->
+							<span class="ico_bot ico_del"></span>
+						</button>
+					</div>
+					<div class="item_ntt on">
+						<strong class="tit_item">엔티티12 엔티티12 엔티티12 엔티티12 엔티티12 엔티티12 엔티티12 엔티티12 엔티티12</strong>
+						<div class="desc_item">엔트리01, 엔트리02, 엔트리03, 엔트리04, 엔트리01, 엔트리02, 엔트리03, 엔트리04, 엔트리01, 엔트리02, 엔트리03, 엔트리04, 엔트리01, 엔트리02, 엔트리03, 엔트리04</div>
+						<button type="button" class="btn_switch ico_bot"><span class="screen_out">현재상태</span>켜짐</button>
+						<button type="button" class="btn_util btn_delete open_layer"><!-- 클릭 시 open_layer 클래스 추가 > layer_item 노출 -->
+							<span class="ico_bot ico_del"></span>
+						</button>
+					</div>
+					<div class="item_ntt">
+						<strong class="tit_item">엔티티12</strong>
+						<div class="desc_item">엔트리01, 엔트리02, 엔트리03, 엔트리04</div>
+						<button type="button" class="btn_switch ico_bot"><span class="screen_out">현재상태</span>꺼짐</button>
+						<button type="button" class="btn_util btn_delete"><!-- 클릭 시 open_layer 클래스 추가 > layer_item 노출 -->
+							<span class="ico_bot ico_del"></span>
+						</button>
+					</div>
+					#end
+					<div class="layer_item" style="display:block;top:487px;right:158px"><!-- 임시 위치값 -->
+						<strong class="tit_layer">해당 엔티티를 삭제하시겠습니까?</strong>
+						<div class="wrap_btn">
+							<button type="button" class="btn_g btn_g3">취소</button>
+							<button type="button" class="btn_g btn_g2">확인</button>
+						</div>
+						<span class="ico_bot ico_bubble"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		#elseif($params.get('detail'))
+		<div class="wrap_ntt detail_ntt"><!-- 2018-08-30 detail_ntt 클래스 추가 -->
+			<!-- <div class="group_util">
+				<div class="tit_group">엔트리</div>
+			</div> 2019-01-08 삭제 -->
+			#if($params.get('out'))
+			#else
+			<div class="group_entry">
+				<div class="box_tf box_tf2 #if($params.get('focus'))tf_focus#end"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스추가 -->
+					<input type="text" id="tfNtt2" class="inp_g" placeholder="대표 엔트리를 입력한 뒤 엔터를 눌러주세요">
+					<label for="tfNtt2" class="screen_out">대표 엔트리를 입력해주세요</label>
+				</div>
+				<button type="button" class="btn_util btn_enter">
+					<span class="ico_bot ico_enter">확인</span>
+				</button>
+			</div>
+			#end
+			<div class="group_item"><!-- 2018-08-30 type_group 클래스 삭제 -->
+				#if($params.get('type'))
+				<div class="item_entry">
+					<div class="col_tf">
+						<div class="inner_tf">
+							<!-- <div class="txt_tf">엔트리98</div> 2018-07-10 삭제 -->
+							<!-- 2018-07-10 추가 -->
+							<div class="box_tf box_tf2 box_description">
+								<textarea id="tfDesc" name="textarea" rows="1" class="tf_description" placeholder="엔트리 타이틀"></textarea>
+								<label for="tfDesc" class="screen_out">엔트리 타이틀</label>
+							</div>
+							<!-- //2018-07-10 추가 -->
+						</div>
+					</div>
+					<div class="col_tf #if($params.get('focus'))tf_focus#end"><!-- 포커스 일 경우 tf_focus / 입력 완료 일 경우 on / 비활성화 시 disabled 클래스 추가 --><!-- 2018-12-24 : tf_focus 클래스(입력모드) 추가 -->
+						<div class="inner_tf">
+							<div class="group_tag">
+								<span class="hash_g">동의어01
+									<button class="btn_del"><span class="ico_bot ico_close">삭제</span></button>
+								</span><!-- 2018-09-19 : tag_g > hash_g 수정 -->
+								<div class="box_tf box_tf2">
+									<input type="text" id="tf14" class="inp_g" value="동의어 입력 후 엔터를 눌러주세요">
+									<label for="tf14" class="screen_out">이벤트 입력</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn_util btn_delete">
+						<span class="ico_bot ico_del"></span>
+					</button>
+				</div>
+				<div class="item_entry">
+					<div class="col_tf">
+						<div class="inner_tf">
+							<!-- <div class="txt_tf">엔트리98이 줄이 넘어갈때까지 길게 길게 만들어 보면 20px 씩 높이 늘어나면 됩니다</div> 2018-07-10 삭제 -->
+							<!-- 2018-07-10 추가 -->
+							<div class="box_tf box_tf2 box_description">
+								<textarea id="tfDesc2" name="textarea" rows="1" class="tf_description" placeholder="엔트리 타이틀"></textarea><!-- 2019-01-10 : 검색결과 span.emph_keyword 추가 -->
+								<label for="tfDesc2" class="screen_out">엔트리 타이틀</label>
+							</div>
+							<!-- //2018-07-10 추가 -->
+						</div>
+					</div>
+					<div class="col_tf"><!-- 포커스 일 경우 tf_focus / 입력 완료 일 경우 on / 비활성화 시 disabled 클래스 추가 -->
+						<div class="inner_tf">
+							<div class="group_tag">
+								<div class="box_tf box_tf2">
+									<input type="text" id="tf13" class="inp_g" value="동의어 입력 후 엔터를 눌러주세요">
+									<label for="tf13" class="screen_out">이벤트 입력</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn_util btn_delete">
+						<span class="ico_bot ico_del"></span>
+					</button>
+				</div>
+				<div class="item_entry">
+					<div class="col_tf">
+						<div class="inner_tf">
+							<!-- <div class="txt_tf">엔트리98</div> 2018-07-10 삭제 -->
+							<!-- 2018-07-10 추가 -->
+							<div class="box_tf box_tf2 box_description on">
+								<textarea id="tfDesc3" name="textarea" rows="1" class="tf_description" placeholder="엔트리 타이틀"></textarea>
+								<label for="tfDesc3" class="screen_out">엔트리 타이틀</label>
+							</div>
+							<!-- //2018-07-10 추가 -->
+						</div>
+					</div>
+					<div class="col_tf"><!-- 포커스 일 경우 tf_focus / 입력 완료 일 경우 on / 비활성화 시 disabled 클래스 추가 -->
+						<div class="inner_tf">
+							<div class="group_tag">
+								#foreach ($i  in [1..6])
+								<span class="hash_g">
+									<span class="txt_tag"><span class="emph_keyword">동의어01</span></span><!-- 2019-01-08 : 검색결과 span.emph_keyword 추가 -->
+									<button class="btn_del"><span class="ico_bot ico_close">삭제</span></button>
+								</span><!-- 2018-09-19 : tag_g > hash_g 수정 -->
+								#end
+								<span class="hash_g">
+									<span class="txt_tag">동의어 동의어 동의어 동의어 동의어 동의어 동의어 동의어 동의어 동의어 동의어 동의어 동의어 동의어 동의어</span>
+									<button class="btn_del"><span class="ico_bot ico_close">삭제</span></button>
+								</span><!-- 2018-09-19 : tag_g > hash_g 수정 -->
+								<div class="box_tf box_tf2 disabled">
+									<input type="text" id="tf12" class="inp_g" value="동의어 입력 후 엔터를 눌러주세요">
+									<label for="tf12" class="screen_out">이벤트 입력</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn_util btn_delete">
+						<span class="ico_bot ico_del"></span>
+					</button>
+				</div>
+				#elseif($params.get('out'))
+				<div class="wrap_info">
+					<div class="txt_info">외부 엔티티를 등록할 시 수동으로 엔티티를 입력할 수 없습니다.<br>등록할 외부 엔티티의 URL을 입력해주세요.</div>
+					<div class="box_tf box_tf2 tf_focus"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스추가 -->
+						<input type="text" id="tfNtt3" class="inp_g" placeholder="URL을 입력해주세요">
+						<label for="tfNtt3" class="screen_out">URL을 입력해주세요</label>
+					</div>
+				</div>
+				#else
+				<div class="wrap_none">
+					<span class="ico_bot ico_none"></span>
+					<span class="txt_none">입력된 엔티티가 없습니다.<br>엔티티를 만들어 주세요.</span>
+				</div>
+				#end
+			</div>
+		</div>
+		#elseif($params.get('type2'))
+		<div class="group_item">
+			<div class="inner_item">
+				#if($params.get('empty'))
+				<!-- 2018-11-30 추가 -->
+				<div class="wrap_none">
+					<span class="ico_bot ico_search3"></span>
+					<span class="txt_none">검색 결과가 없습니다</span>
+				</div>
+				<!-- //2018-11-30 추가 -->
+				#else
+				<!-- 2019-01-08 수정 -->
+				<strong class="tit_card">Date and Time</strong><!-- 2019-01-10 : .tit_ > .tit_card 로 수정 -->
+				<div class="bundle_card"><!-- 2019-01-08 : div.bundle_item 추가 -->
+					<div class="card_item on"><!-- 활성화 시 on 클래스 추가, '꺼짐' > '켜짐'으로 변경  -->
+						<div class="info_card">
+							<span class="txt_card">@sys.plugin.date</span>
+						</div>
+						<button type="button" class="btn_switch ico_bot"><span class="screen_out">현재상태</span>켜짐</button>
+					</div>
+				</div>
+				<strong class="tit_card">Number and Unit</strong><!-- 2019-01-10 : tit_item > tit_card 로 수정 -->
+				<div class="bundle_card">
+					#foreach ($i  in [1..2])
+					<div class="card_item on"><!-- 활성화 시 item_on 클래스 추가, '꺼짐' > '켜짐'으로 변경 -->
+						<div class="info_card">
+							<span class="txt_card">@sys.#if($i == 1)<span class="emph_keyword">plugin</span>#end.date</span>
+						</div>
+						<button type="button" class="btn_switch ico_bot"><span class="screen_out">현재상태</span>켜짐</button>
+					</div>
+					<div class="card_item #if($i == 1)on#end"><!-- 활성화 시 on 클래스 추가, '꺼짐' > '켜짐'으로 변경 -->
+						<div class="info_card">
+							<span class="txt_card">@sys.plugin.date</span>
+							<span class="desc_card">[kakaotalk] barcode/qr code blablablablablablablablablablablablablablablabla</span>
+						</div>
+						<button type="button" class="btn_switch ico_bot"><span class="screen_out">현재상태</span>꺼짐</button>
+					</div>
+					<div class="card_item"><!-- 활성화 시 on 클래스 추가, '꺼짐' > '켜짐'으로 변경 -->
+						<div class="info_card"><!-- 키워드 검색했을 경우 해당 키워드에 span.emph_keyword 추가 -->
+							<span class="txt_card">@sys.<span class="emph_keyword">plugin</span>.date.sys.plugin.date.sys.plugin.date.sys.plugin.date</span>
+							<span class="desc_card">[kakaotalk] barcode/qr code blablablablablablablablablablablablablablablabla</span>
+						</div>
+						<button type="button" class="btn_switch ico_bot"><span class="screen_out">현재상태</span>꺼짐</button>
+					</div>
+					#end
+				</div>
+				<!-- //2019-01-08 수정 -->
+				#end
+			</div>
+		</div>
+		#else
+		<div class="group_item">
+			<div class="wrap_none">
+				<span class="ico_bot ico_none"></span>
+				<span class="txt_none">입력된 엔티티가 없습니다.<br>엔티티를 만들어 주세요.</span>
+			</div>
+		</div>
+		#end
+	</div>
+	<div class="layer_foot">
+		<button type="button" class="btn_close">
+			<span class="ico_bot ico_close2">닫기</span><!-- 2019-01-08 : .ico_close > .ico_close2 로 수정 -->
+		</button>
+	</div>
+	#if($params.get('spin'))
+	<!-- 2019-01-08 추가 -->
+	<div class="wrap_spin">
+		<div class="inner_spin">
+			<div class="tit_spin">엔티티를 업데이트 중입니다.</div>
+			<div class="ico_spin">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<p class="desc_spin">용량에 따라 완료 되기까지 시간이 걸릴 수 있으니,<br>브라우저를 종료하지 말고 잠시만 기다려주세요.</p>
+		</div>
+	</div>
+	<!-- //2019-01-08 추가 -->
+	#end
+</div>
+
+#if($params.get('toast4'))
+<!-- <div class="group_toast">
+	<div class="toast_layer">
+		<span class="txt_toast">저장하지 않은 내용이 있습니다. 한번 더 닫기를 클릭하면 저장하지 않고 닫습니다.</span>
+	</div>
+</div> 2019-01-10 삭제 -->
+#end

@@ -1,0 +1,285 @@
+<div class="layer_bot layer_generic">
+	<div class="layer_head">
+		<strong class="tit_layer">시나리오 #if($params.get('type'))기본#else공통#end 설정</strong><!-- 2018-10-22 수정 -->
+	</div>
+	<div class="layer_body">
+		<div class="group_plugin">
+			<strong class="tit_sub">블록 #if($params.get('type'))기본#else공통#end 되묻기 질문</strong><!-- 2018-10-22 수정 -->
+			<div class="box_plugin">
+				<div class="row_tf">
+					<div class="tf_item">
+						<strong class="tit_range">최대 횟수</strong>
+						<div class="opt_g on"><!-- 클릭시 opt_open 클래스추가 -->
+							<div class="screen_out">카테고리 선택상자</div>
+							<span class="screen_out">선택내용: </span>
+							<a href="#none" class="link_opt">3회 <span class="ico_bot ico_arr"></span></a>
+							<div class="wrap_opt">
+								<span class="screen_out">선택옵션: </span>
+								<ul class="list_opt">
+									<li>
+										<a href="#none" class="link_opt">1회</a>
+									</li>
+									<li>
+										<a href="#none" class="link_opt">3회</a>
+									</li>
+									<li>
+										<a href="#none" class="link_opt">5회</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="tf_item">
+						<div class="box_tf">
+							<label for="tf1" class="lab_g lab_repeat">초과 시 안내 메세지</label>
+							<input type="text" id="tf1" class="inp_g inp_repeat" placeholder="계속 이해하지 못해 다시 시작합니다">
+						</div>
+					</div>
+				</div>
+				<div class="row_tf">
+					<div class="tf_item">
+						<strong class="tit_range">최대 시간</strong>
+						<div class="opt_g on"><!-- 클릭시 opt_open 클래스추가 -->
+							<div class="screen_out">카테고리 선택상자</div>
+							<span class="screen_out">선택내용: </span>
+							<a href="#none" class="link_opt">30분  <span class="ico_bot ico_arr"></span></a>
+							<div class="wrap_opt">
+								<span class="screen_out">선택옵션: </span>
+								<ul class="list_opt">
+									<li>
+										<a href="#none" class="link_opt">10분</a>
+									</li>
+									<li>
+										<a href="#none" class="link_opt">20분</a>
+									</li>
+									<li>
+										<a href="#none" class="link_opt">30분</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="tf_item">
+						<div class="box_tf">
+							<label for="tf2" class="lab_g lab_repeat">초과 시 안내 메세지</label>
+							<input type="text" id="tf2" class="inp_g inp_repeat" placeholder="오랜 시간 응답이 없어 다시 시작합니다">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="group_plugin">
+			<strong class="tit_sub #if($params.get('fold'))on#end"><!-- 활성화 시 on 클래스 추가, '꺼짐' > '켜짐' 으로 변경 --><!-- 2018-10-22 수정 : on 클래스를 group_plugin 이 아닌 tit_sub 에 추가 -->
+				봇 제네릭 메뉴 설정<button class="btn_switch ico_bot"><span class="screen_out">현재상태</span>#if($params.get('fold'))켜짐#else꺼짐#end</button>
+			</strong>
+			<div class="box_plugin">
+				<!-- 채팅창 영역 -->
+				<div class="wrap_chat">
+					<div class="wrap_tit">
+						<strong class="tit_test">채팅방 타이틀</strong>
+						<button type="button" class="btn_prev">
+							<span class="ico_bot ico_arr">이전</span>
+						</button>
+						<button type="button" class="btn_menu">
+							<span class="ico_bot ico_menu">채팅방 메뉴 펠치기</span>
+						</button>
+					</div>
+					<div class="chat_bot">
+						<strong class="screen_out">채팅 레이어</strong>
+						<div class="wrap_set">
+							<div class="set_chat">
+								<div class="group_chat group_me">
+									<div class="item_chat">
+										<div class="bubble_chat">
+											<p class="txt_chat">말풍선말풍선말풍선</p>
+										</div>
+									</div>
+									<span class="ico_bot ico_chat"></span>
+								</div>
+								<div class="group_chat">
+									<div class="item_thumb">
+										<img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/temp/thumb_chat.png" alt="" class="img_thumb">
+									</div>
+									<div class="item_chat">
+										<div class="bubble_chat">
+											<p class="txt_chat">말풍선말풍선</p>
+										</div>
+									</div>
+									<span class="ico_bot ico_chat"></span>
+								</div>
+							</div>
+							<div class="set_chat">
+								<div class="group_chat group_me">
+									<div class="item_chat">
+										<div class="bubble_chat">
+											<p class="txt_chat">말풍선</p>
+										</div>
+									</div>
+									<span class="ico_bot ico_chat"></span>
+								</div>
+								<div class="group_chat">
+									<div class="item_thumb">
+										<img src="http://html.gt.dev.daum.net/openbuilder-2018/service/images/temp/thumb_chat.png" alt="" class="img_thumb">
+									</div>
+									<div class="item_chat">
+										<div class="bubble_chat">
+											<p class="txt_chat">말풍선1말풍선1</p>
+										</div>
+										<div class="bubble_chat">
+											<p class="txt_chat">말풍선2</p>
+										</div>
+										<div class="bubble_chat">
+											<p class="txt_chat">말풍선3말풍선3</p>
+										</div>
+									</div>
+									<span class="ico_bot ico_chat"></span>
+								</div>
+							</div>
+						</div>
+						<div class="group_btn">
+							#if($params.get('more'))
+							<div class="item_customer">
+								<span class="txt_customer">상담원으로 전화하기</span>
+								<span class="desc_customer">월, 화, 수, 목, 금, 토, 일 24시간</span>
+								<button type="button" class="btn_top">
+									<span class="ico_bot ico_top"></span>
+								</button>
+								<button type="button" class="btn_bottom">
+									<span class="ico_bot ico_bottom"></span>
+								</button>
+							</div>
+							<button type="button" class="btn_chat">
+								<span class="txt_btn">안녕하세요</span><span class="ico_bot ico_move"></span>
+							</button>
+							<button type="button" class="btn_chat">
+								<span class="txt_btn">버튼은 맥시멈 열개이고</span><span class="ico_bot ico_move"></span>
+							</button>
+							<button type="button" class="btn_chat">
+								<span class="txt_btn">버튼명은 14자가 맥시멈이네요 버튼명은 14자가 맥시멈이네요</span><span class="ico_bot ico_move"></span>
+							</button>
+							<button type="button" class="btn_chat">
+								<span class="txt_btn">버튼에 후버하면</span><span class="ico_bot ico_move"></span>
+							</button>
+							<button type="button" class="btn_chat">
+								<span class="txt_btn">위아래로 이동하는 버튼 나옵니다</span><span class="ico_bot ico_move"></span>
+							</button>
+							<button type="button" class="btn_chat">
+								<span class="txt_btn">안녕하세요</span><span class="ico_bot ico_move"></span>
+							</button>
+							<button type="button" class="btn_chat">
+								<span class="txt_btn">버튼은 맥시멈 열개이고</span><span class="ico_bot ico_move"></span>
+							</button>
+							<button type="button" class="btn_chat">
+								<span class="txt_btn">버튼명은 14자가 맥시멈이네요 버튼명은 14자가 맥시멈이네요</span><span class="ico_bot ico_move"></span>
+							</button>
+							<button type="button" class="btn_chat">
+								<span class="txt_btn">버튼에 후버하면</span><span class="ico_bot ico_move"></span>
+							</button>
+							<button type="button" class="btn_chat">
+								<span class="txt_btn">위아래로 이동하는 버튼 나옵니다</span><span class="ico_bot ico_move"></span>
+							</button>
+							#else
+							<button type="button" class="btn_chat #if($params.get('edit'))open_layer#end">버튼 설정<span class="ico_bot ico_move"></span></button><!-- 버튼 클릭 시 open_layer 클래스 추가 > layer_edit 노출 -->
+							<button type="button" class="btn_chat">+ 버튼 추가</button>
+							#end
+						</div>
+						<div class="item_write">
+							<form action="#none">
+								<fieldset>
+									<legend class="screen_out">채팅 메시지 입력 폼</legend>
+									<div class="box_tf box_tf2">
+										<!-- focus시 inp_focus 클래스 추가 -->
+										<textarea name="chatWrite" id="chatWrite" class="inp_g" placeholder=""></textarea>
+									</div>
+									<button type="button" class="btn_family">
+										<span class="screen_out">임시 버튼</span>
+									</button>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					#if($params.get('edit'))
+					<div class="layer_edit" style="display:block;top:inherit;bottom:102px;right:14px"><!-- 임시 위치값 입니다. 디자이너와 논의 후 수정 예정입니다. -->
+						<strong class="tit_layer">버튼 설정</strong>
+						<div class="row_layer">
+							<label for="tfW" class="lab_g">버튼명</label>
+							<div class="box_tf box_tf2">
+								<input type="text" id="tfW" class="inp_g" value="버튼명을 입력해주세요">
+							</div>
+							<span class="screen_out">최대 입력 가능한 글자 수</span>
+							<span class="num_text">0/14</span>
+						</div>
+						<div class="row_layer">
+							<strong class="tit_tf">버튼 기능</strong>
+							<div class="opt_g opt_g2"><!-- 클릭시 opt_open 클래스추가 -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">파일 업로드 <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">URL 입력</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">URL 입력</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">URL 입력</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="tf_plugin">
+								<div class="box_tf box_tf2">
+									<input type="text" id="tf002" class="inp_g" value="파일을 업로드해주세요">
+									<label for="tf002" class="screen_out">파일을 업로드해주세요</label>
+								</div>
+							</div>
+						</div>
+						<div class="btn_layer">
+							<div class="wrap_btn">
+								<button type="button" class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+								<button type="button" class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 > btn_g2로 수정 -->
+							</div>
+						</div>
+						<button type="button" class="btn_util btn_del disabled"><!-- 비활성화 시 disabled 클래스 추가 -->
+							<span class="ico_bot ico_del"></span>
+							<span class="tooltip_btn">삭제</span>
+						</button>
+						<span class="ico_bot ico_bubble"></span>
+					</div>
+					#end
+				</div>
+				<!-- //채팅창 영역 -->
+				<!-- 2018-12-13 추가 -->
+				<div class="info_chat">
+					<span class="wrap_tip">
+						<a href="#none" class="ico_bot ico_help">도움말</a>
+						<span class="layer_tip">
+							<span class="txt_tip">상담원 전환 설정에 대하여상담원 전환 설정에 대하여</span>
+						</span>
+					</span>
+					<a href="#none" class="link_tip">상담원 전환 설정에 대하여</a>
+				</div>
+				<!-- //2018-12-13 추가 -->
+			</div>
+		</div>
+		<!-- 2018-10-22 추가 -->
+		<div class="group_plugin">
+			<strong class="tit_sub">확장 시나리오 (Extension) 설정</strong>
+			<div class="box_faq #if($params.get('on'))on#end"><!-- 활성화 시 on 클래스 추가, '꺼짐' > '켜짐' 으로 변경 -->
+				<em class="txt_emph">FAQ봇 확장 블록 사용</em>
+				<button class="btn_switch ico_bot"><span class="screen_out">현재상태</span>#if($params.get('on'))켜짐#else꺼짐#end</button>
+				<p class="txt_desc">확장 시나리오 내 FAQ봇 확장 블럭이 신규 생성되어 이제 지식데이터 업로드가 가능합니다.</p>
+			</div>
+		</div>
+		<!-- //2018-10-22 추가 -->
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			<button class="btn_g btn_g2" #if($params.get('type')) #else disabled#end>확인</button><!-- 2018-07-31 : btn_g5 > btn_g2로 수정 -->
+		</div>
+	</div>
+</div>

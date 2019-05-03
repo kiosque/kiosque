@@ -1,0 +1,219 @@
+<div class="wrap_guide" style="width:1200px;margin:0 auto;padding:200px 100px">
+	<em class="p_info">버튼 타입</em>
+	<div class="p_subinfo">
+		<p>* W96-H32-T12(기본)</p>
+		<p>* W96-H40-T14(오버라이딩)</p>
+		<strong>버튼 타입1(마우스호버)</strong>
+		<div class="group_btn">
+			<button type="button" class="btn_g">취소</button>
+			<button type="button" class="btn_g btn_g3">취소</button>
+			<button type="button" class="btn_g btn_g2">확인</button>
+			<button type="button" class="btn_g btn_g2" disabled>확인</button>
+			<button type="button" class="btn_g btn_g4">삭제</button>
+		</div>
+		<p>* W40-H40(기본)</p>
+		<p>* W32-H32(오버라이딩)</p>
+		<strong>버튼 타입2(마우스호버)</strong>
+		<div class="group_btn">
+			<button type="button" class="btn_util btn_add">
+				<span class="ico_bot ico_add2"></span>
+				<span class="tooltip_btn">버튼명</span>
+			</button>
+			<button type="button" class="btn_util btn_add btn_add2">
+				<span class="ico_bot ico_add2"></span>
+				<span class="tooltip_btn">버튼명</span>
+			</button>
+			<button type="button" class="btn_util btn_add btn_add2" disabled>
+				<span class="ico_bot ico_add2"></span>
+				<span class="tooltip_btn">버튼명</span>
+			</button>
+		</div>
+		<strong>버튼 타입3(마우스호버)</strong>
+		<div class="group_btn">
+			<button type="button" class="btn_util btn_add btn_add5">
+				<span class="ico_bot ico_add2">추가</span>
+				<span class="ico_bot ico_arr"></span>
+			</button>
+			<button type="button" class="btn_util btn_add btn_add6">
+				<span class="ico_bot ico_add2">추가</span>
+				<span class="ico_bot ico_arr"></span>
+			</button>
+		</div>
+	</div>
+
+	<em class="p_info">인풋, 셀렉트 박스</em>
+	<div class="p_subinfo">
+		<p>* H32-T12(기본)</p>
+		<p>* H32-T14px / H40-T16(오버라이딩)</p>
+		<div style="width:200px;float:left;margin-right:50px">
+			<strong>기본타입(화이트) H32, font-size:12px</strong>
+			<div class="box_tf ">
+				<input type="text" id="tfKey$key" class="inp_g" placeholder="검색">
+				<label for="tfKey$key" class="screen_out">검색어 입력</label>
+			</div>
+			<strong>포커스 (.tf_focus)</strong>
+			<div class="box_tf tf_focus"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error 클래스추가 -->
+				<input type="text" id="tfKey$key" class="inp_g" value="">
+				<label for="tfKey$key" class="screen_out">검색어 입력</label>
+			</div>
+			<strong>입력완료 (.on)</strong>
+			<div class="box_tf on">
+				<input type="text" id="tfKey$key" class="inp_g" value="검색">
+				<label for="tfKey$key" class="screen_out">검색어 입력</label>
+			</div>
+			<strong>에러 (.tf_error)</strong>
+			<div class="box_tf tf_error">
+				<input type="text" id="tfKey$key" class="inp_g" value="에러">
+				<label for="tfKey$key" class="screen_out">검색어 입력</label>
+			</div>
+		</div>
+		<div style="width:200px;float:left;margin-right:100px">
+			<strong>type2(그레이) H32, font-size:12px</strong>
+			<div class="box_tf box_tf2">
+				<input type="text" id="tfKey$key" class="inp_g" placeholder="검색">
+				<label for="tfKey$key" class="screen_out">검색어 입력</label>
+			</div>
+			<strong>포커스 (.tf_focus)</strong>
+			<div class="box_tf box_tf2 tf_focus">
+				<input type="text" id="tfKey$key" class="inp_g" value="">
+				<label for="tfKey$key" class="screen_out">검색어 입력</label>
+			</div>
+			<strong>입력완료 (.on)</strong>
+			<div class="box_tf box_tf2 on">
+				<input type="text" id="tfKey$key" class="inp_g" value="입력완료">
+				<label for="tfKey$key" class="screen_out">검색어 입력</label>
+			</div>
+			<strong>에러 (.tf_error)</strong>
+			<div class="box_tf box_tf2 tf_error">
+				<input type="text" id="tfKey$key" class="inp_g" value="에러">
+				<label for="tfKey$key" class="screen_out">검색어 입력</label>
+			</div>
+		</div>
+		<div style="width:200px;float:left;margin-right:50px">
+			<strong>기본타입(화이트) H32</strong>
+			<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+				#parse("/service/guide/sample_opt.html")
+			</div>
+			<strong>입력완료(.on)</strong>
+			<div class="opt_g on"><!-- 입력완료시 on / 비활성시 disabled / 에러일경우 opt_error 클래스추가 -->
+				#parse("/service/guide/sample_opt.html")
+			</div>
+			<strong>비활성 (.disabled)</strong>
+			<div class="opt_g disabled"><!-- 클릭시 opt_open 클래스추가 -->
+				#parse("/service/guide/sample_opt.html")
+			</div>
+			<strong>에러 (.opt_error)</strong>
+			<div class="opt_g opt_error"><!-- 클릭시 opt_open 클래스추가 -->
+				#parse("/service/guide/sample_opt.html")
+			</div>
+		</div>
+		<div style="width:200px;float:left;margin-right:100px">
+			<strong>type2(그레이) H32</strong>
+			<div class="opt_g opt_g2"><!-- 클릭시 opt_open 클래스추가 -->
+				#parse("/service/guide/sample_opt.html")
+			</div>
+			<strong>입력완료 (.on)</strong>
+			<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 -->
+				#parse("/service/guide/sample_opt.html")
+			</div>
+			<strong>비활성 (.disabled)</strong>
+			<div class="opt_g opt_g2 disabled"><!-- 클릭시 opt_open 클래스추가 -->
+				#parse("/service/guide/sample_opt.html")
+			</div>
+			<strong>에러  (.opt_error)</strong>
+			<div class="opt_g opt_g2 opt_error"><!-- 클릭시 opt_open 클래스추가 -->
+				#parse("/service/guide/sample_opt.html")
+			</div>
+		</div>
+	</div>
+
+	<em class="p_info">체크박스, 라디오 버튼, 스위치 버튼</em>
+	<div class="p_subinfo">
+		<strong>체크박스</strong>
+		<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+			<input type="checkbox" id="checkRange" class="inp_g">
+			<label for="checkRange" class="lab_g">체크박스<span class="ico_bot ico_check"></span></label>
+		</div>
+
+		<strong>라디오 버튼</strong>
+		<div class="item_radio" style="padding-left:26px">
+			<input type="radio" name="inpRadio" id="inpRadio01" class="inp_g">
+			<label for="inpRadio01" class="lab_g">라디오 버튼<span class="ico_bot ico_radio"></span></label>
+		</div>
+
+		<strong>스위치 버튼</strong>
+		<p>* 스위치 켜짐/꺼짐 기능만 있는 경우 button에 on 클래스 추가</p>
+		<p>* 스위치 켜짐 > 내용 있는 경우 부모에 on 클래스 추가</p>
+		<div>
+			<button type="button" class="btn_switch ico_bot"><span class="screen_out">현재상태</span>꺼짐</button>
+		</div>
+		<div class="on">
+			<button type="button" class="btn_switch ico_bot on"><span class="screen_out">현재상태</span>꺼짐</button>
+		</div>
+	</div>
+
+	<em class="p_info">툴팁</em>
+	<div class="p_subinfo">
+		<strong>알림형</strong>
+		<span class="wrap_tip">
+			<a href="#none" class="ico_bot ico_help">도움말</a>
+			<span class="layer_tip" style="display:block">
+				<span class="txt_tip">타 그룹에 속해있지 않은 엔티티 목록만 보여집니다</span>
+			</span>
+		</span>
+		<strong>알림 - 타이틀형</strong>
+		<span class="wrap_tip">
+			<a href="#none" class="ico_bot ico_help">도움말</a>
+			<span class="layer_tip" style="display:block">
+				<span class="tit_tip">그룹 되묻기 질문을 설정해주세요! 최대 너비 이정도 이정도</span>
+				<span class="txt_tip">그룹 되묻기 질문은 별도의 설정을 할 수 있습니다.</span>
+			</span>
+		</span>
+		<strong>일회형</strong>
+		<span class="wrap_tip tip_type">
+			<a href="#none" class="ico_bot ico_help">도움말</a>
+			<span class="layer_tip" style="display:block">
+				<span class="txt_tip">그룹 되묻기 질문은 별도의 설정을 할 수 있습니다.</span>
+				<button type="button" class="btn_close">
+					<span class="ico_bot ico_close3">닫기</span>
+				</button>
+			</span>
+		</span>
+		<strong>일회 - 타이틀형</strong>
+		<span class="wrap_tip tip_type">
+			<a href="#none" class="ico_bot ico_help">도움말</a>
+			<span class="layer_tip" style="display:block">
+				<span class="tit_tip">그룹 되묻기 질문을 설정해주세요! 이것도 최대너비 최대너비</span>
+				<span class="txt_tip">그룹 되묻기 질문은 별도의 설정을 할 수 있습니다.</span>
+				<button type="button" class="btn_close">
+					<span class="ico_bot ico_close3">닫기</span>
+				</button>
+			</span>
+		</span>
+	</div>
+
+	<em class="p_info">토스트 알람</em>
+	<div class="p_subinfo" style="height:250px">
+		<div style="position: absolute">
+			<div class="toast_layer toast_error">
+				<span class="txt_toast">배포가 정상적으로 완료되지 않았습니다. 잠시 후, 다시 진행해주세요.</span>
+			</div>
+			<div class="toast_layer">
+				<span class="txt_toast">권한 내용이 수정되었습니다.</span>
+			</div>
+			<div class="toast_layer">
+				<span class="txt_toast">파일 적용중입니다.</span>
+				<div class="ico_spin">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+			<div class="toast_layer">
+				<span class="txt_toast">파일 적용이 완료되었습니다.</span>
+				<button type="button" class="btn_toast">확인</button>
+			</div>
+		</div>
+	</div>
+</div>

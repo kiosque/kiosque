@@ -1,0 +1,232 @@
+<!-- 블록 메인 -->
+#if($params.get('empty'))
+
+#else
+<!-- <div class="contain_head">
+	<div class="wrap_tit">
+		<h3 id="#kakaoBody" class="screen_out">나의 프로젝트</h3>
+	</div>
+</div> -->
+#end
+<div class="contain_cont">
+	<h3 id="#kakaoBody" class="screen_out">내 봇</h3>
+	<ul class="list_project">
+		<li>
+			<div class="item_project">
+			<button type="button" class="btn_add">
+				<span class="ico_bot ico_add">프로젝트 만들기</span>
+			</button>
+			</div>
+		</li>
+		<li>
+			<div class="item_project off"><!-- 프로젝트 비활성화일 경우 off 클래스 추가 -->
+				<em class="txt_emph">OFF</em>
+				<a href="#none">
+					<strong class="tit_item">타이틀을 두 줄만큼 가진 봇이라면 - 베타베타베타베타베타</strong>
+				</a>	
+				<span class="txt_info"><span class="ico_bot ico_plusfriend">플친</span>소녀전선 댕댕봇</span>
+				<button type="button" class="btn_util btn_alarm #if($params.get('openLayer'))open_layer#end"><!-- 클릭 시 open_layer 클래스 추가 -->
+					<span class="ico_bot ico_alarm"></span>
+					<span class="tooltip_btn">알림</span>
+				</button>
+				<!-- 2018-07-03 추가 -->
+				<div class="layer_alarm">
+					<strong class="screen_out">알림 설정 레이어</strong>
+					<div class="item_alarm"><!-- 활성화 시 on 클래스 추가 > item_group 노출, 현재상태 '켜짐' > '꺼짐'으로 변경 -->
+						<div class="info_item">
+							<span class="ico_bot ico_extend"></span>
+							<span class="txt_item">오픈 빌더에서 알림 받기</span>
+						</div>
+						<button class="btn_switch ico_bot"><span class="screen_out">현재상태</span>켜짐</button>
+					</div>
+					<div class="item_group">
+						<ul class="list_alarm">
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm" class="inp_g">
+									<label for="checkAlarm" class="lab_g">공지사항 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm2" class="inp_g">
+									<label for="checkAlarm2" class="lab_g">문의하기 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm3" class="inp_g">
+									<label for="checkAlarm3" class="lab_g">봇의 마스터 관리자 변경 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm4" class="inp_g">
+									<label for="checkAlarm4" class="lab_g">봇의 상태전환 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm5" class="inp_g">
+									<label for="checkAlarm5" class="lab_g">봇의 생성 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm6" class="inp_g">
+									<label for="checkAlarm6" class="lab_g">봇의 삭제 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm7" class="inp_g">
+									<label for="checkAlarm7" class="lab_g">봇의 연결 계정 변경 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm8" class="inp_g">
+									<label for="checkAlarm8" class="lab_g">봇 장애 대응 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="item_alarm"><!-- 활성화 시 on 클래스 추가, 현재상태 '켜짐' > '꺼짐'으로 변경 -->
+						<div class="info_item">
+							<span class="ico_bot ico_extend"></span>
+							<span class="txt_item">이메일로 알림 받기</span>
+						</div>
+						<button class="btn_switch ico_bot"><span class="screen_out">현재상태</span>꺼짐</button>
+					</div>
+					<div class="item_alarm"><!-- 활성화 시 on 클래스 추가, 현재상태 '켜짐' > '꺼짐'으로 변경 -->
+						<div class="info_item">
+							<span class="ico_bot ico_extend"></span>
+							<span class="txt_item">카카오톡으로 알림 받기</span>
+						</div>
+						<button class="btn_switch ico_bot"><span class="screen_out">현재상태</span>꺼짐</button>
+					</div>
+					<p class="info_g">* 알림설정 시 봇의 각종 오류에 대한 알림을 받을 수 있습니다. 연결되어 있는 플러스친구 계정의 카카오톡 메시지로 전송됩니다.</p>
+				</div>
+				<!-- //2018-07-03 추가 -->
+			</div>
+		</li>
+		<li>
+			<div class="item_project">
+				<em class="txt_emph">ON</em>
+				<a href="#none">
+					<strong class="tit_item">버거킹 딜리버리</strong>
+				</a>
+				<span class="txt_info"><span class="ico_bot ico_plusfriend">플친</span>버거킹 딜리버리</span>
+				<button type="button" class="btn_util btn_alarm">
+					<span class="ico_bot ico_alarm"></span>
+					<span class="tooltip_btn">알림</span>
+				</button>
+			</div>
+		</li>
+		<li>
+			<div class="item_project off"><!-- 프로젝트 비활성화일 경우 off 클래스 추가 -->
+				<em class="txt_emph">OFF</em>
+				<a href="#none">
+					<strong class="tit_item">타이틀을 두 줄만큼 가진 봇이라면 - 베타베타베타베타베타</strong>
+				</a>
+				<span class="txt_info"><span class="ico_bot ico_plusfriend">플친</span>소녀전선 댕댕봇</span>
+				<button type="button" class="btn_util btn_alarm #if($params.get('openLayer'))open_layer#end">
+					<span class="ico_bot ico_alarm"></span>
+					<span class="tooltip_btn">알림</span>
+				</button>
+				<!-- 2018-07-03 추가 -->
+				<div class="layer_alarm">
+					<strong class="screen_out">알림 설정 레이어</strong>
+					<div class="item_alarm on"><!-- 활성화 시 on 클래스 추가 > item_group 노출, 현재상태 '켜짐' > '꺼짐'으로 변경 -->
+						<div class="info_item">
+							<span class="ico_bot ico_extend"></span>
+							<span class="txt_item">오픈 빌더에서 알림 받기</span>
+						</div>
+						<button class="btn_switch ico_bot"><span class="screen_out">현재상태</span>켜짐</button>
+					</div>
+					<div class="item_group">
+						<ul class="list_alarm">
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm11" class="inp_g">
+									<label for="checkAlarm11" class="lab_g">공지사항 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm12" class="inp_g" checked="checked">
+									<label for="checkAlarm12" class="lab_g">문의하기 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm13" class="inp_g">
+									<label for="checkAlarm13" class="lab_g">봇의 마스터 관리자 변경 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm14" class="inp_g">
+									<label for="checkAlarm14" class="lab_g">봇의 상태전환 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm15" class="inp_g">
+									<label for="checkAlarm15" class="lab_g">봇의 생성 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm16" class="inp_g">
+									<label for="checkAlarm16" class="lab_g">봇의 삭제 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm17" class="inp_g">
+									<label for="checkAlarm17" class="lab_g">봇의 연결 계정 변경 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+							<li>
+								<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+									<input type="checkbox" id="checkAlarm18" class="inp_g">
+									<label for="checkAlarm18" class="lab_g">봇 장애 대응 알림<span class="ico_bot ico_check"></span></label>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="item_alarm"><!-- 활성화 시 on 클래스 추가, 현재상태 '켜짐' > '꺼짐'으로 변경 -->
+						<div class="info_item">
+							<span class="ico_bot ico_extend"></span>
+							<span class="txt_item">이메일로 알림 받기</span>
+						</div>
+						<button class="btn_switch ico_bot"><span class="screen_out">현재상태</span>꺼짐</button>
+					</div>
+					<div class="item_alarm"><!-- 활성화 시 on 클래스 추가, 현재상태 '켜짐' > '꺼짐'으로 변경 -->
+						<div class="info_item">
+							<span class="ico_bot ico_extend"></span>
+							<span class="txt_item">카카오톡으로 알림 받기</span>
+						</div>
+						<button class="btn_switch ico_bot"><span class="screen_out">현재상태</span>꺼짐</button>
+					</div>
+					<p class="info_g">* 알림설정 시 봇의 각종 오류에 대한 알림을 받을 수 있습니다. 연결되어 있는 플러스친구 계정의 카카오톡 메시지로 전송됩니다.</p>
+				</div>
+				<!-- //2018-07-03 추가 -->
+			</div>
+		</li>
+		<li>
+			<div class="item_project">
+				<em class="txt_emph">ON</em>
+				<a href="#none">
+					<strong class="tit_item">버거킹 딜리버리</strong>
+				</a>
+				<span class="txt_info"><span class="ico_bot ico_plusfriend">플친</span>버거킹 딜리버리</span>
+				<button type="button" class="btn_util btn_alarm">
+					<span class="ico_bot ico_alarm"></span>
+					<span class="tooltip_btn">알림</span>
+				</button>
+			</div>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,44 @@
+#if($params.get('layer')=="join_error")
+<div class="layer_bot layer_join">
+	<div class="layer_head">
+		<strong class="tit_layer">가입불가 계정입니다</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_layer">ethan.k@kakaocorp.com 계정은 최근 7일 이내에 탈퇴하여 재가입이 불가능합니다</p>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g4">확인</button>
+		</div>
+	</div>
+</div>
+#elseif($params.get('layer')=="join_error2")
+<div class="layer_bot layer_join">
+	<div class="layer_head">
+		<strong class="tit_layer">휴면 해제 동의</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_layer">ethan.k@kakaocorp.com 계정은 1년 이상 활동기록이 없어 휴면계정으로 전환되었습니다 <br><br>휴면 계정 해제에 동의하시겠습니까?</p>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">동의</button>
+		</div>
+	</div>
+</div>
+#elseif($params.get('layer')=="join_obt")
+<div class="layer_bot layer_join">
+	<div class="layer_head">
+		<strong class="tit_layer">이미 신청된 계정입니다</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_layer">님하는 이미 신청했으니 메일로 회송을 기다리셈</p>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g2">확인</button>
+		</div>
+	</div>
+</div>
+#end

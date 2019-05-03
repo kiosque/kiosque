@@ -1,0 +1,616 @@
+#if($params.get('respond'))
+<!-- 장애 대응 설정 -->
+<div class="layer_bot layer_respond">
+	<div class="layer_head">
+		<strong class="tit_layer">장애대응 설정</strong>
+		<span class="info_g">장애 스위치가 자동적으로 켜질 수 있는 조건을 설정합니다</span>
+	</div>
+	<div class="layer_body">
+		<div class="row_respond">
+			<strong class="tit_sub">임계치 조건 설정</strong>
+			<div class="group_tf">
+				<div class="row_tf">
+					<div class="txt_tf">1분에</div>
+					<div class="box_tf ">
+						<input type="text" id="tfRes" class="inp_g" placeholder="입력">
+						<label for="tfRes" class="screen_out">횟수를 입력해주세요</label>
+					</div>
+					회 이상 에러시
+				</div>
+				<div class="row_tf">
+					<div class="txt_tf">봇 응답의</div>
+					<div class="box_tf ">
+						<input type="text" id="tfRes2" class="inp_g" placeholder="입력">
+						<label for="tfRes2" class="screen_out">확률을 입력해주세요</label>
+					</div>
+					% 이상에서 에러 발생 시
+				</div>
+			</div>
+		</div>
+		<div class="row_respond">
+			<strong class="tit_sub">적용 범위</strong>
+			<div class="group_checked">
+				<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+					<input type="checkbox" id="checkRange" class="inp_g">
+					<label for="checkRange" class="lab_g">봇 전체<span class="ico_bot ico_check"></span></label>
+				</div>
+				<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+					<input type="checkbox" id="checkRange2" class="inp_g">
+					<label for="checkRange2" class="lab_g">블록별<span class="ico_bot ico_check"></span></label>
+				</div>
+				<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+					<input type="checkbox" id="checkRange3" class="inp_g">
+					<label for="checkRange3" class="lab_g">스킬별<span class="ico_bot ico_check"></span></label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+		</div>
+	</div>
+</div>
+
+#elseif($params.get('mini'))
+<div class="layer_bot layer_setting">
+	<div class="layer_head">
+		<ul class="list_tab"><!-- 2017-07-06 수정 : tab_layer > list_tab -->
+			<li><!-- 활성화시 on 클래스추가 -->
+				<a href="#none" class="link_tab">카카오톡</a>
+			</li>
+			<li class="on">
+				<a href="#none" class="link_tab">카카오 미니</a>
+			</li>
+		</ul>
+	</div>
+	<div class="layer_body">
+		<div class="wrap_tit">
+			<strong class="tit_layer">기본 응답 설정</strong>
+		</div>
+		<div class="box_view">
+			<div class="card_error">
+				<!-- <strong class="tit_card">일시적인 오류가 발생하였습니다.</strong>  2018-06-20 삭제 -->
+				<!-- 2018-06-20 추가 -->
+				<div class="box_tf">
+					<textarea id="tfDeploy" name="textarea" rows="5" cols="50" class="tf_description" placeholder="일시적인 오류가 발생하였습니다." disabled></textarea>
+					<label for="tfDeploy" class="screen_out">내용 입력</label>
+				</div>
+				<!-- //2018-06-20 추가 -->
+			</div>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+		</div>
+	</div>
+</div>
+
+#else
+<!-- 카카오톡 : 기본 응답 설정_텍스트형 -->
+<div class="layer_bot layer_setting">
+	<div class="layer_head">
+		<ul class="list_tab"><!-- 2017-07-06 수정 : tab_layer > list_tab -->
+			<li class="on"><!-- 활성화시 on 클래스추가 -->
+				<a href="#none" class="link_tab">카카오톡</a>
+			</li>
+			<li>
+				<a href="#none" class="link_tab">카카오 미니</a>
+			</li>
+		</ul>
+	</div>
+	<div class="layer_body">
+		<div class="wrap_tit">
+			<strong class="tit_layer">기본 응답 설정</strong>
+			<!-- 클릭시 opt_open 클래스추가 -->
+			<div class="opt_g opt_g2"><!-- 2018-07-31 : opt_g4 삭제 -->
+				<div class="screen_out">카테고리 선택상자</div>
+				<span class="screen_out">선택내용: </span>
+				<a href="#none" class="link_opt">응답 유형 <span class="ico_bot ico_arr"></span></a>
+				<div class="wrap_opt">
+					<span class="screen_out">선택옵션: </span>
+					<ul class="list_opt">
+						<li>
+							<a href="#none" class="link_opt">텍스트형</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">이미지형</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">카드형</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="box_view">
+			<div class="card_view type_card">
+				<div class="box_card">
+					<div class="info_desc"><!-- 클릭 시 open_layer 클래스 추가 -->
+						<a href="#none" class="desc_card">
+							<strong class="tit_card">이런 날씨에 이런 아이템 어떠세요?</strong>
+						</a>
+						<div class="layer_card">
+							<strong class="tit_layer">텍스트 입력</strong>
+							<div class="row_layer">
+								<div class="tf_plugin">
+									<label for="tfCard2" class="screen_out">텍스트 입력</label>
+									<textarea id="tfCard2" name="textarea" rows="5" class="tf_description" placeholder="텍스트를 입력해주세요"></textarea>
+									<span class="screen_out">최대 입력 글자수</span>
+									<span class="txt_byte">0/400</span>
+								</div>
+								<div class="opt_tf open_opt"><!-- 버튼 클릭 시 open_opt 클래스 추가 -->
+									<div class="item_opt ">
+										<span class="tit_opt">파라미터 추가</span>
+										<button type="button" class="btn_add btn_add5">
+											<span class="ico_bot ico_add"></span>
+											<span class="ico_bot ico_arr"></span>
+										</button>
+										<div class="layer_opt">
+											<ul>
+												<li>
+													<span class="txt_opt">town(@sys.town)</span>
+												</li>
+												<li>
+													<span class="txt_opt">temp(@sys.temperature)</span>
+												</li>
+												<li>
+													<span class="txt_opt">day(@sys.date)</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<button type="button" class="btn_util btn_del disabled"><!-- 비활성화 시 disabled 클래스 추가 -->
+								<span class="ico_bot ico_del"></span>
+								<span class="tooltip_btn">삭제</span>
+							</button>
+							<div class="btn_layer">
+								<div class="wrap_btn">
+									<button type="button" class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+									<button type="button" class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 > btn_g2로 수정 -->
+								</div>
+							</div>
+							<span class="ico_bot ico_bubble"></span>
+						</div>
+					</div>
+				</div>
+				<div class="box_btn"><!-- 2018-11-02 : btn_card > box_btn 로 수정 -->
+					<div class="wrap_layer"><!-- 2018-07-31 : div.wrap_layer 추가 -->
+						<button type="button" class="btn_tf">+ 버튼 추가</button>
+						<div class="layer_edit">
+							<strong class="tit_layer">버튼 설정</strong>
+							<div class="row_layer">
+								<label for="tf093" class="lab_g">버튼명</label>
+								<div class="box_tf box_tf2">
+									<input type="text" id="tf093" class="inp_g" value="버튼명을 입력해주세요">
+								</div>
+								<span class="screen_out">최대 입력 가능한 글자 수</span>
+								<span class="num_text">0/14</span>
+							</div>
+							<div class="row_layer">
+								<strong class="tit_tf">버튼 기능</strong>
+								<div class="opt_g opt_g2"><!-- 클릭시 opt_open 클래스추가 -->
+									<div class="screen_out">카테고리 선택상자</div>
+									<span class="screen_out">선택내용: </span>
+									<a href="#none" class="link_opt">파일 업로드 <span class="ico_bot ico_arr"></span></a>
+									<div class="wrap_opt">
+										<span class="screen_out">선택옵션: </span>
+										<ul class="list_opt">
+											<li>
+												<a href="#none" class="link_opt">URL 입력</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">URL 입력</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">URL 입력</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="tf_plugin">
+									<div class="box_tf box_tf2">
+										<input type="text" id="tf0021" class="inp_g" placeholder="파일을 업로드해주세요">
+										<label for="tf0021" class="screen_out">파일 업로드</label>
+									</div>
+								</div>
+							</div>
+							<div class="btn_layer">
+								<div class="wrap_btn">
+									<button type="button" class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+									<button type="button" class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 > btn_g2로 수정 -->
+								</div>
+							</div>
+							<button type="button" class="btn_util btn_del disabled"><!-- 비활성화 시 disabled 클래스 추가 -->
+								<span class="ico_bot ico_del"></span>
+								<span class="tooltip_btn">삭제</span>
+							</button>
+							<span class="ico_bot ico_bubble"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+		</div>
+	</div>
+</div>
+
+<!-- 카카오톡 : 기본 응답 설정_이미지형 -->
+<div class="layer_bot layer_setting" style="top:1400px">
+	<div class="layer_head">
+		<ul class="list_tab"><!-- 2017-07-06 수정 : tab_layer > list_tab -->
+			<li class="on"><!-- 활성화시 on 클래스추가 -->
+				<a href="#none" class="link_tab">카카오톡</a>
+			</li>
+			<li>
+				<a href="#none" class="link_tab">카카오 미니</a>
+			</li>
+		</ul>
+	</div>
+	<div class="layer_body">
+		<div class="wrap_tit">
+			<strong class="tit_layer">기본 응답 설정</strong>
+			<!-- 클릭시 opt_open 클래스추가 -->
+			<div class="opt_g opt_g2"><!-- 2018-07-31 : opt_g4 삭제 -->
+				<div class="screen_out">카테고리 선택상자</div>
+				<span class="screen_out">선택내용: </span>
+				<a href="#none" class="link_opt">응답 유형 <span class="ico_bot ico_arr"></span></a>
+				<div class="wrap_opt">
+					<span class="screen_out">선택옵션: </span>
+					<ul class="list_opt">
+						<li>
+							<a href="#none" class="link_opt">텍스트형</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">이미지형</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">카드형</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="box_view">
+			<div class="card_view type_card2">
+				<div class="box_card"><!-- 클릭 시 open_layer 클래스 추가 > layer_thumb 레이어 노출 -->
+					<a href="#none" class="info_thumb ">
+						<span class="txt_link">+ 이미지 추가</span>
+					</a>
+					<div class="layer_thumb">
+						<strong class="tit_layer">이미지 등록  <span class="ico_bot ico_star"></span></strong>
+						<div class="row_layer">
+							<div class="opt_g opt_g2"><!-- 클릭시 opt_open 클래스추가 -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">파일 업로드 <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">URL 입력</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">URL 입력</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">URL 입력</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="tf_plugin">
+								<div class="box_tf box_tf2">
+									<input type="text" id="tfImg6" class="inp_g" placeholder="이미지 파일을 업로드해주세요">
+									<label for="tfImg6" class="screen_out">이미지 파일 업로드</label>
+								</div>
+								<span class="screen_out">최대 입력 글자수</span>
+								<span class="txt_byte">0KB/3,200KB</span>
+							</div>
+							<span class="txt_noti">* 전송된 말풍선에서 이미지를 누르면 이미지 뷰어로 원본이미지를 확인 할 수 있습니다</span>
+						</div>
+						<div class="btn_layer">
+							<div class="wrap_btn">
+								<button type="button" class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+								<button type="button" class="btn_g btn_g2" disabled="">확인</button><!-- 2018-07-31 : btn_g5 > btn_g2로 수정 -->
+							</div>
+						</div>
+						<button type="button" class="btn_util btn_del disabled"><!-- 비활성화 시 disabled 클래스 추가 -->
+							<span class="ico_bot ico_del">삭제</span>
+						</button>
+						<span class="ico_bot ico_bubble"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+		</div>
+	</div>
+</div>
+
+<!-- 카카오톡 : 기본 응답 설정_카드형 -->
+<div class="layer_bot layer_setting" style="top:2140px">
+	<div class="layer_head">
+		<ul class="list_tab"><!-- 2017-07-06 수정 : tab_layer > list_tab -->
+			<li class="on"><!-- 활성화시 on 클래스추가 -->
+				<a href="#none" class="link_tab">카카오톡</a>
+			</li>
+			<li>
+				<a href="#none" class="link_tab">카카오 미니</a>
+			</li>
+		</ul>
+	</div>
+	<div class="layer_body">
+		<div class="wrap_tit">
+			<strong class="tit_layer">기본 응답 설정</strong>
+			<!-- 클릭시 opt_open 클래스추가 -->
+			<div class="opt_g opt_g2"><!-- 2018-07-31 : opt_g4 삭제 -->
+				<div class="screen_out">카테고리 선택상자</div>
+				<span class="screen_out">선택내용: </span>
+				<a href="#none" class="link_opt">응답 유형 <span class="ico_bot ico_arr"></span></a>
+				<div class="wrap_opt">
+					<span class="screen_out">선택옵션: </span>
+					<ul class="list_opt">
+						<li>
+							<a href="#none" class="link_opt">텍스트형</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">이미지형</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">카드형</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="box_view">
+			<div class="card_view">
+				<div class="box_card">
+					<a href="#none" class="info_thumb "><!-- 클릭 시 open_layer 클래스 추가 -->
+						<span class="txt_link">+ 이미지 추가</span>
+					</a>
+					<div class="layer_thumb">
+						<a href="#none" class="info_thumb">
+							<strong class="tit_layer">이미지 등록  <span class="ico_bot ico_star"></span></strong>
+						</a>
+						<div class="row_layer">
+							<a href="#none" class="info_thumb "></a>
+							<div class="opt_g opt_g2">
+								<a href="#none" class="info_thumb "><!-- 클릭시 opt_open 클래스추가 -->
+									<div class="screen_out">카테고리 선택상자</div>
+									<span class="screen_out">선택내용: </span>
+								</a>
+								<a href="#none" class="link_opt">파일 업로드 <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">URL 입력</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">URL 입력</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">URL 입력</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="tf_plugin">
+								<div class="box_tf box_tf2">
+									<input type="text" id="tfImg7" class="inp_g" placeholder="이미지 파일을 업로드해주세요">
+									<label for="tfImg7" class="screen_out">이미지 파일 업로드</label>
+								</div>
+								<span class="screen_out">최대 입력 글자수</span>
+								<span class="txt_byte">0KB/3,200KB</span>
+							</div>
+							<span class="txt_noti">* 전송된 말풍선에서 이미지를 누르면 이미지 뷰어로 원본이미지를 확인 할 수 있습니다</span>
+						</div>
+						<div class="btn_layer">
+							<div class="wrap_btn">
+								<button type="button" class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+								<button type="button" class="btn_g btn_g2" disabled="">확인</button><!-- 2018-07-31 : btn_g5 > btn_g2로 수정 -->
+							</div>
+						</div>
+						<button type="button" class="btn_util btn_del disabled"><!-- 비활성화 시 disabled 클래스 추가 -->
+							<span class="ico_bot ico_del">삭제</span>
+						</button>
+						<span class="ico_bot ico_bubble"></span>
+					</div>
+					<div class="info_desc "><!-- 클릭 시 open_layer 클래스 추가 -->
+						<a href="#none" class="desc_card">
+							<strong class="tit_card">
+								<em class="txt_emph">타이틀을 입력해주세요</em>
+							</strong>
+							<span class="txt_card">
+								<em class="txt_emph">텍스트를 입력해주세요</em>
+							</span>
+						</a>
+						<div class="layer_card">
+							<strong class="tit_layer">텍스트 입력</strong>
+							<div class="row_layer">
+								<label for="tfCard" class="lab_g">타이틀</label>
+								<div class="box_tf box_tf2 on"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error 클래스추가 -->
+									<input type="text" id="tfCard" class="inp_g" value="오늘 날씨를 알려드릴께요">
+								</div>
+								<span class="screen_out">최대 입력 글자수</span>
+								<span class="txt_byte">11/20</span>
+							</div>
+							<div class="row_layer">
+								<label for="tfCard3" class="lab_g">설명</label>
+								<div class="box_tf tf_plugin"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error 클래스추가 -->
+									<textarea id="tfCard3" name="textarea" rows="5" class="tf_description" placeholder=""></textarea>
+									<span class="screen_out">최대 입력 글자수</span>
+									<span class="txt_byte">56/230</span>
+								</div>
+								<div class="opt_tf">
+									<div class="item_opt "><!-- 버튼 클릭 시 open_opt 클래스 추가 -->
+										<span class="tit_opt">파라미터 추가</span>
+										<button type="button" class="btn_add btn_add5">
+											<span class="ico_bot ico_add"></span>
+											<span class="ico_bot ico_arr"></span>
+										</button>
+										<div class="layer_opt">
+											<ul>
+												<li>
+													<span class="txt_opt">town(@sys.town)</span>
+												</li>
+												<li>
+													<span class="txt_opt">temp(@sys.temperature)</span>
+												</li>
+												<li>
+													<span class="txt_opt">day(@sys.date)</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<button type="button" class="btn_util btn_del disabled"><!-- 비활성화 시 disabled 클래스 추가 -->
+								<span class="ico_bot ico_del"></span>
+								<span class="tooltip_btn">삭제</span>
+							</button>
+							<div class="btn_layer">
+								<div class="wrap_btn">
+									<button type="button" class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+									<button type="button" class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 > btn_g2로 수정 -->
+								</div>
+							</div>
+							<span class="ico_bot ico_bubble"></span>
+						</div>
+					</div>
+				</div>
+				<div class="box_btn"><!-- 2018-11-02 : btn_card > box_btn 로 수정 -->
+					<div class="wrap_layer"><!-- 버튼 설정 시 open_layer 클래스 추가 -->
+						<button type="button" class="btn_tf">버튼 입력</button>
+						<div class="layer_edit">
+							<strong class="tit_layer">버튼 설정</strong>
+							<div class="row_layer">
+								<label for="tfBt2" class="lab_g">버튼명</label>
+								<div class="box_tf box_tf2">
+									<input type="text" id="tfBt2" class="inp_g" value="버튼명을 입력해주세요">
+								</div>
+								<span class="screen_out">최대 입력 가능한 글자 수</span>
+								<span class="num_text">0/14</span>
+							</div>
+							<div class="row_layer">
+								<strong class="tit_tf">버튼 기능</strong>
+								<div class="opt_g opt_g2"><!-- 클릭시 opt_open 클래스추가 -->
+									<div class="screen_out">카테고리 선택상자</div>
+									<span class="screen_out">선택내용: </span>
+									<a href="#none" class="link_opt">파일 업로드 <span class="ico_bot ico_arr"></span></a>
+									<div class="wrap_opt">
+										<span class="screen_out">선택옵션: </span>
+										<ul class="list_opt">
+											<li>
+												<a href="#none" class="link_opt">URL 입력</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">URL 입력</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">URL 입력</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="tf_plugin">
+									<div class="box_tf box_tf2">
+										<input type="text" id="tf619" class="inp_g" placeholder="파일을 업로드해주세요">
+										<label for="tf619" class="screen_out">파일 업로드</label>
+									</div>
+								</div>
+							</div>
+							<div class="btn_layer">
+								<div class="wrap_btn">
+									<button type="button" class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+									<button type="button" class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 > btn_g2로 수정 -->
+								</div>
+							</div>
+							<button type="button" class="btn_util btn_del disabled"><!-- 비활성화 시 disabled 클래스 추가 -->
+								<span class="ico_bot ico_del"></span>
+								<span class="tooltip_btn">삭제</span>
+							</button>
+							<span class="ico_bot ico_bubble"></span>
+						</div>
+					</div>
+					<div class="wrap_layer"><!-- 2018-07-31 : div.wrap_layer 추가 -->
+						<button type="button" class="btn_tf">+ 버튼 추가</button>
+						<div class="layer_edit">
+							<strong class="tit_layer">버튼 설정</strong>
+							<div class="row_layer">
+								<label for="tfBt3" class="lab_g">버튼명</label>
+								<div class="box_tf box_tf2">
+									<input type="text" id="tfBt3" class="inp_g" value="버튼명을 입력해주세요">
+								</div>
+								<span class="screen_out">최대 입력 가능한 글자 수</span>
+								<span class="num_text">0/14</span>
+							</div>
+							<div class="row_layer">
+								<strong class="tit_tf">버튼 기능</strong>
+								<div class="opt_g opt_g2"><!-- 클릭시 opt_open 클래스추가 -->
+									<div class="screen_out">카테고리 선택상자</div>
+									<span class="screen_out">선택내용: </span>
+									<a href="#none" class="link_opt">파일 업로드 <span class="ico_bot ico_arr"></span></a>
+									<div class="wrap_opt">
+										<span class="screen_out">선택옵션: </span>
+										<ul class="list_opt">
+											<li>
+												<a href="#none" class="link_opt">URL 입력</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">URL 입력</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">URL 입력</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="tf_plugin">
+									<div class="box_tf box_tf2">
+										<input type="text" id="tf0215" class="inp_g" placeholder="파일을 업로드해주세요">
+										<label for="tf0215" class="screen_out">파일 업로드</label>
+									</div>
+								</div>
+							</div>
+							<div class="btn_layer">
+								<div class="wrap_btn">
+									<button type="button" class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+									<button type="button" class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 > btn_g2로 수정 -->
+								</div>
+							</div>
+							<button type="button" class="btn_util btn_del disabled"><!-- 비활성화 시 disabled 클래스 추가 -->
+								<span class="ico_bot ico_del"></span>
+								<span class="tooltip_btn">삭제</span>
+							</button>
+							<span class="ico_bot ico_bubble"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+		</div>
+	</div>
+</div>
+#end

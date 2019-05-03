@@ -1,0 +1,190 @@
+<!-- 차단 해제요청 -->
+<div class="layer_bot layer_unblock" style="top:300px;left:500px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">차단 해제요청</strong>
+	</div>
+	<div class="layer_body">
+		<div class="box_tf box_tf2"><!-- 포커스 tf_focus / 입력완료 on / 에러 tf_error / 비활성화 disabled 클래스 추가 -->
+			<textarea id="tfUnblock" name="textarea" class="tf_description" placeholder="차단 해제 요청을 위한 메시지를 입력해주세요"></textarea>
+			<label for="tfUnblock" class="screen_out">차단 해제요청</label>
+			<span class="screen_out">최대 입력 글자수</span>
+			<span class="txt_byte">0/500</span>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">확인</button>
+		</div>
+	</div>
+</div>
+
+<!-- 차단 해제요청 해제 -->
+<div class="layer_bot layer_unblock" style="top:300px;left:1200px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">차단 해제요청 취소</strong><!-- 2019-01-09 : 텍스트 수정 -->
+	</div>
+	<div class="layer_body">
+		<dl class="dl_info">
+			<dt>요청일시</dt>
+			<dd>2018.2.21 14:48</dd>
+		</dl>
+		<div class="box_tf box_tf2 readonly"><!-- 포커스 tf_focus / 입력완료 on / 에러 tf_error / 비활성화 disabled / 리드온니 readonly 클래스 추가 -->
+			<textarea id="tfUnblock2" name="textarea" class="tf_description" placeholder="차단 해제 요청을 위한 메시지를 입력해주세요" readonly>욕설 블록 다 제거했어요 ᅲᅲ 정상으로 바꿔주세요 ᅲᅲ 죄송합니다</textarea>
+			<label for="tfUnblock2" class="screen_out">차단 해제요청</label>
+			<span class="screen_out">최대 입력 글자수</span>
+			<span class="txt_byte">28/500</span>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">요청 취소</button>
+		</div>
+	</div>
+</div>
+
+<!-- 2019-02-01 추가 -->
+<!-- 봇 권한 위임 설정 확인 -->
+<div class="layer_bot layer_proxy" style="top:650px;left:406px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">봇 권한 위임 설정 확인</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_layer">봇의 설계 및 운영 권한이 ‘카페중개봇’에게 위임을 요청합니다.<br>위임 상태로 전환되면 위임 해제 전까지 봇의 설계와 관련한 기능은 이용하실 수 없습니다. 권한 위임을 요청 하시겠습니까?</p>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">확인</button><!-- 2019-02-25 : 버튼명 수정 -->
+		</div>
+	</div>
+</div>
+
+<!-- 봇 권한 위임 설정 해제 -->
+<div class="layer_bot layer_proxy" style="top:650px;left:920px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">봇 권한 위임 설정 해제</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_layer">‘카페중개봇’에게 위임한 봇의 설계 및 운영 권한이 해제됩니다.<br>위임 해제 시, 위임 상태로 운영중이던 봇의 동작이 정상적이지<br>않을 수 있습니다.</p>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<!-- <button class="btn_g btn_g3">취소</button> 2019-02-025 삭제 -->
+			<button class="btn_g btn_g2">확인</button><!-- 2019-02-25 : 버튼명 수정 -->
+		</div>
+	</div>
+</div>
+
+<!-- 시크릿 키로 인증하여 위임하기 -->
+<div class="layer_bot layer_secretkey" style="top:906px;left:406px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">시크릿 키로 인증하여 위임하기</strong>
+	</div>
+	<div class="layer_body">
+		<div class="item_tf">
+			<div class="box_tf box_tf2">
+				<input type="text" id="tfKey$key" class="inp_g" placeholder="위임을 허용한 봇의 Secretkey를 입력해주세요.">
+				<label for="tfKey$key" class="screen_out">검색어 입력</label>
+			</div>
+			<button type="button" class="btn_g btn_g3">인증</button>
+		</div>
+		<div class="item_detail hide"><!-- 인증 결과 hide 클래스 제거 -->
+			<em class="emph_info">유효한 Secretkey 입니다.</em>
+			<p class="txt_layer">아래 봇에게 권한 위임을 요청하시겠습니까?<br>해당 봇의 마스터가 권한위임 요청을 수락해야 위임 처리가 완료됩니다.<br>위임 요청의 수락/거절 상태는 봇 설정에서 확인하실 수 있습니다.</p>
+			<dl class="dl_layer">
+				<dt>- 봇이름</dt>
+				<dd>카카오카페봇</dd>
+				<dt>- 봇ID</dt>
+				<dd>83Y289437324U23O</dd>
+			</dl>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<!-- <button class="btn_g btn_g3">취소</button> 2019-02-25 삭제 -->
+			<button class="btn_g btn_g2">닫기</button><!-- 2019-02-25 : 버튼명 수정 -->
+		</div>
+	</div>
+</div>
+<!-- 시크릿 키로 인증하여 위임하기 인증 결과 -->
+<div class="layer_bot layer_secretkey" style="top:1013px;left:920px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">시크릿 키로 인증하여 위임하기</strong>
+	</div>
+	<div class="layer_body">
+		<div class="item_tf">
+			<div class="box_tf box_tf2">
+				<input type="text" id="tfKey$key2" class="inp_g" placeholder="위임을 허용한 봇의 Secretkey를 입력해주세요.">
+				<label for="tfKey$key2" class="screen_out">검색어 입력</label>
+			</div>
+			<button type="button" class="btn_g btn_g3">인증</button>
+		</div>
+		<div class="item_detail"><!-- 인증 결과 hide 클래스 제거 -->
+			<em class="emph_info">유효한 Secretkey 입니다.</em>
+			<p class="txt_layer">아래 봇에게 권한 위임을 요청하시겠습니까?<br>해당 봇의 마스터가 권한위임 요청을 수락해야 위임 처리가 완료됩니다.<br>위임 요청의 수락/거절 상태는 봇 설정에서 확인하실 수 있습니다.</p>
+			<dl class="dl_layer">
+				<dt>- 봇이름</dt>
+				<dd>카카오카페봇</dd>
+				<dt>- 봇ID</dt>
+				<dd>83Y289437324U23O</dd>
+			</dl>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">확인</button><!-- 2019-02-25 : 버튼명 수정 -->
+		</div>
+	</div>
+</div>
+
+<!-- 권한 위임 승인 요청 취소 -->
+<div class="layer_bot layer_proxy" style="top:1500px;left:406px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">권한 위임 승인 요청 취소</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_layer">권한 위임 승인 요청을 취소하시겠습니까?<br>승인요청이 취소되면 봇 위임 설정 상태가 해제됩니다.</p>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">확인</button><!-- 2019-02-25 : 버튼명 수정 -->
+		</div>
+	</div>
+</div>
+
+<!-- 봇 위임 설정 해제 불가 -->
+<div class="layer_bot layer_proxy" style="top:1500px;left:920px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">봇 위임 설정 해제 불가</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_layer">현재 <span class="emph_bold">102</span>개의 봇의 권한을 위임받아 대행중 입니다.<br>권한 위임 중인 봇이 있는 경우 봇 위임 허용을 해제할 수 없습니다.</p>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<!-- <button class="btn_g btn_g3">취소</button> 2019-02-25 : 삭제 -->
+			<button class="btn_g btn_g2">닫기</button><!-- 2019-02-25 : 버튼명 수정 -->
+		</div>
+	</div>
+</div>
+
+<!-- 봇 위임 설정 해제 -->
+<div class="layer_bot layer_proxy" style="top:1500px;left:1436px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">봇 위임 설정 해제</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_layer">권한 위임 허용 상태를 해제하시겠습니까?<br>권한 위임 허용을 해제하면 더 이상 권한 대행을 하실 수 없습니다.</p>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">확인</button><!-- 2019-02-25 : 버튼명 수정 -->
+		</div>
+	</div>
+</div>
+<!-- //2019-02-01 추가 -->

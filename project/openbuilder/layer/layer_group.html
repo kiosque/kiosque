@@ -1,0 +1,107 @@
+<div class="layer_bot layer_group">
+	<div class="layer_head">
+		<strong class="tit_layer">
+			#if($params.get('group'))
+			그룹 관리
+			#else
+			그룹 생성
+			#end
+		</strong>
+		<span class="txt_noti">그룹 내 하나의 값만 입력되면 필수 값이 입력됩니다<br>(아래 목록에서는 타 그룹에 속해있지 않은 엔티티들만 보여집니다)</span>
+	</div>
+	<div class="layer_body">
+		<!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error 클래스추가 -->
+		<div class="box_tf box_tf2 #if($params.get('focus'))tf_focus #elseif($params.get('on'))on#end">
+			<input type="text" id="tf01" class="inp_g" placeholder="그룹명을 설정해주세요">
+			<label for="tf01" class="screen_out">그룹명을 설정해주세요</label>
+		</div>
+		<div class="wrap_tbl"><!-- 2018-08-06 : div.wrap_tbl 추가 -->
+			<table class="tbl_group">
+			<caption class="screen_hide"></caption>
+			<colgroup>
+				<col class="col_group">
+				<col class="col_group">
+				<col class="col_group">
+			</colgroup>
+			<thead>
+				<tr>
+					<th scope="col">그룹설정</th>
+					<th scope="col">파라미터명</th>
+					<th scope="col">엔티티</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<div class="check_item "><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+							<input type="checkbox" id="check1" class="inp_g">
+							<label for="check1" class="lab_g"><span class="ico_bot ico_check"></span></label>
+						</div>
+					</td>
+					<td>
+						<span class="txt_name">town</span>
+					</td>
+					<td>
+						<em class="txt_g1">@sys.town</em><!-- 2018-09-20 v2 : txt_g2 > txt_g1 수정 -->
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="check_item "><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+							<input type="checkbox" id="check2" class="inp_g">
+							<label for="check2" class="lab_g"><span class="ico_bot ico_check"></span></label>
+						</div>
+					</td>
+					<td>
+						<span class="txt_name">towntowntowntowntowntowntowntowntowntowntowntowntowntowntowntowntowntowntown</span>
+					</td>
+					<td>
+						<em class="txt_g3">@sys.temperature</em><!-- 2018-09-20 v2 : txt_g3 > txt_g2 수정 -->
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="check_item "><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+							<input type="checkbox" id="check3" class="inp_g">
+							<label for="check3" class="lab_g"><span class="ico_bot ico_check"></span></label>
+						</div>
+					</td>
+					<td>
+						<span class="txt_name">town</span>
+					</td>
+					<td>
+						<em class="txt_g4">@sys.temperature</em><!-- 2018-09-20 v2 : txt_g4 > txt_g3 수정 -->
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="check_item "><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+							<input type="checkbox" id="check4" class="inp_g">
+							<label for="check4" class="lab_g"><span class="ico_bot ico_check"></span></label>
+						</div>
+					</td>
+					<td>
+						<span class="txt_name">town</span>
+					</td>
+					<td>
+						<em class="txt_g5">@sys.temperature</em><!-- 2018-09-20 v2 : txt_g5 > txt_g4 수정 -->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+	<div class="layer_foot">
+		#if($params.get('group'))
+		<button class="btn_g btn_g3">그룹해제</button><!-- 2018-08-06 : btn_g5 삭제 -->
+		#end
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button><!-- 2018-08-06 : btn_g5 삭제 -->
+			#if($params.get('focus') || $params.get('on'))
+			<button class="btn_g btn_g2">확인</button>
+			#else
+			<button class="btn_g btn_g2" disabled>확인</button><!-- 2018-08-06 : btn_g5 삭제 -->
+			#end
+		</div>
+	</div>
+</div>

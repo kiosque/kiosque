@@ -1,0 +1,35 @@
+<div class="wrap_join">
+	<h2 class="tit_join">Kakao I Developers 가입을 진행합니다</h2>
+	<p class="desc_join">아래 동의 항목을 확인 후, 동의해 주세요.</p>
+	<form action="#" class="form_agree">
+		<fieldset>
+			<legend class="screen_out">가입동의폼</legend>
+			<div class="cont_form">
+				<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+					<input type="checkbox" id="checkall" class="inp_g">
+					<label for="checkall" class="lab_g lab_emph">모두 확인, 동의합니다.
+						<span class="ico_bot ico_check"></span>
+					</label>
+				</div>
+				<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+					<input type="checkbox" id="checkbox1" class="inp_g">
+					<label for="checkbox1" class="lab_g">Kakao I Open Builder 서비스 이용약관 <span class="txt_emph">(필수)</span><span class="ico_bot ico_check"></span></label>
+					<a href="#" class="link_terms">보기</a>
+				</div>
+				<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+					<input type="checkbox" id="checkbox2" class="inp_g">
+					<label for="checkbox2" class="lab_g">개인정보 수집 및 이용 동의 <span class="txt_emph">(필수)</span><span class="ico_bot ico_check"></span></label>
+					<a href="#" class="link_terms">보기</a>
+				</div>
+				<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+					<input type="checkbox" id="checkbox3" class="inp_g">
+					<label for="checkbox3" class="lab_g">개인정보 취급 위탁 동의 <span class="txt_emph">(필수)</span><span class="ico_bot ico_check"></span></span></label>
+					<a href="#" class="link_terms">보기</a>
+				</div>
+			</div>
+		</fieldset>
+		<div class="wrap_btn">
+			<button type="submit" class="btn_g btn_g2" #if(!$params.get('step2'))disabled="disabled"#end>가입하기</button>
+		</div>
+	</form>
+</div>

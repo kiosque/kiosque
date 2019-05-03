@@ -1,0 +1,271 @@
+<div class="wrap_setup">
+	<div class="inner_cont">
+		<div class="wrap_tit">
+			<h3 class="tit_g">관리자</h3>
+			<span class="info_g">관리자 설명을 블라블라</span>
+		</div>
+		<div class="box_row">
+			<div class="wrap_subject">
+				<h4 class="tit_box tit_subject">관리자 초대</h4>
+			</div>
+			<div class="row_setup">
+				<div class="row_flex">
+					<div class="box_tf box_tf2"><!-- 2018-07-31 : box_tf4 클래스 삭제 -->
+						<input type="text" id="tfKey$key" class="inp_g" placeholder="이메일을 입력해 주세요">
+						<label for="tfKey$key" class="screen_out">이메일을 입력해주세요</label>
+					</div>
+				</div>
+				<div class="row_static">
+					<div class="opt_g opt_g2"><!-- 입력완료시 on / 비활성시 disabled / 에러일경우 opt_error 클래스추가 -->
+						<div class="screen_out">카테고리 선택상자</div>
+						<span class="screen_out">선택내용: </span>
+						<a href="#none" class="link_opt">권한 선택 <span class="ico_bot ico_arr"></span></a>
+						<div class="wrap_opt">
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								<li>
+									<a href="#none" class="link_opt">정식작업자</a>
+								</li>
+								<li>
+									<a href="#none" class="link_opt">정식작업자</a>
+								</li>
+								<li>
+									<a href="#none" class="link_opt">화행입력자</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<button class="btn_g btn_g2">초대</button><!-- 2018-07-31 : btn_g5 삭제 -->
+				</div>
+			</div>
+
+			#if($params.get('none'))
+			#else
+			<ul class="list_setup"><!-- 본문 초대 없을때 제거 -->
+				<li>
+					<div class="row_flex">
+						<span class="txt_email">katherine.hand@yahoo.com</span>
+					</div>
+					<div class="row_static">
+						<span class="item_permit">정식작업자</span>
+						<button class="btn_g">초대 취소</button><!-- 2018-08-06 : btn_g5 삭제 -->
+					</div>
+				</li>
+				<li>
+					<div class="row_flex">
+						<span class="txt_email">katherine.hand@yahoo.com</span>
+					</div>
+					<div class="row_static">
+						<span class="item_permit">정식작업자</span>
+						<button class="btn_g">초대 취소</button><!-- 2018-08-06 : btn_g5 삭제 -->
+					</div>
+				</li>
+				<li>
+					<div class="row_flex">
+						<span class="txt_email">katherine.hand@yahoo.com</span>
+					</div>
+					<div class="row_static">
+						<span class="item_permit">정식작업자</span>
+						<button class="btn_g">초대 취소</button><!-- 2018-08-06 : btn_g5 삭제 -->
+					</div>
+				</li>
+			</ul>
+			#end
+		</div>
+		<div class="box_row box_type2 #if($params.get('2') || $params.get('3'))type_setup#end"><!-- 2019-01-09 : 작업자 입장/마스터 없는 경우 type_setup 클래스 추가 -->
+			<div class="wrap_subject">
+				<h4 class="tit_subject">봇 관리자 권한 설정</h4>
+				<button type="button" class="btn_util btn_add btn_add4">
+					<span class="ico_bot ico_modify2">설정</span>
+					<span class="tooltip_btn">버튼명</span>
+				</button>
+			</div>
+			<!-- 2019-01-09 추가 및 수정 -->
+			<div class="group_setup">
+				<div class="tit_setup">마스터</div>
+				<div class="info_setup">
+					<div class="row_flex">
+						#if($params.get('3'))
+						<span class="txt_email txt_error">마스터 지정이 필요한 봇입니다.</span>
+						#else
+						<span class="txt_email">katherine.hand@yahoo.com</span>
+						#end
+					</div>
+					#if($params.get('2'))
+					#elseif($params.get('3'))
+					<div class="row_static">
+						<button class="btn_g">마스터 권한 위임</button>
+					</div>
+					#else
+					<div class="row_static">
+						<button class="btn_g">마스터 권한 위임</button>
+						<!-- <button class="btn_g">개별 권한 설정</button> 2019-01-10 삭제 -->
+						<button class="btn_g">봇 탈퇴</button>
+					</div>
+					#end
+				</div>
+			</div>
+			<div class="group_setup">
+				<div class="tit_setup">작업자</div>
+				<ul class="list_setup">
+					<li>
+						<div class="row_flex">
+							<span class="txt_email">katherine.hand@yahoo.com</span>
+						</div>
+						<div class="row_static">
+							<div class="opt_g opt_g2"><!-- 입력완료시 on / 비활성시 disabled / 에러일경우 opt_error 클래스추가 -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">정식작업자 <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">정식작업자</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">정식작업자</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">화행입력자</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							#if($params.get('2') || $params.get('3'))
+							#else
+							<button class="btn_g">개별 권한 설정</button>
+							#end
+							<button class="btn_g">봇 탈퇴</button>
+						</div>
+					</li>
+					<li>
+						<div class="row_flex">
+							<span class="txt_email txt_off">katherine.hand@yahoo.com (휴면)</span><!-- 2018-08-24 : 휴면일 경우 txt_off 클래스 추가 -->
+						</div>
+						<div class="row_static">
+							<div class="opt_g opt_g2 disabled"><!-- 입력완료시 on / 비활성시 disabled / 에러일경우 opt_error 클래스추가 -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">정식작업자 <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">정식작업자</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">정식작업자</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">화행입력자</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							#if($params.get('2') || $params.get('3'))
+							#else
+							<button class="btn_g">개별 권한 설정</button>
+							<button class="btn_g">봇 탈퇴</button>
+							#end
+						</div>
+					</li>
+					<li>
+						<div class="row_flex">
+						<span class="txt_email txt_off">katherine.hand@yahoo.com (제재)</span><!-- 2019-01-09 : 제재일 경우 txt_off 클래스 추가 -->
+						</div>
+						<div class="row_static">
+							<div class="opt_g opt_g2"><!-- 입력완료시 on / 비활성시 disabled / 에러일경우 opt_error 클래스추가 -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">정식작업자 <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">정식작업자</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">정식작업자</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">화행입력자</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							#if($params.get('2') || $params.get('3'))
+							#else
+							<button class="btn_g" disabled="disabled">개별 권한 설정</button>
+							<button class="btn_g">봇 탈퇴</button>
+							#end
+						</div>
+					</li>
+					<li>
+						<div class="row_flex">
+						<span class="txt_email">katherine.hand@yahoo.com</span>
+						</div>
+						<div class="row_static">
+							<div class="opt_g opt_g2"><!-- 입력완료시 on / 비활성시 disabled / 에러일경우 opt_error 클래스추가 -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">정식작업자 <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">정식작업자</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">정식작업자</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">화행입력자</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							#if($params.get('2') || $params.get('3'))
+							#else
+							<button class="btn_g">개별 권한 설정</button>
+							<button class="btn_g">봇 탈퇴</button>
+							#end
+						</div>
+					</li>
+					<li>
+						<div class="row_flex">
+						<span class="txt_email">katherine.hand@yahoo.com</span>
+						</div>
+						<div class="row_static">
+							<div class="opt_g opt_g2"><!-- 입력완료시 on / 비활성시 disabled / 에러일경우 opt_error 클래스추가 -->
+								<div class="screen_out">카테고리 선택상자</div>
+								<span class="screen_out">선택내용: </span>
+								<a href="#none" class="link_opt">정식작업자 <span class="ico_bot ico_arr"></span></a>
+								<div class="wrap_opt">
+									<span class="screen_out">선택옵션: </span>
+									<ul class="list_opt">
+										<li>
+											<a href="#none" class="link_opt">정식작업자</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">정식작업자</a>
+										</li>
+										<li>
+											<a href="#none" class="link_opt">화행입력자</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							#if($params.get('2') || $params.get('3'))
+							#else
+							<button class="btn_g">개별 권한 설정</button>
+							<button class="btn_g">봇 탈퇴</button>
+							#end
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- //2019-01-09 추가 -->
+		</div>
+	</div>
+</div>

@@ -1,0 +1,684 @@
+<div class="wrap_skill #if($params.get('detail'))skill_detail#end">
+	<div class="inner_cont">
+		#if($params.get('detail'))
+			<div class="edit_detail">
+				<button type="button" class="btn_util btn_return">
+					<span class="ico_bot ico_return"></span>
+					<span class="tooltip_btn">뒤로 가기</span>
+				</button>
+				<!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스추가 -->
+				<div class="box_tf box_tf2 on"><!-- 2018-07-31 : box_tf4 클래스 삭제 -->
+					<input type="text" id="tfSet2" class="inp_g" placeholder="봇 이름을 입력해주세요">
+					<label for="tfSet2" class="screen_out">봇 이름을 입력해주세요</label>
+				</div>
+				<div class="wrap_btn">
+					#if($params.get('detail'))
+						#if($params.get('result'))
+							#if($params.get('on'))
+							<button type="button" class="btn_g">새 버전으로 저장</button>
+							<button type="button" class="btn_g btn_g2">저장</button>
+							#else
+							<span class="info_g">버전은 자동으로 설정됩니다</span>
+							<button type="button" class="btn_g btn_g2">저장</button>
+							#end
+						#else
+						<span class="info_g">버전은 자동으로 설정됩니다</span>
+						<button type="button" class="btn_g btn_g2" disabled>저장</button>
+						#end
+					#end
+				</div>
+			</div>
+			<div class="box_row">
+				<div class="wrap_subject">
+					<h4 class="tit_subject">기본 정보</h4>
+					#if($params.get('detail2'))
+					<dl class="dl_info">
+						<dt class="screen_out">버전</dt>
+						<dd>ver 1</dd>
+						<dt class="screen_out">등록자</dt>
+						<dd>lynch_kayleigh</dd>
+						<dt class="screen_out">업데이트 날짜</dt>
+						<dd>2018.2.20  18:15</dd>
+					</dl>
+					#end
+					<div class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+						<input type="checkbox" id="checkSkill" class="inp_g">
+						<label for="checkSkill" class="lab_g">기본 스킬로 설정<span class="ico_bot ico_check"></span></label>
+					</div>
+				</div>
+				<div class="row_range">
+					<label for="tfSet21" class="lab_g">설명</label>
+					<!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스추가 -->
+					<div class="box_tf box_tf2 on"><!-- 2018-07-31 : box_tf4 클래스 삭제 -->
+						<input type="text" id="tfSet21" class="inp_g" placeholder="설명을 입력해주세요">
+					</div>
+				</div>
+				<div class="group_flex">
+					<div class="row_flex">
+						<label for="tfSet22" class="lab_g">URL<span class="ico_bot ico_star"></span></label>
+						<!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스추가 -->
+						<div class="box_tf box_tf2 on"><!-- 2018-07-31 : box_tf4 클래스 삭제 -->
+							<input type="text" id="tfSet22" class="inp_g" placeholder="URL을 입력해주세요">
+						</div>
+						<!-- 2018-10-24 추가 -->
+						<div class="box_info">
+							<div class="info_item">
+								<strong class="tit_item">헤더값 입력</strong>
+								<button type="button" class="btn_util btn_add">
+									<span class="ico_bot ico_add2"></span><!-- 2018-12-10 : ico_add > ico_add2 수정 -->
+									<span class="tooltip_btn">추가</span>
+								</button>
+							</div>
+							<div class="info_value">
+								<div class="group_tf">
+									<div class="col_tf">
+										<div class="box_tf on">
+											<input type="text" id="tfKeyH" class="inp_g" placeholder="Key">
+											<label for="tfKeyH" class="screen_out">Key 값 입력</label>
+										</div>
+									</div>
+									<div class="col_tf">
+										<div class="box_tf on">
+											<input type="text" id="tfValueH" class="inp_g" placeholder="Value">
+											<label for="tfValueH" class="screen_out">Value 값 입력</label>
+										</div>
+									</div>
+									<!-- <div class="col_tf">
+										<div class="opt_g">
+											<div class="screen_out">타입 선택상자</div>
+											<span class="screen_out">선택내용: </span>
+											<a href="#none" class="link_opt">Type <span class="ico_bot ico_arr"></span></a>
+											<div class="wrap_opt">
+												<span class="screen_out">선택옵션: </span>
+												<ul class="list_opt">
+													<li>
+														<a href="#none" class="link_opt">댕댕이1</a>
+													</li>
+													<li>
+														<a href="#none" class="link_opt">댕댕이2</a>
+													</li>
+													<li>
+														<a href="#none" class="link_opt">댕댕이3</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div> 2018-12-18 삭제 -->
+									<button type="button" class="btn_util btn_del">
+										<span class="ico_bot ico_del"></span>
+									</button>
+								</div>
+								<div class="group_tf">
+									<div class="col_tf">
+										<div class="box_tf on">
+											<input type="text" id="tfKeyH2" class="inp_g" placeholder="Key">
+											<label for="tfKeyH2" class="screen_out">Key 값 입력</label>
+										</div>
+									</div>
+									<div class="col_tf">
+										<div class="box_tf on">
+											<input type="text" id="tfValueH2" class="inp_g" placeholder="Value">
+											<label for="tfValueH2" class="screen_out">Value 값 입력</label>
+										</div>
+									</div>
+									<!-- <div class="col_tf">
+										<div class="opt_g">
+											<div class="screen_out">타입 선택상자</div>
+											<span class="screen_out">선택내용: </span>
+											<a href="#none" class="link_opt">Type <span class="ico_bot ico_arr"></span></a>
+											<div class="wrap_opt">
+												<span class="screen_out">선택옵션: </span>
+												<ul class="list_opt">
+													<li>
+														<a href="#none" class="link_opt">댕댕이1</a>
+													</li>
+													<li>
+														<a href="#none" class="link_opt">댕댕이2</a>
+													</li>
+													<li>
+														<a href="#none" class="link_opt">댕댕이3</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div> 2018-12-18 석제 -->
+									<button type="button" class="btn_util btn_del">
+										<span class="ico_bot ico_del"></span>
+									</button>
+								</div>
+								<div class="group_tf">
+									<div class="col_tf">
+										<div class="box_tf on">
+											<input type="text" id="tfKeyH3" class="inp_g" placeholder="Key">
+											<label for="tfKeyH3" class="screen_out">Key 값 입력</label>
+										</div>
+									</div>
+									<div class="col_tf">
+										<div class="box_tf on">
+											<input type="text" id="tfValueH3" class="inp_g" placeholder="Value">
+											<label for="tfValueH3" class="screen_out">Value 값 입력</label>
+										</div>
+									</div>
+									<!-- <div class="col_tf">
+										<div class="opt_g">
+											<div class="screen_out">타입 선택상자</div>
+											<span class="screen_out">선택내용: </span>
+											<a href="#none" class="link_opt">Type <span class="ico_bot ico_arr"></span></a>
+											<div class="wrap_opt">
+												<span class="screen_out">선택옵션: </span>
+												<ul class="list_opt">
+													<li>
+														<a href="#none" class="link_opt">댕댕이1</a>
+													</li>
+													<li>
+														<a href="#none" class="link_opt">댕댕이2</a>
+													</li>
+													<li>
+														<a href="#none" class="link_opt">댕댕이3</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div> 2018-12-18 삭제 -->
+									<button type="button" class="btn_util btn_del">
+										<span class="ico_bot ico_del"></span>
+									</button>
+								</div>
+							</div>
+						</div>
+						<!-- //2018-10-24 추가 -->
+					</div>
+					<div class="row_flex">
+						<label for="tfSet23" class="lab_g">Test URL</label>
+						<!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스추가 -->
+						<div class="box_tf box_tf2 on"><!-- 2018-07-31 : box_tf4 클래스 삭제 -->
+							<input type="text" id="tfSet23" class="inp_g" placeholder="URL을 입력해주세요">
+						</div>
+						<!-- 2018-10-24 추가 -->
+						<div class="box_info">
+							<div class="info_item">
+								<strong class="tit_item">테스트 헤더값 입력</strong>
+								<button type="button" class="btn_util btn_add">
+									<span class="ico_bot ico_add2"></span><!--2018-12-10 : ico_add > ico_add2 수정 -->
+									<span class="tooltip_btn">추가</span>
+								</button>
+							</div>
+							<div class="info_value">
+								<div class="group_tf">
+									<div class="col_tf">
+										<div class="box_tf on">
+											<input type="text" id="tfKeyHT" class="inp_g" placeholder="Key">
+											<label for="tfKeyHT" class="screen_out">Key 값 입력</label>
+										</div>
+									</div>
+									<div class="col_tf">
+										<div class="box_tf on">
+											<input type="text" id="tfValueHT" class="inp_g" placeholder="Value">
+											<label for="tfValueHT" class="screen_out">Value 값 입력</label>
+										</div>
+									</div>
+									<!-- <div class="col_tf">
+										<div class="opt_g">
+											<div class="screen_out">타입 선택상자</div>
+											<span class="screen_out">선택내용: </span>
+											<a href="#none" class="link_opt">Type <span class="ico_bot ico_arr"></span></a>
+											<div class="wrap_opt">
+												<span class="screen_out">선택옵션: </span>
+												<ul class="list_opt">
+													<li>
+														<a href="#none" class="link_opt">댕댕이1</a>
+													</li>
+													<li>
+														<a href="#none" class="link_opt">댕댕이2</a>
+													</li>
+													<li>
+														<a href="#none" class="link_opt">댕댕이3</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div> 2018-12-18 삭제 -->
+									<button type="button" class="btn_util btn_del">
+										<span class="ico_bot ico_del"></span>
+									</button>
+								</div>
+								<div class="group_tf">
+									<div class="col_tf">
+										<div class="box_tf on">
+											<input type="text" id="tfKeyHT2" class="inp_g" placeholder="Key">
+											<label for="tfKeyHT2" class="screen_out">Key 값 입력</label>
+										</div>
+									</div>
+									<div class="col_tf">
+										<div class="box_tf on">
+											<input type="text" id="tfValueHT2" class="inp_g" placeholder="Value">
+											<label for="tfValueHT2" class="screen_out">Value 값 입력</label>
+										</div>
+									</div>
+									<!-- <div class="col_tf">
+										<div class="opt_g">
+											<div class="screen_out">타입 선택상자</div>
+											<span class="screen_out">선택내용: </span>
+											<a href="#none" class="link_opt">Type <span class="ico_bot ico_arr"></span></a>
+											<div class="wrap_opt">
+												<span class="screen_out">선택옵션: </span>
+												<ul class="list_opt">
+													<li>
+														<a href="#none" class="link_opt">댕댕이1</a>
+													</li>
+													<li>
+														<a href="#none" class="link_opt">댕댕이2</a>
+													</li>
+													<li>
+														<a href="#none" class="link_opt">댕댕이3</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div> 2018-12-18 삭제 -->
+									<button type="button" class="btn_util btn_del">
+										<span class="ico_bot ico_del"></span>
+									</button>
+								</div>
+								<div class="group_tf">
+									<div class="col_tf">
+										<div class="box_tf on">
+											<input type="text" id="tfKeyHT3" class="inp_g" placeholder="Key">
+											<label for="tfKeyHT3" class="screen_out">Key 값 입력</label>
+										</div>
+									</div>
+									<div class="col_tf">
+										<div class="box_tf on">
+											<input type="text" id="tfValueHT3" class="inp_g" placeholder="Value">
+											<label for="tfValueHT3" class="screen_out">Value 값 입력</label>
+										</div>
+									</div>
+									<!-- <div class="col_tf">
+										<div class="opt_g">
+											<div class="screen_out">타입 선택상자</div>
+											<span class="screen_out">선택내용: </span>
+											<a href="#none" class="link_opt">Type <span class="ico_bot ico_arr"></span></a>
+											<div class="wrap_opt">
+												<span class="screen_out">선택옵션: </span>
+												<ul class="list_opt">
+													<li>
+														<a href="#none" class="link_opt">댕댕이1</a>
+													</li>
+													<li>
+														<a href="#none" class="link_opt">댕댕이2</a>
+													</li>
+													<li>
+														<a href="#none" class="link_opt">댕댕이3</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div> 2018-12-18 삭제 -->
+									<button type="button" class="btn_util btn_del">
+										<span class="ico_bot ico_del"></span>
+									</button>
+								</div>
+							</div>
+						</div>
+						<!-- //2018-10-24 추가 -->
+					</div>
+				</div>
+			</div>
+			<div class="box_row">
+				<div class="wrap_subject">
+					<h4 class="tit_subject">현재 사용 중인 블록</h4>
+				</div>
+				#if($params.get('on'))
+				<div class="group_filter">
+					<button type="button" class="btn_filter">시나리오
+						<span class="value_filter">블록01</span>
+					</button>
+					<button type="button" class="btn_filter">시나리오01
+						<span class="value_filter">hover 10%</span>
+					</button>
+					<button type="button" class="btn_filter">시나리오01
+						<span class="value_filter">블록01</span>
+					</button>
+					<button type="button" class="btn_filter">시나리오01
+						<span class="value_filter">블록02</span>
+					</button>
+					<button type="button" class="btn_filter">시나리오가 정말 정말 길어진다면 바로 이렇게 되는 것이겠지요
+						<span class="value_filter">정말 그럴리 없겠지만 만에 하나라도 회색 박스가 940px 넘게되면 시나리오를 말줄임 하면 됩니다</span>
+					</button>
+				</div>
+				#else
+				<div class="txt_subject">연결된 블록 없음</div>
+				#end
+			</div>
+			<div class="box_row">
+				<div class="wrap_subject">
+					<h4 class="tit_subject">스킬 테스트</h4>
+					<div class="group_radio">
+						<div class="item_radio">
+							<input type="radio" name="inpRadioSkill" id="inpSkill01" class="inp_g">
+							<label for="inpSkill01" class="lab_g">URL<span class="ico_bot ico_radio"></span></label>
+						</div>
+						<div class="item_radio">
+							<input type="radio" name="inpRadioSkill" id="inpSkill02" class="inp_g">
+							<label for="inpSkill02" class="lab_g">Test URL<span class="ico_bot ico_radio"></span></label>
+						</div>
+					</div>
+				</div>
+				<div class="group_row">
+					<div class="row_flex">
+						<div class="info_item">
+							<strong class="tit_item">요청할 파라미터 값 입력</strong>
+							<!-- 추가 시 open_layer 클래스 추가 > layer_filter 노출 -->
+							<button type="button" class="btn_util btn_add"><!-- 2018-07-31 : btn_add3 삭제 -->
+								<span class="ico_bot ico_add2"></span><!-- 2018-12-10 : ico_add > ico_add2 수정 -->
+								<span class="tooltip_btn">추가</span>
+							</button>
+						</div>
+						<div class="info_value">
+							#foreach ($i  in [1..10])
+							<div class="group_tf">
+								<div class="col_tf">
+								<div class="box_tf on">
+									<input type="text" id="tfKey$i" class="inp_g" placeholder="Key">
+									<label for="tfKey$i" class="screen_out">Key 값 입력</label>
+								</div>
+								</div>
+								<div class="col_tf">
+								<div class="box_tf on">
+									<input type="text" id="tfValue$i" class="inp_g" placeholder="Value">
+									<label for="tfValue$i" class="screen_out">Value 값 입력</label>
+								</div>
+								</div>
+								<div class="col_tf">
+								<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+									<div class="screen_out">타입 선택상자</div>
+									<span class="screen_out">선택내용: </span>
+									<a href="#none" class="link_opt">Type <span class="ico_bot ico_arr"></span></a>
+									<div class="wrap_opt">
+										<span class="screen_out">선택옵션: </span>
+										<ul class="list_opt">
+											<li>
+												<a href="#none" class="link_opt">댕댕이1</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">댕댕이2</a>
+											</li>
+											<li>
+												<a href="#none" class="link_opt">댕댕이3</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								</div>
+								<button type="button" class="btn_util btn_del">
+									<span class="ico_bot ico_del"></span>
+								</button>
+							</div>
+							#end
+						</div>
+					</div>
+					<div class="row_flex">
+						<div class="info_item">
+							<strong class="tit_item">JSON</strong>
+							<span class="info_g">직접 params 혹은 detailParams 수정 시 왼쪽 표는 사용할 수 없습니다</span>
+						</div>
+						<div class="info_data">
+							데이터 영역
+						</div>
+					</div>
+				</div>
+				<div class="wrap_btn">
+					<button type="button" class="btn_g btn_g3">클립보드로 복사</button>
+					<button type="button" class="btn_g btn_g3">스킬서버로 전송</button>
+				</div>
+				<div class="group_row">
+					#if($params.get('result'))
+					<div class="row_flex">
+						<div class="info_item">
+							<strong class="tit_item">응답 미리보기</strong>
+						</div>
+						<div class="info_data">
+							데이터 영역
+						</div>
+					</div>
+					<div class="row_flex">
+						<div class="info_item">
+							<strong class="tit_item tit_item">응답 결과 로그</strong>
+						</div>
+						<div class="info_result">
+							> 2018-05-30 14:19:01 [INFO] 요청 형식을 서버로 전송하고 결과를 검증하는 중입니다...<br>
+							> 2018-05-30 14:19:01 [INFO] 올바른 스킬 서버 응답입니다.<br>
+							><br>
+							><br>
+						</div>
+					</div>
+					#else
+					<div class="txt_info">'스킬서버로 전송' 버튼을 누르면 응답을 미리 볼 수 있습니다</div>
+					#end
+				</div>
+			</div>
+			<div class="box_row">
+				<div class="wrap_subject type_subject"><!-- 2018-07-09 수정 : type_subject 추가 -->
+					<h4 class="tit_subject">변환 함수</h4>
+				</div>
+				<button type="button" class="btn_switch ico_bot #if($params.get('on'))on#end"><span class="screen_out">현재상태</span>켜짐</button><!-- 활성화 시 on 클래스 추가, '꺼짐' > '켜짐'으로 변경 -->
+				<div class="wrap_range">
+					<div class="row_range">
+						<label for="tfRange" class="lab_g">이름</label>
+						<!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스추가 -->
+						<div class="box_tf box_tf2 on"><!-- 2018-07-31 : box_tf4 클래스 삭제 -->
+							<input type="text" id="tfRange" class="inp_g" placeholder="이름을 입력해주세요">
+						</div>
+					</div>
+					<div class="row_range">
+						<label for="tfRange2" class="lab_g">설명</label>
+						<!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스추가 -->
+						<div class="box_tf box_tf2 on"><!-- 2018-07-31 : box_tf4 클래스 삭제 -->
+							<input type="text" id="tfRange2" class="inp_g" placeholder="설명을 입력해주세요">
+						</div>
+					</div>
+					<div class="row_range">
+						<strong class="tit_range">템플릿</strong><!-- 클래스명 -->
+						<div class="opt_g opt_g2"><!-- 클릭시 opt_open 클래스추가 --><!-- 2018-07-31 : opt_g4 클래스 삭제 -->
+							<div class="screen_out">카테고리 선택상자</div>
+							<span class="screen_out">선택내용: </span>
+							<a href="#none" class="link_opt">템플릿을 선택해주세요 <span class="ico_bot ico_arr"></span></a>
+							<div class="wrap_opt">
+								<span class="screen_out">선택옵션: </span>
+								<ul class="list_opt">
+									<li>
+										<a href="#none" class="link_opt">댕댕이1</a>
+									</li>
+									<li>
+										<a href="#none" class="link_opt">댕댕이2</a>
+									</li>
+									<li>
+										<a href="#none" class="link_opt">댕댕이3</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="row_range">
+						<label for="tfDesc" class="lab_g">함수 내용</label>
+						<div class="box_tf box_description">
+							<textarea id="tfDesc" name="textarea" class="tf_description" placeholder=""></textarea>
+						</div>
+					</div>
+					<div class="row_range">
+						<label for="tfDesc2" class="lab_g">테스트 JSON 입력값</label>
+						<div class="box_tf box_description">
+							<textarea id="tfDesc2" name="textarea" class="tf_description" placeholder=""></textarea>
+						</div>
+					</div>
+					<div class="wrap_btn">
+						<button type="button" class="btn_g btn_g3">테스트</button>
+					</div>
+					<div class="row_range">
+						<label for="tfDesc31" class="lab_g">테스트 JSON 출력값</label>
+						<div class="box_tf box_description">
+							<textarea id="tfDesc31" name="textarea" class="tf_description" placeholder="" disabled></textarea>
+						</div>
+					</div>
+					<div class="row_range">
+						<label for="tfDesc32" class="lab_g">Debug 콘솔</label>
+						<div class="box_tf box_description">
+							<textarea id="tfDesc32" name="textarea" class="tf_description" placeholder="" disabled></textarea>
+						</div>
+					</div>
+					<div class="row_range">
+						<label for="tfDesc33" class="lab_g">Error 콘솔</label>
+						<div class="box_tf box_description">
+							<textarea id="tfDesc33" name="textarea" class="tf_description" placeholder="" disabled></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		#else
+		<div class="wrap_tit">
+			<h3 class="tit_g">스킬</h3>
+			<span class="info_g">API를 연결하여 동작 파라미터에 반응하는 응답형식을 설계합니다</span>
+			<button type="button" class="btn_g btn_g2">생성</button>
+		</div>
+		#if($params.get('empty'))
+		<div class="wrap_none">
+			<span class="ico_bot ico_none"></span>
+			<span class="txt_none">생성된 스킬이 없습니다.<br>상단 버튼을 눌러 스킬을 만들어보세요.</span>
+		</div>
+		#else
+		<div class="box_row">
+			<div class="opt_skill">
+				<div class="opt_g opt_g2"><!-- 클릭시 opt_open 클래스추가 -->
+					<div class="screen_out">카테고리 선택상자</div>
+					<span class="screen_out">선택내용: </span>
+					<a href="#none" class="link_opt">전체 <span class="ico_bot ico_arr"></span></a>
+					<div class="wrap_opt">
+						<span class="screen_out">선택옵션: </span>
+						<ul class="list_opt">
+							<li>
+								<a href="#none" class="link_opt">옵션1</a>
+							</li>
+							<li>
+								<a href="#none" class="link_opt">옵션2</a>
+							</li>
+							<li>
+								<a href="#none" class="link_opt">옵션3</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- 2018-12-07 수정 -->
+			<table class="tbl_skill">
+				<caption class="caption_g">스킬명, 버전, 적용 블록수, 등록자, 업데이트 날짜에 대한 정보입니다.</caption>
+				<colgroup>
+					<col style="">
+					<col style="width:144px">
+					<col style="width:144px">
+					<col style="width:176px">
+					<col style="width:144px">
+					<col style="width:40px">
+				</colgroup>
+				<thead>
+				<tr>
+					<th scope="col">스킬명</th>
+					<th scope="col">버전</th>
+					<th scope="col">적용 블록수</th>
+					<th scope="col">등록자</th>
+					<th scope="col">업데이트 날짜</th>
+					<th scope="col"></th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>orderPizza</td>
+						<td>1</td>
+						<td>3</td>
+						<td>lynch_kayleigh</td>
+						<td>2018.2.20  18:15</td>
+						<td>
+							<button class="btn_util btn_del"><!-- 비활성화 시 disabled 클래스 추가 -->
+								<span class="ico_bot ico_del">삭제</span>
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>orderChicken</td>
+						<td>1</td>
+						<td>2</td>
+						<td class="txt_user">lynch_kayleigh</td>
+						<td>2018.2.20  18:15</td>
+						<td>
+							<button class="btn_util btn_del"><!-- 비활성화 시 disabled 클래스 추가 -->
+								<span class="ico_bot ico_del">삭제</span>
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>checkCardAvailable</td>
+						<td>2</td>
+						<td>6</td>
+						<td class="txt_user">lynch_kayleighkayleighkayleighkayleigh</td>
+						<td>2018.2.20  18:15</td>
+						<td>
+							<button class="btn_util btn_del"><!-- 비활성화 시 disabled 클래스 추가 -->
+								<span class="ico_bot ico_del">삭제</span>
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>checkDeliveryCharge</td>
+						<td>2</td>
+						<td>6</td>
+						<td>lynch_kayleigh</td>
+						<td>2018.2.20  18:15</td>
+						<td>
+							<button class="btn_util btn_del"><!-- 비활성화 시 disabled 클래스 추가 -->
+								<span class="ico_bot ico_del">삭제</span>
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>searchAddress</td>
+						<td>2</td>
+						<td>6</td>
+						<td>lynch_kayleigh</td>
+						<td>2018.2.20  18:15</td>
+						<td>
+							<button class="btn_util btn_del"><!-- 비활성화 시 disabled 클래스 추가 -->
+								<span class="ico_bot ico_del">삭제</span>
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>orderPizza</td>
+						<td>1</td>
+						<td>3</td>
+						<td>lynch_kayleigh</td>
+						<td>2018.2.20  18:15</td>
+						<td>
+							<button class="btn_util btn_del"><!-- 비활성화 시 disabled 클래스 추가 -->
+								<span class="ico_bot ico_del">삭제</span>
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>orderChicken</td>
+						<td>1</td>
+						<td>2</td>
+						<td>lynch_kayleigh</td>
+						<td>2018.2.20  18:15</td>
+						<td>
+							<button class="btn_util btn_del"><!-- 비활성화 시 disabled 클래스 추가 -->
+								<span class="ico_bot ico_del">삭제</span>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- //2018-12-07 수정 -->
+		</div>
+		#end
+		#end
+	</div>
+</div>

@@ -1,0 +1,252 @@
+#if($params.get('layerUpload'))
+<!-- 발화 업로드 -->
+<div class="layer_bot layer_upload">
+	<div class="layer_head">
+		<strong class="tit_layer">발화 업로드</strong>
+		<span class="txt_noti">별도 파일을 통해 대량으로 발화를 업로드할 수 있습니다.</span>
+	</div>
+	<div class="layer_body">
+		<div class="row_tf">
+			<div class="item_tf"><!-- 2018-06-05 : tf_item > item_tf 로 수정 -->
+				<div class="box_tf box_tf2">
+					<input type="text" id="tf2" class="inp_g inp_upload" placeholder="파일을 업로드 해주세요 (txt, xlsx)">
+					<label for="tf2" class="screen_out">파일 업로드</label>
+				</div>
+				<button type="button" class="btn_g btn_g3">파일선택</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			</div>
+			<div class="group_check">
+				<div class="item_check"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+					<input type="checkbox" id="check1" class="inp_g" checked="checked">
+					<label for="check1" class="lab_g">중복 패텅 등록 허용<span class="ico_bot ico_check"></span></label>
+				</div>
+				<div class="item_check"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+					<input type="checkbox" id="check2" class="inp_g" checked="checked">
+					<label for="check2" class="lab_g">엔티티 자동 매핑 허용<span class="ico_bot ico_check"></span></label>
+				</div>
+			</div>
+		</div>
+		<div class="row_tf">
+			<div class="item_tf">
+				<span class="tit_range">샘플 예시</span>
+				<button class="btn_g btn_g3">샘플 파일 다운로드</button>
+			</div>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			<button class="btn_g btn_g2" disabled>업로드</button><!-- 2018-07-31 : btn_g5 > btn_g2로 수정 -->
+		</div>
+	</div>
+</div>
+
+#elseif($params.get('layerResult'))
+<!-- 발화 업로드 결과 -->
+<div class="layer_bot layer_result">
+	<div class="layer_head">
+		<strong class="tit_layer">발화 업로드 결과</strong>
+	</div>
+	<div class="layer_body">
+		<dl class="dl_result">
+			<dt>성공</dt>
+			<dd>99,999 건</dd>
+		</dl>
+		<dl class="dl_result">
+			<dt>실패</dt>
+			<dd><span class="emph_num">99</span> 건</dd>
+		</dl>
+
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">실패 목록 다운로드</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+		</div>
+	</div>
+</div>
+
+#elseif($params.get('layerCopy'))
+<!-- 2018-10-08 : 블록 복사 추가 -->
+<div class="layer_bot layer_copy">
+	<div class="layer_head">
+		<strong class="tit_layer">블록 복사</strong>
+		<span class="info_g"><span class="txt_emph">'블록이름'</span> 블록을 복사합니다.</span><!-- 2019-01-07 : span.txt_emph 추가 -->
+	</div>
+	<div class="layer_body">
+		<div class="row_tf">
+			<div class="check_item">
+				<!--체크박스 선택 시 check_on 클래스 추가-->
+				<input type="checkbox" id="checkCopy" class="inp_g">
+				<label for="checkCopy" class="lab_g">현재 시나리오에 복사<span class="ico_bot ico_check"></span></label>
+			</div>
+		</div>
+		<div class="row_tf">
+			<div class="check_item"><!--체크박스 선택 시 check_on 클래스 추가-->
+				<input type="checkbox" id="checkCopy2" class="inp_g">
+				<label for="checkCopy2" class="lab_g">다른 시나리오로 복사<span class="ico_bot ico_check"></span></label>
+			</div>
+			<div class="opt_g opt_g2 on"><!--클릭시 opt_open 클래스추가-->
+				<div class="screen_out">카테고리 선택상자</div>
+				<span class="screen_out">선택내용: </span>
+				<a href="#none" class="link_opt">시나리오 <span class="ico_bot ico_arr"></span></a>
+				<div class="wrap_opt">
+					<span class="screen_out">선택옵션: </span>
+					<ul class="list_opt">
+						<li>
+							<a href="#none" class="link_opt">시나리오 1</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">시나리오 2</a>
+						</li>
+						<li>
+							<a href="#none" class="link_opt">시나리오 3</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+		</div>
+	</div>
+</div>
+<!-- //2019-01-07 추가 -->
+
+#elseif($params.get('layerMove'))
+<!-- 2019-01-07 : 블록 이동 추가 -->
+<div class="layer_bot layer_move">
+	<div class="layer_head">
+		<strong class="tit_layer">블록 이동</strong>
+		<span class="info_g"><em class="txt_emph">‘블록이름’</em> 블록을 이동합니다.</span>
+	</div>
+	<div class="layer_body">
+		<strong class="tit_item">이동할 시나리오 선택</strong>
+		<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가, 입력완료 on / 에러 opt_error / 비활성화 disabled 클래스 추가 -->
+			<div class="screen_out">카테고리 선택상자</div>
+			<span class="screen_out">선택내용: </span>
+			<a href="#none" class="link_opt">시나리오 <span class="ico_bot ico_arr"></span></a>
+			<div class="wrap_opt">
+				<span class="screen_out">선택옵션: </span>
+				<ul class="list_opt">
+					<li>
+						<a href="#none" class="link_opt">시나리오 1</a>
+					</li>
+					<li>
+						<a href="#none" class="link_opt">시나리오 2</a>
+					</li>
+					<li>
+						<a href="#none" class="link_opt">시나리오 3</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">확인</button>
+		</div>
+	</div>
+</div>
+<!-- //2019-01-07 : 블록 이동 추가 -->
+
+#elseif($params.get('layerCheck'))
+<!-- 2019-01-09 : 블록 검증 API설정 추가 -->
+<div class="layer_bot layer_check">
+	<div class="layer_head">
+		<strong class="tit_layer">블록 검증 API 설정</strong>
+	</div>
+	<div class="layer_body">
+		<label for="tfCheck" class="tit_item">검증 API 주소</label>
+		<div class="box_tf box_tf2"><!-- 포커스 tf_focus / 입력완료 on / 에러 tf_error / 비활성화 disabled 클래스 추가 -->
+			<input type="text" id="tfCheck" class="inp_g" placeholder="검증 API 주소를 입력해주세요" value="test">
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">확인</button>
+		</div>
+	</div>
+</div>
+<!-- //2019-01-09 : 블록 검증 API설정 추가 -->
+
+#else
+<!-- 블록 기본 되묻기 질문 -->
+<div class="layer_bot layer_repeat">
+	<div class="layer_head">
+		<strong class="tit_layer">블록 기본 되묻기 질문</strong>
+	</div>
+	<div class="layer_body">
+		<div class="row_tf">
+			<div class="tf_item">
+				<strong class="tit_range">최대 횟수</strong>
+				<div class="opt_g opt_g2 on"><!-- 클릭시 opt_open 클래스추가 -->
+					<div class="screen_out">카테고리 선택상자</div>
+					<span class="screen_out">선택내용: </span>
+					<a href="#none" class="link_opt">3회 <span class="ico_bot ico_arr"></span></a>
+					<div class="wrap_opt">
+						<span class="screen_out">선택옵션: </span>
+						<ul class="list_opt">
+							<li>
+								<a href="#none" class="link_opt">1회</a>
+							</li>
+							<li>
+								<a href="#none" class="link_opt">3회</a>
+							</li>
+							<li>
+								<a href="#none" class="link_opt">5회</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="tf_item">
+				<div class="box_tf box_tf2">
+					<input type="text" id="tf1" class="inp_g inp_repeat" placeholder="계속 이해하지 못해 다시 시작합니다">
+					<label for="tf1" class="lab_g lab_repeat">초과 시 안내 메세지</label>
+				</div>
+			</div>
+		</div>
+		<div class="row_tf">
+			<div class="tf_item">
+				<strong class="tit_range">최대 시간</strong>
+				<div class="opt_g opt_g2 on #if($params.get('optOpen')) opt_open #end"><!-- 클릭시 opt_open 클래스추가 -->
+					<div class="screen_out">카테고리 선택상자</div>
+					<span class="screen_out">선택내용: </span>
+					<a href="#none" class="link_opt">30분 <span class="ico_bot ico_arr"></span></a>
+					<div class="wrap_opt">
+						<span class="screen_out">선택옵션: </span>
+						<ul class="list_opt">
+							<li>
+								<a href="#none" class="link_opt">10분</a>
+							</li>
+							<li>
+								<a href="#none" class="link_opt">20분</a>
+							</li>
+							<li>
+								<a href="#none" class="link_opt">30분</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="tf_item">
+				<div class="box_tf box_tf2">
+					<input type="text" id="tf1" class="inp_g" placeholder="오랜 시간 응답이 없어 다시 시작합니다">
+					<label for="tf1" class="lab_g lab_repeat">초과 시 안내 메세지</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+		</div>
+	</div>
+</div>
+#end

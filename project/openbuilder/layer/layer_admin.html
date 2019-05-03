@@ -1,0 +1,148 @@
+<div class="layer_bot layer_admin">
+    <div class="layer_head">
+        <ul class="list_tab"><!-- 2017-07-06 수정 : tab_layer > list_tab -->
+        	#foreach($key in[0..2])
+        	#set($title =['봇 분류','인텐트 분류','봇 + 인텐트 분류'])
+        	<li #if($key ==0) class="on" #end>
+        		<a href="#none" class="link_tab">$title.get($key)</a>
+        	</li>
+        	#end
+        </ul>
+        <em class="screen_out">봇 분류</em><!-- 활성화된 탭명으로 적용해주세요 -->
+				<strong class="tit_layer">불규칙 발화 관리</strong>
+				<div class="util_btn">
+					<!-- 2018-10-15 수정 -->
+					<div class="wrap_search search_on"><!--버튼 클릭 시 search_on 클래스추가 -->
+						<a href="#none" class="btn_util btn_search">
+							<span class="ico_bot ico_search"></span>
+							<span class="tooltip_btn">검색</span>
+						</a>
+						<div class="search_cate">
+							<form action="#">
+								<fieldset>
+									<legend class="screen_out">발화 검색 폼</legend>
+									<div class="box_tf box_tf2">
+										<span class="ico_bot ico_search">검색</span>
+										<label class="screen_out" for="chatNameSearch">검색</label>
+										<input type="text" id="chatNameSearch" name="chatNameSearch" class="inp_g" placeholder="검색어 입력" value="검색">
+										<button type="button" class="btn_close"><span class="ico_bot ico_close">닫기</span></button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					<!-- //2018-10-15 수정 -->
+						<button class="btn_util btn_upload">
+							<span class="ico_bot ico_upload"></span>
+							<span class="tooltip_btn">업로드</span><!-- 2018-10-15 추가 -->
+						</button>
+						<button class="btn_util btn_save">
+							<span class="ico_bot ico_save"></span>
+							<span class="tooltip_btn">저장</span><!-- 2018-10-15 추가 -->
+						</button>
+        </div>
+    </div>
+    <div class="layer_body">
+    	<div class="box_tf box_tf2 #if($params.get('1')) tf_focus #end">
+			<input type="text" id="tfKey$key" class="inp_g" #if($params.get('1')) value="@sys.date 날씨 알"#end placeholder="발화를 입력한 뒤 엔터를 눌러주세요">
+			<label for="tfKey$key" class="screen_out">검색어 입력</label>
+			<button class="btn_util btn_enter">
+				<span class="ico_bot ico_enter">입력</span>
+			</button>
+		</div>
+		#if($params.get('2'))
+
+		<div class="wrap_none"><!-- 2018-11-30 : box_none > wrap_none 수정 -->
+			<span class="ico_bot ico_none"></span>
+			<span class="txt_none">입력된 화행이 없습니다.<br>화행을 추가해 보세요.</span><!-- 2018-11-30 : desc_none > txt_none 수정 -->
+		</div>
+		#else
+		<strong class="screen_out">추가된 불규칙 발화 리스트</strong>
+		<ul class="list_uneven">
+      <li>
+        <a href="#none" class="link_uneven">@sys.date 날씨 어때?</a>
+        <button type="button" class="btn_util btn_del">
+          <span class="ico_bot ico_del"></span>
+					<span class="tooltip_btn">삭제</span>
+        </button>
+      </li>
+      <li>
+        <a href="#none" class="link_uneven">오늘 몇 도야?</a>
+        <button type="button" class="btn_util btn_del">
+					<span class="ico_bot ico_del"></span>
+					<span class="tooltip_btn">삭제</span>
+        </button>
+      </li>
+      <li>
+        <a href="#none" class="link_uneven">@sys.date @sys.city.town 날씨 어떤지 알려줘</a>
+          <button type="button" class="btn_util btn_del">
+						<span class="ico_bot ico_del"></span>
+						<span class="tooltip_btn">삭제</span>
+          </button>
+      </li>
+      <li>
+        <a href="#none" class="link_uneven">@sys.date 추워?</a>
+        <button type="button" class="btn_util btn_del">
+					<span class="ico_bot ico_del"></span>
+					<span class="tooltip_btn">삭제</span>
+        </button>
+      </li>
+			#if($params.get('1'))
+			#else
+      <li>
+        <a href="#none" class="link_uneven">오늘 몇 도야?</a>
+        <button type="button" class="btn_util btn_del">
+					<span class="ico_bot ico_del"></span>
+					<span class="tooltip_btn">삭제</span>
+        </button>
+        </li>
+      <li>
+        <a href="#none" class="link_uneven">@sys.date 날씨 어때?</a>
+        <button type="button" class="btn_util btn_del">
+					<span class="ico_bot ico_del"></span>
+					<span class="tooltip_btn">삭제</span>
+        </button>
+			</li>
+      <li>
+        <a href="#none" class="link_uneven">오늘 몇 도야?</a>
+        <button type="button" class="btn_util btn_del">
+					<span class="ico_bot ico_del"></span>
+					<span class="tooltip_btn">삭제</span>
+        </button>
+			</li>
+			#end
+		</ul>
+		#if($params.get('1'))
+		#else
+		<div class="paging_item">
+			<!-- 2018-11-13 수정 : a, span 태그 > button 으로 변경 -->
+			<div class="inner_paging">
+				<!-- 현재 페이지 span > em 으로 변경 -->
+				<!-- 맨 앞/이전 페이지, 맨 뒤/다음 페이지 없는 경우 a 태그 > span 태그  -->
+				<button type="button" class="ico_bot btn_fst">맨 앞</button>
+				<button type="button" class="ico_bot btn_prev">이전</button>
+				<span class="screen_out">현재페이지</span><em class="link_page">1</em>
+				<button type="button" class="link_page">2</button>
+				<button type="button" class="link_page">3</button>
+				<button type="button" class="link_page">4</button>
+				<button type="button" class="link_page">5</button>
+				<button type="button" class="link_page">6</button>
+				<button type="button" class="link_page">7</button>
+				<button type="button" class="link_page">8</button>
+				<button type="button" class="link_page">9</button>
+				<button type="button" class="link_page">10</button>
+				<button type="button" class="ico_bot btn_next">다음</button>
+				<button type="button" class="ico_bot btn_lst">맨 뒤</button>
+			</div>
+			<!-- //2018-11-13 수정 -->
+		</div>
+		#end
+		#end
+    </div>
+    <div class="layer_foot">
+        <div class="wrap_btn">
+            <button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+            <button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+        </div>
+    </div>
+</div>

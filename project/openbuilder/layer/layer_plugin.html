@@ -1,0 +1,122 @@
+<div class="layer_bot layer_plugin">
+    <div class="layer_head">
+			#if($params.get('plugin'))
+			<strong class="tit_layer">플러그인 파라미터</strong>
+			#else
+			<strong class="tit_layer">파라미터 만들기</strong>
+			#end
+    </div>
+    <div class="layer_body">
+		<strong class="tit_sub">기본 설정</strong>
+		#if($params.get('plugin'))
+		#else
+		<!-- 2018-07-03 추가 : claire -->
+		<div class="group_radio">
+			<div class="item_radio">
+				<input type="radio" name="inpRadioSkill" id="inpSkill01" class="inp_g">
+				<label for="inpSkill01" class="lab_g">일반<span class="ico_bot ico_radio"></span></label>
+			</div>
+			<div class="item_radio">
+				<input type="radio" name="inpRadioSkill" id="inpSkill02" class="inp_g">
+				<label for="inpSkill02" class="lab_g">플러그인<span class="ico_bot ico_radio"></span></label>
+			</div>
+		</div>
+		<!-- //2018-07-03 추가 : claire -->
+		#end
+		<div class="box_plugin">
+			<div class="row_tf">
+				<label for="tfKey01" class="lab_g">파라미터명<span class="txt_require">*</span></label>
+				<!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화 disabled 클래스추가 -->
+				<div class="box_tf #if($params.get('type2') || $params.get('error'))on#elseif($params.get('type3'))disabled#end">
+					<input type="text" id="tfKey01" class="inp_g" placeholder="testLocation" #if($params.get('type3')) disabled="disabled #end"><!-- 비활성화 시 disabled 추가 -->
+				</div>
+				<div class="item_check #if($params.get('type3'))disabled#end"><!-- 비활성화 시 disabled 클래스 추가 -->
+					<input type="checkbox" id="checkRequire" class="inp_g" checked="checked" >
+					<label for="checkRequire" class="lab_g">필수 파라미터로 설정<span class="ico_bot ico_check"></span></label>
+				</div>
+			</div>
+			<div class="row_tf">
+				#if($params.get('type2'))
+				<strong class="lab_g">플러그인<span class="txt_require">*</span></strong>
+				#else
+				<strong class="lab_g">엔티티<span class="txt_require">*</span></strong>
+				#end
+				<div class="opt_g #if($params.get('type2') || $params.get('error'))on#elseif($params.get('type3'))disabled#elseif($params.get('openOpt'))opt_open#end"><!-- 클릭시 opt_open 클래스 추가 -->
+					<!-- 입력완료시 on / 포커스 시 tf_focus / 비활성시 disabled / 에러일경우 opt_error 클래스추가 -->
+					<!-- <div class="screen_out">카테고리 선택상자</div>
+					<span class="screen_out">선택내용: </span>
+					<a href="#none" class="link_opt">현 위치 전송 <span class="txt_opt">유저의 현 위치을 파악하기 위한 지도 모듈을 실행하는 플러그인</span><span class="ico_bot ico_arr"></span></a> 2018-07-12 삭제 -->
+					<!-- 2018-07-12 추가 -->
+					<div class="box_tf">
+						#if($params.get('type2'))
+						<input type="text" id="tfRe" class="inp_g" placeholder="플러그인을 선택해주세요">
+						#else
+						<input type="text" id="tfRe" class="inp_g" placeholder="엔티티를 선택해주세요">
+						#end
+						<label for="tfRe" class="screen_out">엔티티 선택</label>
+						<span class="ico_bot ico_arr"></span>
+					</div>
+					<!-- //2018-07-12 추가 -->
+					<div class="wrap_opt">
+						<span class="screen_out">선택옵션: </span>
+						<ul class="list_opt">
+							<li><a href="#none" class="link_opt">현 위치 전송 <span class="txt_opt">유저의 현 위치을 파악하기 위한 지도 모듈을 실행하는 플러그인</span></a></li>
+							<li><a href="#none" class="link_opt">바코드(QR) 전송 <span class="txt_opt">유저의 현 위치을 파악하기 위한 지도 모듈을 실행하는 플러그인</span></a></li>
+							<li><a href="#none" class="link_opt">날짜 <span class="txt_opt">유저의 현 위치을 파악하기 위한 지도 모듈을 실행하는 플러그인</span></a></li>
+							<li><a href="#none" class="link_opt">시간 <span class="txt_opt">유저의 현 위치을 파악하기 위한 지도 모듈을 실행하는 플러그인</span></a></li>
+							<li><a href="#none" class="link_opt">날짜/시간 <span class="txt_opt">유저의 현 위치을 파악하기 위한 지도 모듈을 실행하는 플러그인</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row_tf">
+				<label for="tfKey02" class="lab_g">값</label>
+				<div class="box_tf #if($params.get('type2') || $params.get('error'))on#elseif($params.get('type3'))disabled#end">
+					<input type="text" id="tfKey02" class="inp_g" placeholder="$testLocation" #if($params.get('type3')) disabled="disabled #end">
+				</div>
+				<div class="item_check #if($params.get('type3'))disabled#end"><!-- 비활성화 시 disabled 클래스 추가 -->
+					<input type="checkbox" id="checkRequire2" class="inp_g" checked="checked">
+					<label for="checkRequire2" class="lab_g">
+						<span class="ico_bot ico_check"></span>
+					</label>
+				</div>
+				<div class="item_input">
+					<label for="tfKey03" class="lab_g">기본값 사용</label>
+					<div class="box_tf tf_type2 #if($params.get('type2') || $params.get('error'))on#elseif($params.get('type3'))disabled#end">
+						<input type="text" id="tfKey03" class="inp_g" placeholder="$testLocation" #if($params.get('type3')) disabled="disabled #end">
+					</div>
+				</div>
+			</div>
+		</div>
+		<strong class="tit_sub">파라미터 검증API 설정</strong>
+		<div class="box_plugin">
+			<div class="row_tf">
+				<label for="tfKey04" class="lab_g">검증 API 주소</label>
+				<div class="box_tf #if($params.get('type2'))on#elseif($params.get('error'))tf_error#elseif($params.get('type3'))disabled#end">
+					#if($params.get('type2') || $params.get('error'))
+					<input type="text" id="tfKey04" class="inp_g" value="https://api.yourdomain.com/chatbot/skill">
+					#else
+					<input type="text" id="tfKey04" class="inp_g" placeholder="검증 API 주호를 입력해 주세요">
+					#end
+					#if($params.get('type2'))
+					<span class="ico_bot ico_validate">체크됨</span>
+					#elseif($params.get('error'))
+					<span class="ico_bot ico_error">에러</span>
+					#end
+				</div>
+			</div>
+			<div class="row_tf">
+				<label for="tfKey05" class="lab_g">검증 실패 에러 메시지</label>
+				<div class="box_tf #if($params.get('type2'))on#elseif($params.get('type3'))disabled#end">
+					<input type="text" id="tfKey05" class="inp_g" value="유효하지 않은 값입니다">
+				</div>
+			</div>
+		</div>
+    </div>
+    <div class="layer_foot">
+        <div class="wrap_btn">
+            <button class="btn_g btn_g3">취소</button>
+            <button class="btn_g btn_g2" #if($params.get('type2') || $params.get('type3'))disabled#end>확인</button>
+        </div>
+    </div>
+</div>

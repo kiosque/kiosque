@@ -1,0 +1,160 @@
+<div class="wrap_deploy">
+	<div class="inner_cont">
+		<div class="wrap_tit">
+			<h3 class="tit_g">배포</h3>
+			<span class="info_g">배포는 봇 디자이너들이 저장한 변경 사항을 실제 서비스되고 있는 봇에 적용하는 기능입니다. </span>
+		</div>
+		<ul class="list_tab">
+			<li>
+				<a href="#none" class="link_tab">배포 관리</a>
+			</li>
+			<li class="on"><!-- 활성화시 on 클래스추가 -->
+				<a href="#none" class="link_tab">권한 대행 관리</a>
+			</li>
+		</ul>
+
+		<h4 class="screen_out">권한 대행 관리</h4>
+		<div class="box_row">
+			<dl class="list_summup">
+				<div class="item_summup on">
+					<dt>전체</dt>
+					<dd>10,000</dd>
+				</div>
+				<div class="item_summup">
+					<dt>대행요청 수락대기</dt>
+					<dd>999,999</dd>
+				</div>
+				<div class="item_summup">
+					<dt>대행거부 요청</dt>
+					<dd>999,999</dd>
+				</div>
+				<div class="item_summup">
+					<dt>대행거부 취소요청</dt>
+					<dd>999,999</dd>
+				</div>
+				<div class="item_summup">
+					<dt>대행거부 완료</dt>
+					<dd>999,999</dd>
+				</div>
+				<div class="item_summup">
+					<dt>권한대행 중(자동배포)</dt>
+					<dd>999,999</dd>
+				</div>
+			</dl>
+			<div class="util_tbl">
+				<p class="desc_tbl">권한 대행중인 봇을 관리할 수 있으며, 배포 시 권한 대행중인 봇은 자동으로 배포됩니다.</p>
+				<div class="box_tf box_search #if($params.get('search'))on#end"><!-- 검색 활성화시 on 클래스 추가 -->
+					<button type="button" class="btn_search" #if($params.get('empty'))disabled="disabled"#end><span class="ico_bot ico_search">검색</span></button><!-- 관리중인 봇이 없을때 disabled 속성 추가 -->
+					<label class="screen_out" for="chatNameSearch">검색</label>
+					<input type="text" id="chatNameSearch" name="chatNameSearch" class="inp_g" placeholder="봇 검색 : 전체" value="#if($params.get('result'))봇#end">
+					#if($params.get('result'))<button type="button" class="btn_close"><span class="ico_bot ico_close">닫기</span></button>#end
+				</div>
+			</div>
+			<table class="tbl_deploy type_acting">
+				<caption class="caption_g">봇이름, 봇 아이디, 최종변경일시, 상태, 대행상태관리에 대한 정보입니다.</caption>
+				<colgroup>
+					<col>
+					<col style="width:192px">
+					<col style="width:216px">
+					<col style="width:160px">
+					<col style="width:207px">
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">봇이름 (@플러스친구)</th>
+						<th scope="col">봇 아이디</th>
+						<th scope="col">최종 변경 일시</th>
+						<th scope="col">상태</th>
+						<th scope="col">대행상태 관리</th>
+					</tr>
+				</thead>
+				<tbody>
+					#if($params.get('empty'))
+					<td colspan="5">
+						<span class="ico_bot ico_none"></span>
+						<span class="txt_none">관리 중인 봇이 없습니다.</span>
+					</td>
+					#elseif($params.get('result'))
+					#foreach($i in [1 .. 5])
+					<tr>
+						<td>
+							<div class="txt_bot">알레그리아<span class="emph_keyword">봇</span> (@알레그리아)</div>
+						</td>
+						<td>183Y289437324U23O</td>
+						<td>2019.01.30. 12:45</td>
+						<td>대행요청 수락대기</td>
+						<td>
+							<a href="#none" class="link_acting">대행수락</a>
+							<a href="#none" class="link_acting">대행거절</a>
+						</td>
+					</tr>
+					#end
+					#else
+					<tr>
+						<td>
+							<div class="txt_bot">일이삼사오육칠팔구십일이삼사오육칠팔구십 (@알레그리아알레그리아알레그리아)</div>
+						</td>
+						<td>183Y289437324U23O</td>
+						<td>2019.01.30. 12:45</td>
+						<td>대행요청 수락대기</td>
+						<td>
+							<a href="#none" class="link_acting">대행수락</a>
+							<a href="#none" class="link_acting">대행거절</a>
+						</td>
+					</tr>
+					<tr>
+						<td><div class="txt_bot">알레그리아 (@알레그리아)</div></td>
+						<td>183Y289437324U23O</td>
+						<td>2018.08.02 (1년 23일 운영)</td>
+						<td>대행거부 취소요청</td>
+						<td>
+							<a href="#none" class="link_acting">거부철회</a>
+							<a href="#none" class="link_acting">요청반려</a>
+						</td>
+					</tr>
+					<tr>
+						<td><div class="txt_bot">알레그리아 (@알레그리아)</div></td>
+						<td>183Y289437324U23O</td>
+						<td>2019.01.30. 12:45 (D+2)</td>
+						<td>권한대행중 <span class="ico_bot ico_check2"></span></td>
+						<td>
+							<a href="#none" class="link_acting">대행거부</a>
+						</td>
+					</tr>
+					#foreach($i in [4 .. 15])
+					<tr>
+						<td><div class="txt_bot">알레그리아 (@알레그리아)</div></td>
+						<td>183Y289437324U23O</td>
+						<td>2019.01.30. 12:45 (D+2)</td>
+						<td>대행거부 완료</td>
+						<td></td>
+					</tr>
+					#end
+					#end
+				</tbody>
+			</table>
+			<div class="paging_item">
+				<!-- 2018-11-13 수정 : a, span 태그 > button 으로 변경 -->
+				<div class="inner_paging">
+					<!-- 현재 페이지 span > em 으로 변경 -->
+					<!-- 맨 앞/이전 페이지, 맨 뒤/다음 페이지 없는 경우 a 태그 > span 태그  -->
+					<button type="button" class="ico_bot btn_fst">맨 앞</button>
+					<button type="button" class="ico_bot btn_prev">이전</button>
+					<span class="screen_out">현재페이지</span><em class="link_page">1</em>
+					<button type="button" class="link_page">2</button>
+					<button type="button" class="link_page">3</button>
+					<button type="button" class="link_page">4</button>
+					<button type="button" class="link_page">5</button>
+					<button type="button" class="link_page">6</button>
+					<button type="button" class="link_page">7</button>
+					<button type="button" class="link_page">8</button>
+					<button type="button" class="link_page">9</button>
+					<button type="button" class="link_page">10</button>
+					<button type="button" class="ico_bot btn_next">다음</button>
+					<button type="button" class="ico_bot btn_lst">맨 뒤</button>
+				</div>
+				<!-- //2018-11-13 수정 -->
+			</div>
+		</div>
+	</div>
+</div>

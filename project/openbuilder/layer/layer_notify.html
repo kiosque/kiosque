@@ -1,0 +1,124 @@
+<div class="layer_bot layer_notify">
+    <div class="layer_head">
+		<div class="group_options">
+			<div class="item_option item_town">@sys.town</div>
+			<div class="item_option item_temperature">@sys.temperature</div>
+			<em class="txt_option">알려줘</em>
+		</div>
+    </div>
+    <div class="layer_body">
+		<strong class="tit_sub">
+			<em>추가 발화</em>
+			<span class="desc_sub">중의성을 가진 발화나 추가적인 예문을 등록할 수 있습니다</span>
+			<button class="btn_addex">예상발화 추가</button>
+		</strong>
+		#if($params.get('2'))
+		#elseif($params.get('1'))
+		<div class="box_notify"><!--예상발화 추가 시, 영역 노출-->
+			<div class="row_tf">
+				<div class="box_tf">
+					<input type="text" id="tfKeyTown" class="inp_g" value="검색">
+					<label for="tfKeyTown" class="screen_out">지역 입력</label>
+				</div>
+				<div class="box_tf">
+					<input type="text" id="tfKeyTemp" class="inp_g" value="검색">
+					<label for="tfKeyTemp" class="screen_out">기온 입력</label>
+				</div>
+				<em class="txt_tf">알려줘</em>
+			</div>
+		</div>
+		#else
+		<div class="box_notify"><!--예상발화 최초 추가 시, 영역 노출-->
+				#foreach($key in[0..4])
+				<div class="row_tf"><!--예상발화 추가 시, 영역 노출-->
+					<div class="box_tf">
+						<input type="text" id="tfKeyTown1$key" class="inp_g" value="검색">
+						<label for="tfKeyTown1$key" class="screen_out">지역 입력</label>
+					</div>
+					<div class="box_tf">
+						<input type="text" id="tfKeyTemp1$key" class="inp_g" value="검색">
+						<label for="tfKeyTemp1$key" class="screen_out">기온 입력</label>
+					</div>
+					<em class="txt_tf">알려줘</em>
+				</div>
+				#end
+			<div class="paging_item">
+				<!-- 2018-11-13 수정 : a, span 태그 > button 으로 변경 -->
+				<div class="inner_paging">
+					<!-- 현재 페이지 span > em 으로 변경 -->
+					<!-- 맨 앞/이전 페이지, 맨 뒤/다음 페이지 없는 경우 a 태그 > span 태그  -->
+					<button type="button" class="ico_bot btn_fst">맨 앞</button>
+					<button type="button" class="ico_bot btn_prev">이전</button>
+					<span class="screen_out">현재페이지</span><em class="link_page">1</em>
+					<button type="button" class="link_page">2</button>
+					<button type="button" class="link_page">3</button>
+					<button type="button" class="link_page">4</button>
+					<button type="button" class="link_page">5</button>
+					<button type="button" class="link_page">6</button>
+					<button type="button" class="link_page">7</button>
+					<button type="button" class="link_page">8</button>
+					<button type="button" class="link_page">9</button>
+					<button type="button" class="link_page">10</button>
+					<button type="button" class="ico_bot btn_next">다음</button>
+					<button type="button" class="ico_bot btn_lst">맨 뒤</button>
+				</div>
+				<!-- //2018-11-13 수정 -->
+			</div>
+		</div>
+		#end
+
+		<strong class="tit_sub">
+			<em>특수 발화</em>
+			<span class="desc_sub">엔티티와 무관하게 실행되는 발화를 등록할 수 있습니다</span>
+			<button class="btn_addex disabled" disabled="disabled">예상발화 추가</button>
+		</strong>
+
+		#if($params.get('2'))
+		#elseif($params.get('1'))
+		#else
+		<div class="box_notify"><!-- 특수 예상발화 최초 추가 시, 영역 노출-->
+			#foreach($key in[0..4])
+			<div class="row_tf"><!-- 특수 예상발화 추가 시, 영역 노출-->
+				<div class="box_tf disabled">
+					<input type="text" id="tfKeyTown2$key" class="inp_g" value="검색" disabled="disabled">
+					<label for="tfKeyTown2$key" class="screen_out">지역 입력</label>
+				</div>
+				<div class="box_tf disabled">
+					<input type="text" id="tfKeyTemp2$key" class="inp_g" value="검색" disabled="disabled">
+					<label for="tfKeyTemp2$key" class="screen_out">기온 입력</label>
+				</div>
+				<em class="txt_tf">알려줘</em>
+			</div>
+			#end
+			<div class="paging_item">
+				<!-- 2018-11-13 수정 : a, span 태그 > button 으로 변경 -->
+				<div class="inner_paging">
+					<!-- 현재 페이지 span > em 으로 변경 -->
+					<!-- 맨 앞/이전 페이지, 맨 뒤/다음 페이지 없는 경우 a 태그 > span 태그  -->
+					<button type="button" class="ico_bot btn_fst">맨 앞</button>
+					<button type="button" class="ico_bot btn_prev">이전</button>
+					<span class="screen_out">현재페이지</span><em class="link_page">1</em>
+					<button type="button" class="link_page">2</button>
+					<button type="button" class="link_page">3</button>
+					<button type="button" class="link_page">4</button>
+					<button type="button" class="link_page">5</button>
+					<button type="button" class="link_page">6</button>
+					<button type="button" class="link_page">7</button>
+					<button type="button" class="link_page">8</button>
+					<button type="button" class="link_page">9</button>
+					<button type="button" class="link_page">10</button>
+					<button type="button" class="ico_bot btn_next">다음</button>
+					<button type="button" class="ico_bot btn_lst">맨 뒤</button>
+				</div>
+				<!-- //2018-11-13 수정 -->
+			</div>
+		</div>
+		#end
+    </div>
+    <div class="layer_foot">
+        <div class="wrap_btn">
+            <button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+            <button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+        </div>
+    </div>
+</div>

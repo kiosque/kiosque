@@ -1,0 +1,115 @@
+#if($params.get('detail'))
+<!-- 플러그인 상세 기능 설정 -->
+<div class="layer_bot layer_plugin">
+	<div class="layer_head">
+		<strong class="tit_layer">되묻기 질문 - 프로필 플러그인</strong>
+	</div>
+	<div class="layer_body">
+		<strong class="tit_sub">
+			<button class="btn_util btn_return">
+				<span class="ico_bot"></span>
+				<span class="tooltip_btn">뒤로 가기</span>
+			</button>
+			되문기 질문 응답 > 플러그인 상세 기능 설정
+		</strong>
+		<div class="box_plugin box_detail">
+			<div class="row_tf">
+				<label for="tfKey01" class="lab_g">버튼명</label>
+				<div class="box_tf #if($params.get('readonly'))readonly#end"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / readonly 경우 readonly 클래스 추 -->
+					#if($params.get('readonly'))
+					<input type="text" id="tfKey01" class="inp_g" placeholder="버튼명을 설정해주세요" readonly>
+					#else
+					<input type="text" id="tfKey01" class="inp_g" placeholder="버튼명을 설정해주세요">
+					#end
+				</div>
+			</div>
+			#if($params.get('setting'))
+			<div class="row_setting">
+				<strong class="tit_setting">개인정보 제공 동의 항목</strong>
+				<div class="group_setting">
+					<div class="check_item #if($params.get('readonly'))readonly#end"><!-- 체크박스 선택 시 check_on / readonly 일 경우 readonly 클래스 추가 -->
+						<input type="checkbox" id="checkPhone" class="inp_g" checked>
+						<label for="checkPhone" class="lab_g">전화번호<span class="ico_bot ico_check"></span></label>
+					</div>
+					<div class="check_item #if($params.get('readonly'))readonly#end"><!-- 체크박스 선택 시 check_on / readonly 일 경우 readonly 클래스 추가 -->
+						<input type="checkbox" id="checkMail" class="inp_g" checked>
+						<label for="checkMail" class="lab_g">이메일<span class="ico_bot ico_check"></span></label>
+					</div>
+					<div class="check_item #if($params.get('readonly'))readonly#end"><!-- 체크박스 선택 시 check_on / readonly 일 경우 readonly 클래스 추가 -->
+						<input type="checkbox" id="checkProfile" class="inp_g">
+						<label for="checkProfile" class="lab_g">프로필<span class="ico_bot ico_check"></span></label>
+					</div>
+					<div class="check_item #if($params.get('readonly'))readonly#end"><!-- 체크박스 선택 시 check_on / readonly 일 경우 readonly 클래스 추가 -->
+						<input type="checkbox" id="checkAdd" class="inp_g">
+						<label for="checkAdd" class="lab_g">배송지<span class="ico_bot ico_check"></span></label>
+					</div>
+				</div>
+				<strong class="tit_setting">회원가입 유무</strong>
+				<div class="group_setting">
+					<div class="check_item readonly"><!-- 체크박스 선택 시 check_on / readonly 일 경우 readonly 클래스 추가 -->
+						<input type="checkbox" id="checkJoin" class="inp_g" checked disabled>
+						<label for="checkJoin" class="lab_g">가입<span class="ico_bot ico_check"></span></label>
+					</div>
+				</div>
+			</div>
+			#else
+			<div class="row_info">
+				<p class="info_g">프로필 플러그인을 사용하려면 아래와 같은 설정을 해주셔야합니다.</p>
+				<strong class="screen_out">설정 사항</strong>
+				<ul class="list_note">
+					<li>- 비즈 플러스친구</li>
+					<li>- 비즈 앱</li>
+					<li>- 스콥 설정 및 검수</li>
+					<li>- 카포비 플러스친구<>앱 연동</li>
+				</ul>
+				<p class="txt_note">* <a href="#none" class="link_guide">가이드 페이지</a>를 참고하여 상세 가이드를 따라주세요</p>
+			</div>
+			#end
+		</div>
+	</div>
+</div>
+
+#else
+<!-- 되묻기 질문_프로필 플러그인 -->
+<div class="layer_bot layer_plugin">
+	<div class="layer_head">
+		<strong class="tit_layer">되묻기 질문 - 프로필 플러그인</strong>
+	</div>
+	<div class="layer_body">
+		<div class="group_plugin">
+			<strong class="tit_sub">되묻기 질문 응답</strong>
+			<div class="box_plugin">
+				<div class="view_plugin">
+					<div class="box_tf">
+						<textarea id="textarea" name="textarea" rows="2" class="tf_description" placeholder="텍스트를 입력해주세요"></textarea>
+						<label for="textarea" class="screen_out">플러그인 내용 입력</label>
+					</div>
+					<button class="btn_tf">버튼 설정</button>
+				</div>
+				<dl class="desc_plugin">
+					<dt>프로필 플러그인이란?</dt>
+					<dd>보안 이미지 전송 플러그인을 통해서 개인정보가 포함된 이미지를 전송 받을 수 있습니다. 최대 10장까지 사용자가 전송한 이미지 URL을 파라미터를 통해서 스킬에 전달할 수 있습니다.</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="group_plugin">
+			<strong class="tit_sub">
+				되묻기 허용 횟수 설정
+				<span class="wrap_tip">
+					<a href="#none" class="ico_bot ico_help">도움말</a>
+					<span class="layer_tip">
+						<span class="txt_tip">도움말도움말도움말도움말</span>
+					</span>
+				</span>
+				<button type="button" class="btn_switch ico_bot on"><span class="screen_out">현재상태</span>켜짐</button><!-- 활성화 시 on 클래스 추가, '꺼짐' > '켜짐'으로 변경 -->
+			</strong>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2" disabled="disabled">확인</button>
+		</div>
+	</div>
+</div>
+#end

@@ -1,0 +1,148 @@
+<div class="layer_bot layer_revalue">
+    <div class="layer_head">
+        <strong class="tit_layer">발화 재평가</strong>
+        <p class="txt_layer">입력된 발화들은 최신 엔티티로 재평가합니다</p>
+    </div>
+    <div class="layer_body">
+        <div class="item_group">
+            #if($params.get('1'))
+            <div class="opt_g #if($params.get('2'))opt_open#end"><!-- 2018-07-12 : opt_g2 클래스 삭제 / 클릭 시 opt_open 클래스 추가 -->
+            #else
+            <div class="opt_g"><!-- 2018-07-12 : opt_g2 클래스 삭제 / 클릭 시 opt_open 클래스 추가 -->
+            #end
+                <div class="screen_out">카테고리 선택상자</div>
+                <span class="screen_out">선택내용: </span>
+                #if($params.get('1'))
+                <!-- <a href="#none" class="link_opt">발화패턴<span class="ico_bot ico_arr"></span></a> 2018-07-12 석제 -->
+                <!-- 2018-07-12 추가 -->
+                <div class="box_tf box_tf2"><!-- 입력완료시 on / 비활성시 disabled / 에러일경우 opt_error 클래스추가 -->
+                    <input type="text" id="tfPattern" class="inp_g" placeholder="발화패턴">
+                    <label for="tfPattern" class="screen_out">발화패턴</label>
+                    <span class="ico_bot ico_arr"></span>
+                </div>
+                <!-- //2018-07-12 추가 -->
+                #else
+                <!-- <a href="#none" class="link_opt">재평가 기준 선택을 설명하는 플레이스 홀더<span class="ico_bot ico_arr"></span></a> 2018-07-12 삭제 -->
+                <!-- 2018-07-12 추가 -->
+                <div class="box_tf box_tf2"><!-- 입력완료시 on / 비활성시 disabled / 에러일경우 opt_error 클래스추가 -->
+                    <input type="text" id="tfRe" class="inp_g" placeholder="재평가 기준 선택을 설명하는 플레이스 홀더">
+                    <label for="tfRe" class="screen_out">재평가 기준 선택</label>
+                    <span class="ico_bot ico_arr"></span>
+                </div>
+                <!-- //2018-07-12 추가 -->
+                #end
+                <div class="wrap_opt">
+                    <span class="screen_out">선택옵션: </span>
+                    <ul class="list_opt">
+                        <li>
+                            <a href="#none" class="link_opt">작업자 등급 1</a>
+                        </li>
+                        <li>
+                            <a href="#none" class="link_opt">작업자 등급 2</a>
+                        </li>
+                        <li>
+                            <a href="#none" class="link_opt">작업자 등급 3</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            #if($params.get('1'))
+            <button class="btn_g btn_g2">시작</button>
+            #else
+            <button class="btn_g btn_g2" disabled="disabled">시작</button><!-- 2018-07-31 : btn_g3 > btn_g2로 수정 -->
+            #end
+        </div>
+        <div class="check_item">
+            <input type="checkbox" id="checkAll" class="inp_g">
+            <label for="checkAll" class="lab_g">‘날씨_AIU연동’ 소속 모든 블록의 발화들 전부 갱신
+                <span class="ico_bot ico_check"></span>
+            </label>
+        </div>
+        #if($params.get('1'))
+        <div class="item_history">
+            <div class="head_history">
+	            <strong class="tit_history">변경 내역 (11개)</strong>
+	            <span class="txt_history">진행률 <em class="emph_g">100%</em>, 총 <em class="emph_g">11</em>개 중 <em class="emph_g">11</em>개 평가</span>
+            </div>
+            #if($params.get('none'))
+            <table class="tbl_revalue item_none">
+            #else
+            <table class="tbl_revalue">
+            #end
+                <caption class="ir_caption">발화 재평가 변경내역</caption>
+                <colgroup>
+                    <col style="width:250px">
+                    <col style="width:304px">
+                    <col style="width:286px">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>변경 화행</th>
+                        <th>뭐지</th>
+                        <th>뭘꼬..</th>
+                    </tr>
+                    <!-- 2018-07-12 : tr 태그 추가 -->
+                </thead>
+                <tbody>
+                    #if($params.get('none'))
+                    <tr>
+                        <td colspan="3">
+                            <span class="ico_bot ico_none"></span>
+                            변경 내역이 없습니다
+                        </td>
+                    </tr>
+                    #else
+                    #foreach($li in [1..8])
+                    <tr>
+                        <td>내일 눈 와</td>
+                        <td>{sys.date} 눈 와</td>
+                        <td>[“{sys.date}&lt;snow&gt; 오다”,””,””]</td>
+                    </tr>
+                    #end
+                    <tr>
+                        <td>경기도 성남시 분당구 삼평동 눈오면 좋겠다 댕댕이들이 뛰놀겠군</td>
+                        <td>{sys.location}{sys.location}{sys.location} 눈온다 눈눈눈</td>
+                        <td>[“{sys.date} 오다”,””,””][“{sys.date}&lt;snow&gt; 오다”,””,””]</td>
+                    </tr>
+                    <tr>
+                        <td>내일 눈 와</td>
+                        <td>{sys.date} 눈 와</td>
+                        <td>[“{sys.date}&lt;snow&gt; 오다”,””,””]</td>
+                    </tr>
+                    <tr>
+                        <td>내일 눈 와</td>
+                        <td>{sys.date} 눈 와</td>
+                        <td>[“{sys.date}&lt;snow&gt; 오다”,””,””]</td>
+                    </tr>
+                    <tr>
+                        <td>내일 눈 와</td>
+                        <td>{sys.date} 눈 와</td>
+                        <td>[“{sys.date}&lt;snow&gt; 오다”,””,””]</td>
+                    </tr>
+                    <tr>
+                        <td>내일 눈 와</td>
+                        <td>{sys.date} 눈 와</td>
+                        <td>[“{sys.date}&lt;snow&gt; 오다”,””,””]</td>
+                    </tr>
+                    <tr>
+                        <td>내일 눈 와</td>
+                        <td>{sys.date} 눈 와</td>
+                        <td>[“{sys.date}&lt;snow&gt; 오다”,””,””]</td>
+                    </tr>
+                    <tr>
+                        <td>내일 눈 와</td>
+                        <td>{sys.date} 눈 와</td>
+                        <td>[“{sys.date}&lt;snow&gt; 오다”,””,””]</td>
+                    </tr>
+                    #end
+                </tbody>
+            </table>
+        </div>
+        #else#end
+    </div>
+    <div class="layer_foot">
+        <div class="wrap_btn">
+            <button class="btn_g btn_g3">취소</button><!-- 2018-07-31 claire : btn_g5 삭제 -->
+        </div>
+    </div>
+</div>

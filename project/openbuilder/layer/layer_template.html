@@ -1,0 +1,558 @@
+<div class="layer_bot layer_template">
+	<div class="layer_head">
+		#if($params.get('edit'))
+		<!-- 2018-06-28 추가 -->
+		<strong class="tit_layer">권한 수정</strong>
+		<p class="desc_layer">권한을 수정하면 해당 작업자에게 바로 적용되므로 유의하세요</p>
+		<!-- //2018-06-28 추가 -->
+		#else
+		<strong class="tit_layer">권한 템플릿 관리</strong>
+		<p class="desc_layer">권한을 생성해서 봇 작업자에게 일괄적으로 적용할 수 있습니다</p>
+		#end
+	</div>
+	<div class="layer_body">
+		#if($params.get('edit'))
+		<div class="cont_template">
+			#if($params.get('edit'))
+			<strong class="tit_permit">권한자 : mccullough_johnnie@raoul.co.uk</strong><!-- 2018-06-28 추가 -->
+			#else
+			<strong class="tit_permit">정식작업자</strong>
+			#end
+			<div class="checklist_permit">
+				<div class="checklist_head">
+					<div class="col_function">기능</div>
+					<div class="col_checkbox">
+						읽기
+						<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+					</div>
+					<div class="col_checkbox">
+						쓰기
+						<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+					</div>
+				</div>
+				<div class="checklist_body">
+					<div class="row_checklist">
+						<div class="col_function">
+							시나리오 권한
+							<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit01" class="inp_g" disabled>
+								<label for="checkPermit01" class="lab_g">
+									읽기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit02" class="inp_g">
+								<label for="checkPermit02" class="lab_g">
+									쓰기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row_checklist row_type2"><!-- 2018-06-28 : 읽기/쓰기 체크 시 fold 클래스 추가 -->
+						<div class="col_function">
+							블록 화행 권한
+							<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit03" class="inp_g">
+								<label for="checkPermit03" class="lab_g">
+									읽기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit04" class="inp_g">
+								<label for="checkPermit04" class="lab_g">
+									쓰기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="desc_checklist">
+							블록 화행 작업에는 엔티티 관리에 대한 작업이 동반됩니다. 따라서 해당 읽기/쓰기 권한이 제공됩니다.
+							시나리오/블록 작업에 대한 읽기 권한도 같이 제공됩니다.
+						</div>
+					</div>
+					<div class="row_checklist row_type2">
+						<div class="col_function">
+							블록 동작/출력 권한
+							<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit05" class="inp_g">
+								<label for="checkPermit05" class="lab_g">
+									읽기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit06" class="inp_g">
+								<label for="checkPermit06" class="lab_g">
+									쓰기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row_checklist">
+						<div class="col_function">
+							엔티티 권한
+							<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit07" class="inp_g">
+								<label for="checkPermit07" class="lab_g">
+									읽기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit08" class="inp_g">
+								<label for="checkPermit08" class="lab_g">
+									쓰기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row_checklist">
+						<div class="col_function">
+							학습 권한
+							<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit09" class="inp_g">
+								<label for="checkPermit09" class="lab_g">
+									읽기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit10" class="inp_g">
+								<label for="checkPermit10" class="lab_g">
+									쓰기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="desc_checklist">
+							학습 기능을 처리하기 위해서는 블록 화행 작업과 엔티티에 대한 일부 작업이 동반됩니다.
+							따라서 해당 쓰기 권한이 같이 제공됩니다. 하지만 사용자에게 '읽기'권한을 부여하지 않으면
+							인터페이스는 노출되지 않기 때문에 해당 기능으로의 접근은 제한할 수 있습니다.
+							<p class="emph_alert">
+								(주의 : 읽기 기능을 제한하더라도 학습 기능 권한을 제공하면 그에 필요한 블록/엔티티 기능은
+								시스템에서 자동 처리됩니다.)
+							</p>
+						</div>
+					</div>
+					<div class="row_checklist">
+						<div class="col_function">
+							분석 권한
+							<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit11" class="inp_g">
+								<label for="checkPermit11" class="lab_g">
+									읽기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit12" class="inp_g">
+								<label for="checkPermit12" class="lab_g">
+									쓰기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		#else
+		<div class="nav_template"><!-- 권한 수정 템플릿 레이어의 경우, .nav_template 제거 -->
+			<div class="wrap_tit">
+				권한 목록
+				<button type="button" class="btn_util btn_add"><!-- 2018-12-14 : btn_add4, disabled 제거 -->
+					<span class="ico_bot ico_add2">추가</span><!-- 2018-12-14 : ico_add > ico_add2 수정 -->
+					<span class="tooltip_btn">버튼명</span>
+				</button>
+			</div>
+			<ul class="wrap_menu">
+				<li>
+					<div class="item_cate">
+						<a href="#none" class="link_item">정식작업자</a>
+						<div class="item_tf">
+							<div class="box_tf tf_focus">
+								<input type="text" id="tfCate01" class="inp_g" placeholder="새로운 권한">
+								<label for="tfCate01" class="screen_out">새로운 권한 입력</label>
+							</div>
+						</div>
+						<span class="wrap_util"><!-- 2018-12-14 : hide 제거 -->
+							<button type="button" class="btn_util btn_edit">
+								<span class="ico_bot ico_edit"></span>
+								<span class="tooltip_btn">수정</span>
+							</button>
+							<button type="button" class="btn_util btn_del">
+								<span class="ico_bot ico_del"></span>
+								<span class="tooltip_btn">삭제</span>
+							</button>
+						</span>
+					</div>
+				</li>
+				<li>
+					<div class="item_cate"><!-- 편집시 edit 클래스추가 -->
+						<a href="#none" class="link_item">화행을 입력할지도 모르는 분</a>
+						<div class="item_tf">
+							<div class="box_tf tf_focus">
+								<input type="text" id="tfCate02" class="inp_g" placeholder="새로운 권한">
+								<label for="tfCate02" class="screen_out">새로운 권한 입력</label>
+							</div>
+						</div>
+						<span class="wrap_util">
+							<button type="button" class="btn_util btn_edit">
+								<span class="ico_bot ico_edit"></span>
+								<span class="tooltip_btn">수정</span>
+							</button>
+							<!-- 설명 툴팁이 필요할 경우 wrap_tip 클래스 추가 -->
+							<button type="button" class="btn_util btn_del wrap_tip"><!-- 2018-06-20 wrap_tip 클래스 추가 -->
+								<span class="ico_bot ico_del"></span>
+								<!-- <span class="tooltip_btn">삭제</span> -->
+								<!-- 2018-06-20 추가 -->
+								<!-- 설명 툴팁이 필요할 경우 span.layer_tip 추가 -->
+								<span class="layer_tip">
+									<span class="txt_tip">작성한 권한을 삭제하게되면<br>해당 권한을 갖는 관리자가<br>‘임시작업자’로 변경됩니다.</span>
+								</span>
+								<!-- //2018-06-20 추가 -->
+							</button>
+						</span>
+					</div>
+				</li>
+				<li>
+					<div class="item_cate edit"><!-- 편집시 edit 클래스추가 -->
+						<a href="#none" class="link_item">폴백 블록</a>
+						<div class="item_tf">
+							<div class="box_tf tf_focus">
+								<input type="text" id="tfCate03" class="inp_g" placeholder="새로운 권한">
+								<label for="tfCate03" class="screen_out">새로운 권한 입력</label>
+							</div>
+						</div>
+						<span class="wrap_util">
+							<button type="button" class="btn_util btn_edit">
+								<span class="ico_bot ico_edit"></span>
+								<span class="tooltip_btn">수정</span>
+							</button>
+							<button type="button" class="btn_util btn_del">
+								<span class="ico_bot ico_del"></span>
+								<span class="tooltip_btn">삭제</span>
+							</button>
+						</span>
+					</div>
+				</li>
+				<li>
+					<div class="item_cate edit"><!-- 편집시 edit 클래스추가 -->
+						<a href="#none" class="link_item">폴백 블록</a>
+						<div class="item_tf">
+							<div class="box_tf tf_focus">
+								<input type="text" id="tfCate04" class="inp_g" placeholder="새로운 권한">
+								<label for="tfCate04" class="screen_out">새로운 권한 입력</label>
+							</div>
+						</div>
+						<span class="wrap_util">
+							<button type="button" class="btn_util btn_edit">
+								<span class="ico_bot ico_edit"></span>
+								<span class="tooltip_btn">수정</span>
+							</button>
+							<button type="button" class="btn_util btn_del">
+								<span class="ico_bot ico_del"></span>
+								<span class="tooltip_btn">삭제</span>
+							</button>
+						</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="cont_template">
+			#if($params.get(edit))
+			<strong class="tit_permit">권한자 : mccullough_johnnie@raoul.co.uk</strong><!-- 2018-06-28 추가 -->
+			#else
+			<strong class="tit_permit">정식작업자</strong>
+			#end
+			<div class="checklist_permit">
+				<div class="checklist_head">
+					<div class="col_function">기능</div>
+					<div class="col_checkbox">
+						읽기
+						<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+					</div>
+					<div class="col_checkbox">
+						쓰기
+						<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+					</div>
+				</div>
+				<div class="checklist_body">
+					<div class="row_checklist">
+						<div class="col_function">
+							시나리오 권한
+							<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit01" class="inp_g" disabled><!-- 2019-02-25 : 비활성화 시 disabled 추가 -->
+								<label for="checkPermit01" class="lab_g">
+									읽기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit02" class="inp_g">
+								<label for="checkPermit02" class="lab_g">
+									쓰기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row_checklist row_type2"><!-- 2018-06-20 : 읽기/쓰기 체크 시 fold 클래스 추가 -->
+						<div class="col_function">
+							블록 화행 권한
+							<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit03" class="inp_g" disabled><!-- 2019-02-25 : 비활성화 시 disabled 추가 -->
+								<label for="checkPermit03" class="lab_g">
+									읽기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit04" class="inp_g" disabled><!-- 2019-02-25 : 비활성화 시 disabled 추가 -->
+								<label for="checkPermit04" class="lab_g">
+									쓰기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="desc_checklist">
+							블록 화행 작업에는 엔티티 관리에 대한 작업이 동반됩니다. 따라서 해당 읽기/쓰기 권한이 제공됩니다.
+							시나리오/블록 작업에 대한 읽기 권한도 같이 제공됩니다.
+						</div>
+					</div>
+					<div class="row_checklist row_type2">
+						<div class="col_function">
+							블록 동작/출력 권한
+							<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit05" class="inp_g">
+								<label for="checkPermit05" class="lab_g">
+									읽기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit06" class="inp_g">
+								<label for="checkPermit06" class="lab_g">
+									쓰기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row_checklist">
+						<div class="col_function">
+							엔티티 권한
+							<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit07" class="inp_g">
+								<label for="checkPermit07" class="lab_g">
+									읽기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit08" class="inp_g">
+								<label for="checkPermit08" class="lab_g">
+									쓰기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row_checklist">
+						<div class="col_function">
+							학습 권한
+							<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit09" class="inp_g">
+								<label for="checkPermit09" class="lab_g">
+									읽기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit10" class="inp_g">
+								<label for="checkPermit10" class="lab_g">
+									쓰기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="desc_checklist">
+							학습 기능을 처리하기 위해서는 블록 화행 작업과 엔티티에 대한 일부 작업이 동반됩니다.
+							따라서 해당 쓰기 권한이 같이 제공됩니다. 하지만 사용자에게 '읽기'권한을 부여하지 않으면
+							인터페이스는 노출되지 않기 때문에 해당 기능으로의 접근은 제한할 수 있습니다.
+							<p class="emph_alert">
+								(주의 : 읽기 기능을 제한하더라도 학습 기능 권한을 제공하면 그에 필요한 블록/엔티티 기능은
+								시스템에서 자동 처리됩니다.)
+							</p>
+						</div>
+					</div>
+					<div class="row_checklist">
+						<div class="col_function">
+							분석 권한
+							<span class="wrap_tip">
+								<a href="#none" class="ico_bot ico_help">도움말</a>
+								<span class="layer_tip">
+									<span class="txt_tip">도움말 내용</span>
+								</span>
+							</span>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit11" class="inp_g">
+								<label for="checkPermit11" class="lab_g">
+									읽기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+						<div class="col_checkbox">
+							<div class="item_check">
+								<input type="checkbox" id="checkPermit12" class="inp_g">
+								<label for="checkPermit12" class="lab_g">
+									쓰기<span class="ico_bot ico_check"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		#end
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+		</div>
+	</div>
+</div>
+
+<script>
+	/* 템플릿 읽기, 쓰기 행 메세지 열고 닫고 확인용 */
+	var rowToggler = function (wrapper, opts, toggleClass){
+		var ctx = document.querySelector(wrapper);
+		var opts = ctx.querySelectorAll(opts);
+
+		Array.prototype.forEach.call(opts, function (index) {
+			index.addEventListener('click', function(e) {
+			index.classList.toggle(toggleClass);
+			})
+		});
+	};
+	rowToggler('.checklist_permit', '.row_checklist', 'fold');
+
+</script>

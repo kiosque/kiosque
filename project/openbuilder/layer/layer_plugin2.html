@@ -1,0 +1,321 @@
+<div class="layer_bot layer_plugin">
+    <div class="layer_head">
+        <strong class="tit_layer">
+			#if($params.get('barcode'))
+			되묻기 질문 - 바코드(QR) 전송 플러그인
+			#elseif($params.get('days'))
+			되묻기 질문 - 날짜 플러그인
+			#else
+			되묻기 질문 - 현 위치 전송 플러그인
+			#end
+		</strong>
+    </div>
+    <div class="layer_body">
+		<strong class="tit_sub">
+			#if($params.get('days2'))
+			<button class="btn_util btn_return">
+				<span class="ico_bot"></span>
+				<span class="tooltip_btn">뒤로 가기</span>
+			</button>되묻기 질문 응답  >  플러그인 상세 기능 설정
+			#else
+			되묻기 질문 응답
+			#end
+		</strong>
+		<div class="box_plugin">
+			#if($params.get('days2'))
+			<div class="row_tf">
+				<label for="tfKey01" class="lab_g">버튼명</label>
+				<div class="box_tf ">
+					<input type="text" id="tfKey01" class="inp_g" placeholder="버튼 명을 설정해주세요">
+				</div>
+			</div>
+			#if($params.get('option1'))
+			<div class="row_range">
+
+				<div class="group_radio">
+					<div class="item_radio">
+						<input type="radio" name="inpRadio" id="inpRadio01" class="inp_g" checked="checked">
+						<label for="inpRadio01" class="lab_g">
+							범위지정
+							<span class="ico_bot ico_radio"></span>
+						</label>
+					</div>
+					<div class="item_radio">
+						<input type="radio" name="inpRadio" id="inpRadio02" class="inp_g">
+						<label for="inpRadio02" class="lab_g">
+							직접지정
+							<span class="ico_bot ico_radio"></span>
+						</label>
+					</div>
+				</div>
+
+				#if($params.get('self'))
+				<div class="group_range">
+					<strong class="tit_range">
+						범위 선택
+					</strong>
+					<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+						<div class="screen_out">카테고리 선택상자</div>
+						<span class="screen_out">선택내용: </span>
+						<a href="#none" class="link_opt">과거<span class="ico_bot ico_arr"></span></a>
+						<div class="wrap_opt">
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								<li><a href="#none" class="link_opt">과거</a></li>
+								<li><a href="#none" class="link_opt">현재</a></li>
+								<li><a href="#none" class="link_opt">미래</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+						<div class="screen_out">카테고리 선택상자</div>
+						<span class="screen_out">선택내용: </span>
+						<a href="#none" class="link_opt">30일<span class="ico_bot ico_arr"></span></a>
+						<div class="wrap_opt">
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								<li><a href="#none" class="link_opt">60일</a></li>
+								<li><a href="#none" class="link_opt">90일</a></li>
+								<li><a href="#none" class="link_opt">120</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				#else
+				<div class="group_range">
+					<strong class="tit_range">
+						시작 날짜
+					</strong>
+
+					<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+						<div class="screen_out">카테고리 선택상자</div>
+						<span class="screen_out">선택내용: </span>
+						<a href="#none" class="link_opt">2018년<span class="ico_bot ico_arr"></span></a>
+						<div class="wrap_opt">
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								<li><a href="#none" class="link_opt">2018년</a></li>
+								<li><a href="#none" class="link_opt">2017년</a></li>
+								<li><a href="#none" class="link_opt">2016년</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+						<div class="screen_out">카테고리 선택상자</div>
+						<span class="screen_out">선택내용: </span>
+						<a href="#none" class="link_opt">4월<span class="ico_bot ico_arr"></span></a>
+						<div class="wrap_opt">
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								<li><a href="#none" class="link_opt">4월</a></li>
+								<li><a href="#none" class="link_opt">5월</a></li>
+								<li><a href="#none" class="link_opt">6월</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+						<div class="screen_out">카테고리 선택상자</div>
+						<span class="screen_out">선택내용: </span>
+						<a href="#none" class="link_opt">23일<span class="ico_bot ico_arr"></span></a>
+						<div class="wrap_opt">
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								<li><a href="#none" class="link_opt">23일</a></li>
+								<li><a href="#none" class="link_opt">24일</a></li>
+								<li><a href="#none" class="link_opt">25일</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="group_range">
+					<strong class="tit_range">
+						종료 날짜
+					</strong>
+
+					<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+						<div class="screen_out">카테고리 선택상자</div>
+						<span class="screen_out">선택내용: </span>
+						<a href="#none" class="link_opt">2018년<span class="ico_bot ico_arr"></span></a>
+						<div class="wrap_opt">
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								<li><a href="#none" class="link_opt">2018년</a></li>
+								<li><a href="#none" class="link_opt">2017년</a></li>
+								<li><a href="#none" class="link_opt">2016년</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+						<div class="screen_out">카테고리 선택상자</div>
+						<span class="screen_out">선택내용: </span>
+						<a href="#none" class="link_opt">5월<span class="ico_bot ico_arr"></span></a>
+						<div class="wrap_opt">
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								<li><a href="#none" class="link_opt">4월</a></li>
+								<li><a href="#none" class="link_opt">5월</a></li>
+								<li><a href="#none" class="link_opt">6월</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+						<div class="screen_out">카테고리 선택상자</div>
+						<span class="screen_out">선택내용: </span>
+						<a href="#none" class="link_opt">23일<span class="ico_bot ico_arr"></span></a>
+						<div class="wrap_opt">
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								<li><a href="#none" class="link_opt">23일</a></li>
+								<li><a href="#none" class="link_opt">24일</a></li>
+								<li><a href="#none" class="link_opt">25일</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				#end
+
+			</div>
+			#end
+
+			#if($params.get('option2'))
+			<div class="row_range row_range2">
+				<div class="group_range">
+					<strong class="tit_range">
+						선택가능 기간 단위
+					</strong>
+					<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+						<div class="screen_out">카테고리 선택상자</div>
+						<span class="screen_out">선택내용: </span>
+						<a href="#none" class="link_opt">30분<span class="ico_bot ico_arr"></span></a>
+						<div class="wrap_opt">
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								<li><a href="#none" class="link_opt">30분</a></li>
+								<li><a href="#none" class="link_opt">40분</a></li>
+								<li><a href="#none" class="link_opt">50분</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+						<div class="screen_out">카테고리 선택상자</div>
+						<span class="screen_out">선택내용: </span>
+						<a href="#none" class="link_opt">16시<span class="ico_bot ico_arr"></span></a>
+						<div class="wrap_opt">
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								<li><a href="#none" class="link_opt">17시</a></li>
+								<li><a href="#none" class="link_opt">18시</a></li>
+								<li><a href="#none" class="link_opt">19시</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+						<div class="screen_out">카테고리 선택상자</div>
+						<span class="screen_out">선택내용: </span>
+						<a href="#none" class="link_opt">30분<span class="ico_bot ico_arr"></span></a>
+						<div class="wrap_opt">
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								<li><a href="#none" class="link_opt">30분</a></li>
+								<li><a href="#none" class="link_opt">40분</a></li>
+								<li><a href="#none" class="link_opt">50분</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="group_range">
+					<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+						<div class="screen_out">카테고리 선택상자</div>
+						<span class="screen_out">선택내용: </span>
+						<a href="#none" class="link_opt">17시<span class="ico_bot ico_arr"></span></a>
+						<div class="wrap_opt">
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								<li><a href="#none" class="link_opt">17시</a></li>
+								<li><a href="#none" class="link_opt">18시</a></li>
+								<li><a href="#none" class="link_opt">19시</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="opt_g"><!-- 클릭시 opt_open 클래스추가 -->
+						<div class="screen_out">카테고리 선택상자</div>
+						<span class="screen_out">선택내용: </span>
+						<a href="#none" class="link_opt">00분<span class="ico_bot ico_arr"></span></a>
+						<div class="wrap_opt">
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								<li><a href="#none" class="link_opt">30분</a></li>
+								<li><a href="#none" class="link_opt">40분</a></li>
+								<li><a href="#none" class="link_opt">50분</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			#end
+
+			#else
+			<div class="view_plugin">
+				<div class="box_tf ">
+					<textarea id="textarea" name="textarea" rows="2" class="tf_description" placeholder="텍스트를 입력해주세요"></textarea>
+					<label for="textarea" class="screen_out">플러그인 내용 입력</label>
+				</div>
+				<button class="btn_tf">버튼명 입력</button>
+			</div>
+			#if($params.get('barcode'))
+			<dl class="desc_plugin">
+				<dt>바코드(QR) 전송 플러그인이란?</dt>
+				<dd>바코드(QR) 전송 플러그인을 실행하면 바코드(QR)를 인식할 수 있는 스캐너를 실행합니다. 스캐너에서 인식된 바코드(QR)의 추출 값을 파라미터로 스킬에 전달합니다.<br>
+					바코드(QR) 스캐너는 톡에서 제공하는 기능이며 바코드(QR)의 값을 고정으로 전달하며 커스텀할 수 없습니다.</dd>
+			</dl>
+			#elseif($params.get('days'))
+			#else
+			<dl class="desc_plugin">
+				<dt>현 위치 전송 플러그인이란?</dt>
+				<dd>현 위치 전송 플러그인을 실행하면 유저의 현 위치 기반으로 톡의 지도 모듈을 실행합니다. 유저가 지도에서 표시되는 위치를 말풍선으로 전송하면 지번주소와 x,y좌표값이 추출됩니다. 추출된 지번주소와 x,y좌표 값을 파라미터로 스킬에 전달합니다.</dd>
+			</dl>
+			#end
+			#end
+		</div>
+		#if($params.get('limit'))
+		<strong class="tit_sub">
+			되묻기 허용 횟수 설정
+			<span class="wrap_tip">
+				<a href="#none" class="ico_bot ico_help">도움말</a>
+				<span class="layer_tip">
+					<span class="txt_tip">도움말도움말도움말도움말</span>
+				</span>
+			</span>
+			<button type="button" class="btn_switch ico_bot on"><span class="screen_out">현재상태</span>켜짐</button><!-- 활성화 시 on 클래스 추가, '꺼짐' > '켜짐'으로 변경 -->
+		</strong>
+		#end
+    </div>
+    <div class="layer_foot">
+        <div class="wrap_btn">
+            <button class="btn_g btn_g3">취소</button>
+            <button class="btn_g btn_g2" disabled="disabled">확인</button>
+        </div>
+    </div>
+</div>
+
+<script>
+	// for UI test : switch
+	var btnToggler = document.querySelector('.btn_switch');
+	btnToggler.addEventListener('click', function(e) {
+		this.classList.toggle('on');
+	});
+
+	// for UI test : selectboxs
+	var optToggler = function (wrapper, opts, toggleClass){
+		var ctx = document.querySelector(wrapper);
+		var opts = ctx.querySelectorAll(opts);
+
+		Array.prototype.forEach.call(opts, function (index) {
+			index.addEventListener('click', function(e) {
+				index.classList.toggle(toggleClass);
+			})
+		});
+	};
+	optToggler('.layer_bot', '.opt_g', 'opt_open');
+</script>

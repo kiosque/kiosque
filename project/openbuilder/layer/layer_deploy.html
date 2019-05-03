@@ -1,0 +1,400 @@
+#if($params.get('ing'))
+<!-- 2018-10-24 추가 -->
+<!-- 심사중 진입 -->
+<div class="layer_bot layer_review">
+	<div class="layer_head">
+		<strong class="screen_out">심사 진입 상태</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_deploy">현재 <span class="txt_emph">심사 중</span>인 봇입니다.<br>
+			심사가 취소/반려되거나 심사 승인된 봇이 배포될 때까지는<br><span class="txt_emph">편집한 내용을 저장할 수 없습니다.</span></p>
+		<span class="desc_deploy">심사/배포 메뉴에서 봇의 심사 상태를 확인해주세요.</span>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g2">확인</button>
+		</div>
+	</div>
+</div>
+<!-- //2018-10-24 추가 -->
+#elseif($params.get('history'))
+<!-- 2019-02-19 추가시작 -->
+<div class="layer_bot layer_history">
+	<div class="layer_head">
+		<strong class="tit_layer">카페빈 상태 변경 히스토리</strong>
+	</div>
+	<div class="layer_body">
+		<dl class="info_history">
+			<dt class="screen_out">봇이름</dt>
+			<dd>@알레그리아</dd>
+			<dt class="screen_out">봇아이디</dt>
+			<dd>183Y289437324U23O</dd>
+		</dl>
+		<ul class="list_history">
+			<li class="on">
+				<div class="wrap_tit">
+					<strong class="tit_history"><span class="ico_bot ico_badge"></span>대행거부 완료</strong>
+					<span class="date_history">2018.08.07 11:43</span>
+				</div>
+				<div class="txt_history">3개월 동안 입금내역이 확인되지 않아 거부요청합니다.</div>
+				<div class="email_history">yum.79@kakaocorp.com</div>
+			</li>
+			<li>
+				<div class="wrap_tit">
+					<strong class="tit_history"><span class="ico_bot ico_badge"></span>대행거부 취소요청</strong>
+					<span class="date_history">2018.08.07 11:43</span>
+				</div>
+				<div class="txt_history">입력 메시지가 너무 길어지면 우선 두줄이 기본 제공이고 그 이상은 말줄임+더보기 밑줄 텍스트 버튼을 제시합니다. 더보기를 누르면 마저 그 글들이 보이게 되고 너무 ... <a href="#none" class="link_more">더보기</a></div><!-- 글자수가 90자 이상되면 ... 처리 -->
+				<div class="email_history">yum.79@kakaocorp.com</div>
+			</li>
+			<li>
+				<div class="wrap_tit">
+					<strong class="tit_history"><span class="ico_bot ico_badge"></span>대행거부 요청</strong>
+					<span class="date_history">2018.08.07 11:43</span>
+				</div>
+				<div class="txt_history">그 이상은 말줄임+더보기 밑줄 텍스트 버튼을 제시합니다. 더보기를 누르면 마저 그 글들이 보이게 되고 너무 길어지는 것을 방지하기 위해 더보기 버튼은 선택한 것만 열리고 나머지는 닫히게 되는 방식으로 가는게 좋을 것 같습니다. 팝업에 페이지 처리하는 것이 다소 부담스러워서 이 부분은 스크롤 처리합니다. 2줄 초과일 때 한줄당 24px 씩 높이가 늘어납니다.</div>
+				<div class="email_history">lain.klain.klain.klain.klain.klain.klain.klain.klain.k@kakaocorp.com</div>
+			</li>
+			#foreach($i in [1 .. 5])
+			<li>
+				<div class="wrap_tit">
+					<strong class="tit_history"><span class="ico_bot ico_badge"></span>대행거부 요청</strong>
+					<span class="date_history">2018.08.07 11:43</span>
+				</div>
+				<div class="txt_history">-</div>
+				<div class="email_history">lain.k@kakaocorp.com</div>
+			</li>
+			#end
+			<li>
+				<div class="wrap_tit">
+					<strong class="tit_history"><span class="ico_bot ico_badge"></span>대행거부 요청</strong>
+					<span class="date_history">2018.08.07 11:43</span>
+				</div>
+				<div class="txt_history">그 이상은 말줄임+더보기 밑줄 텍스트 버튼을 제시합니다. 더보기를 누르면 마저 그 글들이 보이게 되고 너무 길어지는 것을 방지하기 위해 더보기 버튼은 선택한 것만 열리고 나머지는 닫히게 되는 방식으로 가는게 좋을 것 같습니다. 팝업에 페이지 처리하는 것이 다소 부담스러워서 이 부분은 스크롤 처리합니다. 2줄 초과일 때 한줄당 24px 씩 높이가 늘어납니다.</div>
+				<div class="email_history">lain.klain.klain.klain.klain.klain.klain.klain.klain.k@kakaocorp.com</div>
+			</li>
+		</ul>
+	</div>
+	<div class="layer_foot">
+		<button type="button" class="btn_close">
+			<span class="ico_bot ico_close2">닫기</span>
+		</button>
+	</div>
+</div>
+<!-- //2019-02-19 추가끝 -->
+#elseif($params.get('acting'))
+<!-- 2019-02-19 추가시작 -->
+<div class="layer_bot layer_deploy layer_acting" style="top:200px;left:400px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">권한 대행 요청 수락</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_deploy">
+			[봇이름]의 권한 대행 요청을 수락하시겠습니까? <br>
+			봇 개발이 완료되지 않은 상태에서 권한 대행을 수락하는 경우, <br>
+			봇이 정상적으로 동작하지 않을 수 있습니다.
+		</p>
+		<p class="desc_acting">*플러스친구 계정이 비공개 상태인지 확인해보세요.</p>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">확인</button>
+		</div>
+	</div>
+</div>
+
+<div class="layer_bot layer_deploy layer_acting" style="top:175px;left:930px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">권한 대행 요청 수락 불가</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_deploy">
+			[봇이름]의 제3자 정보 제공 동의 항목 설정이 필요합니다.
+		</p>
+		<em class="emph_deploy">부족한 설정 값 : 전화번호, 현위치</em>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">확인</button>
+		</div>
+	</div>
+</div>
+
+<div class="layer_bot layer_deploy layer_acting" style="top:530px;left:400px;"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">권한 대행 요청 거절</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_deploy">
+			[봇이름]의 권한 대행 요청을 거절하시겠습니까?
+		</p>
+		<div class="box_tf box_tf2"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스 추가 -->
+			<textarea id="tfVer" name="textarea" rows="5" class="tf_description" placeholder="거절 사유를 입력해주세요. " style="height:108px"></textarea>
+			<label for="tfVer" class="screen_out">거절사유</label>
+			<span class="txt_byte">0/200</span>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">확인</button>
+		</div>
+	</div>
+</div>
+
+<div class="layer_bot layer_deploy layer_acting" style="top:500px;left:930px;"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">권한 대행 요청 거절</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_deploy">
+			[봇이름]의 권한 대행 거부를 요청하시겠습니까?<br>
+			권한대행 거부 후 D+7 이내 거부취소 요청이 없는 경우 자동 거부됩니다. <em class="emph_deploy type_inline">(거부완료 예정일 : 2019.09.11)</em>
+		</p>
+		<div class="box_tf box_tf2"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스 추가 -->
+			<textarea id="tfVer" name="textarea" rows="5" class="tf_description" placeholder="권한 대행 거부 사유를 입력해주세요." style="height:108px"></textarea>
+			<label for="tfVer" class="screen_out">권한 대행 거부 사유</label>
+			<span class="txt_byte">0/200</span>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">확인</button>
+		</div>
+	</div>
+</div>
+
+<div class="layer_bot layer_deploy layer_acting" style="top:900px;left:400px;"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">권한 대행 거부 취소</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_deploy">
+			[봇이름]의 권한 대행 거부를 취소하시겠습니까?
+		</p>
+		<div class="box_tf box_tf2"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스 추가 -->
+			<textarea id="tfVer" name="textarea" rows="5" class="tf_description" placeholder="대행 거부를 취소하는 사유를 입력해주세요." style="height:108px"></textarea>
+			<label for="tfVer" class="screen_out">대행 거부를 취소하는 사유</label>
+			<span class="txt_byte">0/200</span>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">확인</button>
+		</div>
+	</div>
+</div>
+
+<div class="layer_bot layer_deploy layer_acting" style="top:890px;left:930px;"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">권한 대행 거부 철회</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_deploy">
+			[봇이름]의 권한 대행 거부를 철회하시겠습니까? <br>대행거부 취소 요청 사유는 다음과 같습니다.
+		</p>
+		<div class="box_tf box_tf2"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스 추가 -->
+			<textarea id="tfVer" name="textarea" rows="5" class="tf_description" placeholder="대행 거부를 취소하는 사유를 입력해주세요." readonly="readonly" style="height:108px">연결된 결제수단 카드를 재발급받아서 결제가 안되었습니다.
+재발급 받은 카드로 결제수단 변경해두었습니다.
+
+
+
+
+
+
+
+
+</textarea>
+			<label for="tfVer" class="screen_out">대행 거부를 취소하는 사유</label>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">확인</button>
+		</div>
+	</div>
+</div>
+
+<div class="layer_bot layer_deploy layer_acting" style="top:1280px;left:400px;"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">권한 대행 거부 요청 반려</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_deploy">
+			[봇이름] 권한 대행 거부 요청을 반려하시겠습니까?<br>
+			최초 대행거부일로부터 D+7일 경과 후 대행거부가 자동으로 처리됩니다. <em class="emph_deploy type_inline">(대행거부 완료 예정일 : 2019.10.11)</em>
+		</p>
+		<div class="box_tf box_tf2"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스 추가 -->
+			<textarea id="tfVer" name="textarea" rows="5" class="tf_description" placeholder="대행 거부를 취소하는 사유를 입력해주세요." readonly="readonly" style="height:108px">연결된 결제수단 카드를 재발급받아서 결제가 안되었습니다.
+재발급 받은 카드로 결제수단 변경해두었습니다.
+</textarea>
+			<label for="tfVer" class="screen_out">대행 거부를 취소하는 사유</label>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">확인</button>
+		</div>
+	</div>
+</div>
+<!-- //2019-02-19 추가끝 -->
+#else
+
+<!-- 2018-10-11 추가 -->
+<!-- 배로 진행 확인 -->
+<div class="layer_bot layer_deploy" style="top:360px;left:460px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">심사 정보 유효성 체크 팝업</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_deploy">봇 심사를 위한 필수 정보가 설정되지 않았습니다.<br>설정 > 보이스봇 설정(?)에서 확인해주세요.</p>
+		<em class="emph_deploy">잘못 작성하거나, 허위 정보인 경우 봇 심사에서 반려될 수 있습니다.</em>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button>
+			<button class="btn_g btn_g2">설정으로</button>
+		</div>
+	</div>
+</div>
+<!-- //2018-10-11 추가 -->
+
+<!-- 배로 진행 확인 -->
+<div class="layer_bot layer_deploy" style="top:370px;left:1160px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">배포를 진행하시겠습니까?</strong>
+	</div>
+	<div class="layer_body">
+		<p class="txt_deploy">변경 사항에 따라서 배포가 완료 되기까지 시간이 걸릴 수 있으며,<br> 도중에 취소하실 수 없습니다.</p>
+		<em class="emph_deploy">현재 봇 디자이너들이 봇을 편집하고 있는 경우, 편집하고 있는 내용은 저장되지 않습니다.<br>변경 사항이 모두 저장 되었는지 확인 후 배포해주세요.</em>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+		</div>
+	</div>
+</div>
+
+<!-- 배포 중 : 배포자 시점 -->
+<div class="layer_bot layer_loading" style="top:637px;left:460px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">배포가 진행중입니다.</strong>
+	</div>
+	<div class="layer_body">
+		<div class="inner_loading">
+			<div class="ico_spin">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 배포 중 : 동시 편집자 시점 -->
+<div class="layer_bot layer_loading" style="top:637px;left:1160px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">배포가 진행중입니다.</strong>
+	</div>
+	<div class="layer_body">
+		<div class="inner_loading">
+			<div class="ico_spin">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<p class="desc_deploy">다른 봇 관리자가 배포를 시작했습니다.<br>배포 중에는 봇을 편집하실 수 없으며, 편집 중이던 내용은 저장되지 않습니다. </p>
+		</div>
+	</div>
+</div>
+
+<!-- 2018-10-11 추가 -->
+<!-- 반려사유 -->
+<div class="layer_bot layer_version" style="top:942px;left:460px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">반려사유</strong>
+	</div>
+	<div class="layer_body">
+		<div class="box_tf box_tf2"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스 추가 -->
+			<textarea id="tfVer" name="textarea" rows="5" class="tf_description" placeholder="" readonly="readonly" style="height:112px">심사 담당자가 직접 작성한 메시지 내용이 들어갑니다. 이러이러한 부분을 수정한 후 다시 심사 요청해주세요. 등등의 문구가 주저리</textarea>
+			<label for="tfVer" class="screen_out">반려사유</label>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<button class="btn_g btn_g2">확인</button>
+	</div>
+</div>
+<!-- //2018-10-11 추가 -->
+
+<!-- 배포 버전 -->
+<div class="layer_bot layer_version" style="top:960px;left:1160px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">배포 버전 : v 2.3</strong>
+	</div>
+	<div class="layer_body">
+		<!-- 2018-10-11 수정 -->
+		<div class="dl_bundle">
+			<dl class="dl_row">
+				<dt class="tit_base">배포일시</dt>
+				<dd class="cont_base">2018.2.20 18:15</dd>
+			</dl>
+			<dl class="dl_row">
+				<dt class="tit_base">작업자</dt>
+				<dd class="cont_base">anderson_torrey@herminio.biz</dd>
+			</dl>
+		</div>
+		<!-- //2018-10-11 수정 -->
+		<div class="box_tf box_tf2"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스 추가 -->
+			<textarea id="tfVer2" name="textarea" rows="5" class="tf_description" placeholder="" readonly="readonly">배포 당시 작성한 메모 (공백포함 최대 50자)가 노출되고 노출되어 이렇게 노노노노출됩니다</textarea>
+			<label for="tfVer2" class="screen_out">내용 입력</label>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<a href="#none" class="link_confirm">작업 이력 확인</a>
+		<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+	</div>
+</div>
+
+<!-- 2018-10-11 추가 -->
+<!-- 배포 메세지 -->
+<div class="layer_bot layer_version" style="top:1400px;left:460px"><!-- 임시 위치값 -->
+	<div class="layer_head">
+		<strong class="tit_layer">배포 메시지 (버전 1.0)</strong>
+	</div>
+	<div class="layer_body">
+		<div class="col_tf">
+			<div class="box_tf box_tf2"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스 추가 -->
+				<textarea id="tfVer3" name="textarea" rows="5" class="tf_description" placeholder="" readonly="readonly">-기능 1 추가</textarea>
+				<label for="tfVer3" class="lab_g">새로운 버전 설명 메세지</label>
+			</div>
+			<div class="box_tf box_tf2"><!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스 추가 -->
+				<textarea id="tfVer4" name="textarea" rows="5" class="tf_description" placeholder="" readonly="readonly">빠른 심사 부탁드립니다</textarea>
+				<label for="tfVer4" class="lab_g">담당자에게 전할 메세지</label>
+			</div>
+		</div>
+		<div class="dl_group">
+			<dl class="dl_row">
+				<dt class="tit_base">배포요청</dt>
+				<dd class="cont_base">2018.2.20 18:15</dd>
+			</dl>
+			<dl class="dl_row">
+				<dt class="tit_base">작업자</dt>
+				<dd class="cont_base">anderson_torrey@herminio.biz</dd>
+			</dl>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<button class="btn_g btn_g2">확인</button>
+	</div>
+</div>
+<!-- //2018-10-11 추가 -->
+#end

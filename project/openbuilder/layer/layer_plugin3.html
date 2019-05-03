@@ -1,0 +1,119 @@
+<div class="layer_bot layer_plugin">
+	<div class="layer_head">
+		<strong class="tit_layer">
+			#if($params.get('group'))
+			그룹 되묻기 질문
+			#else
+			되묻기 질문
+			#end
+		</strong>
+		<span class="txt_noti">사용자가 해당 값을 말하지 않은 경우 아래의 질문으로 물어봅니다. (질문이 2개 이상이면 사용자에게 임의의 순서로 보입니다)</span>
+	</div>
+	<div class="layer_body">
+		<div class="group_plugin">
+			<strong class="tit_sub">되묻기 질문 응답</strong>
+			<div class="box_plugin type_plugin">
+				<div class="box_tf ">
+					<input type="text" id="answer1" class="inp_g" placeholder="필수 정보를 얻기위한 되묻기 질문을 입력해주세요"><!-- 2018-07-26 : value > placeholder 로 변경 -->
+					<label for="answer1" class="screen_out">되묻기 질문 입력</label>
+				</div>
+				<div class="box_tf ">
+					<input type="text" id="answer2" class="inp_g" placeholder="필수 정보를 얻기위한 되묻기 질문을 입력해주세요"><!-- 2018-07-26 : value > placeholder 로 변경 -->
+					<label for="answer2" class="screen_out">되묻기 질문 입력</label>
+				</div>
+				<div class="box_tf ">
+					<input type="text" id="answer3" class="inp_g" placeholder="필수 정보를 얻기위한 되묻기 질문을 입력해주세요"><!-- 2018-07-26 : value > placeholder 로 변경 -->
+					<label for="answer3" class="screen_out">되묻기 질문 입력</label>
+				</div>
+			</div>
+		</div>
+		<div class="group_plugin #if($params.get('setOn'))on#end"><!-- 비활성화시 .on 클래스 제거하고, '꺼짐' 으로 변경-->
+			<strong class="tit_sub">
+				바로연결 응답
+				<button type="button" class="btn_switch ico_bot"><span class="screen_out">현재상태</span>켜짐</button>
+			</strong>
+			<div class="box_plugin box_tag"><!-- 2018-11-16 : box_tag 클래스 추가 -->
+			<!-- 2018-07-26 추가 -->
+			<div class="item_tag on"><!-- 입력 완료 시 on 클래스 추가 -->
+				<div class="box_tf"><!-- 입력완료 시 on / 포커스일 경우 tf_focus / 에러일 경우 tf_error 클래스 추가 -->
+					<input type="text" id="tfSetting2" class="inp_g" value="일이삼사오육칠팔구십">
+					<label for="tfSetting2" class="screen_out">바로연결 버튼 설정</label>
+				</div>
+				<div class="tag_btn">
+					<button class="btn_util btn_move">
+						<span class="ico_bot ico_move2">좌우 이동</span>
+					</button>
+					<button class="btn_util btn_del">
+						<span class="ico_bot ico_del">삭제</span>
+					</button>
+				</div>
+			</div>
+			<div class="item_tag"><!-- 입력 완료 시 on 클래스 추가 -->
+				<div class="box_tf">
+					<input type="text" id="tfSetting" class="inp_g" placeholder="바로연결 버튼 설정">
+					<label for="tfSetting" class="screen_out">바로연결 버튼 설정</label>
+				</div>
+			</div>
+			<!-- //2018-07-26 추가 -->
+				<button type="button" class="btn_util btn_add">
+					<span class="tooltip_btn">바로연결 추가</span>
+					<span class="ico_bot ico_add"></span>
+				</button>
+			</div>
+		</div>
+		<div class="group_plugin #if($params.get('setOn'))on#end"><!-- 비활성화시 .on 클래스 제거하고, '꺼짐' 으로 변경-->
+			<strong class="tit_sub">
+				되묻기 허용 횟수 설정
+				<span class="wrap_tip">
+					<a href="#none" class="ico_bot ico_help">도움말</a>
+					<span class="layer_tip">
+						<span class="txt_tip">이것도 내용이 있을텐데..</span>
+					</span>
+				</span>
+				<button class="btn_switch ico_bot #if($params.get('setOn'))on#end"><span class="screen_out">현재상태</span>켜짐</button><!-- 비활성화시 .on 클래스 제거하고, '꺼짐' 으로 변경-->
+			</strong>
+			<div class="box_plugin">
+				<div class="row_tf">
+					<div class="opt_plugin">
+						<strong class="tit_range">최대 횟수</strong>
+						<div class="opt_g on"><!-- 입력완료시 on / 비활성시 disabled / 에러일경우 opt_error 클래스추가 -->
+							<div class="screen_out">카테고리 선택상자</div>
+							<span class="screen_out">선택내용: </span>
+							<a href="#none" class="link_opt">작업자 등급 <span class="ico_bot ico_arr"></span></a>
+							<div class="wrap_opt">
+								<span class="screen_out">선택옵션: </span>
+								<ul class="list_opt">
+									<li>
+										<a href="#none" class="link_opt">1회</a>
+									</li>
+									<li>
+										<a href="#none" class="link_opt">3회</a>
+									</li>
+									<li>
+										<a href="#none" class="link_opt">5회</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="tf_plugin">
+						<label for="tf1" class="lab_g">초과 시 안내 메세지</label>
+						<div class="box_tf">
+							<input type="text" id="tf1" class="inp_g" placeholder="되묻기 허용 회수가 초과된 경우 보여줄 문구를 입력해 주세요"><!-- 2018-07-26 : value > placeholder 로 변경 -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="layer_foot">
+		<div class="wrap_btn">
+			<button class="btn_g btn_g3">취소</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			#if($params.get('setOn'))
+			<button class="btn_g btn_g2">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			#else
+			<button class="btn_g btn_g2" disabled="disabled">확인</button><!-- 2018-07-31 : btn_g5 삭제 -->
+			#end
+		</div>
+	</div>
+</div>
