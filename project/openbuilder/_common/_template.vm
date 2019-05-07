@@ -1,0 +1,193 @@
+#parse("/service/_common/page_setting.vm")
+#set($directory = $request.getRequestURI().split("/")[3])    ## 디렉토리명
+#set($filename = $request.getRequestURI().split("/")[4].split(".html")[0]) ## 파일명
+
+#* 특정 파일명 매칭 필요시.
+#if($filename.indexOf("sample") > 0)
+	ok
+#end
+*#
+
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>openbuilder | Kakao</title>
+    #parse("/service/_common/base_head.vm")
+</head>
+
+##레이아웃 타입
+#if($directory=='main')
+    #set($layoutType="wrap_login")  ## 대문
+#elseif($directory=='join')
+    #set($layoutType="wrap_deverlops")  ## 약관, 가입, 개인정보 동의 등
+#elseif($directory=='home')
+    #set($layoutType="type_head")   ## 봇 목록
+#else
+    #set($layoutType="wrap_builder")
+#end
+
+
+<body>
+## 웹접근성용 바로가기 링크 모음
+<div id="kakaoIndex">
+    #if($directory =='error')
+        <a href="#kakaoBody">본문 바로가기</a>
+    #else
+      <a href="#kakaoBody">본문 바로가기</a>
+      <a href="#kakaoGnb">메뉴 바로가기</a>
+    #end
+</div>
+
+<div id="kakaoWrap" class="$!{layoutType} #if($params.get('scroll'))scroll_on#end">## 레이아웃 관련 클래스 적용/ 스크롤시 scroll_on 클래스추가
+
+    #parse("/service/_common/page_header.vm")
+	<!-- // kakaoHead -->
+	<hr class="hide">
+
+	<main id="kakaoContent" class="cont_${directory}">## 대메뉴별(폴더명) 관련 클래스 적용 : .cont_폴더명
+
+      #if($directory =='home' || $directory =='deploy' || $directory =='setting' || $directory =='learning' || $directory =='analysis' || $directory =='skill' || $directory =='record')
+
+      #elseif($directory =='block' || $directory =='entry')
+      <div id="mSnb" class="wrap_snb">
+          <h3 id="kakaoBody" class="screen_out">시나리오</h3>
+          #parse("/service/_common/page_menu.vm")
+      </div>
+      <!--// mSnb -->
+      #end
+
+      #if($directory =='join' || $directory =='account' || $directory =='error')
+        <div id="mArticle">
+          ## daumBody 본문바로가기 링크 - 페이지별 위치 및 element 명은 서비스에 맞게 변경하여 사용
+          $body
+        </div>
+      #else
+        <div id="mArticle" class="wrap_block #if($filename =='block_181002' || $filename =='block_faq' || $filename =='block_layer')type_block#end"> ## type_block : 전체 레이아웃 좌측정렬
+          ## daumBody 본문바로가기 링크 - 페이지별 위치 및 element 명은 서비스에 맞게 변경하여 사용
+          $body
+        </div>
+      #end
+      <!--// mArticle -->
+
+	</main>
+	<!-- // kakaoContent -->
+	<hr class="hide">
+
+    #parse("/service/_common/page_footer.vm")
+	<!-- // kakaoFoot -->
+</div>
+
+<!-- 팝업 레이어 -->
+#if($params.get('layer'))
+    <div class="dimmed_layer"></div>
+    #if($params.get('layer')=='popup')
+        #parse("service/layer/layer_popup.html") ##발화 초기화
+    #elseif($params.get('layer')=="revalue")
+        #parse("service/layer/layer_revalue.html") ##발화 재평가
+    #elseif($params.get('layer')=="admin")
+        #parse("service/layer/layer_admin.html") ##불규칙발화 관리
+    #elseif($params.get('layer')=="cate")
+        #parse("service/layer/layer_cate.html") ##카테고리 이동
+    #elseif($params.get('layer')=="plugin")
+        #parse("service/layer/layer_plugin.html") ##플러그인 파라미터 by jeffrey.ha
+    #elseif($params.get('layer')=="plugin2")
+        #parse("service/layer/layer_plugin2.html") ##되묻기 질문 관련 by jeffrey.ha
+    #elseif($params.get('layer')=="plugin3")
+        #parse("service/layer/layer_plugin3.html") ##되묻기 질문/그룹 되묻기 질문
+    #elseif($params.get('layer')=="plugin4")
+        #parse("service/layer/layer_plugin4.html") ##프로필 플러그인
+    #elseif($params.get('layer')=="notify")
+        #parse("service/layer/layer_notify.html") ##알려줘 by jeffrey.ha
+    #elseif($params.get('layer')=="template")
+        #parse("service/layer/layer_template.html") ##관리자 - 권한 템플릿 by jeffrey.ha
+    #elseif($params.get('layer')=="template2")
+        #parse("service/layer/layer_template2.html") ##관리자 - 권한 템플릿 내 팝업 레이어 by jeffrey.ha
+    #elseif($params.get('layer')=="deploy")
+      #parse("service/layer/layer_deploy.html") ## 배포확인/히스토리/메세지/심사중
+    #elseif($params.get('layer')=="block")
+        #parse("service/layer/layer_block.html") ##블록 기본 질문/발화 업로드/발화 업로드 결과
+    #elseif($params.get('layer')=="modify")
+        #parse("service/layer/layer_modify.html") ##컨텍스트/이벤트 설정
+    #elseif($params.get('layer')=="group")
+        #parse("service/layer/layer_group.html") ##그룹생성
+    #elseif($params.get('layer')=="setting")
+        #parse("service/layer/layer_setting.html") ##기본 응답 설정
+    #elseif($params.get('layer')=="setting2")
+      #parse("service/layer/layer_setting2.html") ##보이스봇 설정
+    #elseif($params.get('layer')=="setting3")
+        #parse("service/layer/layer_setting3.html") ##차단 해제요청
+    #elseif($params.get('layer')=="learning")
+        #parse("service/layer/layer_learning.html") ##학습_발화 학습
+    #elseif($params.get('layer')=="record")
+        #parse("service/layer/layer_record.html") ##스킬2.0 작업상세
+    #elseif($params.get('layer')=="join_error")
+        #parse("service/layer/layer_obt.html") ##가입신청
+    #elseif($params.get('layer')=="join_error2")
+        #parse("service/layer/layer_obt.html") ##가입신청 - 휴면계정
+    #elseif($params.get('layer')=="join_obt")
+        #parse("service/layer/layer_obt.html") ##OBT 참여신청
+    #elseif($params.get('layer')=="account")
+      #parse("service/layer/layer_account.html") ##탈퇴/탈퇴 불가 안내s
+    #elseif($params.get('layer')=="popup2")
+      #parse("service/layer/layer_popup2.html") ##카카오톡챗봇/보이스봇 생성
+    #elseif($params.get('layer')=="generic")
+      #parse("service/layer/layer_generic.html") ##시나리오 기본 설정
+    #elseif($params.get('layer')=="newbot")
+      #parse("service/layer/layer_newbot.html") ##새 봇 만들기
+    #elseif($params.get('layer')=="ntt")
+      #parse("service/layer/layer_ntt.html") ##엔티
+    #end
+#end
+
+<!-- 토스트 -->
+<div class="group_toast"><!-- 2018-06-20 div.group_toast 추가 -->
+    #if($params.get('toast'))
+        <!-- 2018-06-20 추가 -->
+        <div class="toast_layer toast_error"><!-- 에러일 경우 toast_error 클래스 추가 -->
+            <span class="txt_toast">배포가 정상적으로 완료되지 않았습니다. 잠시 후, 다시 진행해주세요.</span>
+        </div>
+        <!-- //2018-06-20 추가 -->
+        <div class="toast_layer">
+            <span class="txt_toast">배포가 성공적으로 완료되었습니다.</span>
+        </div>
+        <div class="toast_layer">
+            <span class="txt_toast">파일 적용중입니다.</span>
+            <div class="ico_spin">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="toast_layer">
+            <span class="txt_toast">파일 적용이 완료되었습니다.</span>
+            <button type="button" class="btn_toast">확인</button>
+        </div>
+        <div class="toast_layer">
+            <span class="txt_toast">파일 적용 실패!! 파일 형식을 다시 확인해 주세요.</span>
+            <button type="button" class="btn_toast">확인</button>
+        </div>
+    #elseif($params.get('toast2'))
+        <div class="toast_layer">
+            <span class="txt_toast">권한 내용이 수정되었습니다.</span>
+        </div>
+    #elseif($params.get('toast3'))
+        <div class="toast_layer">
+            <span class="txt_toast">이미 등록된 동의어 입니다.</span>
+            <button type="button" class="btn_toast">확인</button>
+        </div>
+    #elseif($params.get('toast4'))
+        <div class="toast_layer">
+            <span class="txt_toast">대표 엔트리를 1개 이상 입력해주세요</span>
+        </div>
+    #elseif($params.get('toast5'))
+        <div class="toast_layer">
+            <span class="txt_toast">플러스친구가 해제 되었습니다.</span>
+            <button type="button" class="btn_toast">확인</button>
+        </div>
+    #end
+</div>
+
+</body>
+</html>
