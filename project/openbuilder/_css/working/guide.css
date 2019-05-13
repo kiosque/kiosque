@@ -1,0 +1,14 @@
+$response.setContentType("text/css")
+
+/* 가이드용 레이아웃 */
+.cont_guide .wrap_block{padding:0}
+.p_info{display:block;overflow:hidden;margin:50px 20px 11px;padding:8px 10px 7px;background-color:#999;color:#fff;line-height:1.2}
+.p_subinfo{display:block;margin:11px 20px 20px;padding:20px 20px 40px;border:1px solid #999;border-radius:5px;background-color:#e4e6ea;line-height:1.6}
+.p_subinfo:after{display:block;visibility:hidden;height:0;font-size:0;clear:both;content:''}
+.p_subinfo strong{display:block;padding:20px 0 10px;color:#000;clear:both}
+.p_subinfo .wrap_tip{margin:50px 0 0 300px}
+.p_subinfo .box_tf, .p_subinfo.box_tf2{float:left}
+.p_subinfo .opt_g, .p_subinfo .opt_g2{float:right}
+.p_subinfo .opt_g{width:100%}
+.p_subinfo .btn_g, .p_subinfo .btn_util, .p_subinfo .btn_switch{margin-right:20px;float:left}
+.p_subinfo .group_btn{overflow:hidden;padding:4px 10px 40px}

@@ -1,0 +1,114 @@
+@charset "UTF-8";
+.cont_permit{/* 레이아웃 정리 이후 재 정리 필요*/}
+.cont_permit .wrap_block{padding:200px 0 0 0}
+.scroll_on .cont_permit .wrap_block{top:128px}
+.cont_permit .wrap_setup{max-width:1280px;min-width:1100px;margin:0 auto}
+.cont_permit .wrap_tit{overflow:hidden;padding:32px 0 24px}
+.cont_permit .wrap_tit .tit_head{display:inline-block;font-size:24px;line-height:36px;vertical-align:middle;color:#222}
+.cont_permit .wrap_tit .desc_head{display:inline-block;margin-left:24px;font-size:12px;vertical-align:middle;color:#7f7f7f}
+.cont_permit .wrap_tit + .box_row{margin-top:0}
+.cont_permit .box_row .row_setup{display:table;width:100%}
+.cont_permit .box_row .row_setup + .list_setup{margin:16px 0 8px}
+.cont_permit .box_row .row_flex{display:table-cell;padding:8px 0;vertical-align:top}
+.cont_permit .box_row .row_setup .box_tf{height:40px}
+.cont_permit .box_row .row_setup .inp_g{font-size:16px;line-height:28px}
+.cont_permit .box_row .row_setup .ico_arr{top:18px}
+.cont_permit .box_row .row_setup .link_opt{padding:10px 16px;font-size:16px}
+.cont_permit .box_row .row_flex .txt_email{display:inline-block;line-height:40px}
+.cont_permit .box_row .row_flex .txt_off{color:#c7c7c7}
+.cont_permit .box_row .row_static{display:table-cell;width:560px;padding:8px 0;vertical-align:top}
+.cont_permit .box_row .row_static .opt_g{float:left;width:432px;height:40px;margin:0 16px 0}
+.cont_permit .box_row .row_static .btn_g{height:40px;font-size:14px}
+.cont_permit .box_row .row_static .btn_g:not(.btn_g2){border-radius:0;color:#2196f3;box-shadow:none}
+.cont_permit .box_row .row_static .btn_g:disabled:not(.btn_g2){opacity:.3}
+.cont_permit .box_row .row_static .item_permit{float:left;width:416px;margin:0 16px 0 32px;line-height:40px}
+.cont_permit .box_row .group_setup{display:flex;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5}
+.cont_permit .box_row .group_setup:nth-child(3){border:0 none}
+.cont_permit .box_row .tit_setup{width:120px;font-size:14px;color:#222;line-height:48px}
+.cont_permit .box_row .info_setup{display:table;flex:1;width:100%;font-size:14px;color:#222}
+.cont_permit .box_row .info_setup .row_static .btn_g:first-child{margin:0 16px}
+.cont_permit .box_row .info_setup .row_static .btn_g{width:112px}
+.cont_permit .box_row .info_setup .row_static .btn_g:nth-child(2){float:right}
+.cont_permit .box_row .info_setup .row_static .btn_g:nth-child(3){width:80px}
+.cont_permit .box_row .list_setup{flex:1;margin-bottom:8px}
+.cont_permit .box_row .list_setup > li{display:table;width:100%;border-bottom:1px solid #e5e5e5;font-size:14px;color:#222}
+.cont_permit .box_type2 .group_head:after{display:block;content:'';clear:both}
+.cont_permit .box_type2 .tit_box{float:left}
+.cont_permit .box_type2 .btn_util{float:right}
+.cont_permit .box_type2 .row_flex .txt_email{line-height:32px}
+.cont_permit .box_type2 .row_flex .txt_error{color:#f00}
+.cont_permit .box_type2 .row_static .opt_g{width:336px;height:32px;margin-bottom:0}
+.cont_permit .box_type2 .row_static .btn_g{float:left;min-width:inherit;width:112px;height:32px;padding:0}
+.cont_permit .box_type2 .row_static .btn_g + .btn_g{min-width:inherit;width:80px}
+.cont_permit .box_type2.type_setup .opt_g{width:432px;margin:0 30px 0 16px}
+.cont_permit .box_type2.type_setup .opt_g + .btn_g{width:80px}
+
+
+/* 권한 템플릿 레이어 */
+.layer_template{display:flex;flex-direction:column;height:640px}
+.layer_template .layer_head{padding:26px 32px 0}
+.layer_template .layer_head .desc_layer{margin-top:8px;color:#7f7f7f}
+.layer_template .layer_body{display:flex;height:100%;margin:24px 32px 0;padding:0;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5}
+.layer_template .nav_template{overflow-x:hidden;width:320px;min-width:320px;height:100%;font-size:12px}
+.layer_template .nav_template + .cont_template{width:640px;height:100%;padding:23px 40px;font-size:12px}
+.layer_template .nav_template + .cont_template .tit_permit{width:560px}
+.layer_template .nav_template + .cont_template .checklist_permit{width:560px}
+.layer_template .nav_template .wrap_tit{height:40px;line-height:40px;color:#7f7f7f;text-indent:16px}
+.layer_template .nav_template .wrap_tit .btn_util{float:right;width:32px;height:32px;margin:4px 8px 0 0}
+.layer_template .nav_template .wrap_tit .btn_util:hover{box-shadow:none}
+.layer_template .nav_template .wrap_menu li{position:relative;border-bottom:1px solid #efefef;text-indent:16px}
+.layer_template .nav_template .wrap_menu li:first-child{border-top:1px solid #efefef}
+.layer_template .nav_template .wrap_menu .item_cate:hover{background-color:inherit}
+.layer_template .nav_template .wrap_menu .item_cate:hover .wrap_util{display:block}
+.layer_template .nav_template .wrap_menu .item_cate.over .link_item{font-weight:bold}
+.layer_template .nav_template .wrap_menu .link_item{display:block;padding:14px 80px 13px 0;font-size:14px;color:rgba(0, 0, 0, 0.8);text-decoration:none}
+.layer_template .nav_template .wrap_menu .wrap_util{display:none}
+.layer_template .nav_template .wrap_menu .wrap_util .btn_edit{position:absolute;top:50%;right:40px;width:32px;height:32px;margin-top:-16px}
+.layer_template .nav_template .wrap_menu .wrap_util .btn_del{position:absolute;top:50%;right:8px;width:32px;height:32px;margin-top:-16px}
+.layer_template .nav_template .wrap_menu .wrap_util .txt_tip{font-weight:normal;color:#f0f0f0}
+.layer_template .nav_template .wrap_menu .item_tf{display:none}
+.layer_template .nav_template .wrap_menu .box_tf{padding:6px 15px}
+.layer_template .nav_template .wrap_menu .over .item_tf{display:none}
+.layer_template .nav_template .wrap_menu .edit{padding:9px 24px 10px 0}
+.layer_template .nav_template .wrap_menu .edit .link_item{display:none}
+.layer_template .nav_template .wrap_menu .edit .wrap_util{display:none}
+.layer_template .nav_template .wrap_menu .edit .item_tf{display:block}
+.layer_template .nav_template .wrap_menu .edit:hover .wrap_util{display:none}
+.layer_template .cont_template{display:inline-block;overflow:hidden;overflow-y:auto;width:616px;height:422px;padding:23px 24px;font-size:12px;background-color:#f7f7fa;box-sizing:border-box}
+.layer_template .tit_permit{display:block;width:568px;margin-bottom:17px;font-weight:bold;font-size:16px;color:#222}
+.layer_template .checklist_permit{width:568px}
+.layer_template .checklist_permit .wrap_tip{margin:4px 0 0 5px;line-height:14px;vertical-align:top}
+.layer_template .checklist_permit .ico_help:hover + .layer_tip{display:block}
+.layer_template .checklist_head{height:32px;padding-left:24px;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;line-height:32px;background-color:rgba(0, 0, 0, 0.02);color:#7f7f7f}
+.layer_template .checklist_head:after{display:block;content:'';clear:both}
+.layer_template .checklist_head .wrap_tip{margin:9px 0 0 5px}
+.layer_template .checklist_body:after{display:block;content:'';clear:both}
+.layer_template .checklist_body .row_checklist{width:100%;padding-top:13px;padding-bottom:12px;padding-left:24px;border-bottom:1px solid #e5e5e5;font-size:14px;color:#222;box-sizing:border-box}
+.layer_template .checklist_body .row_checklist:after{display:block;content:'';clear:both}
+.layer_template .checklist_body .row_type2{padding-left:54px}
+.layer_template .checklist_body .row_type2 .col_function{width:266px}
+.layer_template .checklist_body .item_check{float:left;position:relative}
+.layer_template .checklist_body .item_check .lab_g{display:block;overflow:hidden;width:18px;height:18px;font-size:1px;line-height:0;color:transparent}
+.layer_template .checklist_body .item_check .ico_check{position:absolute;top:0;left:0;width:18px;height:18px;background-position:-200px -120px}
+.layer_template .checklist_body .item_check .inp_g:checked + .lab_g .ico_check{background-position:-200px -140px}
+.layer_template .checklist_body .item_check{display:inline-block;float:none}
+.layer_template .checklist_body .item_check .inp_g:disabled + .lab_g{opacity:.3}
+.layer_template .col_function{float:left;width:296px;text-align:left}
+.layer_template .col_checkbox{float:left;width:120px;text-align:center}
+.layer_template .desc_checklist{display:none;float:left;margin:5px 0;font-size:12px;line-height:18px;white-space:normal;color:#7f7f7f}
+.layer_template .row_checklist.fold .desc_checklist{display:block}
+.layer_template .emph_alert{color:#ff0000}
+.layer_template .layer_foot{margin-top:auto}
+/* 팝업 레이어 심플ver. */
+.layer_popup{width:496px}
+.layer_popup .tit_layer{line-height:52px}
+.layer_popup .layer_foot{overflow:visible;padding:30px 32px 32px}
+.layer_popup .layer_foot:after{display:block;content:'';clear:both}
+.layer_popup .layer_body{min-height:44px;padding:0 32px}
+.layer_popup .layer_body:after{display:block;content:'';clear:both}
+.layer_popup .desc_info{font-size:16px;line-height:24px;color:#5b5f69}
+.layer_popup .txt_info{display:block;margin:8px 0 0;font-size:14px;color:#7f7f7f}
+.layer_popup .opt_g{margin-top:24px}
+.layer_popup .link_help{display:inline-block;margin:8px 0 0;font-size:14px;color:#2196f3;line-height:20px}
+/* 토스트 :좌측 하단에 뜨는 작은 메세지 창 */
+.toast_bot{position:absolute;bottom:24px;left:24px;z-index:9999;width:400px;height:20px;padding:14px 0;font-size:14px;line-height:20px;background:#000;color:#fff;text-indent:24px}

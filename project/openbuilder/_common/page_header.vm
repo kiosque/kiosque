@@ -1,0 +1,326 @@
+#set($imgUrl='/openbuilder-2018/service/images')
+#if($directory =='error')
+#else
+<header id="kakaoHead">
+	<div class="head_builder">
+		<div class="inner_builder">
+		  	#if($directory =='join')
+				<h1>
+					<a href="#none" class="link_kakaoi"><span class="ir_wa">kakao i developers</span></a>
+				</h1>
+			#else
+				<h1>
+					<a href="#none" class="link_openbuilder"><span class="ir_wa">kakao i openbuilder</span></a>
+				</h1>
+			#end
+
+			#if($params.get('type'))
+			<span class="tag_status">
+			  	<a href="#none" class="link_alpha"><span class="ir_wa">alpha</span></a>
+			  	<a href="#none" class="link_beta"><span class="ir_wa">beta</span></a>
+			  	<a href="#none" class="link_sandbox"><span class="ir_wa">sandbox</span></a>
+			  	<a href="#none" class="link_stage"><span class="ir_wa">stage</span></a>
+			</span>
+			#end
+			<div class="head_util">
+				<ul class="list_util">
+					<!-- 2018-11-22 수정 -->
+					<li><a href="#none" class="link_util link_developers">카카오 아이 디벨로퍼스</a></li>
+					<li><a href="#none" class="link_util">도움말</a></li>
+					<li><a href="#none" class="link_util">문의하기</a></li>
+					<li><a href="#none" class="link_util">공지사항</a></li>
+					<li><a href="#none" class="link_util">플러스친구 관리자센터</a></li>
+					<!-- //2018-11-22 수정 -->
+				</ul>
+				<div class="util_btn util_alarm #if($params.get('alarm'))open_layer#end">
+					<button type="button" class="btn_alarm">
+						<span class="ico_bot ico_alarm">알림</span>
+						<span class="num_g">3</span><span class="screen_out">개</span>
+					</button>
+				</div>
+				#if($params.get('alarm'))
+				<!-- 2018-07-03 추가 -->
+			  	<div class="layer_notice">
+					<div class="layer_head">
+						<strong class="info_g">알림센터</strong>
+					  	<!-- <div class="opt_g">
+							<div class="screen_out">카테고리 선택상자</div>
+							<span class="screen_out">선택내용: </span>
+							<a href="#none" class="link_opt">전체 봇 목록 보기 <span class="ico_bot ico_arr"></span></a>
+							<div class="wrap_opt">
+								<span class="screen_out">선택옵션: </span>
+								<ul class="list_opt">
+									<li>
+										<a href="#none" class="link_opt">옵션1</a>
+									</li>
+									<li>
+										<a href="#none" class="link_opt">옵션2</a>
+									</li>
+									<li>
+										<a href="#none" class="link_opt">옵션3</a>
+									</li>
+								</ul>
+							</div>
+						</div> 2019-01-04 삭제 -->
+					  <!-- 2019-01-04 추가 -->
+						<button type="button" class="btn_close">
+						  <span class="ico_bot ico_close2">닫기</span>
+						</button>
+            <!-- //2019-01-04 추가 -->
+					</div>
+					<div class="layer_body">
+						<div class="inner_layer">
+							#if($params.get('none'))
+						    <!-- 2019-01-07 추가 -->
+						    <div class="wrap_none">
+							  	<span class="ico_bot ico_none"></span>
+								<span class="txt_none">알림항목이 없습니다.</span>
+						    </div>
+						    <!-- //2019-01-07 추가 -->
+							#else
+						    <ul>
+							  <li class="item_alarm"><!-- 2019-01-04 : item_new / item_read 클래스 제거 -->
+								  <em class="emph_new">new</em><!-- 2019-01-04 추가 -->
+								  <strong class="tit_info"><!-- <a href="#none" class="link_info">블록명</a> 2019-01-04 삭제 -->일이삼사오육칠팔구십일이삼사오육칠팔구십 봇</strong>
+                    <p class="desc_info">마스터관리자가 변경되었습니다.</p><!-- 2019-01-04 추가 -->
+								  <dl class="dl_info">
+									  <dt class="screen_out">작성일</dt>
+									  <dd>방금 전</dd>
+									  <!-- <dt class="screen_out">작성시간</dt>
+									  <dd>오후 2시 30분</dd> 2019-01-04 삭제 -->
+								  </dl>
+								  <!-- <span class="ico_bot ico_new">NEW</span> 2019-01-04 삭제 -->
+							  </li>
+							  <li class="item_alarm"><!-- 2019-01-04 : item_new / item_read 클래스 제거 -->
+                  <em class="emph_new">new</em><!-- 2019-01-04 추가 -->
+                  <strong class="tit_info"><!-- <a href="#none" class="link_info">블록명</a> 2019-01-04 삭제 -->JTBC 뉴스봇 봇</strong>
+								  <p class="desc_info">마스터관리자의 부재가 발생하였습니다. 마스터를 재선임 해주세요.</p><!-- 2019-01-04 추가 -->
+                    <dl class="dl_info">
+									  <dt class="screen_out">작성일</dt>
+									  <dd>12시간 15분 전</dd>
+									  <!-- <dt class="screen_out">작성시간</dt>
+									  <dd>오후 2시 30분</dd> 2019-01-04 삭제 -->
+								  </dl>
+								  <!-- <a href="#none" class="txt_state">읽음</a>
+                  <span class="ico_bot ico_new">NEW</span> 2019-01-04 삭제 -->
+							  </li>
+							  <li class="item_alarm"><!-- 2019-01-04 : item_new / item_read 클래스 제거 -->
+                  <em class="emph_new">new</em><!-- 2019-01-04 추가 -->
+								  <strong class="tit_info"><!-- <a href="#none" class="link_info">블록명</a> 2019-01-04 삭제 -->매일 성경 QT 봇</strong>
+                  <p class="desc_info">봇의 심사가 완료되었습니다. 결과 확인 후 봇을 배포해주세요</p><!-- 2019-01-04 추가 -->
+								  <dl class="dl_info">
+									  <dt class="screen_out">작성일</dt>
+									  <dd>2018. 1. 12</dd>
+									  <!-- <dt class="screen_out">작성시간</dt>
+									  <dd>오후 2시 30분</dd> 2019-01-04 삭제 -->
+								  </dl>
+								  <!-- <span class="ico_bot ico_new">NEW</span> 2019-01-04 삭제 -->
+							  </li>
+							  <li class="item_alarm">
+									<em class="emph_new">new</em><!-- 2019-01-04 추가 -->
+									<strong class="tit_info"><!-- <a href="#none" class="link_info">블록명</a> 2019-01-04 삭제 -->문의하기 게시판에 답변이 작성되었습니다.</strong>
+									<p class="desc_info">기업에서 OBT를 이용하여 직접 개발 및 오픈 가능한가요?</p><!-- 2019-01-04 추가 -->
+								  <dl class="dl_info">
+									  <dt class="screen_out">작성일</dt>
+									  <dd>2018. 1. 12</dd>
+									  <!-- <dt class="screen_out">작성시간</dt>
+									  <dd>오후 2시 30분</dd> 2019-01-04 삭제 -->
+								  </dl>
+							  </li>
+							  <li class="item_alarm"><!-- 2019-01-04 : item_new / item_read 클래스 제거 -->
+								  <strong class="tit_info"><!-- <a href="#none" class="link_info">블록명블록명블록명블록명블록명블록명블록명블록명블록명블록명블록명블록명블록명</a> 2019-01-04 삭제 -->공지사항</strong>
+                  <p class="desc_info">도움말 레이아웃 개편 반영 공지 (12/12(수), 18:00)</p><!-- 2019-01-04 추가 -->
+								  <dl class="dl_info">
+									  <dt class="screen_out">작성일</dt>
+									  <dd>2018. 1. 12</dd>
+									  <!-- <dt class="screen_out">작성시간</dt>
+									  <dd>오후 2시 30분</dd> 2019-01-04 삭제 -->
+								  </dl>
+							  </li>
+							  #foreach ($i  in [1..10])
+							  <li class="item_alarm">
+								  <strong class="tit_info"><!-- <a href="#none" class="link_info">블록명</a> 2019-01-04 삭제 -->공지사항</strong>
+                    <p class="desc_info">#if($i == 2)마스터관리자가 변경되었습니다. 마스터관리자가 변경되었습니다. 마스터관리자가 변경되었습니다. 마스터관리자가 변경되었습니다.#else마스터관리자가 변경되었습니다.#end</p><!-- 2019-01-04 추가 -->
+								  <dl class="dl_info">
+									  <dt class="screen_out">작성일</dt>
+									  <dd>#if($i == 8)한달 전#elseif($i == 9)한달 전#elseif($i == 10)두달 전#else 2018. 1. 12#end</dd>
+									  <!-- <dt class="screen_out">작성시간</dt>
+									  <dd>오후 2시 30분</dd> 2019-01-04 삭제 -->
+								  </dl>
+							  </li>
+							  #end
+							</ul>
+							#end
+						  	<!-- <div class="wrap_btn">
+							  <button type="button" class="btn_all">전체보기</button>
+							</div> 2019-01-07 삭제 -->
+						</div>
+					</div>
+				</div>
+				<!-- //2018-07-03 추가 -->
+				#end
+				<div class="util_btn util_my #if($params.get('info'))open_layer#end"><!-- 클릭시 open_layer 클래스 추가 -->
+					<a href="#none" class="link_my">
+						<img src="$imgUrl/temp/@temp_my@2x.png" width="32" height="32" class="thumb_g" alt="프로필">
+					</a>
+					<!-- 2018-08-24 수정 -->
+					<div class="layer_myinfo">
+           	<!-- li 비활성화 시 item_off 클래스 추가 -->
+						<ul class="list_myinfo">
+							<li>
+								<a href="#none" class="link_myinfo">내 계정</a>
+							</li>
+							<li>
+								<a href="#none" class="link_myinfo">로그아웃</a>
+							</li>
+						</ul>
+					</div>
+					<!-- //2018-08-24 수정 -->
+				</div>
+			</div>
+			#if($directory =='home')
+			<div class="util_btn util_add #if($params.get('open')) open_layer#end"><!-- 클릭 시 open_layer 클래스 추가 -->
+				#if($filename =='home_type2')
+			  	<button type="button" class="btn_util btn_add">
+				  <span class="ico_bot ico_add2">봇 만들기</span>
+				</button>
+				#end
+				<div class="layer_botlist">
+				  <a href="#none" class="link_botlist">
+					<span class="ico_bot ico_chatbot"></span>
+					<em class="txt_emph">카카오톡 챗봇</em>
+					<span class="txt_desc">카카오 플러스친구 기반 챗봇</span>
+				  </a>
+				  <a href="#none" class="link_botlist">
+					<span class="ico_bot ico_voicebot"></span>
+					<em class="txt_emph">보이스봇</em>
+					<span class="txt_desc">음성기반의 KAKAO i 서비스</span>
+				  </a>
+				</div>
+			</div>
+			#end
+			#if(!($directory =='join' || $directory =='account'))
+			#if($directory =='block' || $directory == 'entry' || $directory == 'deploy' || $directory == 'permit' || $directory == 'setting' || $directory == 'learning' || $directory =='analysis' || $directory =='skill' || $directory =='record')
+		  <div class="bot_tit">
+				<div class="opt_tit #if($params.get('optOpen'))opt_open #end"><!--활성화시 opt_open 클래스추가 -->
+					<span class="screen_out">카테고리 선택상자</span>
+					<span class="screen_out">선택내용: </span>
+					<h2 class="tit_bot">
+						<a href="#none" class="link_menu"><span class="ico_bot ico_menu">봇 목록으로 돌아가기</span></a><!-- 2018-10-24 추가 -->
+						<a href="#none" class="link_tit">댕댕봇 - 베타<span class="ico_bot ico_arr"></span></a><!-- 2018-10-24 수정 : link_opt > link_tit -->
+					</h2>
+					<!-- 2018-10-24 추가 -->
+					<div class="layer_opt">
+						<div class="search_cate">
+							<form action="#">
+								<fieldset>
+									<legend class="screen_out">봇 이름 검색 폼</legend>
+									<div class="box_tf"><!-- 입력완료 시 on / 포커스일 경우 tf_focus / 에러일 경우 tf_error 클래스 추가 -->
+										<span class="ico_bot ico_search">검색</span>
+										<label class="screen_out" for="botNameSearch">봇 이름 검색</label>
+										<input type="text" id="botNameSearch" name="botNameSearch" class="inp_g" placeholder="봇 이름 검색" value="">
+									</div>
+								</fieldset>
+							</form>
+						</div>
+
+						<div class="wrap_opt">
+						  #if($params.get('2'))
+						  	<!-- 2018-11-22 추가 -->
+						  	<p class="txt_opt">검색 결과가 없습니다</p>
+                            <!-- //2018-11-22 추가 -->
+						  #else
+							<span class="screen_out">선택옵션: </span>
+							<ul class="list_opt">
+								#foreach ($i in [1..2])
+									<li><a href="#none" class="link_opt">JTBC 뉴스룸</a></li>
+									<li><a href="#none" class="link_opt">일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십</a></li>
+									<li><a href="#none" class="link_opt">댕댕봇 - 베타</a></li>
+									<li><a href="#none" class="link_opt">헤이지니</a></li>
+									<li><a href="#none" class="link_opt">매일 미사</a></li>
+									<li><a href="#none" class="link_opt">매일 성경 QT</a></li>
+								#end
+							</ul>
+						  #end
+						</div>
+					</div>
+					<!-- //2018-10-24 추가 -->
+				</div>
+				#if($params.get('type'))
+				<span class="tag_status">
+					<a href="#none" class="link_alpha"><span class="ir_wa">alpha</span></a>
+					<a href="#none" class="link_beta"><span class="ir_wa">beta</span></a>
+					<a href="#none" class="link_sandbox"><span class="ir_wa">sandbox</span></a>
+					<a href="#none" class="link_stage"><span class="ir_wa">stage</span></a>
+				</span>
+				#end
+			</div>
+			#else
+		 	<div class="screen_out"><!-- 2018-11-21 : bot_tit > screen_out 수정 -->
+                <h2 class="tit_bot">
+			  		<a href="#none" class="link_opt">봇 목록</a>
+				</h2>
+		  	</div>
+			#end
+
+			#end
+		</div>
+	</div>
+
+	#if($directory =='home')
+	<div class="head_gnb">
+		<div class="inner_builder"><!-- 2018-08-06 : div.inner_builder 추가 -->
+			<div class="wrap_gnb" role="navigation">
+				<ul id="kakaoGnb" class="list_gnb">
+					<li #if($directory =='home') class="on" #end><!-- 활성화시 on 클래스추가 -->
+						<a href="#none" class="link_tab">나의 봇 <span class="num_tab">5</span></a><!-- 2018-12-13 수정 -->
+					</li>
+					<li>
+						<span class="link_tab">프리셋</span><!-- 비활성화 시 a 태그 > span 태그로 변경 -->
+					  	<span class="txt_state">SOON</span><!-- 2018-11-30 추가 -->
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	#elseif($directory =='join' || $directory =='account')
+	#else
+	<div class="head_gnb">
+		<div class="wrap_gnb" role="navigation">
+			<ul id="kakaoGnb" class="list_gnb">
+				<li #if($directory =='block' || $directory =='entry') class="on" #end><!-- 활성화시 on 클래스추가 -->
+					<a href="#none" class="link_tab">시나리오</a>
+				</li>
+				<li #if($directory =='skill') class="on" #end>
+					<a href="#none" class="link_tab">스킬</a>
+				</li>
+				<li #if($directory =='learning') class="on" #end>
+					<a href="#none" class="link_tab">학습</a>
+				</li>
+				<li #if($directory =='analysis') class="on" #end>
+					<a href="#none" class="link_tab">분석</a>
+				</li>
+				<li #if($directory =='record') class="on" #end>
+					<a href="#none" class="link_tab">작업이력</a>
+				  	<span class="ico_bot tag_new">새 글</span>
+				</li>
+				<li #if($directory =='deploy') class="on" #end>
+					<a href="#none" class="link_tab">#if($filename=='deploy_voicebot')심사/배포#else배포#end</a>
+				</li>
+				<li #if($directory =='admin') class="on" #end>
+					<a href="#none" class="link_tab">관리자</a>
+				</li>
+				<li #if($directory =='setting') class="on" #end>
+					<a href="#none" class="link_tab">설정</a>
+				</li>
+			</ul>
+		</div>
+		<div class="wrap_btn">
+			<button type="button" class="btn_bot"><span class="ico_bot ico_ntt"></span>엔티티</button><!-- 2018-07-03 수정 : btn_test > btn_bot -->
+			<button type="button" class="btn_bot"><span class="ico_bot ico_check"></span>봇테스트</button><!-- 2018-07-03 수정 : btn_test > btn_bot -->
+		</div>
+	</div>
+	#end
+</header>
+#end

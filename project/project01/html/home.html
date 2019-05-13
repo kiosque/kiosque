@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>openbuilder | Kakao</title>
+    ##	<meta http-equiv="pragma" content="nocache">
+    ##	<meta name="autocomplete" content="off"> ## 서제스트가 있는 경우
+    ##	<meta http-equiv="X-UA-Compatible" content="IE=7"> ## IE8 최적화가 어려운 경우
+    ##	<meta http-equiv="refresh" content="5"> ## Test용
+    ##	<meta name="description" content="서비스에 대한 설명">
+    ##	<meta name="keywords" content="서비스 관련 키워드">
+
+    <link rel="stylesheet" type="text/css" href="$request.getContextPath()/service/_css/common.css">
+    <link rel="stylesheet" type="text/css" href="$request.getContextPath()/service/_css/reset.css">
+
+    ##	<link rel="stylesheet" type="text/css" href="$request.getContextPath()/service/_css/service_${directory}.css"> ## 대메뉴별 CSS
+    ##	<!--[if IE 6]><link rel="stylesheet" type="text/css" href="$request.getContextPath()//service/_css/ie6.css"><![endif]--> ## 조건부 주석을 사용하여 ie용 css를 따로 둘 경우
+    ##	<script type="text/javascript" src="$request.getContextPath()//service/_js/jigu.js" charset="utf-8"></script>
+    ##	<script type="text/javascript" src="http://ftdev.daum.net/jigu/jigu-latest.js"></script>
+    <!-- 임시스크립트입니다 ( ui확인용 )-->
+    <script src="/openbuilder-2018/service/_js/jquery-1.11.3.min.js"></script>
+    <script src="/openbuilder-2018/service/_js/ui.js"></script>
+    <!-- //임시스크립트입니다 ( ui확인용 )-->
+</head>
+
+<body>
+    ## 웹접근성용 바로가기 링크 모음
+    <div id="kakaoIndex">
+        <a href="#kakaoBody">본문 바로가기</a>
+        <a href="#kakaoGnb">메뉴 바로가기</a>
+    </div>
+    <div id="kakaoWrap" class="$!{layoutType} #if($params.get('scroll'))scroll_on#end">## 레이아웃 관련 클래스 적용/ 스크롤시 scroll_on 클래스추가
+        <header id="kakaoHead">
+            <div class="head_builder">
+                <div class="inner_builder">
+                    <h1>
+                        <a href="#none" class="link_openbuilder"><span class="ir_wa">kakao i openbuilder</span></a>
+                    </h1>
+                    <div class="head_util">
+                        <ul class="list_util">
+                            <li><a href="#none" class="link_util link_developers">카카오 아이 디벨로퍼스</a></li>
+                            <li><a href="#none" class="link_util">도움말</a></li>
+                            <li><a href="#none" class="link_util">문의하기</a></li>
+                            <li><a href="#none" class="link_util">공지사항</a></li>
+                            <li><a href="#none" class="link_util">플러스친구 관리자센터</a></li>
+                        </ul>
+                        <div class="util_btn util_alarm #if($params.get('alarm'))open_layer#end"><!-- open_layer 추가 시  -->
+                            <button type="button" class="btn_alarm">
+                                <span class="ico_bot ico_alarm">알림</span>
+                                <span class="num_g">3</span><span class="screen_out">개</span>
+                            </button>
+                        </div>
+                        <!-- 알림센터 레이어 -->
+                        <div class="layer_notice">
+                            <div class="layer_head">
+                                <strong class="info_g">알림센터</strong>
+                                <button type="button" class="btn_close">
+                                    <span class="ico_bot ico_close2">닫기</span>
+                                </button>
+                            </div>
+                            <div class="layer_body">
+                                <div class="inner_layer">
+                                    <ul>
+                                        <li class="item_alarm">
+                                            <em class="emph_new">new</em>
+                                            <strong class="tit_info">일이삼사오육칠팔구십일이삼사오육칠팔구십 봇</strong>
+                                            <p class="desc_info">마스터관리자가 변경되었습니다.</p>
+                                            <dl class="dl_info">
+                                                <dt class="screen_out">작성일</dt>
+                                                <dd>방금 전</dd>
+                                            </dl>
+                                        </li>
+                                        <li class="item_alarm">
+                                            <em class="emph_new">new</em>
+                                            <strong class="tit_info">JTBC 뉴스봇 봇</strong>
+                                            <p class="desc_info">마스터관리자의 부재가 발생하였습니다. 마스터를 재선임 해주세요.</p>
+                                            <dl class="dl_info">
+                                                <dt class="screen_out">작성일</dt>
+                                                <dd>12시간 15분 전</dd>
+                                            </dl>
+                                        </li>
+                                        <li class="item_alarm">
+                                            <em class="emph_new">new</em>
+                                            <strong class="tit_info">매일 성경 QT 봇</strong>
+                                            <p class="desc_info">봇의 심사가 완료되었습니다. 결과 확인 후 봇을 배포해주세요</p>
+                                            <dl class="dl_info">
+                                                <dt class="screen_out">작성일</dt>
+                                                <dd>2018. 1. 12</dd>
+                                            </dl>
+                                        </li>
+                                        <li class="item_alarm">
+                                            <em class="emph_new">new</em>
+                                            <strong class="tit_info">문의하기 게시판에 답변이 작성되었습니다.</strong>
+                                            <p class="desc_info">기업에서 OBT를 이용하여 직접 개발 및 오픈 가능한가요?</p>
+                                            <dl class="dl_info">
+                                                <dt class="screen_out">작성일</dt>
+                                                <dd>2018. 1. 12</dd>
+                                            </dl>
+                                        </li>
+                                        <li class="item_alarm">
+                                            <strong class="tit_info">공지사항</strong>
+                                            <p class="desc_info">도움말 레이아웃 개편 반영 공지 (12/12(수), 18:00)</p>
+                                            <dl class="dl_info">
+                                                <dt class="screen_out">작성일</dt>
+                                                <dd>2018. 1. 12</dd>
+                                                <!-- <dt class="screen_out">작성시간</dt>
+                                                <dd>오후 2시 30분</dd> 2019-01-04 삭제 -->
+                                            </dl>
+                                        </li>
+                                        #foreach ($i  in [1..10])
+                                        <li class="item_alarm">
+                                            <strong class="tit_info"><!-- <a href="#none" class="link_info">블록명</a> 2019-01-04 삭제 -->공지사항</strong>
+                            <p class="desc_info">#if($i == 2)마스터관리자가 변경되었습니다. 마스터관리자가 변경되었습니다. 마스터관리자가 변경되었습니다. 마스터관리자가 변경되었습니다.#else마스터관리자가 변경되었습니다.#end</p><!-- 2019-01-04 추가 -->
+                                            <dl class="dl_info">
+                                                <dt class="screen_out">작성일</dt>
+                                                <dd>#if($i == 8)한달 전#elseif($i == 9)한달 전#elseif($i == 10)두달 전#else 2018. 1. 12#end</dd>
+                                                <!-- <dt class="screen_out">작성시간</dt>
+                                                <dd>오후 2시 30분</dd> 2019-01-04 삭제 -->
+                                            </dl>
+                                        </li>
+                                        #end
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //알림센터 레이어 -->
+                        <div class="util_btn util_my #if($params.get('info'))open_layer#end"><!-- 클릭시 open_layer 클래스 추가 -->
+                            <a href="#none" class="link_my">
+                                <img src="$imgUrl/temp/@temp_my@2x.png" width="32" height="32" class="thumb_g" alt="프로필">
+                            </a>
+                            <div class="layer_myinfo"><!-- li 비활성화 시 item_off 클래스 추가 -->
+                                <ul class="list_myinfo">
+                                    <li>
+                                        <a href="#none" class="link_myinfo">내 계정</a>
+                                    </li>
+                                    <li>
+                                        <a href="#none" class="link_myinfo">로그아웃</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bot_tit">
+                        <div class="opt_tit #if($params.get('optOpen'))opt_open #end"><!--활성화시 opt_open 클래스추가 -->
+                            <span class="screen_out">카테고리 선택상자</span>
+                            <span class="screen_out">선택내용: </span>
+                            <h2 class="tit_bot">
+                                <a href="#none" class="link_menu"><span class="ico_bot ico_menu">봇 목록으로 돌아가기</span></a><!-- 2018-10-24 추가 -->
+                                <a href="#none" class="link_tit">댕댕봇 - 베타<span class="ico_bot ico_arr"></span></a><!-- 2018-10-24 수정 : link_opt > link_tit -->
+                            </h2>
+                            <!-- 2018-10-24 추가 -->
+                            <div class="layer_opt">
+                                <div class="search_cate">
+                                    <form action="#">
+                                        <fieldset>
+                                            <legend class="screen_out">봇 이름 검색 폼</legend>
+                                            <div class="box_tf"><!-- 입력완료 시 on / 포커스일 경우 tf_focus / 에러일 경우 tf_error 클래스 추가 -->
+                                                <span class="ico_bot ico_search">검색</span>
+                                                <label class="screen_out" for="botNameSearch">봇 이름 검색</label>
+                                                <input type="text" id="botNameSearch" name="botNameSearch" class="inp_g" placeholder="봇 이름 검색" value="">
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+        
+                                <div class="wrap_opt">
+                                    #if($params.get('2'))
+                                        <!-- 2018-11-22 추가 -->
+                                        <p class="txt_opt">검색 결과가 없습니다</p>
+                                    <!-- //2018-11-22 추가 -->
+                                    #else
+                                    <span class="screen_out">선택옵션: </span>
+                                    <ul class="list_opt">
+                                        #foreach ($i in [1..2])
+                                            <li><a href="#none" class="link_opt">JTBC 뉴스룸</a></li>
+                                            <li><a href="#none" class="link_opt">일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십</a></li>
+                                            <li><a href="#none" class="link_opt">댕댕봇 - 베타</a></li>
+                                            <li><a href="#none" class="link_opt">헤이지니</a></li>
+                                            <li><a href="#none" class="link_opt">매일 미사</a></li>
+                                            <li><a href="#none" class="link_opt">매일 성경 QT</a></li>
+                                        #end
+                                    </ul>
+                                    #end
+                                </div>
+                            </div>
+                            <!-- //2018-10-24 추가 -->
+                        </div>
+                        #if($params.get('type'))
+                        <span class="tag_status">
+                            <a href="#none" class="link_alpha"><span class="ir_wa">alpha</span></a>
+                            <a href="#none" class="link_beta"><span class="ir_wa">beta</span></a>
+                            <a href="#none" class="link_sandbox"><span class="ir_wa">sandbox</span></a>
+                            <a href="#none" class="link_stage"><span class="ir_wa">stage</span></a>
+                        </span>
+                        #end
+                    </div>
+                </div>
+            </div>
+            <div class="head_gnb">
+                <div class="wrap_gnb" role="navigation">
+                    <ul id="kakaoGnb" class="list_gnb">
+                        <li #if($directory =='block' || $directory =='entry') class="on" #end><!-- 활성화시 on 클래스추가 -->
+                            <a href="#none" class="link_tab">시나리오</a>
+                        </li>
+                        <li #if($directory =='skill') class="on" #end>
+                            <a href="#none" class="link_tab">스킬</a>
+                        </li>
+                        <li #if($directory =='learning') class="on" #end>
+                            <a href="#none" class="link_tab">학습</a>
+                        </li>
+                        <li #if($directory =='analysis') class="on" #end>
+                            <a href="#none" class="link_tab">분석</a>
+                        </li>
+                        <li #if($directory =='record') class="on" #end>
+                            <a href="#none" class="link_tab">작업이력</a>
+                                <span class="ico_bot tag_new">새 글</span>
+                        </li>
+                        <li #if($directory =='deploy') class="on" #end>
+                            <a href="#none" class="link_tab">#if($filename=='deploy_voicebot')심사/배포#else배포#end</a>
+                        </li>
+                        <li #if($directory =='admin') class="on" #end>
+                            <a href="#none" class="link_tab">관리자</a>
+                        </li>
+                        <li #if($directory =='setting') class="on" #end>
+                            <a href="#none" class="link_tab">설정</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="wrap_btn">
+                    <button type="button" class="btn_bot"><span class="ico_bot ico_ntt"></span>엔티티</button><!-- 2018-07-03 수정 : btn_test > btn_bot -->
+                    <button type="button" class="btn_bot"><span class="ico_bot ico_check"></span>봇테스트</button><!-- 2018-07-03 수정 : btn_test > btn_bot -->
+                </div>
+            </div>
+        </header>    
+        <hr class="hide">
+        <main id="kakaoContent" class="cont_${directory}">## 대메뉴별(폴더명) 관련 클래스 적용 : .cont_폴더명
+            <div id="mArticle" class="wrap_block"> ## type_block : 전체 레이아웃 좌측정렬
+            ## daumBody 본문바로가기 링크 - 페이지별 위치 및 element 명은 서비스에 맞게 변경하여 사용
+            
+                <!-- 블록 메인 -->
+                <div class="wrap_contain">
+                    <div class="contain_cont">
+                    <h3 id="#kakaoBody" class="screen_out">내 봇</h3>
+                    <div class="wrap_search">
+                        <div class="search_cate">
+                            <form action="#">
+                                <fieldset>
+                                    <legend class="screen_out">카테고리 검색 폼</legend>
+                                    <div class="box_tf"><!-- 포커스일 경우 tf_focus 클래스 추가 -->
+                                        <label class="screen_out" for="Search">검색</label>
+                                        <input type="text" id="Search" name="Search" class="inp_g" placeholder="봇이름을 검색하세요">
+                                        #if($params.get('search'))
+                                        <button type="button" class="btn_util btn_close">
+                                            <span class="ico_bot ico_close5">닫기</span>
+                                        </button>
+                                        #else
+                                        <button type="button" class="btn_util btn_search">
+                                            <span class="ico_bot ico_search2">검색</span>
+                                        </button>
+                                        #end
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="group_botlist">
+                        <div class="botlist_head">
+                            <div class="tit_name">
+                                <a href="#none" class="link_name">BOT NAME <span class="ico_bot ico_arr">내림차순</span></a>
+                            </div><!-- 클릭 시 array_name 클래스 추가 / '내림차순' > '오름차순'으로 변경-->
+                            <div class="wrap_tit #if($params.get('check'))open_layer #else #end"><!-- 클릭 시 open_layer 클래스 추가 -->
+                                <a href="#none" class="tit_type">BOT TYPE : KVS봇, 보이스봇<span class="ico_bot ico_arr"></span></a>
+                                <div class="layer_type">
+                                    <span class="screen_out">선택옵션: </span>
+                                    <ul class="list_opt">
+                                        <li>
+                                            <span class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+                                                <input type="checkbox" id="checkType" class="inp_g">
+                                                <label for="checkType" class="lab_g">카카오톡 챗봇<span class="ico_bot ico_check"></span></label>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+                                                <input type="checkbox" id="checkType2" class="inp_g">
+                                                <label for="checkType2" class="lab_g">보이스봇<span class="ico_bot ico_check"></span></label>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="check_item"><!-- 체크박스 선택 시 check_on 클래스 추가 -->
+                                                <input type="checkbox" id="checkType3" class="inp_g">
+                                                <label for="checkType3" class="lab_g">KVS 봇<span class="ico_bot ico_check"></span></label>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <button type="button" class="btn_g btn_g3">적용</button>
+                                </div>
+                            </div>
+                            <div class="tit_role">ROLE</div>
+                            <div class="wrap_tit">
+                                <div class="tit_state">심사 상태</div>
+                            </div>
+                        </div>
+                        <div class="botlist_body">
+                            #if($params.get('empty'))
+                            <div class="wrap_none">
+                                <span class="ico_bot ico_search3"></span>
+                                <span class="txt_none">검색 결과가 없습니다</span>
+                            </div>
+                            #elseif($params.get('search'))
+                            <div class="item_botlist">
+                                <div class="info_name">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info"><span class="emph_search">매일</span> 미사</strong>
+                                        <p class="txt_info">@천주교 새울대교규</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">보이스봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">정식작업자</div>
+                                </div>
+                                <div class="info_state">
+                                    <button type="button" class="btn_g btn_g3">
+                                        <span class="ico_state ico_ing"></span>심사중
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item_botlist">
+                                <div class="info_name">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info"><span class="emph_search">매일</span> 성경 QT</strong>
+                                        <p class="txt_info">@성서유니온선교회</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">보이스봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">정식작업자</div>
+                                </div>
+                                <div class="info_state">
+                                    <button type="button" class="btn_g btn_g3">
+                                        <span class="ico_state ico_error"></span>심사반려
+                                    </button>
+                                </div>
+                            </div>
+                            #else
+                            <div class="item_botlist">
+                                <div class="info_name">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">JTBC 뉴스룸 </strong>
+                                        <p class="txt_info">@JTBC 뉴스룸</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">보이스봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">정식작업자</div>
+                                </div>
+                                <div class="info_state">
+                                    <button type="button" class="btn_g btn_g3">
+                                        <span class="ico_state ico_done"></span>심사승인
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item_botlist off_item"><!-- 비활성화 시 off_item 클래스 추가 -->
+                                <div class="info_name type_del"><!-- 삭제 type_del / 에러 type_error / 차단 type_block 클래스 추가 -->
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">일이삼사오육칠팔구십일이삼사오육칠팔 <span class="txt_status">삭제 D-6</span></strong>
+                                        <p class="txt_info">@일이삼사오육칠팔구십일이삼사오육칠팔구십</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">보이스봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">일이삼사오육칠팔구십일이삼사오</div>
+                                </div>
+                                <div class="info_state"></div>
+                            </div>
+                            <div class="item_botlist">
+                                <div class="info_name">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">댕댕봇 - 베타</strong>
+                                        <p class="txt_info no_info">연결된 플러스친구 없음</p><!-- 연결 된 플친 없는 경우 no_info 클래스 추가 -->
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">카카오톡 챗봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">마스터</div>
+                                </div>
+                                <div class="info_state"></div>
+                            </div>
+                            <div class="item_botlist">
+                                <div class="info_name type_error">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">헤이지니 <span class="txt_status">ERROR</span></strong>
+                                        <p class="txt_info">@헤이지니</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">카카오톡 챗봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">마스터</div>
+                                </div>
+                                <div class="info_state">
+                                    <button type="button" class="btn_g btn_g3">
+                                        <span class="ico_state"></span>심사대기
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item_botlist">
+                                <div class="info_name">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">매일 미사</strong>
+                                        <p class="txt_info">@천주교 새울대교규</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">보이스봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">정식작업자</div>
+                                </div>
+                                <div class="info_state">
+                                    <button type="button" class="btn_g btn_g3">
+                                        <span class="ico_state ico_ing"></span>심사중
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item_botlist">
+                                <div class="info_name">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">매일 성경 QT</strong>
+                                        <p class="txt_info">@성서유니온선교회</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">보이스봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">정식작업자</div>
+                                </div>
+                                <div class="info_state">
+                                    <button type="button" class="btn_g btn_g3">
+                                        <span class="ico_state ico_error"></span>심사반려
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item_botlist">
+                                <div class="info_name type_block">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">업비트 <span class="txt_status">BLOCK</span></strong>
+                                        <p class="txt_info">@업비트 고객센터</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">KVS봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">정식작업자</div>
+                                </div>
+                                <div class="info_state"></div>
+                            </div>
+                            <div class="item_botlist">
+                                <div class="info_name">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">JTBC 뉴스룸 </strong>
+                                        <p class="txt_info">@JTBC 뉴스룸</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">보이스봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">정식작업자</div>
+                                </div>
+                                <div class="info_state">
+                                    <button type="button" class="btn_g btn_g3">
+                                        <span class="ico_state ico_done"></span>심사승인
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item_botlist off_item"><!-- 비활성화 시 off_item 클래스 추가 -->
+                                <div class="info_name type_del"><!-- 삭제 type_del / 에러 type_error / 차단 type_block 클래스 추가 -->
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">일이삼사오육칠팔구십일이삼사오육칠팔 <span class="txt_status">삭제 D-6</span></strong>
+                                        <p class="txt_info">@일이삼사오육칠팔구십일이삼사오육칠팔구십</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">보이스봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">일이삼사오육칠팔구십일이삼사오</div>
+                                </div>
+                                <div class="info_state"></div>
+                            </div>
+                            <div class="item_botlist">
+                                <div class="info_name">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">댕댕봇 - 베타</strong>
+                                        <p class="txt_info no_info">연결된 플러스친구 없음</p><!-- 연결 된 플친 없는 경우 no_info 클래스 추가 -->
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">카카오톡 챗봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">마스터</div>
+                                </div>
+                                <div class="info_state"></div>
+                            </div>
+                            <div class="item_botlist">
+                                <div class="info_name type_error">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">헤이지니 <span class="txt_status">ERROR</span></strong>
+                                        <p class="txt_info">@헤이지니</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">카카오톡 챗봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">마스터</div>
+                                </div>
+                                <div class="info_state">
+                                    <button type="button" class="btn_g btn_g3">
+                                        <span class="ico_state"></span>심사대기
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item_botlist">
+                                <div class="info_name">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">매일 미사</strong>
+                                        <p class="txt_info">@천주교 새울대교규</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">보이스봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">정식작업자</div>
+                                </div>
+                                <div class="info_state">
+                                    <button type="button" class="btn_g btn_g3">
+                                        <span class="ico_state ico_ing"></span>심사중
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item_botlist">
+                                <div class="info_name">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">매일 성경 QT</strong>
+                                        <p class="txt_info">@성서유니온선교회</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">보이스봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">정식작업자</div>
+                                </div>
+                                <div class="info_state">
+                                    <button type="button" class="btn_g btn_g3">
+                                        <span class="ico_state ico_error"></span>심사반려
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item_botlist">
+                                <div class="info_name type_block">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">업비트 <span class="txt_status">BLOCK</span></strong>
+                                        <p class="txt_info">@업비트 고객센터</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">KVS봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">정식작업자</div>
+                                </div>
+                                <div class="info_state"></div>
+                            </div>
+                            <div class="item_botlist">
+                                <div class="info_name">
+                                    <div class="screen_out">BOT NAME</div>
+                                    <div class="thumb_info">
+                                        <div class="wrap_thumb">
+                                            <img src="../kiosque/project/openbuilder/images/temp/@temp_profilenull2.png" width="44" height="44" alt="프로필 사진">
+                                        </div>
+                                    </div>
+                                    <div class="cont_info">
+                                        <strong class="tit_info">JTBC 뉴스룸 </strong>
+                                        <p class="txt_info">@JTBC 뉴스룸</p>
+                                    </div>
+                                </div>
+                                <div class="info_type">
+                                    <div class="screen_out">BOT TYPE</div>
+                                    <div class="txt_info">보이스봇</div>
+                                </div>
+                                <div class="info_role">
+                                    <div class="screen_out">ROLE</div>
+                                    <div class="txt_info">정식작업자</div>
+                                </div>
+                                <div class="info_state">
+                                    <button type="button" class="btn_g btn_g3">
+                                        <span class="ico_state ico_done"></span>심사승인
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="paging_item">
+                                <div class="inner_paging">
+                                    <!-- 현재 페이지 span > em 으로 변경 -->
+                                    <!-- 맨 앞/이전 페이지, 맨 뒤/다음 페이지 없는 경우 a 태그 > span 태그  -->
+                                    <button type="button" class="ico_bot btn_fst">맨 앞</button>
+                                    <button type="button" class="ico_bot btn_prev">이전</button>
+                                    <span class="screen_out">현재페이지</span><em class="link_page">1</em>
+                                    <button type="button" class="link_page">2</button>
+                                    <button type="button" class="link_page">3</button>
+                                    <button type="button" class="link_page">4</button>
+                                    <button type="button" class="link_page">5</button>
+                                    <button type="button" class="link_page">6</button>
+                                    <button type="button" class="link_page">7</button>
+                                    <button type="button" class="link_page">8</button>
+                                    <button type="button" class="link_page">9</button>
+                                    <button type="button" class="link_page">10</button>
+                                    <button type="button" class="ico_bot btn_next">다음</button>
+                                    <button type="button" class="ico_bot btn_lst">맨 뒤</button>
+                                </div>
+                            </div>
+                            #end
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!--// mArticle -->
+        </main>
+        <hr class="hide">
+        <footer id="kakaoFoot" class="footer_comm">
+            <div class="inner_footer">
+                <h2 class="screen_out">서비스 이용정보</h2>
+                <a href="#none" class="link_info">© Kakao Corp.</a>
+                <a href="#none" class="link_info">운영정책</a>
+                <a href="#none" class="link_info">이용약관</a>
+                <a href="#none" target="_blank" class="link_info link_policy">개인정보 처리방침</a>
+                <a href="#none" class="link_info">개인정보 위탁동의</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

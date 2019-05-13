@@ -1,0 +1,21 @@
+##	<meta http-equiv="pragma" content="nocache">
+##	<meta name="autocomplete" content="off"> ## 서제스트가 있는 경우
+##	<meta http-equiv="X-UA-Compatible" content="IE=7"> ## IE8 최적화가 어려운 경우
+##	<meta http-equiv="refresh" content="5"> ## Test용
+##	<meta name="description" content="서비스에 대한 설명">
+##	<meta name="keywords" content="서비스 관련 키워드">
+
+<link rel="stylesheet" type="text/css" href="$request.getContextPath()/service/_css/common.css">
+<link rel="stylesheet" type="text/css" href="$request.getContextPath()/service/_css/reset.css">
+
+
+##	<link rel="stylesheet" type="text/css" href="$request.getContextPath()/service/_css/service_${directory}.css"> ## 대메뉴별 CSS
+
+##	<!--[if IE 6]><link rel="stylesheet" type="text/css" href="$request.getContextPath()//service/_css/ie6.css"><![endif]--> ## 조건부 주석을 사용하여 ie용 css를 따로 둘 경우
+##	<script type="text/javascript" src="$request.getContextPath()//service/_js/jigu.js" charset="utf-8"></script>
+##	<script type="text/javascript" src="http://ftdev.daum.net/jigu/jigu-latest.js"></script>
+
+<!-- 임시스크립트입니다 ( ui확인용 )-->
+<script src="/openbuilder-2018/service/_js/jquery-1.11.3.min.js"></script>
+<script src="/openbuilder-2018/service/_js/ui.js"></script>
+<!-- //임시스크립트입니다 ( ui확인용 )-->

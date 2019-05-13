@@ -1,0 +1,15 @@
+#if($directory =='error')
+#else
+<footer id="kakaoFoot" class="footer_comm">
+  <div class="inner_footer">
+    <h2 class="screen_out">서비스 이용정보</h2>
+    <!-- 2018-11-22 수정 -->
+    <a href="#none" class="link_info">© Kakao Corp.</a>
+    <a href="#none" class="link_info">운영정책</a>
+    <a href="#none" class="link_info">이용약관</a>
+    <a href="#none" target="_blank" class="link_info link_policy">개인정보 처리방침</a>
+    <a href="#none" class="link_info">개인정보 위탁동의</a>
+    <!-- //2018-11-22 수정 -->
+  </div>
+</footer>
+#end
