@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>openbuilder | Kakao</title>
+		##	<meta http-equiv="pragma" content="nocache">
+		##	<meta name="autocomplete" content="off"> ## 서제스트가 있는 경우
+		##	<meta http-equiv="X-UA-Compatible" content="IE=7"> ## IE8 최적화가 어려운 경우
+		##	<meta http-equiv="refresh" content="5"> ## Test용
+		##	<meta name="description" content="서비스에 대한 설명">
+		##	<meta name="keywords" content="서비스 관련 키워드">
+	
+		<link rel="stylesheet" type="text/css" href="$request.getContextPath()/service/_css/common.css">
+		<link rel="stylesheet" type="text/css" href="$request.getContextPath()/service/_css/reset.css">
+	
+		##	<link rel="stylesheet" type="text/css" href="$request.getContextPath()/service/_css/service_${directory}.css"> ## 대메뉴별 CSS
+		##	<!--[if IE 6]><link rel="stylesheet" type="text/css" href="$request.getContextPath()//service/_css/ie6.css"><![endif]--> ## 조건부 주석을 사용하여 ie용 css를 따로 둘 경우
+		##	<script type="text/javascript" src="$request.getContextPath()//service/_js/jigu.js" charset="utf-8"></script>
+		##	<script type="text/javascript" src="http://ftdev.daum.net/jigu/jigu-latest.js"></script><!-- 임시스크립트입니다 ( ui확인용 )-->
+		<script src="/openbuilder-2018/service/_js/jquery-1.11.3.min.js"></script>
+		<script src="/openbuilder-2018/service/_js/ui.js"></script><!-- //임시스크립트입니다 ( ui확인용 )-->
+	</head>
+	<body>
+		## 웹접근성용 바로가기 링크 모음
+		<div id="kakaoIndex">
+			<a href="#kakaoBody">본문 바로가기</a>
+			<a href="#kakaoGnb">메뉴 바로가기</a>
+		</div>
+		<div id="kakaoWrap" class="$!{layoutType} #if($params.get('scroll'))scroll_on#end">## 레이아웃 관련 클래스 적용/ 스크롤시 scroll_on 클래스추가
+			<header id="kakaoHead">
+				<div class="head_builder">
+					<div class="inner_builder">
+						<h1>
+							<a href="#none" class="link_openbuilder"><span class="ir_wa">kakao i openbuilder</span></a>
+						</h1>
+						<div class="head_util">
+							<ul class="list_util">
+								<li><a href="#none" class="link_util link_developers">카카오 아이 디벨로퍼스</a></li>
+								<li><a href="#none" class="link_util">도움말</a></li>
+								<li><a href="#none" class="link_util">문의하기</a></li>
+								<li><a href="#none" class="link_util">공지사항</a></li>
+								<li><a href="#none" class="link_util">플러스친구 관리자센터</a></li>
+							</ul>
+							<div class="util_btn util_alarm #if($params.get('alarm'))open_layer#end"><!-- open_layer 추가 시  -->
+								<button type="button" class="btn_alarm">
+									<span class="ico_bot ico_alarm">알림</span>
+									<span class="num_g">3</span><span class="screen_out">개</span>
+								</button>
+							</div>
+							<!-- 알림센터 레이어 -->
+							<div class="layer_notice">
+								<div class="layer_head">
+									<strong class="info_g">알림센터</strong>
+									<button type="button" class="btn_close">
+										<span class="ico_bot ico_close2">닫기</span>
+									</button>
+								</div>
+								<div class="layer_body">
+									<div class="inner_layer">
+										<ul>
+											<li class="item_alarm">
+												<em class="emph_new">new</em>
+												<strong class="tit_info">일이삼사오육칠팔구십일이삼사오육칠팔구십 봇</strong>
+												<p class="desc_info">마스터관리자가 변경되었습니다.</p>
+												<dl class="dl_info">
+													<dt class="screen_out">작성일</dt>
+													<dd>방금 전</dd>
+												</dl>
+											</li>
+											<li class="item_alarm">
+												<em class="emph_new">new</em>
+												<strong class="tit_info">JTBC 뉴스봇 봇</strong>
+												<p class="desc_info">마스터관리자의 부재가 발생하였습니다. 마스터를 재선임 해주세요.</p>
+												<dl class="dl_info">
+													<dt class="screen_out">작성일</dt>
+													<dd>12시간 15분 전</dd>
+												</dl>
+											</li>
+											<li class="item_alarm">
+												<em class="emph_new">new</em>
+												<strong class="tit_info">매일 성경 QT 봇</strong>
+												<p class="desc_info">봇의 심사가 완료되었습니다. 결과 확인 후 봇을 배포해주세요</p>
+												<dl class="dl_info">
+													<dt class="screen_out">작성일</dt>
+													<dd>2018. 1. 12</dd>
+												</dl>
+											</li>
+											<li class="item_alarm">
+												<em class="emph_new">new</em>
+												<strong class="tit_info">문의하기 게시판에 답변이 작성되었습니다.</strong>
+												<p class="desc_info">기업에서 OBT를 이용하여 직접 개발 및 오픈 가능한가요?</p>
+												<dl class="dl_info">
+													<dt class="screen_out">작성일</dt>
+													<dd>2018. 1. 12</dd>
+												</dl>
+											</li>
+											<li class="item_alarm">
+												<strong class="tit_info">공지사항</strong>
+												<p class="desc_info">도움말 레이아웃 개편 반영 공지 (12/12(수), 18:00)</p>
+												<dl class="dl_info">
+													<dt class="screen_out">작성일</dt>
+													<dd>2018. 1. 12</dd>
+												</dl>
+											</li>
+											#foreach ($i  in [1..10])
+											<li class="item_alarm">
+												<strong class="tit_info">공지사항</strong>
+												<p class="desc_info">#if($i == 2)마스터관리자가 변경되었습니다. 마스터관리자가 변경되었습니다. 마스터관리자가 변경되었습니다. 마스터관리자가 변경되었습니다.#else마스터관리자가 변경되었습니다.#end</p><!-- 2019-01-04 추가 -->
+												<dl class="dl_info">
+													<dt class="screen_out">작성일</dt>
+													<dd>#if($i == 8)한달 전#elseif($i == 9)한달 전#elseif($i == 10)두달 전#else 2018. 1. 12#end</dd>
+												</dl>
+											</li>
+											#end
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- //알림센터 레이어 -->
+							<div class="util_btn util_my #if($params.get('info'))open_layer#end"><!-- 클릭시 open_layer 클래스 추가 -->
+								<a href="#none" class="link_my">
+									<img src="$imgUrl/temp/@temp_my@2x.png" width="32" height="32" class="thumb_g" alt="프로필">
+								</a>
+								<div class="layer_myinfo"><!-- li 비활성화 시 item_off 클래스 추가 -->
+									<ul class="list_myinfo">
+										<li>
+											<a href="#none" class="link_myinfo">내 계정</a>
+										</li>
+										<li>
+											<a href="#none" class="link_myinfo">로그아웃</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="bot_tit">
+							<div class="opt_tit #if($params.get('optOpen'))opt_open #end"><!--활성화시 opt_open 클래스추가 -->
+								<span class="screen_out">카테고리 선택상자</span>
+								<span class="screen_out">선택내용: </span>
+								<h2 class="tit_bot">
+									<a href="#none" class="link_menu"><span class="ico_bot ico_menu">봇 목록으로 돌아가기</span></a><!-- 2018-10-24 추가 -->
+									<a href="#none" class="link_tit">댕댕봇 - 베타<span class="ico_bot ico_arr"></span></a><!-- 2018-10-24 수정 : link_opt > link_tit -->
+								</h2>
+								<!-- 2018-10-24 추가 -->
+								<div class="layer_opt">
+									<div class="search_cate">
+										<form action="#">
+											<fieldset>
+												<legend class="screen_out">봇 이름 검색 폼</legend>
+												<div class="box_tf"><!-- 입력완료 시 on / 포커스일 경우 tf_focus / 에러일 경우 tf_error 클래스 추가 -->
+													<span class="ico_bot ico_search">검색</span>
+													<label class="screen_out" for="botNameSearch">봇 이름 검색</label>
+													<input type="text" id="botNameSearch" name="botNameSearch" class="inp_g" placeholder="봇 이름 검색" value="">
+												</div>
+											</fieldset>
+										</form>
+									</div>
+			
+									<div class="wrap_opt">
+										#if($params.get('2'))
+											<!-- 2018-11-22 추가 -->
+											<p class="txt_opt">검색 결과가 없습니다</p>
+										<!-- //2018-11-22 추가 -->
+										#else
+										<span class="screen_out">선택옵션: </span>
+										<ul class="list_opt">
+											#foreach ($i in [1..2])
+												<li><a href="#none" class="link_opt">JTBC 뉴스룸</a></li>
+												<li><a href="#none" class="link_opt">일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십</a></li>
+												<li><a href="#none" class="link_opt">댕댕봇 - 베타</a></li>
+												<li><a href="#none" class="link_opt">헤이지니</a></li>
+												<li><a href="#none" class="link_opt">매일 미사</a></li>
+												<li><a href="#none" class="link_opt">매일 성경 QT</a></li>
+											#end
+										</ul>
+										#end
+									</div>
+								</div>
+								<!-- //2018-10-24 추가 -->
+							</div>
+							#if($params.get('type'))
+							<span class="tag_status">
+								<a href="#none" class="link_alpha"><span class="ir_wa">alpha</span></a>
+								<a href="#none" class="link_beta"><span class="ir_wa">beta</span></a>
+								<a href="#none" class="link_sandbox"><span class="ir_wa">sandbox</span></a>
+								<a href="#none" class="link_stage"><span class="ir_wa">stage</span></a>
+							</span>
+							#end
+						</div>
+					</div>
+				</div>
+				<div class="head_gnb">
+					<div class="wrap_gnb" role="navigation">
+						<ul id="kakaoGnb" class="list_gnb">
+							<li><!-- 활성화시 on 클래스추가 -->
+								<a href="#none" class="link_tab">시나리오</a>
+							</li>
+							<li>
+								<a href="#none" class="link_tab">스킬</a>
+							</li>
+							<li>
+								<a href="#none" class="link_tab">학습</a>
+							</li>
+							<li #if($directory =='analysis') class="on" #end>
+								<a href="#none" class="link_tab">분석</a>
+							</li>
+							<li>
+								<a href="#none" class="link_tab">작업이력</a>
+									<span class="ico_bot tag_new">새 글</span>
+							</li>
+							<li class="on">
+								<a href="#none" class="link_tab">#if($filename=='deploy_voicebot')심사/배포#else배포#end</a>
+							</li>
+							<li>
+								<a href="#none" class="link_tab">관리자</a>
+							</li>
+							<li>
+								<a href="#none" class="link_tab">설정</a>
+							</li>
+						</ul>
+					</div>
+					<div class="wrap_btn">
+						<button type="button" class="btn_bot"><span class="ico_bot ico_ntt"></span>엔티티</button><!-- 2018-07-03 수정 : btn_test > btn_bot -->
+						<button type="button" class="btn_bot"><span class="ico_bot ico_check"></span>봇테스트</button><!-- 2018-07-03 수정 : btn_test > btn_bot -->
+					</div>
+				</div>
+			</header> 
+			<hr class="hide">
+			<main id="kakaoContent" class="cont_deploy">## 대메뉴별(폴더명) 관련 클래스 적용 : .cont_폴더명
+				<div id="mArticle">
+					<div class="wrap_deploy">
+						<div class="inner_cont">
+							<div class="wrap_tit">
+								<h3 class="tit_g">심사/배포</h3>
+								<span class="info_g">오픈 빌더에서 제작한 보이스봇은 심사 승인되면 배포하실 수 있습니다.</span>
+							</div>
+							<div class="box_row">
+								<div class="wrap_subject">
+									<h4 class="tit_subject">배포 1.0</h4>
+									<span class="wrap_tip">
+										<a href="#none" class="ico_bot ico_help">도움말</a>
+										<span class="layer_tip">
+											<span class="txt_tip">배포 시 버전은 0.1 단위로 카운트됩니다.</span>
+										</span>
+									</span>
+									<div class="wrap_btn">
+										<button type="button" class="btn_g btn_g2">심사요청</button>
+									</div>
+								</div>
+								<div class="row_tf">
+									<label for="tfDeploy" class="lab_g">새로운 버전 설명 메시지</label>
+									<!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스 추가 -->
+									<div class="box_tf box_tf2">
+										<textarea id="tfDeploy" name="textarea" rows="5" cols="50" class="tf_deploy tf_description" placeholder="보이스봇 설정앱에 업데이트 정보로 노출될 내용입니다. 사용자가 이해하기 쉽게 작성해주세요."></textarea>
+										<span class="screen_out">최대 입력 글자수</span>
+										<span class="txt_byte">0/200</span>
+									</div>
+								</div>
+								<div class="row_tf">
+									<label for="tfDeploy2" class="lab_g">담당자에게 전할 메시지</label>
+									<!-- 포커스인경우 tf_focus / 입력완료 on / 에러일경우 tf_error / 비활성화인 경우 disabled 클래스 추가 -->
+									<div class="box_tf box_tf2">
+										<textarea id="tfDeploy2" name="textarea" rows="5" cols="50" class="tf_deploy tf_description" placeholder="카카오 보이스봇 심사 담당자에게 전달 할 내용을 작성해주세요."></textarea>
+										<span class="screen_out">최대 입력 글자수</span>
+										<span class="txt_byte">0/50</span>
+									</div>
+								</div>
+								#if($params.get('state'))
+								<div class="row_review">
+									<em class="tit_review">심사 히스토리</em>
+									<div class="group_review">
+										#if($params.get('2'))
+										<span class="screen_out">현재 히스토리</span>
+										<div class="item_review">
+											<span class="txt_state txt_on"><!-- 현재상태일 경우 txt_on 클래스 추가 -->
+												<span class="ico_state2 ico_ing"></span>심사중
+											</span>
+											<span class="txt_date">2018.07.31 10:17</span>
+											<span class="txt_user">카카오 심사 담당자</span>
+										</div>
+										<span class="screen_out">지난 히스토리</span>
+										<div class="item_review">
+											<span class="txt_state">
+												<span class="ico_state2">
+													<span class="ico_bot ico_state"></span>
+												</span>심사대기
+											</span>
+											<span class="txt_date">2018.07.30 15:32</span>
+											<span class="txt_user">lain.k@kakaocorp.com</span>
+										</div>
+										#elseif($params.get('3'))
+										<span class="screen_out">현재 히스토리</span>
+										<div class="item_review">
+											<span class="txt_state txt_on"><!-- 현재상태일 경우 txt_on 클래스 추가 -->
+												<span class="ico_state2 ico_error"></span>심사완료 (반려)
+												<a href="#none" class="link_state">반려사유</a>
+											</span>
+											<span class="txt_date">2018.08.01 12:31</span>
+											<span class="txt_user">카카오 심사 담당자</span>
+										</div>
+										<span class="screen_out">지난 히스토리</span>
+										<div class="item_review">
+											<span class="txt_state">
+												<span class="ico_state2">
+													<span class="ico_bot ico_state"></span>
+												</span>심사중
+											</span>
+											<span class="txt_date">2018.07.31 10:17</span>
+											<span class="txt_user">카카오 심사 담당자</span>
+										</div>
+										<div class="item_review">
+											<span class="txt_state">
+												<span class="ico_state2">
+													<span class="ico_bot ico_state"></span>
+												</span>심사대기
+											</span>
+											<span class="txt_date">2018.07.30 15:32</span>
+											<span class="txt_user">lain.k@kakaocorp.com</span>
+										</div>
+										#elseif($params.get('4'))
+										<span class="screen_out">현재 히스토리</span>
+										<div class="item_review">
+											<span class="txt_state txt_on"><!-- 현재상태일 경우 txt_on 클래스 추가 -->
+												<span class="ico_state2 ico_done"></span>심사완료 (배포승인)
+											</span>
+											<span class="txt_date">2018.08.07 12:31</span>
+											<span class="txt_user">카카오 심사 담당자</span>
+										</div>
+										<span class="screen_out">지난 히스토리</span>
+										<div class="item_review">
+											<span class="txt_state">
+												<span class="ico_state2">
+													<span class="ico_bot ico_state"></span>
+												</span>심사중
+											</span>
+											<span class="txt_date">2018.08.06 10:17</span>
+											<span class="txt_user">카카오 심사 담당자</span>
+										</div>
+										<div class="item_review">
+											<span class="txt_state">
+												<span class="ico_state2">
+													<span class="ico_bot ico_state"></span>
+												</span>심사대기
+											</span>
+											<span class="txt_date">2018.08.05 15:32</span>
+											<span class="txt_user">lain.k@kakaocorp.com</span>
+										</div>
+										<div class="item_review">
+											<span class="txt_state">
+												<span class="ico_state2">
+													<span class="ico_bot ico_state"></span>
+												</span>심사완료 (반려)
+												<a href="#none" class="link_state">반려사유</a>
+											</span>
+											<span class="txt_date">2018.08.01 12:31</span>
+											<span class="txt_user">카카오 심사 담당자</span>
+										</div>
+										<div class="item_review">
+											<span class="txt_state">
+												<span class="ico_state2">
+													<span class="ico_bot ico_state"></span>
+												</span>심사중
+											</span>
+											<span class="txt_date">2018.07.31 10:17</span>
+											<span class="txt_user">카카오 심사 담당자</span>
+										</div>
+										<div class="item_review">
+											<span class="txt_state">
+												<span class="ico_state2">
+													<span class="ico_bot ico_state"></span>
+												</span>심사대기
+											</span>
+											<span class="txt_date">2018.07.30 15:32</span>
+											<span class="txt_user">lain.k@kakaocorp.com</span>
+										</div>
+										#else
+										<span class="screen_out">현재 히스토리</span>
+										<div class="item_review">
+											<span class="txt_state txt_on"><!-- 현재상태일 경우 txt_on 클래스 추가 -->
+												<span class="ico_state2"></span>심사대기
+											</span>
+											<span class="txt_date">2018.07.30 15:32</span>
+											<span class="txt_user">lain.k@kakaocorp.com</span>
+										</div>
+										#end
+									</div>
+								</div>
+								#end
+							</div>
+					
+							<div class="box_row">
+								<div class="wrap_subject">
+									<h4 class="tit_subject">배포 히스토리</h4>
+								</div>
+								<div class="wrap_history">
+									<div class="history_head">
+										<div class="tit_version">버전 정보</div>
+										<div class="tit_progress">진행상태</div>
+										<div class="tit_user">사용자</div>
+										<div class="tit_date">일시</div>
+										<div class="tit_message">메세지</div>
+									</div>
+									<div class="history_body">
+										<div class="item_history open_item">
+											<!--펼칠 경우 open_item 클래스 추가-->
+											<div class="info_version">
+												<div class="screen_out">버전 정보</div>
+												<div class="txt_info">배포 1.1</div>
+											</div>
+											<div class="info_progress">
+												<div class="screen_out">진행상태</div>
+												<div class="txt_info">배포완료</div>
+											</div>
+											<div class="info_user">
+												<div class="screen_out">사용자</div>
+												<div class="txt_info">lain.k@kakaocorp.com</div>
+											</div>
+											<div class="info_date">
+												<div class="txt_info">2018.08.02 15:12</div>
+											</div>
+											<div class="info_message">
+												<a href="#none" class="link_message">배포 메세지 보기</a>
+											</div>
+											<button type="button" class="btn_util btn_extend">
+												<!--펼칠 경우 open_item  클래스 추가, '펼치기'-->
+												<span class="ico_bot ico_extend3"></span>
+												<span class="tooltip_btn">접기</span>
+											</button>
+										</div>
+										<div class="group_history">
+											<div class="item_history">
+												<div class="info_progress">
+													<div class="screen_out">진행상태</div>
+													<div class="txt_info">배포완료</div>
+												</div>
+												<div class="info_user">
+													<div class="screen_out">사용자</div>
+													<div class="txt_info">lain.k@kakaocorp.com</div>
+												</div>
+												<div class="info_date">
+													<div class="txt_info">2018.08.02 15:12</div>
+												</div>
+												<div class="info_message"></div>
+											</div>
+											<div class="item_history">
+												<div class="info_progress">
+													<div class="screen_out">진행상태</div>
+													<div class="txt_info">심사완료 (배포승인)</div>
+												</div>
+												<div class="info_user">
+													<div class="screen_out">사용자</div>
+													<div class="txt_info">카카오</div>
+												</div>
+												<div class="info_date">
+													<div class="txt_info">2018.08.02 15:12</div>
+												</div>
+												<div class="info_message">
+													<a href="#none" class="link_message">반려 사유 보기</a>
+												</div>
+											</div>
+											<div class="item_history">
+												<div class="info_progress">
+													<div class="screen_out">진행상태</div>
+													<div class="txt_info">심사중</div>
+												</div>
+												<div class="info_user">
+													<div class="screen_out">사용자</div>
+													<div class="txt_info">카카오</div>
+												</div>
+												<div class="info_date">
+													<div class="txt_info">2018.08.02 15:12</div>
+												</div>
+												<div class="info_message"></div>
+											</div>
+											<div class="item_history">
+												<div class="info_progress">
+													<div class="screen_out">진행상태</div>
+													<div class="txt_info">심사대기</div>
+												</div>
+												<div class="info_user">
+													<div class="screen_out">사용자</div>
+													<div class="txt_info">lain.k@kakaocorp.com</div>
+												</div>
+												<div class="info_date">
+													<div class="txt_info">2018.08.02 15:12</div>
+												</div>
+												<div class="info_message"></div>
+											</div>
+										</div>
+										<div class="item_history">
+											<!--펼칠 경우 open_item 클래스 추가-->
+											<div class="info_version">
+												<div class="screen_out">버전 정보</div>
+												<div class="txt_info">배포 1.1</div>
+											</div>
+											<div class="info_progress">
+												<div class="screen_out">진행상태</div>
+												<div class="txt_info">배포완료</div>
+											</div>
+											<div class="info_user">
+												<div class="screen_out">사용자</div>
+												<div class="txt_info">lain.k@kakaocorp.com</div>
+											</div>
+											<div class="info_date">
+												<div class="txt_info">2018.08.02 15:12</div>
+											</div>
+											<div class="info_message">
+												<a href="#none" class="link_message">배포 메세지 보기</a>
+											</div>
+											<button type="button" class="btn_util btn_extend">
+												<!--펼칠 경우 open_item  클래스 추가, '펼치기'-->
+												<span class="ico_bot ico_extend3"></span>
+												<span class="tooltip_btn">펼치기</span>
+											</button>
+										</div>
+										#if($params.get('list'))
+											#foreach ($i in [1..13])
+										<div class="item_history">
+											<!--펼칠 경우 open_item 클래스 추가-->
+											<div class="info_version">
+												<div class="screen_out">버전 정보</div>
+												<div class="txt_info">배포 1.1</div>
+											</div>
+											<div class="info_progress">
+												<div class="screen_out">진행상태</div>
+												<div class="txt_info">배포완료</div>
+											</div>
+											<div class="info_user">
+												<div class="screen_out">사용자</div>
+												<div class="txt_info">lain.k@kakaocorp.com</div>
+											</div>
+											<div class="info_date">
+												<div class="txt_info">2018.08.02 15:12</div>
+											</div>
+											<div class="info_message">
+												<a href="#none" class="link_message">배포 메세지 보기</a>
+											</div>
+											<button type="button" class="btn_util btn_extend">
+												<!--펼칠 경우 open_item  클래스 추가, '펼치기'-->
+												<span class="ico_bot ico_extend3"></span>
+												<span class="tooltip_btn">펼치기</span>
+											</button>
+										</div>
+											#end
+										#end
+									</div>
+								</div>
+								#if($params.get('list'))
+								<div class="paging_item">
+									<div class="inner_paging">
+										<!-- 현재 페이지 span > em 으로 변경 -->
+										<!-- 맨 앞/이전 페이지, 맨 뒤/다음 페이지 없는 경우 a 태그 > span 태그  -->
+										<button type="button" class="ico_bot btn_fst">맨 앞</button>
+										<button type="button" class="ico_bot btn_prev">이전</button>
+										<span class="screen_out">현재페이지</span><em class="link_page">1</em>
+										<button type="button" class="link_page">2</button>
+										<button type="button" class="link_page">3</button>
+										<button type="button" class="link_page">4</button>
+										<button type="button" class="link_page">5</button>
+										<button type="button" class="link_page">6</button>
+										<button type="button" class="link_page">7</button>
+										<button type="button" class="link_page">8</button>
+										<button type="button" class="link_page">9</button>
+										<button type="button" class="link_page">10</button>
+										<button type="button" class="ico_bot btn_next">다음</button>
+										<button type="button" class="ico_bot btn_lst">맨 뒤</button>
+									</div>
+								</div>
+								#end
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>
+
+
+
